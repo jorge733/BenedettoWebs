@@ -23,6 +23,6 @@ Sitio web promocional de **BenedettoWebs**, el emprendimiento de **Santiago Bene
 
 Edita el objeto `CONTACTO` al inicio de `script.js` con tu WhatsApp, correo e Instagram. Los botones y el formulario se activan automáticamente.
 
-## Publicar con GitHub Pages
+## Sitio publicado
 
-En el repositorio: **Settings → Pages → Branch: `main` / `(root)` → Save**.
+https://benedettowebs.vercel.app (Vercel, se actualiza con cada push a `main`).
