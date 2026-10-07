@@ -2,16 +2,16 @@
 // Completa estos datos para activar los botones de WhatsApp, correo e Instagram.
 // whatsapp: número con código de país, sin "+" ni espacios (ej: "56912345678").
 const CONTACTO = {
-  whatsapp: "",
-  email: "",
-  instagram: "" // usuario sin "@"
+  whatsapp: "+56932698141",
+  email: "sabenedettoa@gmail.com",
+  instagram: "sabenedettoa" // usuario sin "@"
 };
 
 const MENSAJE_BASE = "Hola Santiago, vi BenedettoWebs y quiero cotizar una página web.";
 
 // ===== Enlaces de contacto =====
 const waLink = (texto) =>
-  `https://wa.me/${CONTACTO.whatsapp}?text=${encodeURIComponent(texto)}`;
+  `https://wa.me/${CONTACTO.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(texto)}`;
 const mailLink = (texto) =>
   `mailto:${CONTACTO.email}?subject=${encodeURIComponent("Cotización página web - BenedettoWebs")}&body=${encodeURIComponent(texto)}`;
 
