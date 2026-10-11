@@ -151,6 +151,9 @@ h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.15; letter-spacing: -
 .t3 { background: linear-gradient(135deg, #a855f7, #ec4899); }
 .t4 { background: linear-gradient(135deg, #0ea5e9, #6366f1); }
 .t5 { background: linear-gradient(135deg, #14b8a6, #84cc16); }
+.t7 { background: linear-gradient(135deg, #ef4444, #f97316); }
+.t8 { background: linear-gradient(135deg, #facc15, #22c55e); }
+.t9 { background: linear-gradient(135deg, #1e3a8a, #0ea5e9); }
 .t6 { background: repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 12px, transparent 12px 24px); border-bottom: 1px dashed var(--border); }
 .project-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
 .project-body h3 { font-size: 1.15rem; margin-bottom: 6px; word-break: break-word; }
