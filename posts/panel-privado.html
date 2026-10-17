@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: panel privado</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 64px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 18px; font-size: 92px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad, .card .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { margin-top: 28px; font-size: 33px; line-height: 1.4; color: var(--muted); max-width: 860px; }
+  .lead strong { color: var(--text); font-weight: 600; }
+
+  .login {
+    margin-top: 48px; display: flex; align-items: center; gap: 26px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+    padding: 26px 30px;
+  }
+  .lock {
+    width: 76px; height: 76px; border-radius: 18px; background: var(--gradient);
+    display: grid; place-items: center; flex: none;
+  }
+  .login .label { font-size: 22px; color: var(--muted); }
+  .login .pass { font-family: 'JetBrains Mono', monospace; font-size: 34px; letter-spacing: 6px; margin-top: 2px; }
+  .login .btn {
+    margin-left: auto; padding: 16px 30px; border-radius: 999px; background: var(--gradient);
+    font-weight: 700; font-size: 24px; color: #fff;
+  }
+
+  .cols { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+    padding: 32px 32px 30px; display: flex; flex-direction: column;
+  }
+  .card.design { border-color: rgba(108, 99, 255, .55); }
+  .tag { font-family: 'JetBrains Mono', monospace; font-size: 21px; color: var(--secondary); }
+  .card.design .tag { color: #a39dff; }
+  .card h2 { margin-top: 10px; font-size: 38px; line-height: 1.12; font-weight: 700; }
+  .card ul { margin-top: 20px; list-style: none; display: grid; gap: 12px; }
+  .card li { font-size: 26px; color: var(--muted); padding-left: 34px; position: relative; line-height: 1.3; }
+  .card li::before { content: "✓"; position: absolute; left: 0; color: var(--secondary); font-weight: 700; }
+  .card p { margin-top: 18px; font-size: 26px; color: var(--muted); line-height: 1.35; }
+  .price { margin-top: auto; padding-top: 18px; }
+  .price .amount { font-size: 66px; font-weight: 800; line-height: 1; }
+  .price .per { font-size: 23px; color: var(--muted); margin-top: 6px; }
+  .free { margin-top: auto; padding-top: 18px; font-size: 30px; font-weight: 700; }
+
+  .foot {
+    margin-top: 40px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; tu sitio, tu control_</p>
+  <h1>Edita tu página<br>web <span class="grad">tú mismo</span></h1>
+  <p class="lead">Cuando tu sitio está listo, te configuro un <strong>panel privado</strong> al que entras con tu contraseña para cambiar el contenido cuando quieras.</p>
+
+  <div class="login">
+    <div class="lock">
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+    </div>
+    <div>
+      <p class="label">Panel privado · tunegocio.cl</p>
+      <p class="pass">••••••••••</p>
+    </div>
+    <span class="btn">Entrar</span>
+  </div>
+
+  <div class="cols">
+    <div class="card">
+      <span class="tag">// lo haces tú</span>
+      <h2>Contenido del sitio</h2>
+      <ul>
+        <li>Textos</li>
+        <li>Fotos</li>
+        <li>Precios y servicios</li>
+        <li>Datos de contacto</li>
+      </ul>
+      <p class="free grad">Sin costo extra</p>
+    </div>
+    <div class="card design">
+      <span class="tag">// me lo pides a mí</span>
+      <h2>Cambios de diseño</h2>
+      <p>Colores, estructura o secciones nuevas, después de entregado el sitio.</p>
+      <div class="price">
+        <p class="amount grad">$15.000</p>
+        <p class="per">por cada cambio adicional</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span><b>benedettowebs.cl</b></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>
