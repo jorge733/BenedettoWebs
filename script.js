@@ -3,7 +3,7 @@
 // whatsapp: número con código de país, sin "+" ni espacios (ej: "56912345678").
 const CONTACTO = {
   whatsapp: "+56932698141",
-  email: "sabenedettoa@gmail.com",
+  email: "sabenedettoa@benedettowebs.cl",
   instagram: "sabenedettoa" // usuario sin "@"
 };
 

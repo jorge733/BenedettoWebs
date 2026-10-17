@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Cotización BenedettoWebs · Documentos</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="doc.css">
+</head>
+<body>
+<div class="barra">
+  <a class="volver" href="./">← Documentos</a>
+  <button class="btn btn-ghost" id="agregarFila">+ Agregar ítem</button>
+  <button class="btn" id="imprimir">Guardar PDF</button>
+</div>
+<p class="aviso">Haz clic en los campos <mark>amarillos</mark> y en las filas de la tabla para editarlos. El total se calcula solo. Al guardar, elige <strong>"Guardar como PDF"</strong> como destino.</p>
+
+<article class="hoja">
+  <header class="doc-head">
+    <img src="../img/logo/logo-fondo-claro.svg" alt="BenedettoWebs">
+    <div class="doc-meta">
+      <h1>COTIZACIÓN</h1>
+      <div>N° <strong data-campo>[2026-001]</strong></div>
+      <div>Fecha: <strong data-fecha="0"></strong></div>
+      <div>Válida hasta: <strong data-fecha="15"></strong></div>
+    </div>
+  </header>
+
+  <h2>Cliente</h2>
+  <dl class="datos">
+    <div><dt>Nombre</dt><dd data-campo>[Nombre del cliente]</dd></div>
+    <div><dt>Negocio</dt><dd data-campo data-nombre-archivo>[Nombre del negocio]</dd></div>
+    <div><dt>Correo</dt><dd data-campo>[correo@cliente.cl]</dd></div>
+    <div><dt>Teléfono</dt><dd data-campo>[+56 9 ...]</dd></div>
+  </dl>
+
+  <h2>Proyecto</h2>
+  <p data-campo>[Página web para mostrar los servicios del negocio, con galería de trabajos y contacto directo por WhatsApp.]</p>
+
+  <h2>Detalle</h2>
+  <table class="items">
+    <thead><tr><th>Descripción</th><th class="valor">Valor</th><th class="quitar-col"></th></tr></thead>
+    <tbody>
+      <tr><td>Diseño y desarrollo de página web de 4 secciones: inicio, servicios, galería y contacto</td><td class="valor">$30.000</td><td class="quitar-col"><button class="quitar" title="Quitar fila">×</button></td></tr>
+      <tr><td>Diseño adaptado a celulares y tablets</td><td class="valor">Incluido</td><td class="quitar-col"><button class="quitar" title="Quitar fila">×</button></td></tr>
+      <tr><td>Botón de WhatsApp, formulario de contacto y enlaces a redes sociales</td><td class="valor">Incluido</td><td class="quitar-col"><button class="quitar" title="Quitar fila">×</button></td></tr>
+      <tr><td>Conexión del dominio, certificado de seguridad (HTTPS) y publicación</td><td class="valor">Incluido</td><td class="quitar-col"><button class="quitar" title="Quitar fila">×</button></td></tr>
+    </tbody>
+    <tfoot><tr><td>Total · pago único (CLP)</td><td class="valor" data-total></td><td class="quitar-col"></td></tr></tfoot>
+  </table>
+
+  <h2>Condiciones</h2>
+  <ul class="condiciones">
+    <li><strong>Forma de pago:</strong> 50% para comenzar (<span data-mitad></span>) y 50% al publicar (<span data-mitad></span>), por transferencia.</li>
+    <li><strong>Plazo de entrega:</strong> <span data-campo>[7 días hábiles]</span> desde que recibo el anticipo y el contenido (textos, fotos y logo).</li>
+    <li><strong>Cambios incluidos:</strong> <span data-campo>[2]</span> rondas de ajustes antes de publicar.</li>
+    <li><strong>Dominio:</strong> lo compra el cliente a su nombre en NIC Chile (aprox. $10.000 al año). Yo lo conecto sin costo.</li>
+    <li><strong>No incluye:</strong> redacción de textos, sesión de fotos, tienda online ni mantenimiento mensual, salvo que se agreguen arriba.</li>
+  </ul>
+
+  <h2>Datos para transferencia</h2>
+  <div class="caja">
+    <p>Nombre: <span data-campo>[Titular de la cuenta]</span> · RUT: <span data-campo>[12.345.678-9]</span></p>
+    <p>Banco: <span data-campo>[Banco]</span> · <span data-campo>[Cuenta RUT / Cuenta Vista]</span> N° <span data-campo>[número]</span></p>
+    <p style="margin:0">Correo: sabenedettoa@benedettowebs.cl</p>
+  </div>
+
+  <div class="firmas">
+    <div class="firma"><div class="linea"></div><strong>Acepto la cotización</strong><div class="muted">Nombre, firma y fecha del cliente</div></div>
+  </div>
+
+  <footer class="doc-foot">
+    <span>Santiago Benedetto · BenedettoWebs</span>
+    <span><a href="https://www.benedettowebs.cl">www.benedettowebs.cl</a> · sabenedettoa@benedettowebs.cl · +56 9 3269 8141</span>
+  </footer>
+</article>
+<script src="doc.js"></script>
+</body>
+</html>

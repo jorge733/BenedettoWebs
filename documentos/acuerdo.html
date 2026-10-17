@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Acuerdo de trabajo BenedettoWebs · Documentos</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="doc.css">
+</head>
+<body>
+<div class="barra">
+  <a class="volver" href="./">← Documentos</a>
+  <label><input type="checkbox" data-mostrar="firmaApoderado" checked> Firma de apoderado</label>
+  <button class="btn" id="imprimir">Guardar PDF</button>
+</div>
+<p class="aviso">Completa los campos <mark>amarillos</mark>. Es un modelo simple de acuerdo entre las partes, no una asesoría legal: si un proyecto es grande, conviene que lo revise un abogado.</p>
+
+<article class="hoja">
+  <header class="doc-head">
+    <img src="../img/logo/logo-fondo-claro.svg" alt="BenedettoWebs">
+    <div class="doc-meta">
+      <h1>ACUERDO DE TRABAJO</h1>
+      <div>Cotización N° <strong data-campo>[2026-001]</strong></div>
+      <div>Fecha: <strong data-fecha="0"></strong></div>
+    </div>
+  </header>
+
+  <h2>Partes</h2>
+  <dl class="datos">
+    <div><dt>Desarrollador</dt><dd>Santiago Benedetto (BenedettoWebs)</dd></div>
+    <div><dt>Cliente</dt><dd data-campo>[Nombre del cliente]</dd></div>
+    <div><dt>Contacto</dt><dd>sabenedettoa@benedettowebs.cl</dd></div>
+    <div><dt>Negocio</dt><dd data-campo data-nombre-archivo>[Nombre del negocio]</dd></div>
+    <div><dt>Web</dt><dd>www.benedettowebs.cl</dd></div>
+    <div><dt>RUT</dt><dd data-campo>[RUT del cliente]</dd></div>
+  </dl>
+
+  <h2>Acuerdan lo siguiente</h2>
+  <ol class="clausulas">
+    <li><strong>Trabajo.</strong> El desarrollador diseñará y publicará la página web descrita en la cotización N° <span data-campo>[2026-001]</span>, que forma parte de este acuerdo. Lo que no esté en la cotización se cotiza aparte.</li>
+    <li><strong>Precio y pago.</strong> El valor total es <span data-campo>[$30.000]</span> CLP en un pago único: 50% al firmar este acuerdo y 50% al aprobar el sitio, antes de publicarlo en el dominio del cliente.</li>
+    <li><strong>Plazo.</strong> El sitio se entrega en <span data-campo>[7 días hábiles]</span> contados desde que el cliente paga el anticipo y envía el contenido. Si el contenido llega tarde, el plazo se corre en los mismos días.</li>
+    <li><strong>Contenido.</strong> El cliente entrega textos, fotos y logo, y declara tener derecho a usarlos. El desarrollador puede usar imágenes de bancos gratuitos cuando haga falta.</li>
+    <li><strong>Cambios.</strong> Se incluyen <span data-campo>[2]</span> rondas de ajustes sobre el diseño acordado. Cambios adicionales o funciones nuevas se cotizan aparte.</li>
+    <li><strong>Dominio.</strong> El dominio se registra a nombre del cliente, quien paga su renovación anual. El desarrollador solo lo conecta y no se queda con su control.</li>
+    <li><strong>Propiedad.</strong> Una vez pagado el total, el sitio y su contenido son del cliente. El desarrollador puede mostrar el trabajo en su portafolio, salvo que el cliente pida lo contrario por escrito.</li>
+    <li><strong>Garantía.</strong> Durante <span data-campo>[30 días]</span> desde la publicación, el desarrollador corrige sin costo cualquier error de funcionamiento del sitio. No incluye cambios de contenido ni de diseño.</li>
+    <li><strong>Cancelación.</strong> Si el cliente cancela el proyecto después de comenzado, el anticipo cubre el trabajo ya realizado y no se devuelve. Si el desarrollador no puede completarlo, devuelve el anticipo completo.</li>
+    <li><strong>Comunicación.</strong> Las aprobaciones y cambios se acuerdan por correo o WhatsApp, y esos mensajes sirven como respaldo de lo acordado.</li>
+  </ol>
+
+  <div class="firmas">
+    <div class="firma"><div class="linea"></div><strong>Santiago Benedetto</strong><div class="muted">Desarrollador · BenedettoWebs</div></div>
+    <div class="firma" id="firmaApoderado"><div class="linea"></div><strong data-campo>[Nombre del apoderado]</strong><div class="muted">Apoderado del desarrollador · RUT <span data-campo>[RUT]</span></div></div>
+    <div class="firma"><div class="linea"></div><strong data-campo>[Nombre del cliente]</strong><div class="muted">Cliente · RUT <span data-campo>[RUT]</span></div></div>
+  </div>
+
+  <footer class="doc-foot">
+    <span>Santiago Benedetto · BenedettoWebs</span>
+    <span><a href="https://www.benedettowebs.cl">www.benedettowebs.cl</a> · sabenedettoa@benedettowebs.cl · +56 9 3269 8141</span>
+  </footer>
+</article>
+<script src="doc.js"></script>
+</body>
+</html>
