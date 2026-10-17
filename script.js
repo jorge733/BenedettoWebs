@@ -4,7 +4,7 @@
 const CONTACTO = {
   whatsapp: "+56932698141",
   email: "sabenedettoa@benedettowebs.cl",
-  instagram: "sabenedettoa" // usuario sin "@"
+  instagram: "benedettowebs" // usuario sin "@"
 };
 
 const MENSAJE_BASE = "Hola Santiago, vi BenedettoWebs y quiero cotizar una página web.";
