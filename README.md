@@ -26,4 +26,4 @@ Edita el objeto `CONTACTO` al inicio de `script.js` con tu WhatsApp, correo e In
 
 ## Sitio publicado
 
-https://benedettowebs.vercel.app (Vercel, se actualiza con cada push a `main`).
+https://www.benedettowebs.cl (Vercel, se actualiza con cada push a `main`).
