@@ -8,16 +8,17 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] MetroSim (`metrosim`)
 
 ## 1. Portafolio
-- [ ] Negra Mora (negramora.cl)
-- [ ] Dos Anillos (dosanillos.cl)
+- [x] Negra Mora (negramora.cl) (`negramora`)
+- [x] Dos Anillos (dosanillos.cl) (`dosanillos`)
 - [ ] Inversiones Pellegrini (inversionespellegrini.cl)
-- [ ] ehda.cl
-- [ ] Service Planet (serviceplanet.cl)
+- [x] ehda.cl (`ehda`, adelanto "próximamente")
+- [x] Service Planet (serviceplanet.cl) (`serviceplanet`)
 - [ ] Uniluva (uniluva.com)
 - [ ] Académica Michelangelo (academicamichelangelo.site)
 - [ ] Antes / después de algún cliente
 - [ ] Reseña de Luciano (Pellegrini)
 - [ ] Reel: scroll de una web terminada en el celular
+- [x] Reel: portafolio rápido, las 9 webs (`reel-portafolio`)
 
 ## 2. Proceso / detrás de escena
 - [ ] "Cómo hago una web en 4 pasos" (Conversamos → Cotizo → Diseño → Publicamos)
@@ -26,7 +27,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] Del boceto a la web
 
 ## 3. Educativo
-- [ ] 5 señales de que tu negocio necesita una web
+- [x] 5 señales de que tu negocio necesita una web (`senales`)
 - [ ] ¿Qué es un dominio .cl y cuánto cuesta?
 - [ ] Errores comunes en webs de pymes
 - [ ] Web vs. Linktree vs. solo redes
@@ -37,6 +38,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] Recordatorio: cambios de diseño a $15.000
 - [ ] Cupos del mes
 - [ ] Fechas clave (Cyber Day, Navidad, temporada de verano)
+- [x] Reel: sorteo por metas de 500 y 1.000 seguidores (`reel-sorteo`)
 
 ## 5. Proyectos propios y comunidad
 - [ ] MetroSim: reel por modo (conductor, pasajero, centro de control)

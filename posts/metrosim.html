@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: MetroSim</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 64px 84px 56px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 40px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 12px; font-size: 74px; line-height: 1.03; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { margin-top: 20px; font-size: 30px; line-height: 1.38; color: var(--muted); max-width: 900px; }
+  .lead strong { color: var(--text); font-weight: 600; }
+
+  .shot {
+    margin-top: 34px; border-radius: 24px; overflow: hidden; flex: none;
+    border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(0, 0, 0, .45);
+    position: relative;
+  }
+  .shot img { display: block; width: 100%; }
+  .lines { display: flex; height: 8px; }
+  .lines i { flex: 1; background: var(--c); }
+
+  .modes { margin-top: 30px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .mode {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
+    padding: 20px 22px 20px; border-top: 5px solid var(--c);
+  }
+  .mode .icon { font-size: 30px; line-height: 1; }
+  .mode h2 { margin-top: 10px; font-size: 28px; line-height: 1.1; font-weight: 700; }
+  .mode p { margin-top: 6px; font-size: 21px; color: var(--muted); line-height: 1.3; }
+
+  .foot {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+  .foot .play {
+    padding: 14px 28px; border-radius: 999px; background: var(--gradient);
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 25px; color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; proyecto personal_</p>
+  <h1>Hice un videojuego<br>del <span class="grad">Metro de Santiago</span></h1>
+  <p class="lead"><strong>MetroSim</strong> es un simulador 3D gratis que se juega directo en el navegador, en el computador o en el celular.</p>
+
+  <div class="shot">
+    <img src="metrosim-captura.jpg" alt="Pantalla de inicio de MetroSim">
+    <div class="lines"><i style="--c:#e1251b"></i><i style="--c:#f6a500"></i><i style="--c:#8b5a2b"></i><i style="--c:#1f4ea3"></i><i style="--c:#2bb0ed"></i><i style="--c:#00953a"></i><i style="--c:#8a2b8f"></i></div>
+  </div>
+
+  <div class="modes">
+    <div class="mode" style="--c:#e1251b">
+      <span class="icon">🚇</span>
+      <h2>Conduce</h2>
+      <p>Tren real con señales, horario y sueldo.</p>
+    </div>
+    <div class="mode" style="--c:#f6a500">
+      <span class="icon">🚶</span>
+      <h2>Viaja a pie</h2>
+      <p>Carga tu bip! y cumple misiones.</p>
+    </div>
+    <div class="mode" style="--c:#2bb0ed">
+      <span class="icon">🖥️</span>
+      <h2>Controla</h2>
+      <p>Dirige las 7 líneas en tiempo real.</p>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span><b>metrosimulator.vercel.app</b></span>
+    <span class="play">Juega gratis ›</span>
+  </div>
+</div>
+</body>
+</html>

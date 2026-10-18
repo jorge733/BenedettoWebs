@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: 5 señales de que tu negocio necesita una web</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 52px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 16px; font-size: 80px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .list { margin-top: 36px; display: grid; gap: 14px; flex: 1; align-content: start; }
+  .item {
+    display: flex; align-items: center; gap: 28px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+    padding: 18px 30px;
+  }
+  .num {
+    flex: none; width: 70px; font-family: 'JetBrains Mono', monospace; font-size: 54px; font-weight: 700;
+    line-height: 1;
+  }
+  .item h2 { font-size: 33px; line-height: 1.15; font-weight: 700; }
+  .item p { margin-top: 6px; font-size: 25px; line-height: 1.3; color: var(--muted); }
+
+  .cta { margin-top: auto; font-size: 34px; font-weight: 600; }
+  .cta span { color: var(--muted); font-weight: 400; }
+  .mail { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; }
+
+  .foot {
+    margin-top: 32px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; diagnostico.run()_</p>
+  <h1>5 señales de que tu<br>negocio <span class="grad">necesita una web</span></h1>
+
+  <div class="list">
+    <div class="item">
+      <span class="num grad">01</span>
+      <div>
+        <h2>Respondes lo mismo por DM todo el día</h2>
+        <p>Precios, horarios, dirección… Tu web lo responde por ti.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="num grad">02</span>
+      <div>
+        <h2>Te buscan en Google y no apareces</h2>
+        <p>Si no te encuentran a ti, encuentran a otro.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="num grad">03</span>
+      <div>
+        <h2>Todo tu negocio depende de Instagram</h2>
+        <p>Si la cuenta se cae o el algoritmo cambia, pierdes tu vitrina.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="num grad">04</span>
+      <div>
+        <h2>Quieres que te tomen más en serio</h2>
+        <p>Un dominio .cl propio da confianza a clientes nuevos.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="num grad">05</span>
+      <div>
+        <h2>Tu competencia ya tiene web</h2>
+        <p>Y cuando te comparan, eso pesa.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="cta">¿Te identificas con 2 o más? <span>Escríbeme y la hacemos.</span></p>
+  <p class="mail grad">✉ sabenedettoa@benedettowebs.cl</p>
+
+  <div class="foot">
+    <span><b>benedettowebs.cl</b></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>

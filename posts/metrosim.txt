@@ -1,0 +1,17 @@
+🚇 ¡Hice un videojuego del Metro de Santiago!
+
+Se llama MetroSim y es mi proyecto personal favorito: un simulador 3D gratis que se juega directo en el navegador, en el computador o en el celular. No hay que descargar nada.
+
+Puedes jugarlo de tres formas:
+
+🚆 Conductor: maneja un tren AS-2014 real, respeta señales y horario, y gana tu sueldo en cada estación.
+🚶 Pasajero a pie: carga tu bip!, combina entre líneas, cumple misiones y visita lugares como La Moneda o el Costanera Center.
+🖥️ Centro de Control: supervisa las 7 líneas en tiempo real, retén trenes y regula los intervalos.
+
+Son 7 líneas, 126 estaciones y una Tienda Metro con más de 160 artículos para gastar lo que ganas. 💸
+
+Lo programé yo mismo, igual que las páginas web que hago en BenedettoWebs. ✨
+
+🎮 Juega gratis en metrosimulator.vercel.app (link en la bio)
+
+#metrodesantiago #videojuego #simulador #gamedev #santiagodechile #chile #proyectopersonal #benedettowebs

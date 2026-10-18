@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: ehda.cl próximamente</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 64px 84px 56px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 30px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 10px; font-size: 76px; line-height: 1.03; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { margin-top: 16px; font-size: 30px; line-height: 1.38; color: var(--muted); max-width: 900px; }
+  .lead strong { color: var(--text); font-weight: 600; }
+
+  .status { margin-top: 22px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 10px; padding: 9px 18px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace; font-size: 21px; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .pill.soon { color: #ffd479; border-color: rgba(255, 212, 121, .35); background: rgba(255, 212, 121, .08); }
+  .pill.soon::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #ffc247; box-shadow: 0 0 10px #ffc247; }
+
+  .browser {
+    margin-top: 26px; border-radius: 24px; overflow: hidden; flex: none; background: var(--surface);
+    border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(0, 0, 0, .45);
+  }
+  .bar { display: flex; align-items: center; gap: 10px; padding: 14px 20px; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; background: #2a3354; }
+  .url {
+    margin-left: 12px; flex: 1; padding: 7px 18px; border-radius: 999px; background: #0f1528;
+    font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--muted);
+  }
+  .browser img { display: block; width: 100%; }
+
+  .includes {
+    margin-top: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
+    padding: 22px 28px 24px;
+  }
+  .includes .tag { font-family: 'JetBrains Mono', monospace; font-size: 21px; color: var(--secondary); }
+  .includes ul { margin-top: 14px; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+  .includes li { font-size: 24px; color: var(--muted); padding-left: 30px; position: relative; line-height: 1.25; }
+  .includes li::before { content: "✓"; position: absolute; left: 0; color: var(--secondary); font-weight: 700; }
+
+  .foot {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+  .foot .contact { display: flex; flex-direction: column; gap: 4px; }
+  .foot .mail { font-size: 21px; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; próximamente: ehda.cl_</p>
+  <h1>Se viene <span class="grad">El Hilo<br>de Ariadna</span></h1>
+  <p class="lead">Seminario de <strong>Pedagogía Waldorf</strong> para formar maestros que acompañan a adolescentes de 7° básico a IV° medio.</p>
+  <div class="status"><span class="pill soon">Muy pronto</span><span class="pill">Diseño listo</span><span class="pill">Cliente</span></div>
+
+  <div class="browser">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">ehda.cl</span></div>
+    <img src="ehda-captura.jpg" alt="Portada de ehda.cl">
+  </div>
+
+  <div class="includes">
+    <span class="tag">// el sitio incluirá</span>
+    <ul>
+      <li>Programa del seminario</li>
+      <li>Qué es la pedagogía Waldorf</li>
+      <li>Cursos de 7° a IV° medio</li>
+      <li>Equipo docente</li>
+      <li>Galería de fotos y videos</li>
+      <li>Documentos descargables</li>
+    </ul>
+  </div>
+
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>

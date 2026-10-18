@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Reel: portafolio rápido</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .scene {
+    width: 1080px; height: 1920px; padding: 220px 84px 380px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(800px 600px at 100% 0%, rgba(108, 99, 255, .30), transparent 70%),
+      radial-gradient(700px 600px at 0% 100%, rgba(0, 212, 255, .18), transparent 70%),
+      var(--bg);
+    display: none; flex-direction: column; overflow: hidden;
+  }
+  .scene.on { display: flex; }
+  .logo { height: 58px; align-self: flex-start; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* Intro */
+  .intro .eyebrow { margin-top: auto; font-size: 34px; color: var(--secondary); }
+  .intro h1 { margin-top: 24px; font-size: 140px; line-height: .98; font-weight: 800; letter-spacing: -4px; }
+  .intro .lead { margin-top: 36px; font-size: 44px; color: var(--muted); line-height: 1.3; }
+  .intro .lead strong { color: var(--text); }
+  .intro .hint { margin-top: auto; font-size: 30px; color: var(--muted); }
+
+  /* Proyecto */
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .count { font-size: 34px; color: var(--muted); }
+  .count b { color: var(--text); }
+  .tag {
+    margin-top: 90px; align-self: flex-start; font-size: 28px; font-weight: 700;
+    padding: 10px 22px; border-radius: 999px; color: var(--secondary); background: rgba(0, 212, 255, .12);
+  }
+  .tag.client { color: #fff; background: var(--gradient); }
+  .domain { margin-top: 28px; font-size: 86px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; word-break: break-word; }
+  .domain.long { font-size: 68px; }
+  .desc { margin-top: 24px; font-size: 38px; line-height: 1.3; color: var(--muted); }
+  .browser {
+    margin-top: auto; border-radius: 28px; overflow: hidden; background: var(--surface);
+    border: 1px solid var(--border); box-shadow: 0 40px 100px rgba(0, 0, 0, .55), 0 0 0 1px rgba(108, 99, 255, .25);
+  }
+  .bar { display: flex; align-items: center; gap: 12px; padding: 20px 24px; }
+  .dot { width: 18px; height: 18px; border-radius: 50%; background: #2a3354; }
+  .url {
+    margin-left: 14px; flex: 1; padding: 10px 20px; border-radius: 999px; background: #0f1528;
+    font-size: 24px; color: var(--muted);
+  }
+  .browser img { display: block; width: 100%; aspect-ratio: 8 / 5; object-fit: cover; }
+
+  /* Cierre */
+  .outro .eyebrow { margin-top: auto; font-size: 34px; color: var(--secondary); }
+  .outro h1 { margin-top: 24px; font-size: 118px; line-height: 1; font-weight: 800; letter-spacing: -3px; }
+  .outro .price { margin-top: 56px; font-size: 40px; color: var(--muted); }
+  .outro .price b { display: block; font-size: 150px; line-height: 1; font-weight: 800; letter-spacing: -3px; margin-top: 8px; }
+  .outro .note { margin-top: 16px; font-size: 30px; color: var(--muted); }
+  .outro .cta {
+    margin-top: auto; align-self: flex-start; padding: 26px 44px; border-radius: 999px; background: var(--gradient);
+    font-size: 40px; font-weight: 700; color: #fff;
+  }
+  .outro .handles { margin-top: 30px; font-size: 32px; color: var(--muted); }
+  .outro .handles b { color: var(--text); }
+  .outro .handles + .handles { margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="scene intro" id="s0">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+  <p class="eyebrow mono">&gt; ls ./portafolio_</p>
+  <h1>9 webs<br>que <span class="grad">hice yo</span></h1>
+  <p class="lead">Con <strong>16 años</strong>, desde cero.<br>Para clientes y proyectos propios.</p>
+  <p class="hint mono">// mira hasta el final ↓</p>
+</div>
+
+<div id="projects"></div>
+
+<div class="scene outro" id="s10">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+  <p class="eyebrow mono">&gt; tu_negocio.cl_</p>
+  <h1>¿La próxima<br>es <span class="grad">la tuya?</span></h1>
+  <p class="price">Tu web a medida desde<b class="grad">$30.000</b></p>
+  <p class="note">Pago único · sin mensualidades</p>
+  <span class="cta">Escríbeme por DM</span>
+  <p class="handles mono"><b>benedettowebs.cl</b> · @benedettowebs</p>
+  <p class="handles mono">sabenedettoa@benedettowebs.cl</p>
+</div>
+
+<script>
+  const projects = [
+    ['ehda.cl', 'ehda', 'Cliente', 'Seminario de pedagogía Waldorf para formación de maestros.'],
+    ['inversionespellegrini.cl', 'inversionespellegrini', 'Cliente', 'Asesoría personalizada para invertir a mediano y largo plazo.'],
+    ['negramora.cl', 'negramora', 'Cliente', 'Clases y cursos online de costura.'],
+    ['dosanillos.cl', 'dosanillos', 'Cliente', 'Flautas e instrumentos de madera hechos a mano.'],
+    ['listadecompras.website', 'listadecompras', 'Proyecto personal', 'App web para organizar tus listas de compras.'],
+    ['uniluva.com', 'uniluva', 'Proyecto personal', 'Música y pausas para soltar el estrés.'],
+    ['serviceplanet.cl', 'serviceplanet', 'Proyecto personal', 'Crea gratis la página de tus servicios.'],
+    ['academicamichelangelo.site', 'academicamichelangelo', 'Proyecto personal', 'Plataforma del II° Medio de un colegio.'],
+    ['metrosimulator.vercel.app', 'metrosimulator', 'Proyecto personal', 'Simulador 3D del Metro de Santiago.'],
+  ];
+  const wrap = document.getElementById('projects');
+  projects.forEach(([domain, img, tag, desc], i) => {
+    const n = String(i + 1).padStart(2, '0');
+    wrap.insertAdjacentHTML('beforeend', `
+      <div class="scene" id="s${i + 1}">
+        <div class="top">
+          <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+          <span class="count mono"><b>${n}</b> / 09</span>
+        </div>
+        <span class="tag ${tag === 'Cliente' ? 'client' : ''}">${tag}</span>
+        <h2 class="domain ${domain.length > 20 ? 'long' : ''}">${domain}</h2>
+        <p class="desc">${desc}</p>
+        <div class="browser">
+          <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url mono">${domain}</span></div>
+          <img src="../img/portafolio/${img}.jpg" alt="">
+        </div>
+      </div>`);
+  });
+  const i = Number(location.hash.slice(1) || 0);
+  document.getElementById('s' + i).classList.add('on');
+</script>
+</body>
+</html>
