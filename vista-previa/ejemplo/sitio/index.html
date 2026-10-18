@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Pastelería Dulce Hogar</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Georgia, serif; color: #4a2c2a; background: #fff8f1; line-height: 1.6; }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 20px 6%; }
+    header strong { font-size: 1.3rem; }
+    nav a { margin-left: 20px; color: inherit; text-decoration: none; }
+    .hero { padding: 80px 6%; text-align: center; background: #f7e1d3; }
+    .hero h1 { font-size: clamp(2rem, 6vw, 3.4rem); margin-bottom: 12px; }
+    .hero a { display: inline-block; margin-top: 24px; padding: 12px 28px; background: #b5544a; color: #fff; border-radius: 999px; text-decoration: none; }
+    .productos { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; padding: 60px 6%; }
+    .productos div { background: #fff; padding: 28px; border-radius: 14px; box-shadow: 0 8px 24px rgba(74, 44, 42, 0.08); }
+    .productos h3 { margin-bottom: 6px; }
+    footer { text-align: center; padding: 30px; font-size: 0.9rem; opacity: 0.7; }
+    @media (max-width: 600px) { nav { display: none; } }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Dulce Hogar</strong>
+    <nav><a href="#productos">Productos</a><a href="#contacto">Contacto</a></nav>
+  </header>
+  <section class="hero">
+    <h1>Tortas y dulces hechos en casa</h1>
+    <p>Pedidos para cumpleaños, matrimonios y eventos en Santiago.</p>
+    <a href="#contacto">Haz tu pedido</a>
+  </section>
+  <section class="productos" id="productos">
+    <div><h3>Tortas</h3><p>De mil hojas, tres leches y chocolate, desde 15 personas.</p></div>
+    <div><h3>Kuchen</h3><p>De frambuesa, manzana y nuez, recién horneados.</p></div>
+    <div><h3>Cajas de regalo</h3><p>Alfajores, galletas y chilenitos para sorprender.</p></div>
+  </section>
+  <footer id="contacto">Pastelería Dulce Hogar · Pedidos por WhatsApp</footer>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Vista previa | BenedettoWebs</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/vista-previa/visor.css">
+
+  <!-- ===== Datos del cliente: edita solo esto ===== -->
+  <script>
+    window.VISTA_PREVIA = {
+      cliente: "Pastelería Dulce Hogar"
+    };
+  </script>
+</head>
+<body data-dispositivo="escritorio">
+  <header class="barra">
+    <a class="marca" href="/" target="_blank" rel="noopener">
+      <img src="/favicon.svg" alt="" width="30" height="30">
+      <span>Benedetto<span class="accent">Webs</span></span>
+    </a>
+    <div class="cliente">
+      <small>Vista previa para</small>
+      <strong id="nombreCliente"></strong>
+    </div>
+    <div class="dispositivos" role="group" aria-label="Ver como">
+      <button type="button" data-dispositivo="escritorio" aria-pressed="true">Computador</button>
+      <button type="button" data-dispositivo="tablet" aria-pressed="false">Tablet</button>
+      <button type="button" data-dispositivo="celular" aria-pressed="false">Celular</button>
+    </div>
+    <div class="acciones">
+      <a class="btn btn-secundario" id="abrirSitio" target="_blank" rel="noopener">Pantalla completa</a>
+      <a class="btn btn-primario" id="responder" target="_blank" rel="noopener">Dar mi opinión</a>
+    </div>
+  </header>
+
+  <main class="escenario">
+    <div class="marco"><iframe id="sitio"></iframe></div>
+  </main>
+  <p class="aviso">Esta es una vista previa privada. El sitio final se publicará en tu propio dominio.</p>
+
+  <script src="/vista-previa/visor.js"></script>
+</body>
+</html>

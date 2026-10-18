@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /documentos/
+Disallow: /vista-previa/
 
 Sitemap: https://www.benedettowebs.cl/sitemap.xml
