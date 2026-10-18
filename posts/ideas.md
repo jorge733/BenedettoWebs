@@ -46,6 +46,3 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] listadecompras.website
 - [ ] Stories con encuestas
 - [ ] Rediseño gratis por sorteo
-
-## 6. Novedades del sitio
-- [x] Nueva sección de vista previa de tu página (`vista-previa`)
