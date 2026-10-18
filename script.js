@@ -40,23 +40,79 @@ if (CONTACTO.whatsapp) {
   waFloat.rel = "noopener";
 }
 
-// ===== Formulario: arma el mensaje y abre WhatsApp o correo =====
-document.getElementById("contactForm").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const data = new FormData(e.target);
-  const texto =
-    `${MENSAJE_BASE}\n\n` +
-    `Nombre: ${data.get("nombre")}\n` +
-    (data.get("negocio") ? `Negocio: ${data.get("negocio")}\n` : "") +
-    `Lo que necesito: ${data.get("mensaje")}`;
+// ===== Formulario: envía la cotización al correo (FormSubmit) =====
+// La primera vez, FormSubmit manda un correo de activación a CONTACTO.email: hay que confirmarlo.
+const contactForm = document.getElementById("contactForm");
+const formStatus = document.getElementById("formStatus");
+const formSubmit = document.getElementById("formSubmit");
+const formWa = document.getElementById("formWa");
 
-  if (CONTACTO.whatsapp) {
-    window.open(waLink(texto), "_blank", "noopener");
-  } else if (CONTACTO.email) {
-    window.location.href = mailLink(texto);
-  } else {
-    alert("Pronto habilitaremos el contacto. ¡Gracias por tu interés!");
+const CAMPOS = [
+  ["nombre", "Nombre"], ["negocio", "Negocio"], ["email", "Correo"], ["telefono", "WhatsApp"],
+  ["tipo", "Tipo de página"], ["incluir", "Quiere incluir"], ["plazo", "Plazo"],
+  ["contenido", "Contenido listo"], ["mensaje", "Proyecto"]
+];
+const leerFormulario = () => {
+  const data = new FormData(contactForm);
+  return CAMPOS.map(([k, label]) => [label, data.getAll(k).join(", ").trim()]).filter(([, v]) => v);
+};
+const textoFormulario = () =>
+  `${MENSAJE_BASE}\n\n` + leerFormulario().map(([l, v]) => `${l}: ${v}`).join("\n");
+
+if (CONTACTO.whatsapp) {
+  formWa.target = "_blank";
+  formWa.rel = "noopener";
+  formWa.addEventListener("click", () => (formWa.href = waLink(textoFormulario())));
+} else {
+  formWa.parentElement.hidden = true;
+}
+
+const setStatus = (msg, tipo = "") => {
+  formStatus.textContent = msg;
+  formStatus.className = "form-status " + tipo;
+};
+
+contactForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const requeridos = [...contactForm.querySelectorAll("[required]")];
+  requeridos.forEach((el) => el.classList.toggle("invalid", !el.checkValidity()));
+  const primero = requeridos.find((el) => !el.checkValidity());
+  if (primero) {
+    setStatus(primero.type === "email" && primero.value ? "Revisa que el correo esté bien escrito." : "Completa los campos marcados con *.", "error");
+    primero.focus();
+    return;
   }
+  if (contactForm._honey.value) return;
+
+  const data = new FormData(contactForm);
+  const cuerpo = Object.fromEntries(leerFormulario());
+  cuerpo._subject = `Nueva cotización: ${data.get("nombre")}${data.get("negocio") ? " · " + data.get("negocio") : ""}`;
+  cuerpo._replyto = data.get("email");
+  cuerpo._template = "table";
+  cuerpo._captcha = "false";
+
+  formSubmit.disabled = true;
+  formSubmit.textContent = "Enviando…";
+  setStatus("");
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${CONTACTO.email}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(cuerpo)
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || json.success === "false" || json.success === false) throw new Error(json.message);
+    contactForm.reset();
+    setStatus("¡Listo! Recibí tu solicitud y te respondo al correo a la brevedad.", "ok");
+  } catch {
+    setStatus("No se pudo enviar. Inténtalo de nuevo o escríbeme por WhatsApp.", "error");
+  } finally {
+    formSubmit.disabled = false;
+    formSubmit.textContent = "Enviar solicitud";
+  }
+});
+contactForm.addEventListener("input", (e) => {
+  if (e.target.classList.contains("invalid") && e.target.checkValidity()) e.target.classList.remove("invalid");
 });
 
 // ===== Navegación =====

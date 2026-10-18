@@ -26,6 +26,8 @@ Sitio web promocional de **BenedettoWebs**, el emprendimiento de **Santiago Bene
 
 Edita el objeto `CONTACTO` al inicio de `script.js` con tu WhatsApp, correo e Instagram. Los botones y el formulario se activan automáticamente.
 
+El formulario de cotización envía las solicitudes a `CONTACTO.email` mediante [FormSubmit](https://formsubmit.co). La primera vez que alguien lo envía, FormSubmit manda un correo de activación a esa casilla: hay que confirmarlo para empezar a recibir las cotizaciones.
+
 ## Sitio publicado
 
 https://www.benedettowebs.cl (Vercel, se actualiza con cada push a `main`).

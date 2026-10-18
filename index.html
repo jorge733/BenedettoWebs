@@ -422,18 +422,72 @@
           <p>Escríbeme y te respondo a la brevedad.</p>
           <div class="contact-links" id="contactLinks"></div>
         </div>
-        <form class="contact-form reveal" id="contactForm">
-          <label>Nombre
-            <input type="text" name="nombre" required placeholder="Tu nombre">
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <div class="form-head">
+            <h3>Pide tu cotización</h3>
+            <p>Gratis y sin compromiso. Te respondo con un precio cerrado.</p>
+          </div>
+          <div class="form-row">
+            <label>Nombre *
+              <input type="text" name="nombre" required autocomplete="name" placeholder="Tu nombre">
+            </label>
+            <label>Negocio
+              <input type="text" name="negocio" autocomplete="organization" placeholder="Nombre o rubro">
+            </label>
+          </div>
+          <div class="form-row">
+            <label>Correo *
+              <input type="email" name="email" required autocomplete="email" placeholder="tu@correo.cl">
+            </label>
+            <label>WhatsApp
+              <input type="tel" name="telefono" autocomplete="tel" placeholder="+56 9 1234 5678">
+            </label>
+          </div>
+          <label>Tipo de página
+            <select name="tipo">
+              <option value="">Elige una opción</option>
+              <option>Página de una sección (landing)</option>
+              <option>Sitio con varias secciones</option>
+              <option>Catálogo de productos</option>
+              <option>Tienda online</option>
+              <option>Rediseño de una web que ya tengo</option>
+              <option>No estoy seguro</option>
+            </select>
           </label>
-          <label>Negocio
-            <input type="text" name="negocio" placeholder="Nombre o rubro de tu negocio">
+          <fieldset class="chips">
+            <legend>¿Qué te gustaría incluir?</legend>
+            <label><input type="checkbox" name="incluir" value="Galería de fotos"><span>Galería de fotos</span></label>
+            <label><input type="checkbox" name="incluir" value="Botón de WhatsApp"><span>Botón de WhatsApp</span></label>
+            <label><input type="checkbox" name="incluir" value="Formulario de contacto"><span>Formulario de contacto</span></label>
+            <label><input type="checkbox" name="incluir" value="Mapa y ubicación"><span>Mapa y ubicación</span></label>
+            <label><input type="checkbox" name="incluir" value="Redes sociales"><span>Redes sociales</span></label>
+            <label><input type="checkbox" name="incluir" value="Dominio .cl"><span>Dominio .cl</span></label>
+          </fieldset>
+          <div class="form-row">
+            <label>¿Para cuándo la necesitas?
+              <select name="plazo">
+                <option value="">Sin apuro</option>
+                <option>Lo antes posible</option>
+                <option>Este mes</option>
+                <option>En 1 a 3 meses</option>
+              </select>
+            </label>
+            <label>¿Tienes el contenido listo?
+              <select name="contenido">
+                <option value="">Elige una opción</option>
+                <option>Sí, textos y fotos</option>
+                <option>Tengo una parte</option>
+                <option>Todavía no</option>
+              </select>
+            </label>
+          </div>
+          <label>Cuéntame de tu proyecto *
+            <textarea name="mensaje" rows="4" required placeholder="Ej: vendo tortas y quiero mostrar mis productos con precios y que me escriban por WhatsApp"></textarea>
           </label>
-          <label>¿Qué te gustaría en tu página?
-            <textarea name="mensaje" rows="4" required placeholder="Ej: una página con mis servicios, galería de fotos y botón de WhatsApp"></textarea>
-          </label>
-          <button type="submit" class="btn btn-block">Enviar solicitud</button>
-          <p class="form-note">Se abrirá tu WhatsApp o correo con el mensaje listo para enviar.</p>
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-block" id="formSubmit">Enviar solicitud</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+          <p class="form-note">Te llega mi respuesta al correo que dejes. ¿Prefieres hablar ya? <a href="#" id="formWa">Escríbeme por WhatsApp</a>.</p>
         </form>
       </div>
     </section>
