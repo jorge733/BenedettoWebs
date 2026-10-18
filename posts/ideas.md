@@ -34,7 +34,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Mitos sobre tener página web (`mitos`)
 
 ## 4. Ofertas
-- [ ] Qué incluye tu web por $30.000
+- [x] Qué incluye tu web desde $30.000 (`incluye`)
 - [ ] Recordatorio: cambios de diseño a $15.000
 - [ ] Cupos del mes
 - [ ] Fechas clave (Cyber Day, Navidad, temporada de verano)
