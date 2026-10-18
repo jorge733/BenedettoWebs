@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Vista previa de tu página</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Estilos reales del sitio, para que las maquetas se vean igual que en benedettowebs.cl -->
+<link rel="stylesheet" href="../styles.css">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0b0f1a; }
+  .p-post {
+    width: 1080px; height: 1350px; padding: 64px 70px 56px;
+    font-family: 'Outfit', sans-serif; color: #e8ecf6; line-height: 1.6;
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      #0b0f1a;
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .p-logo { height: 54px; align-self: flex-start; margin-left: 14px; }
+  .p-eyebrow {
+    margin: 28px 14px 0; font-family: 'JetBrains Mono', monospace; font-size: 26px; color: #00d4ff; letter-spacing: .5px;
+  }
+  .p-title { margin: 8px 14px 0; font-size: 72px; line-height: 1.03; font-weight: 800; letter-spacing: -2px; }
+  .p-grad { background: linear-gradient(135deg, #6c63ff, #00d4ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .p-lead { margin: 16px 14px 0; font-size: 30px; line-height: 1.38; color: #9aa4bf; max-width: 900px; }
+  .p-lead strong { color: #e8ecf6; font-weight: 600; }
+
+  .p-phones { margin-top: 34px; display: flex; justify-content: center; gap: 30px; align-items: flex-start; }
+  .p-phones .pv-frame { width: 290px; flex: none; transition: none; }
+  .p-phones .pv-frame:nth-child(2) { margin-top: -18px; box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 0 0 2px #6c63ff, 0 0 60px rgba(108,99,255,.45); }
+  .p-phones .pv-frame .pv-screen { height: 515px; overflow: hidden; }
+  .p-phones .mk { animation: none; }
+  .p-phones .mk-wa { display: none; }
+
+  .p-steps { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .p-step {
+    background: #151c33; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 16px 20px 18px;
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .p-num {
+    flex: none; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+    background: linear-gradient(135deg, #6c63ff, #00d4ff); font-weight: 800; font-size: 24px; color: #fff;
+  }
+  .p-step h2 { font-size: 26px; line-height: 1.1; font-weight: 700; margin: 0; }
+  .p-step p { margin-top: 6px; font-size: 20px; color: #9aa4bf; line-height: 1.3; }
+
+  .p-foot {
+    margin: auto 14px 0; padding-top: 22px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: #9aa4bf; line-height: 1.3;
+  }
+  .p-foot b { color: #e8ecf6; font-weight: 700; }
+  .p-contact { display: flex; flex-direction: column; gap: 4px; }
+  .p-mail { font-size: 21px; }
+  .p-visit {
+    padding: 14px 28px; border-radius: 999px; background: linear-gradient(135deg, #6c63ff, #00d4ff);
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 25px; color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="p-post">
+  <img class="p-logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="p-eyebrow">&gt; nuevo en benedettowebs.cl_</p>
+  <h1 class="p-title">¿Cómo se vería<br><span class="p-grad">tu página web?</span></h1>
+  <p class="p-lead">Ahora puedes <strong>verlo antes de cotizar</strong>: elige tu tipo de negocio, escribe su nombre y prueba colores.</p>
+
+  <!-- Maquetas generadas con el mismo código de la sección "Vista previa" del sitio -->
+  <div class="p-phones">
+<div class="pv-frame is-phone"><div class="pv-bar"><span class="pv-url">cafeluna.cl</span></div><div class="pv-screen"><div class="mk mk-food" style="--a:#c2410c;--on-a:#ffffff">
+      
+  <div class="mk-nav">
+    <span class="mk-logo"><i>CL</i><b>Café Luna</b></span>
+    <span class="mk-menu"><span>Carta</span><span>Nosotros</span><span>Ubicación</span></span>
+    <span class="mk-btn">Reservar</span>
+  </div>
+      <div class="mk-hero">
+        <div class="mk-emojis">☕ 🥐 🍰</div>
+        <h3 class="mk-hero-t">Café Luna</h3>
+        <p>Café de especialidad, pastelería casera y desayunos todo el día en el corazón de Providencia.</p>
+        <div class="mk-actions"><span class="mk-btn">Ver la carta</span><span class="mk-btn mk-btn-line">Reservar mesa</span></div>
+      </div>
+      <div class="mk-sec">
+        <span class="mk-eyebrow">Nuestra carta</span>
+        <h4>Lo más pedido</h4>
+        <div class="mk-menu-list">
+          <div class="mk-item"><span>Café latte</span><i></i><b>$2.800</b></div><div class="mk-item"><span>Cappuccino</span><i></i><b>$3.000</b></div><div class="mk-item"><span>Croissant de mantequilla</span><i></i><b>$2.200</b></div><div class="mk-item"><span>Torta de zanahoria</span><i></i><b>$3.500</b></div><div class="mk-item"><span>Sándwich ave palta</span><i></i><b>$5.900</b></div><div class="mk-item"><span>Jugo natural</span><i></i><b>$2.900</b></div>
+        </div>
+      </div>
+      <div class="mk-sec mk-info">
+        <div class="mk-card"><span class="mk-ico">🕗</span><strong>Horario</strong><p>Lun a sáb · 8:00 a 20:00</p></div>
+        <div class="mk-card"><span class="mk-ico">📍</span><strong>Dirección</strong><p>Av. Providencia 1234, Santiago</p></div>
+        <div class="mk-card"><span class="mk-ico">🛵</span><strong>Delivery</strong><p>Pedidos por WhatsApp</p></div>
+      </div>
+      <div class="mk-foot"><span>© 2026 Café Luna</span><span>Instagram · WhatsApp</span></div><div class="mk-wa">💬</div></div></div></div>
+<div class="pv-frame is-phone"><div class="pv-bar"><span class="pv-url">tiendalila.cl</span></div><div class="pv-screen"><div class="mk mk-shop" style="--a:#db2777;--on-a:#ffffff">
+      <div class="mk-strip">🚚 Despachos a todo Chile · Envío gratis sobre $30.000</div>
+      
+  <div class="mk-nav">
+    <span class="mk-logo"><i>TL</i><b>Tienda Lila</b></span>
+    <span class="mk-menu"><span>Productos</span><span>Nosotros</span><span>Contacto</span></span>
+    <span class="mk-btn">🛒 Carrito (0)</span>
+  </div>
+      <div class="mk-hero">
+        <div>
+          <span class="mk-eyebrow">Nueva colección</span>
+          <h3 class="mk-hero-t">Hecho a mano, pensado para tu casa.</h3>
+          <p>Velas, jabones y decoración artesanal de productores chilenos.</p>
+          <div class="mk-actions"><span class="mk-btn">Ver productos</span></div>
+        </div>
+        <span class="mk-big">🕯️</span>
+      </div>
+      <div class="mk-sec">
+        <span class="mk-eyebrow">Destacados</span>
+        <h4>Lo más vendido</h4>
+        <div class="mk-grid mk-grid-4">
+          <div class="mk-card mk-prod"><div class="mk-pic">🕯️</div><div><h4>Vela de soya</h4><span class="mk-price">$8.990</span><span class="mk-add">Agregar</span></div></div><div class="mk-card mk-prod"><div class="mk-pic">🧼</div><div><h4>Jabón artesanal</h4><span class="mk-price">$4.500</span><span class="mk-add">Agregar</span></div></div><div class="mk-card mk-prod"><div class="mk-pic">🧺</div><div><h4>Canasto de mimbre</h4><span class="mk-price">$15.990</span><span class="mk-add">Agregar</span></div></div><div class="mk-card mk-prod"><div class="mk-pic">🌵</div><div><h4>Set de suculentas</h4><span class="mk-price">$12.000</span><span class="mk-add">Agregar</span></div></div>
+        </div>
+      </div>
+      <div class="mk-foot"><span>© 2026 Tienda Lila</span><span>Pagos con débito, crédito y transferencia</span></div><div class="mk-wa">💬</div></div></div></div>
+<div class="pv-frame is-phone"><div class="pv-bar"><span class="pv-url">gasfiteriaperez.cl</span></div><div class="pv-screen"><div class="mk mk-tech" style="--a:#2563eb;--on-a:#ffffff">
+      
+  <div class="mk-nav">
+    <span class="mk-logo"><i>GP</i><b>Gasfitería Pérez</b></span>
+    <span class="mk-menu"><span>Servicios</span><span>Comunas</span><span>Contacto</span></span>
+    <span class="mk-btn">📞 Llamar</span>
+  </div>
+      <div class="mk-hero">
+        <span class="mk-badge">Atención 24/7</span>
+        <h3 class="mk-hero-t">Gasfitería y reparaciones a domicilio</h3>
+        <p>Llegamos rápido a tu casa o negocio. Presupuesto sin costo y trabajos con garantía.</p>
+        <div class="mk-actions"><span class="mk-btn">📞 Llamar ahora</span><span class="mk-btn mk-btn-line">Cotizar por WhatsApp</span></div>
+      </div>
+      <div class="mk-trust"><span>✓ +10 años de experiencia</span><span>✓ Presupuesto gratis</span><span>✓ Garantía escrita</span></div>
+      <div class="mk-sec">
+        <span class="mk-eyebrow">Servicios</span>
+        <h4>¿Qué necesitas reparar?</h4>
+        <div class="mk-grid">
+          <div class="mk-card"><span class="mk-ico">🚿</span><h4>Destapes</h4><p>Lavaplatos, baños y desagües.</p></div>
+          <div class="mk-card"><span class="mk-ico">🔥</span><h4>Calefont</h4><p>Mantención, reparación e instalación.</p></div>
+          <div class="mk-card"><span class="mk-ico">💧</span><h4>Filtraciones</h4><p>Detección y reparación de fugas.</p></div>
+        </div>
+      </div>
+      <div class="mk-sec">
+        <h4>Comunas donde atendemos</h4>
+        <div class="mk-tags"><span>Santiago</span><span>Ñuñoa</span><span>Providencia</span><span>Maipú</span><span>La Florida</span><span>Puente Alto</span><span>Las Condes</span></div>
+      </div>
+      <div class="mk-foot"><span>© 2026 Gasfitería Pérez</span><span>Lunes a domingo · Región Metropolitana</span></div><div class="mk-wa">💬</div></div></div></div>
+  </div>
+
+  <div class="p-steps">
+    <div class="p-step"><span class="p-num">1</span><div><h2>Elige tu rubro</h2><p>Café, tienda, profesional o técnico.</p></div></div>
+    <div class="p-step"><span class="p-num">2</span><div><h2>Pon tu nombre</h2><p>La maqueta cambia al instante.</p></div></div>
+    <div class="p-step"><span class="p-num">3</span><div><h2>Prueba colores</h2><p>En computador o celular.</p></div></div>
+  </div>
+
+  <div class="p-foot">
+    <span class="p-contact"><b>benedettowebs.cl</b><span class="p-mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="p-visit">Pruébala gratis ›</span>
+  </div>
+</div>
+</body>
+</html>
