@@ -66,6 +66,8 @@ kbd { background: #fff; border: 1px solid var(--line); border-radius: 4px; paddi
 }
 .barra .volver { margin-right: auto; color: var(--muted); text-decoration: none; font-weight: 500; }
 .barra label { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; color: var(--muted); }
+.guardado { font-size: .85rem; color: var(--muted); }
+.guardado.error { color: #c0392b; }
 .aviso { width: min(210mm, 100% - 32px); margin: 16px auto 0; font-size: .9rem; color: var(--muted); }
 .aviso mark { background: var(--campo); padding: 0 4px; border-radius: 3px; }
 

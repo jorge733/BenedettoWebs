@@ -1,0 +1,63 @@
+/* Panel BenedettoWebs: usa los colores y botones de documentos/doc.css */
+.panel-wrap { width: min(960px, 100% - 32px); margin: 32px auto 60px; }
+.panel-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-bottom: 22px; }
+.panel-head h1 { font-size: 1.6rem; margin-right: auto; }
+.panel-head img { width: 150px; height: auto; display: block; }
+.migas { color: var(--muted); text-decoration: none; font-weight: 500; display: inline-block; margin-bottom: 10px; }
+
+.caja-panel { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; margin-bottom: 18px; }
+.caja-panel h2 { font-size: 1.05rem; margin-bottom: 12px; }
+
+/* Inicio de sesión */
+.login { width: min(380px, 100% - 32px); margin: 12vh auto; text-align: center; }
+.login img { width: 200px; margin-bottom: 18px; }
+.login form { text-align: left; }
+.login .btn { width: 100%; justify-content: center; margin-top: 6px; }
+
+/* Formularios */
+.campo { display: grid; gap: 4px; margin-bottom: 12px; font-size: .9rem; color: var(--muted); }
+.campo input, .campo select, .campo textarea, .buscar {
+  font: inherit; color: var(--ink); background: #fff;
+  border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; width: 100%;
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus, .buscar:focus { outline: 2px solid var(--primary); outline-offset: -1px; }
+.campo textarea { min-height: 90px; resize: vertical; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+.acciones { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.mensaje { font-size: .9rem; color: var(--muted); min-height: 1.4em; }
+.mensaje.error { color: #c0392b; }
+.mensaje.ok { color: #13804b; }
+.btn-peligro { background: #fff; color: #c0392b; border: 1px solid #f0c9c4; }
+.btn-sm { padding: 7px 14px; font-size: .85rem; }
+
+/* Lista de clientes */
+.filtros { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.filtros .buscar { flex: 1 1 220px; width: auto; }
+.chip { font: 500 .85rem/1 inherit; font-family: inherit; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--muted); cursor: pointer; }
+.chip[aria-pressed="true"] { border-color: var(--primary); color: var(--primary); background: var(--soft); }
+.chip b { font-weight: 700; margin-left: 4px; }
+
+.clientes { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.cliente-card { display: block; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; text-decoration: none; color: var(--ink); transition: border-color .2s; }
+.cliente-card:hover { border-color: var(--primary); }
+.cliente-card h3 { font-size: 1.05rem; margin-bottom: 2px; }
+.cliente-card p { color: var(--muted); font-size: .9rem; }
+.cliente-card .pie { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: .8rem; color: var(--muted); }
+.vacio { color: var(--muted); text-align: center; padding: 40px 0; }
+
+.estado { font-size: .75rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--soft); color: var(--primary); }
+.estado[data-estado="En desarrollo"] { background: #e6f8ff; color: #0077a3; }
+.estado[data-estado="Entregado"] { background: #e7f7ee; color: #13804b; }
+.estado[data-estado="Pausado"] { background: #f1f1f4; color: var(--muted); }
+
+/* Documentos del cliente */
+.nuevos { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.docs { list-style: none; display: grid; gap: 8px; }
+.docs li { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.docs .doc-info { flex: 1 1 200px; }
+.docs .doc-info strong { display: block; }
+.docs .doc-info span { color: var(--muted); font-size: .85rem; }
+
+@media (max-width: 640px) {
+  .grid-2 { grid-template-columns: 1fr; }
+}

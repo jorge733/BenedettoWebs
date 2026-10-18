@@ -1,0 +1,13 @@
+rules_version = '2';
+
+// Panel BenedettoWebs: solo tu usuario puede leer o escribir. Cualquier otra persona,
+// aunque tenga la configuración de panel/firebase.js, no ve nada.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ["sabenedettoa@gmail.com", "sabenedettoa@benedettowebs.cl"];
+    }
+  }
+}

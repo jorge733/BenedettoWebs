@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cliente · Panel BenedettoWebs</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../documentos/doc.css">
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+<main class="panel-wrap" id="app" hidden>
+  <a class="migas" href="./">← Clientes</a>
+  <header class="panel-head">
+    <h1 id="titulo">Nuevo cliente</h1>
+    <span class="estado" id="estadoActual" hidden></span>
+  </header>
+
+  <form class="caja-panel" id="formCliente">
+    <h2>Datos del cliente</h2>
+    <div class="grid-2">
+      <label class="campo">Nombre <input name="nombre" required></label>
+      <label class="campo">Negocio <input name="negocio"></label>
+      <label class="campo">Correo <input name="email" type="email"></label>
+      <label class="campo">Teléfono <input name="telefono" type="tel"></label>
+      <label class="campo">RUT <input name="rut"></label>
+      <label class="campo">Estado <select name="estado" id="estado"></select></label>
+      <label class="campo">Sitio web <input name="sitio" placeholder="www.negocio.cl"></label>
+      <label class="campo">Dominio vence <input name="vence" type="date"></label>
+    </div>
+    <label class="campo">Notas <textarea name="notas" placeholder="Lo que conversaron, pagos recibidos, pendientes…"></textarea></label>
+    <div class="acciones">
+      <button class="btn" type="submit">Guardar cliente</button>
+      <span class="mensaje" id="msgCliente"></span>
+    </div>
+  </form>
+
+  <section class="caja-panel" id="seccionDocs" hidden>
+    <h2>Documentos</h2>
+    <div class="nuevos" id="nuevos"></div>
+    <ul class="docs" id="docs"></ul>
+    <p class="vacio" id="sinDocs" hidden>Todavía no hay documentos para este cliente.</p>
+  </section>
+
+  <div class="acciones" id="zonaBorrar" hidden>
+    <button class="btn btn-peligro btn-sm" id="borrarCliente">Eliminar cliente y sus documentos</button>
+  </div>
+</main>
+<script type="module" src="cliente.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel · BenedettoWebs</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../documentos/doc.css">
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+
+<main class="login" id="login" hidden>
+  <img src="../img/logo/logo-fondo-claro.svg" alt="BenedettoWebs">
+  <div class="caja-panel">
+    <h2>Panel privado</h2>
+    <p class="mensaje" id="msgLogin"></p>
+    <button class="btn" id="entrar">Entrar con Google</button>
+  </div>
+</main>
+
+<main class="login" id="sinConfig" hidden>
+  <img src="../img/logo/logo-fondo-claro.svg" alt="BenedettoWebs">
+  <div class="caja-panel">
+    <h2>Falta conectar Firebase</h2>
+    <p class="mensaje">Pega la configuración de tu proyecto en <code>panel/firebase.js</code>. Los pasos están en <code>panel/CONFIGURAR.md</code>.</p>
+  </div>
+</main>
+
+<main class="panel-wrap" id="app" hidden>
+  <header class="panel-head">
+    <img src="../img/logo/logo-fondo-claro.svg" alt="BenedettoWebs">
+    <h1>Clientes</h1>
+    <a class="btn" href="cliente.html">+ Nuevo cliente</a>
+    <button class="btn btn-ghost" id="salir">Cerrar sesión</button>
+  </header>
+
+  <div class="filtros">
+    <input class="buscar" id="buscar" type="search" placeholder="Buscar por nombre, negocio, correo o RUT">
+    <div class="filtros" id="chips" style="margin:0"></div>
+  </div>
+
+  <div class="clientes" id="lista"></div>
+  <p class="vacio" id="vacio" hidden></p>
+</main>
+
+<script type="module" src="index.js"></script>
+</body>
+</html>

@@ -24,7 +24,7 @@
     <img src="../img/logo/logo-fondo-claro.svg" alt="BenedettoWebs">
     <div class="doc-meta">
       <h1>ACUERDO DE TRABAJO</h1>
-      <div>Cotización N° <strong data-campo>[2026-001]</strong></div>
+      <div>Cotización N° <strong data-campo data-ref="cotizacion">[2026-001]</strong></div>
       <div>Fecha: <strong data-fecha="0"></strong></div>
     </div>
   </header>
@@ -32,17 +32,17 @@
   <h2>Partes</h2>
   <dl class="datos">
     <div><dt>Desarrollador</dt><dd>Santiago Benedetto (BenedettoWebs)</dd></div>
-    <div><dt>Cliente</dt><dd data-campo>[Nombre del cliente]</dd></div>
+    <div><dt>Cliente</dt><dd data-campo data-cliente="nombre">[Nombre del cliente]</dd></div>
     <div><dt>Contacto</dt><dd>sabenedettoa@benedettowebs.cl</dd></div>
-    <div><dt>Negocio</dt><dd data-campo data-nombre-archivo>[Nombre del negocio]</dd></div>
+    <div><dt>Negocio</dt><dd data-campo data-cliente="negocio" data-nombre-archivo>[Nombre del negocio]</dd></div>
     <div><dt>Web</dt><dd>www.benedettowebs.cl</dd></div>
-    <div><dt>RUT</dt><dd data-campo>[RUT del cliente]</dd></div>
+    <div><dt>RUT</dt><dd data-campo data-cliente="rut">[RUT del cliente]</dd></div>
   </dl>
 
   <h2>Acuerdan lo siguiente</h2>
   <ol class="clausulas">
-    <li><strong>Trabajo.</strong> El desarrollador diseñará y publicará la página web descrita en la cotización N° <span data-campo>[2026-001]</span>, que forma parte de este acuerdo. Lo que no esté en la cotización se cotiza aparte.</li>
-    <li><strong>Precio y pago.</strong> El valor total es <span data-campo>[$30.000]</span> CLP en un pago único: 50% al firmar este acuerdo y 50% al aprobar el sitio, antes de publicarlo en el dominio del cliente.</li>
+    <li><strong>Trabajo.</strong> El desarrollador diseñará y publicará la página web descrita en la cotización N° <span data-campo data-ref="cotizacion">[2026-001]</span>, que forma parte de este acuerdo. Lo que no esté en la cotización se cotiza aparte.</li>
+    <li><strong>Precio y pago.</strong> El valor total es <span data-campo data-ref="total">[$30.000]</span> CLP en un pago único: 50% al firmar este acuerdo y 50% al aprobar el sitio, antes de publicarlo en el dominio del cliente.</li>
     <li><strong>Plazo.</strong> El sitio se entrega en <span data-campo>[7 días hábiles]</span> contados desde que el cliente paga el anticipo y envía el contenido. Si el contenido llega tarde, el plazo se corre en los mismos días.</li>
     <li><strong>Contenido.</strong> El cliente entrega textos, fotos y logo, y declara tener derecho a usarlos. El desarrollador puede usar imágenes de bancos gratuitos cuando haga falta.</li>
     <li><strong>Cambios.</strong> Se incluyen <span data-campo>[2]</span> rondas de ajustes sobre el diseño acordado. Cambios adicionales o funciones nuevas se cotizan aparte.</li>
@@ -56,7 +56,7 @@
   <div class="firmas">
     <div class="firma"><div class="linea"></div><strong>Santiago Benedetto</strong><div class="muted">Desarrollador · BenedettoWebs</div></div>
     <div class="firma" id="firmaApoderado"><div class="linea"></div><strong data-campo>[Nombre del apoderado]</strong><div class="muted">Apoderado del desarrollador · RUT <span data-campo>[RUT]</span></div></div>
-    <div class="firma"><div class="linea"></div><strong data-campo>[Nombre del cliente]</strong><div class="muted">Cliente · RUT <span data-campo>[RUT]</span></div></div>
+    <div class="firma"><div class="linea"></div><strong data-campo data-cliente="nombre">[Nombre del cliente]</strong><div class="muted">Cliente · RUT <span data-campo data-cliente="rut">[RUT]</span></div></div>
   </div>
 
   <footer class="doc-foot">
@@ -65,5 +65,6 @@
   </footer>
 </article>
 <script src="doc.js"></script>
+<script type="module" src="../panel/editor.js"></script>
 </body>
 </html>

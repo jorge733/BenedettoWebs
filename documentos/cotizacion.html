@@ -24,7 +24,7 @@
     <img src="../img/logo/logo-fondo-claro.svg" alt="BenedettoWebs">
     <div class="doc-meta">
       <h1>COTIZACIÓN</h1>
-      <div>N° <strong data-campo>[2026-001]</strong></div>
+      <div>N° <strong data-campo data-numero>[2026-001]</strong></div>
       <div>Fecha: <strong data-fecha="0"></strong></div>
       <div>Válida hasta: <strong data-fecha="15"></strong></div>
     </div>
@@ -32,10 +32,10 @@
 
   <h2>Cliente</h2>
   <dl class="datos">
-    <div><dt>Nombre</dt><dd data-campo>[Nombre del cliente]</dd></div>
-    <div><dt>Negocio</dt><dd data-campo data-nombre-archivo>[Nombre del negocio]</dd></div>
-    <div><dt>Correo</dt><dd data-campo>[correo@cliente.cl]</dd></div>
-    <div><dt>Teléfono</dt><dd data-campo>[+56 9 ...]</dd></div>
+    <div><dt>Nombre</dt><dd data-campo data-cliente="nombre">[Nombre del cliente]</dd></div>
+    <div><dt>Negocio</dt><dd data-campo data-cliente="negocio" data-nombre-archivo>[Nombre del negocio]</dd></div>
+    <div><dt>Correo</dt><dd data-campo data-cliente="email">[correo@cliente.cl]</dd></div>
+    <div><dt>Teléfono</dt><dd data-campo data-cliente="telefono">[+56 9 ...]</dd></div>
   </dl>
 
   <h2>Proyecto</h2>
@@ -79,5 +79,6 @@
   </footer>
 </article>
 <script src="doc.js"></script>
+<script type="module" src="../panel/editor.js"></script>
 </body>
 </html>

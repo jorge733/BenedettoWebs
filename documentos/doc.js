@@ -1,7 +1,9 @@
 // Documentos BenedettoWebs: campos editables, fechas, totales y guardar como PDF
+// Todo se busca en el momento (no al cargar), porque el panel puede reemplazar la hoja por una versión guardada.
 
 const clp = (n) => "$" + Math.round(n).toLocaleString("es-CL");
 const soloNumero = (texto) => Number(String(texto).replace(/\D/g, "")) || 0;
+const tabla = () => document.querySelector("table.items tbody");
 
 // Campos para completar: se editan haciendo clic encima
 document.querySelectorAll("[data-campo]").forEach((el) => {
@@ -9,17 +11,17 @@ document.querySelectorAll("[data-campo]").forEach((el) => {
   el.spellcheck = false;
 });
 
-// Fechas automáticas: data-fecha="0" es hoy, "15" es dentro de 15 días
+// Fechas automáticas: data-fecha="0" es hoy, "15" es dentro de 15 días (solo si están vacías)
 document.querySelectorAll("[data-fecha]").forEach((el) => {
+  if (el.textContent.trim()) return;
   const d = new Date();
   d.setDate(d.getDate() + Number(el.dataset.fecha));
   el.textContent = d.toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
 });
 
 // Tabla de cotización: filas editables y total automático
-const cuerpo = document.querySelector("table.items tbody");
-
 function recalcular() {
+  const cuerpo = tabla();
   if (!cuerpo) return;
   const total = [...cuerpo.querySelectorAll(".valor")]
     .reduce((suma, celda) => suma + soloNumero(celda.textContent), 0);
@@ -31,35 +33,37 @@ function prepararFila(fila) {
   fila.querySelectorAll("td:not(.quitar-col)").forEach((td) => (td.contentEditable = "true"));
 }
 
-if (cuerpo) {
-  cuerpo.querySelectorAll("tr").forEach(prepararFila);
-  cuerpo.addEventListener("input", recalcular);
-  // Al salir de una celda de valor, darle formato $30.000 (o dejar "Incluido")
-  cuerpo.addEventListener("focusout", (e) => {
-    const celda = e.target.closest(".valor");
-    if (celda && soloNumero(celda.textContent)) celda.textContent = clp(soloNumero(celda.textContent));
-  });
-  cuerpo.addEventListener("click", (e) => {
-    if (e.target.closest(".quitar")) {
-      e.target.closest("tr").remove();
-      recalcular();
-    }
-  });
-  document.getElementById("agregarFila")?.addEventListener("click", () => {
-    const fila = document.createElement("tr");
-    fila.innerHTML = '<td>Nuevo ítem</td><td class="valor">$0</td><td class="quitar-col"><button class="quitar" title="Quitar fila">×</button></td>';
-    cuerpo.appendChild(fila);
-    prepararFila(fila);
-    fila.querySelector("td").focus();
+tabla()?.querySelectorAll("tr").forEach(prepararFila);
+document.addEventListener("input", (e) => {
+  if (e.target.closest?.("table.items tbody")) recalcular();
+});
+// Al salir de una celda de valor, darle formato $30.000 (o dejar "Incluido")
+document.addEventListener("focusout", (e) => {
+  const celda = e.target.closest?.("table.items tbody .valor");
+  if (celda && soloNumero(celda.textContent)) celda.textContent = clp(soloNumero(celda.textContent));
+});
+document.addEventListener("click", (e) => {
+  if (e.target.closest(".items .quitar")) {
+    e.target.closest("tr").remove();
     recalcular();
-  });
+  }
+});
+document.getElementById("agregarFila")?.addEventListener("click", () => {
+  const fila = document.createElement("tr");
+  fila.innerHTML = '<td>Nuevo ítem</td><td class="valor">$0</td><td class="quitar-col"><button class="quitar" title="Quitar fila">×</button></td>';
+  tabla().appendChild(fila);
+  prepararFila(fila);
+  // Deja seleccionado "Nuevo ítem" para escribir encima
+  const celda = fila.querySelector("td");
+  celda.focus();
+  getSelection().selectAllChildren(celda);
   recalcular();
-}
+});
+recalcular();
 
 // Bloques opcionales (ej: firma del apoderado)
 document.querySelectorAll("[data-mostrar]").forEach((check) => {
-  const bloque = document.getElementById(check.dataset.mostrar);
-  const aplicar = () => (bloque.hidden = !check.checked);
+  const aplicar = () => (document.getElementById(check.dataset.mostrar).hidden = !check.checked);
   check.addEventListener("change", aplicar);
   aplicar();
 });
