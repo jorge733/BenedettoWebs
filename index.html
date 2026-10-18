@@ -97,6 +97,7 @@
       </button>
       <nav class="nav-links" id="navLinks">
         <a href="#servicios">Servicios</a>
+        <a href="#vista-previa">Vista previa</a>
         <a href="#precio">Precio</a>
         <a href="#portafolio">Portafolio</a>
         <a href="#sobre-mi">Sobre mí</a>
@@ -164,8 +165,52 @@
       </div>
     </section>
 
+    <!-- VISTA PREVIA -->
+    <section class="section section-alt" id="vista-previa">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Vista previa</span>
+          <h2>Mira cómo se vería <span class="gradient-text">tu página</span></h2>
+          <p>Elige el tipo de negocio, escribe su nombre y prueba colores. Es un ejemplo para que te imagines el resultado: tu sitio final se diseña a la medida, con tus textos, fotos y logo.</p>
+        </div>
+        <div class="pv reveal">
+          <div class="pv-controls">
+            <div class="pv-group">
+              <span class="pv-label">1. Tipo de negocio</span>
+              <div class="pv-types" id="pvTypes" role="group" aria-label="Tipo de negocio"></div>
+            </div>
+            <label class="pv-group">
+              <span class="pv-label">2. Nombre de tu negocio</span>
+              <input class="pv-input" id="pvName" type="text" maxlength="40" autocomplete="off" placeholder="Ej: Café Luna">
+            </label>
+            <div class="pv-group">
+              <span class="pv-label">3. Color principal</span>
+              <div class="pv-colors" id="pvColors" role="group" aria-label="Color principal"></div>
+            </div>
+            <div class="pv-group">
+              <span class="pv-label">Ver en</span>
+              <div class="pv-device" role="group" aria-label="Dispositivo">
+                <button type="button" class="pv-chip is-active" data-device="desktop" aria-pressed="true">💻 Computador</button>
+                <button type="button" class="pv-chip" data-device="phone" aria-pressed="false">📱 Celular</button>
+              </div>
+            </div>
+            <a class="btn btn-block" id="pvCta" href="#contacto">Quiero una así</a>
+          </div>
+          <div class="pv-stage">
+            <div class="pv-frame" id="pvFrame">
+              <div class="pv-bar" aria-hidden="true">
+                <span class="pv-dots"><i></i><i></i><i></i></span>
+                <span class="pv-url" id="pvUrl">tunegocio.cl</span>
+              </div>
+              <div class="pv-screen" id="pvScreen" aria-label="Página de ejemplo" role="img"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- PRECIO -->
-    <section class="section section-alt" id="precio">
+    <section class="section" id="precio">
       <div class="container price-wrap">
         <div class="price-text reveal">
           <span class="eyebrow">Precio</span>
@@ -187,7 +232,7 @@
     </section>
 
     <!-- PORTAFOLIO -->
-    <section class="section" id="portafolio">
+    <section class="section section-alt" id="portafolio">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Portafolio</span>
@@ -304,7 +349,7 @@
     </section>
 
     <!-- SOBRE MI -->
-    <section class="section section-alt" id="sobre-mi">
+    <section class="section" id="sobre-mi">
       <div class="container about">
         <div class="about-avatar reveal">
           <div class="avatar-ring"><img src="santiago.jpg" alt="Santiago Benedetto de espaldas, trabajando en su notebook" width="640" height="640" loading="lazy"></div>
@@ -323,7 +368,7 @@
     </section>
 
     <!-- PROCESO -->
-    <section class="section" id="proceso">
+    <section class="section section-alt" id="proceso">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Cómo trabajo</span>
@@ -339,7 +384,7 @@
     </section>
 
     <!-- PREGUNTAS FRECUENTES -->
-    <section class="section section-alt" id="preguntas">
+    <section class="section" id="preguntas">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Preguntas frecuentes</span>
@@ -371,7 +416,7 @@
     </section>
 
     <!-- INSTAGRAM -->
-    <section class="section" id="instagram">
+    <section class="section section-alt" id="instagram">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">Instagram</span>
@@ -414,7 +459,7 @@
     </section>
 
     <!-- CONTACTO -->
-    <section class="section section-alt" id="contacto">
+    <section class="section" id="contacto">
       <div class="container contact">
         <div class="contact-text reveal">
           <span class="eyebrow">Contacto</span>
