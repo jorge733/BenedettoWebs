@@ -6,6 +6,15 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Presentación (`presentacion`)
 - [x] Panel privado y cambios de diseño a $15.000 (`panel-privado`)
 - [x] MetroSim (`metrosim`)
+- [x] Negra Mora (`negramora`)
+- [x] Dos Anillos (`dosanillos`)
+- [x] ehda.cl, adelanto "próximamente" (`ehda`)
+- [x] Service Planet (`serviceplanet`)
+- [x] Reel: portafolio rápido, las 9 webs (`reel-portafolio`)
+- [x] 5 señales de que tu negocio necesita una web (`senales`)
+- [x] Mitos sobre tener página web (`mitos`)
+- [x] Qué incluye tu web desde $30.000 (`incluye`)
+- [x] Reel: sorteo por metas de 500 y 1.000 seguidores (`reel-sorteo`)
 
 ## 1. Portafolio
 - [x] Negra Mora (negramora.cl) (`negramora`)
