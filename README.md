@@ -26,7 +26,16 @@ Sitio web promocional de **BenedettoWebs**, el emprendimiento de **Santiago Bene
 
 Edita el objeto `CONTACTO` al inicio de `script.js` con tu WhatsApp, correo e Instagram. Los botones y el formulario se activan automáticamente.
 
-El formulario de cotización envía las solicitudes a `CONTACTO.email` mediante [FormSubmit](https://formsubmit.co). La primera vez que alguien lo envía, FormSubmit manda un correo de activación a esa casilla: hay que confirmarlo para empezar a recibir las cotizaciones.
+### Correos del formulario de cotización
+
+El formulario llama a `api/cotizar.js` (función de Vercel), que envía dos correos con [Resend](https://resend.com): un aviso a Santiago con los datos (responder le llega al cliente) y una confirmación al cliente. Las plantillas están en `api/_correos.js`; el correo de destino y el remitente están al inicio de `api/cotizar.js`.
+
+Configuración (una sola vez):
+
+1. Crear una cuenta gratis en resend.com.
+2. En **Domains**, agregar `benedettowebs.cl` y copiar los registros DNS que indica (TXT/MX de envío) en el proveedor del dominio. Esperar a que aparezca como *Verified*.
+3. En **API Keys**, crear una clave con permiso *Sending access*.
+4. En Vercel → proyecto → **Settings → Environment Variables**, agregar `RESEND_API_KEY` con esa clave (Production) y volver a desplegar.
 
 ## Sitio publicado
 

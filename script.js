@@ -40,8 +40,7 @@ if (CONTACTO.whatsapp) {
   waFloat.rel = "noopener";
 }
 
-// ===== Formulario: envía la cotización al correo (FormSubmit) =====
-// La primera vez, FormSubmit manda un correo de activación a CONTACTO.email: hay que confirmarlo.
+// ===== Formulario: envía la cotización al correo (api/cotizar.js con Resend) =====
 const contactForm = document.getElementById("contactForm");
 const formStatus = document.getElementById("formStatus");
 const formSubmit = document.getElementById("formSubmit");
@@ -85,25 +84,21 @@ contactForm.addEventListener("submit", async (e) => {
   if (contactForm._honey.value) return;
 
   const data = new FormData(contactForm);
-  const cuerpo = Object.fromEntries(leerFormulario());
-  cuerpo._subject = `Nueva cotización: ${data.get("nombre")}${data.get("negocio") ? " · " + data.get("negocio") : ""}`;
-  cuerpo._replyto = data.get("email");
-  cuerpo._template = "table";
-  cuerpo._captcha = "false";
+  const cuerpo = Object.fromEntries(CAMPOS.map(([k]) => [k, data.getAll(k).join(", ").trim()]));
 
   formSubmit.disabled = true;
   formSubmit.textContent = "Enviando…";
   setStatus("");
   try {
-    const res = await fetch(`https://formsubmit.co/ajax/${CONTACTO.email}`, {
+    const res = await fetch("/api/cotizar", {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(cuerpo)
     });
     const json = await res.json().catch(() => ({}));
-    if (!res.ok || json.success === "false" || json.success === false) throw new Error(json.message);
+    if (!res.ok || !json.ok) throw new Error(json.error);
     contactForm.reset();
-    setStatus("¡Listo! Recibí tu solicitud y te respondo al correo a la brevedad.", "ok");
+    setStatus("¡Listo! Recibí tu solicitud. Te llegó un correo de confirmación y te respondo a la brevedad.", "ok");
   } catch {
     setStatus("No se pudo enviar. Inténtalo de nuevo o escríbeme por WhatsApp.", "error");
   } finally {
