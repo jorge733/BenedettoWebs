@@ -40,6 +40,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] ¿Qué es un dominio .cl y cuánto cuesta?
 - [ ] Errores comunes en webs de pymes
 - [ ] Web vs. Linktree vs. solo redes
+- [x] Wix vs. BenedettoWebs (`wix-vs`)
 - [x] Mitos sobre tener página web (`mitos`)
 
 ## 4. Ofertas
