@@ -53,6 +53,6 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 ## 5. Proyectos propios y comunidad
 - [ ] MetroSim: reel por modo (conductor, pasajero, centro de control)
 - [ ] MetroSim: cómo lo hice
-- [ ] listadecompras.website
+- [x] listadecompras.website (`listadecompras`)
 - [ ] Stories con encuestas
 - [ ] Rediseño gratis por sorteo

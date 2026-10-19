@@ -1,0 +1,16 @@
+🛒 ¿Se te olvida siempre algo en el súper? Hice una app para eso.
+
+Se llama Mis Listas de Compras y es uno de mis proyectos personales: una app web gratis para crear y organizar tus listas del supermercado de forma simple, directo desde el celular o el computador.
+
+📝 Tus listas: crea varias, ordénalas y marca lo que ya echaste al carro.
+✨ ListAI: genera una lista completa con inteligencia artificial en segundos.
+🍲 Recetas chilenas: carga una receta y agrega sus ingredientes a tu lista.
+📲 Se instala en la pantalla de tu celular como si fuera una app, sin pasar por la tienda.
+
+Es 100% gratis y sin fines de lucro. La hice porque yo mismo la necesitaba. 😄
+
+Lo programé yo, igual que las páginas web que hago en BenedettoWebs. ✨
+
+👉 Pruébala en listadecompras.website y cuéntame qué te parece en los comentarios.
+
+#listadecompras #supermercado #app #organizacion #chile #recetaschilenas #proyectopersonal #benedettowebs
