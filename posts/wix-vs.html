@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Wix vs. BenedettoWebs</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 44px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 14px; font-size: 76px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .vs { color: var(--muted); font-weight: 500; font-size: 60px; }
+
+  .table { margin-top: 34px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+  .head {
+    font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700;
+    padding: 0 24px 12px;
+  }
+  .head.them { color: var(--muted); }
+  .col {
+    border-radius: 24px; padding: 6px 24px; border: 1px solid var(--border);
+  }
+  .col.them { background: rgba(255, 255, 255, .03); }
+  .col.us {
+    background: var(--surface);
+    border-color: rgba(0, 212, 255, .45);
+    box-shadow: 0 0 60px rgba(108, 99, 255, .25);
+  }
+  .row { display: flex; gap: 14px; align-items: flex-start; padding: 19px 0; border-bottom: 1px solid var(--border); }
+  .row:last-child { border-bottom: 0; }
+  .mark { font-size: 26px; line-height: 1.25; flex: none; width: 28px; text-align: center; font-weight: 700; }
+  .them .mark { color: #ff6b81; }
+  .us .mark { color: var(--secondary); }
+  .row p { font-size: 25px; line-height: 1.25; }
+  .them .row p { color: var(--muted); }
+  .row b { color: var(--text); font-weight: 700; }
+
+  .terms {
+    margin-top: 26px; display: flex; gap: 10px; flex-wrap: nowrap;
+    font-family: 'JetBrains Mono', monospace; font-size: 19px;
+  }
+  .terms span {
+    border: 1px solid rgba(0, 212, 255, .35); border-radius: 999px; padding: 8px 14px; color: var(--text); white-space: nowrap;
+  }
+
+  .cta { margin-top: auto; font-size: 30px; font-weight: 600; }
+  .cta span { color: var(--muted); font-weight: 400; }
+  .mail { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; }
+
+  .foot {
+    margin-top: 30px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; diff wix.html benedettowebs.html_</p>
+  <h1>Hazla tú en Wix <span class="vs">vs.</span><br><span class="grad">te la hago a medida</span></h1>
+
+  <div class="table">
+    <p class="head them">Wix (hazlo tú)</p>
+    <p class="head us grad">BenedettoWebs</p>
+
+    <div class="col them">
+      <div class="row"><span class="mark">✕</span><p>Plantillas que usan <b>miles de sitios</b></p></div>
+      <div class="row"><span class="mark">✕</span><p>Horas aprendiendo a <b>arrastrar bloques</b></p></div>
+      <div class="row"><span class="mark">✕</span><p>Editor genérico, <b>código más pesado</b></p></div>
+      <div class="row"><span class="mark">✕</span><p>Plan que <b>se paga cada año</b> para usar tu dominio</p></div>
+      <div class="row"><span class="mark">✕</span><p>Soporte por centro de ayuda</p></div>
+    </div>
+
+    <div class="col us">
+      <div class="row"><span class="mark">✓</span><p><b>Diseño único</b> con el estilo de tu marca</p></div>
+      <div class="row"><span class="mark">✓</span><p>Me cuentas tu idea y <b>yo la hago</b></p></div>
+      <div class="row"><span class="mark">✓</span><p>Código liviano: <b>carga rapidísimo</b></p></div>
+      <div class="row"><span class="mark">✓</span><p><b>Pago único</b> desde $30.000, sin mensualidades</p></div>
+      <div class="row"><span class="mark">✓</span><p>Hablas <b>directo conmigo</b> por WhatsApp</p></div>
+    </div>
+  </div>
+
+  <div class="terms">
+    <span>✓ Cotización gratis</span>
+    <span>✓ Panel para editar</span>
+    <span>✓ Dominio .cl tuyo</span>
+  </div>
+
+  <p class="cta">Tu tiempo vale. <span>Déjame la web a mí y enfócate en tu negocio.</span></p>
+  <p class="mail grad">✉ sabenedettoa@benedettowebs.cl</p>
+
+  <div class="foot">
+    <span><b>benedettowebs.cl</b></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>
