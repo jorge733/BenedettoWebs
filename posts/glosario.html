@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: glosario web en carrusel</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --surface-2: #1c2542;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --ok: #3ddc97;
+    --warn: #ff6b8a;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: none; flex-direction: column; overflow: hidden;
+  }
+  .post.on { display: flex; }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .logo { height: 54px; }
+  .count { font-family: 'JetBrains Mono', monospace; font-size: 24px; color: var(--muted); }
+  .eyebrow {
+    margin-top: 56px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 16px; font-size: 96px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  h2 { margin-top: 14px; font-size: 120px; line-height: 1; font-weight: 800; letter-spacing: -3px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .def { margin-top: 26px; font-size: 38px; line-height: 1.32; font-weight: 500; }
+  .def strong { font-weight: 700; }
+  .body { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 34px; }
+
+  .analogy {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+    padding: 26px 32px; display: flex; gap: 22px; align-items: center; font-size: 32px; line-height: 1.3;
+  }
+  .analogy .emoji { font-size: 58px; flex: none; }
+  .analogy small { display: block; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--secondary); margin-bottom: 4px; }
+  .fact { font-size: 28px; color: var(--muted); line-height: 1.35; }
+  .fact strong { color: var(--text); }
+
+  /* barra de navegador */
+  .browser {
+    background: var(--surface-2); border: 1px solid var(--border); border-radius: 22px;
+    padding: 22px 26px; display: flex; align-items: center; gap: 18px;
+  }
+  .dots { display: flex; gap: 9px; }
+  .dots i { width: 16px; height: 16px; border-radius: 50%; background: #3a4566; display: block; }
+  .url {
+    flex: 1; background: var(--bg); border-radius: 14px; padding: 16px 22px;
+    font-family: 'JetBrains Mono', monospace; font-size: 30px; color: var(--muted);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .url b { color: var(--text); }
+  .url .hl { color: var(--secondary); font-weight: 700; border-bottom: 3px solid var(--secondary); }
+  .url .lock { color: var(--ok); }
+  .url.bad .lock { color: var(--warn); font-size: 24px; }
+  .ssl-compare { display: grid; gap: 16px; }
+  .ssl-compare .label { font-family: 'JetBrains Mono', monospace; font-size: 22px; margin-bottom: 8px; }
+  .label.ok { color: var(--ok); } .label.bad { color: var(--warn); }
+
+  /* hosting */
+  .server { display: flex; align-items: center; justify-content: center; gap: 30px; }
+  .rack { display: grid; gap: 12px; width: 300px; }
+  .rack div {
+    height: 60px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px;
+    display: flex; align-items: center; padding: 0 20px; gap: 12px;
+  }
+  .rack div i { width: 14px; height: 14px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 12px var(--ok); display: block; }
+  .rack div span { flex: 1; height: 8px; border-radius: 4px; background: #2c3757; }
+  .arrow { font-size: 60px; color: var(--secondary); }
+  .globe { font-size: 120px; }
+  .clock { font-family: 'JetBrains Mono', monospace; font-size: 26px; color: var(--ok); text-align: center; }
+
+  /* responsive */
+  .devices { display: flex; align-items: flex-end; justify-content: center; gap: 30px; }
+  .dev { border: 4px solid #3a4566; border-radius: 18px; background: var(--surface-2); padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .dev .bar { height: 14px; border-radius: 7px; background: var(--gradient); }
+  .dev .ln { height: 10px; border-radius: 5px; background: #2c3757; }
+  .dev .blk { border-radius: 8px; background: #26305083; flex: 1; }
+  .dev .row { display: flex; gap: 10px; flex: 1; }
+  .laptop { width: 440px; height: 290px; }
+  .tablet { width: 220px; height: 290px; }
+  .phone { width: 130px; height: 250px; border-radius: 22px; }
+
+  /* resumen */
+  .sum { display: grid; gap: 20px; }
+  .sum div {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
+    padding: 24px 30px; display: flex; align-items: center; gap: 24px; font-size: 32px;
+  }
+  .sum .emoji { font-size: 46px; }
+  .sum b { font-weight: 700; min-width: 230px; }
+  .sum span.t { color: var(--muted); }
+
+  /* portada */
+  .cover-terms { display: flex; flex-wrap: wrap; gap: 16px; }
+  .chip {
+    font-family: 'JetBrains Mono', monospace; font-size: 30px; padding: 14px 24px; border-radius: 14px;
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .lead { font-size: 38px; line-height: 1.3; color: var(--muted); }
+  .lead strong { color: var(--text); }
+
+  /* cierre */
+  .price { font-size: 150px; font-weight: 800; letter-spacing: -4px; line-height: 1; }
+  .price-note { font-size: 26px; color: var(--muted); margin-top: 8px; }
+  .checks { list-style: none; display: grid; gap: 14px; font-size: 32px; }
+  .checks li::before { content: "✓  "; color: var(--ok); font-weight: 700; }
+  .cta {
+    align-self: flex-start; background: var(--gradient); color: #fff; font-weight: 700; font-size: 32px;
+    padding: 20px 36px; border-radius: 18px;
+  }
+
+  .foot {
+    margin-top: 36px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+  .foot .contact { display: flex; flex-direction: column; gap: 4px; }
+  .foot .mail { font-size: 21px; }
+  .swipe { color: var(--secondary); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- 1. Portada -->
+<div class="post">
+  <div class="top"><img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs"><span class="count">1/7</span></div>
+  <p class="eyebrow">&gt; glosario.web()_</p>
+  <h1>¿Dominio, hosting, SSL? <span class="grad">Te lo explico fácil</span> 🤯</h1>
+  <div class="body">
+    <div class="cover-terms">
+      <span class="chip">dominio</span><span class="chip">hosting</span><span class="chip">SSL</span><span class="chip">responsive</span>
+    </div>
+    <p class="lead">4 palabras que vas a escuchar cuando pidas tu web, <strong>explicadas sin tecnicismos</strong>.</p>
+  </div>
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="swipe">Desliza →</span>
+  </div>
+</div>
+
+<!-- 2. Dominio -->
+<div class="post">
+  <div class="top"><img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs"><span class="count">2/7</span></div>
+  <p class="eyebrow">&gt; 01 · dominio_</p>
+  <h2 class="grad">Dominio</h2>
+  <p class="def">Es el <strong>nombre de tu web</strong> en internet: lo que la gente escribe para encontrarte.</p>
+  <div class="body">
+    <div class="browser"><span class="dots"><i></i><i></i><i></i></span><span class="url"><span>www.</span><span class="hl">tunegocio.cl</span></span></div>
+    <div class="analogy"><span class="emoji">🏠</span><span><small>en palabras simples</small>Es la <strong>dirección de tu casa</strong>.</span></div>
+    <p class="fact">Un <strong>.cl</strong> cuesta cerca de <strong>$10.000 al año</strong> en NIC Chile y queda <strong>a tu nombre</strong>.</p>
+  </div>
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="swipe">Desliza →</span>
+  </div>
+</div>
+
+<!-- 3. Hosting -->
+<div class="post">
+  <div class="top"><img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs"><span class="count">3/7</span></div>
+  <p class="eyebrow">&gt; 02 · hosting_</p>
+  <h2 class="grad">Hosting</h2>
+  <p class="def">Es el <strong>lugar donde se guarda tu web</strong> para que cualquiera pueda verla, a cualquier hora.</p>
+  <div class="body">
+    <div class="server">
+      <div class="rack"><div><i></i><span></span></div><div><i></i><span></span></div><div><i></i><span></span></div></div>
+      <span class="arrow">→</span>
+      <span class="globe">🌎</span>
+    </div>
+    <p class="clock">● online 24/7</p>
+    <div class="analogy"><span class="emoji">🧱</span><span><small>en palabras simples</small>Es el <strong>terreno</strong> donde está construida tu casa.</span></div>
+  </div>
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="swipe">Desliza →</span>
+  </div>
+</div>
+
+<!-- 4. SSL -->
+<div class="post">
+  <div class="top"><img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs"><span class="count">4/7</span></div>
+  <p class="eyebrow">&gt; 03 · ssl_</p>
+  <h2 class="grad">SSL</h2>
+  <p class="def">Es el <strong>candado 🔒</strong> junto a la dirección. Hace que la conexión sea <strong>segura</strong> (https).</p>
+  <div class="body">
+    <div class="ssl-compare">
+      <div>
+        <p class="label ok">✓ con SSL</p>
+        <div class="browser"><span class="dots"><i></i><i></i><i></i></span><span class="url"><span class="lock">🔒</span><b>https://tunegocio.cl</b></span></div>
+      </div>
+      <div>
+        <p class="label bad">✗ sin SSL</p>
+        <div class="browser"><span class="dots"><i></i><i></i><i></i></span><span class="url bad"><span class="lock">⚠ No seguro</span><span>tunegocio.cl</span></span></div>
+      </div>
+    </div>
+    <div class="analogy"><span class="emoji">🔐</span><span><small>en palabras simples</small>Es la <strong>chapa de la puerta</strong>. Sin ella, el navegador avisa que no es seguro y los clientes desconfían.</span></div>
+  </div>
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="swipe">Desliza →</span>
+  </div>
+</div>
+
+<!-- 5. Responsive -->
+<div class="post">
+  <div class="top"><img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs"><span class="count">5/7</span></div>
+  <p class="eyebrow">&gt; 04 · responsive_</p>
+  <h2 class="grad">Responsive</h2>
+  <p class="def">Que tu web <strong>se adapte sola</strong> al celular, la tablet y el computador.</p>
+  <div class="body">
+    <div class="devices">
+      <div class="dev laptop"><div class="bar"></div><div class="ln" style="width:60%"></div><div class="row"><div class="blk"></div><div class="blk"></div><div class="blk"></div></div></div>
+      <div class="dev tablet"><div class="bar"></div><div class="ln" style="width:70%"></div><div class="row"><div class="blk"></div><div class="blk"></div></div><div class="row"><div class="blk"></div><div class="blk"></div></div></div>
+      <div class="dev phone"><div class="bar"></div><div class="ln" style="width:80%"></div><div class="blk"></div><div class="blk"></div><div class="blk"></div></div>
+    </div>
+    <div class="analogy"><span class="emoji">💧</span><span><small>en palabras simples</small>Es como <strong>agua en un vaso</strong>: toma la forma de la pantalla.</span></div>
+  </div>
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="swipe">Desliza →</span>
+  </div>
+</div>
+
+<!-- 6. Resumen -->
+<div class="post">
+  <div class="top"><img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs"><span class="count">6/7</span></div>
+  <p class="eyebrow">&gt; resumen()_</p>
+  <h1>En <span class="grad">una línea</span></h1>
+  <div class="body">
+    <div class="sum">
+      <div><span class="emoji">🏠</span><b>Dominio</b><span class="t">la dirección</span></div>
+      <div><span class="emoji">🧱</span><b>Hosting</b><span class="t">el terreno</span></div>
+      <div><span class="emoji">🔐</span><b>SSL</b><span class="t">la chapa de la puerta</span></div>
+      <div><span class="emoji">💧</span><b>Responsive</b><span class="t">se adapta a la pantalla</span></div>
+    </div>
+    <p class="fact">📌 <strong>Guárdalo</strong> para cuando lo necesites.</p>
+  </div>
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="swipe">Desliza →</span>
+  </div>
+</div>
+
+<!-- 7. Cierre -->
+<div class="post">
+  <div class="top"><img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs"><span class="count">7/7</span></div>
+  <p class="eyebrow">&gt; tu_web.crear()_</p>
+  <h1>¿Y si te <span class="grad">ocupas solo de tu negocio</span>?</h1>
+  <div class="body">
+    <ul class="checks">
+      <li>Te ayudo a conseguir tu dominio</li>
+      <li>Dejo tu web publicada y funcionando</li>
+      <li>Adaptada a celulares</li>
+      <li>Sin mensualidades</li>
+    </ul>
+    <div>
+      <p class="price-note">pago único desde</p>
+      <p class="price grad">$30.000</p>
+      <p class="price-note">dependiendo de la complejidad del sitio web</p>
+    </div>
+  </div>
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+
+<script>
+  // ?s=N muestra solo la lámina N (para renderizar); sin parámetro se ven todas
+  const s = new URLSearchParams(location.search).get('s');
+  const posts = document.querySelectorAll('.post');
+  posts.forEach((p, i) => { if (!s || Number(s) === i + 1) p.classList.add('on'); });
+</script>
+</body>
+</html>
