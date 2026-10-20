@@ -14,11 +14,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
   getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc,
-  query, where, writeBatch, runTransaction, serverTimestamp
+  query, where, writeBatch, runTransaction, serverTimestamp, Bytes
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 export { onAuthStateChanged, signOut };
-export { collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, where, writeBatch, serverTimestamp };
+export { collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc, query, where, writeBatch, serverTimestamp, Bytes };
 
 export const configurado = Boolean(firebaseConfig.apiKey && firebaseConfig.projectId);
 const app = configurado ? initializeApp(firebaseConfig) : null;

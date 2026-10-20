@@ -32,9 +32,8 @@ Listo: entra a `www.benedettowebs.cl/panel` con tu correo y clave.
 ## Cómo se usa
 
 - **Clientes**: crea un cliente con sus datos y su estado (Cotizando, En desarrollo, Entregado, Pausado).
-- **Documentos**: dentro del cliente, crea una cotización, un acuerdo o un acta. Se abre la plantilla ya completa con los datos del cliente y un número correlativo (2026-001, 2026-002…). El acuerdo y el acta toman el número y el total de la última cotización.
-- **Guardado**: cada cambio se guarda solo (arriba dice "Guardado ✓"). También puedes apretar Ctrl+S.
-- **PDF**: "Guardar PDF" funciona igual que antes, para enviarlo al cliente.
+- **Documentos**: dentro del cliente, sube el archivo que hiciste fuera (PDF, Word, Excel, imágenes…, hasta 15 MB): elígelo o arrástralo, indica el tipo (cotización, acuerdo, acta u otro) y, si es una cotización, el total, que se usa para rellenar los correos. Después puedes verlo, descargarlo o eliminarlo. Los archivos se guardan dentro de Firestore en partes de ~900 KB, así no hace falta Firebase Storage (que exige el plan Blaze con tarjeta); el plan gratis permite 1 GB en total.
+- **Documentos antiguos**: los que se hicieron antes con las plantillas de la web siguen apareciendo en la lista y se abren con "Abrir".
 - **Correos**: en la ficha del cliente, "Enviar correo" tiene 9 plantillas con diseño (respuesta, cotización, seguimiento, bienvenida, contenido pendiente, avance, web publicada, recordatorio de pago y reseña). Se rellenan con los datos del cliente y su última cotización, muestran una vista previa y se envían desde `sabenedettoa@benedettowebs.cl` con copia oculta a ese mismo correo. Los datos de transferencia y el link de reseñas se recuerdan después del primer envío. Las plantillas están en `api/_plantillas.js` y usan la misma `RESEND_API_KEY` del formulario de cotización.
 
 ## Respaldo

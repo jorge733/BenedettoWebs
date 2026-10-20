@@ -51,7 +51,18 @@
 .estado[data-estado="Pausado"] { background: #f1f1f4; color: var(--muted); }
 
 /* Documentos del cliente */
-.nuevos { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.zona-archivo { display: grid; justify-items: center; gap: 4px; text-align: center; padding: 26px 16px; margin-bottom: 14px;
+  border: 2px dashed var(--line); border-radius: 14px; background: #fafbff; cursor: pointer; transition: border-color .2s, background-color .2s; }
+.zona-archivo input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.zona-archivo strong { color: var(--primary); word-break: break-word; }
+.zona-archivo small { color: var(--muted); }
+.zona-archivo:hover, .zona-archivo.encima, .zona-archivo:focus-within { border-color: var(--primary); background: var(--soft); }
+.zona-archivo.lista { border-style: solid; border-color: var(--primary); }
+.zona-archivo.lista strong { color: var(--ink); }
+progress { width: 160px; height: 8px; border: 0; border-radius: 999px; overflow: hidden; background: var(--line); accent-color: var(--primary); }
+progress::-webkit-progress-bar { background: var(--line); }
+progress::-webkit-progress-value { background: var(--gradient); transition: width .2s; }
+progress::-moz-progress-bar { background: var(--gradient); }
 .docs { list-style: none; display: grid; gap: 8px; }
 .docs li { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
 .docs .doc-info { flex: 1 1 200px; }

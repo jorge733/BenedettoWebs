@@ -41,7 +41,24 @@
 
   <section class="caja-panel" id="seccionDocs" hidden>
     <h2>Documentos</h2>
-    <div class="nuevos" id="nuevos"></div>
+    <form id="formSubir">
+      <label class="zona-archivo" id="zona">
+        <input type="file" id="archivo" required>
+        <strong id="zonaTexto">Elige un archivo o arrástralo aquí</strong>
+        <small>PDF, Word, Excel, imágenes… hasta 15 MB</small>
+      </label>
+      <div class="grid-2">
+        <label class="campo">Tipo <select id="tipoDoc"></select></label>
+        <label class="campo">Total (para los correos) <input id="totalDoc" inputmode="numeric" placeholder="$150.000"></label>
+        <label class="campo ancho">Nombre <input id="nombreDoc" required placeholder="Cotización sitio web"></label>
+      </div>
+      <div class="acciones">
+        <button class="btn" type="submit" id="subir">Subir documento</button>
+        <progress id="avance" max="1" value="0" hidden></progress>
+        <span class="mensaje" id="msgDocs"></span>
+      </div>
+    </form>
+    <h3 class="sub-panel">Documentos del cliente</h3>
     <ul class="docs" id="docs"></ul>
     <p class="vacio" id="sinDocs" hidden>Todavía no hay documentos para este cliente.</p>
   </section>
