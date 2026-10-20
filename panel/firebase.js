@@ -73,3 +73,7 @@ export const fechaCorta = (fecha) =>
 // Escapa texto antes de ponerlo en HTML
 export const html = (texto) =>
   String(texto ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+// Montos en pesos chilenos: "$150.000" ↔ 150000
+export const numero = (v) => Number(String(v ?? "").replace(/\D/g, ""));
+export const clp = (n) => (n ? "$" + Math.round(n).toLocaleString("es-CL") : "");

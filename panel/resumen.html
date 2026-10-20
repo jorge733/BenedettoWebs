@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Resumen · Panel BenedettoWebs</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../documentos/doc.css">
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+<main class="panel-wrap" id="app" hidden>
+  <a class="migas" href="./">← Clientes</a>
+  <header class="panel-head">
+    <h1>Resultado mensual</h1>
+  </header>
+
+  <div class="ajustes-resumen">
+    <label class="campo">Año <select id="anio"></select></label>
+    <label class="campo">Costo mensual de IA <input id="costoIA" inputmode="numeric" placeholder="$107.000"></label>
+    <span class="mensaje" id="msgAjustes"></span>
+  </div>
+
+  <div class="cifras" id="cifras"></div>
+
+  <section class="caja-panel">
+    <div class="tabla-wrap">
+      <table class="tabla">
+        <thead><tr><th>Mes</th><th>Ventas aprobadas</th><th>Costo IA</th><th>Resultado estimado</th></tr></thead>
+        <tbody id="meses"></tbody>
+        <tfoot id="totales"></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <p class="nota" id="aviso"></p>
+  <p class="nota">Resultado = ventas aprobadas − costo de IA. Las ventas se cuentan en el mes en que se aprobó la cotización (se anota en la ficha de cada cliente). No equivale a pagos recibidos ni a utilidad neta.</p>
+</main>
+<script type="module" src="resumen.js"></script>
+</body>
+</html>

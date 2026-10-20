@@ -1,12 +1,10 @@
 // Ficha del cliente: enviar correos con plantilla (los arma y envía api/enviar-correo.js)
 import {
-  auth, db, collection, doc, getDoc, getDocs, addDoc, setDoc, query, where, serverTimestamp, ms, html
+  auth, db, collection, doc, getDoc, getDocs, addDoc, setDoc, query, where, serverTimestamp, ms, html, clp, numero
 } from "./firebase.js";
 
 const $ = (id) => document.getElementById(id);
 const API = "/api/enviar-correo";
-const clp = (n) => (n ? "$" + Math.round(n).toLocaleString("es-CL") : "");
-const numero = (v) => Number(String(v ?? "").replace(/\D/g, ""));
 const fechaLarga = (d) => d.toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
 
 async function api(metodo, cuerpo) {
@@ -46,7 +44,7 @@ export async function iniciarCorreo(clienteId, verCliente, verDocumentos) {
   function rellenos() {
     const c = verCliente();
     const cot = verDocumentos().find((d) => d.tipo === "cotizacion");
-    const total = numero(cot?.total);
+    const total = numero(cot?.total || c.monto);
     return {
       nombre: (c.nombre || "").split(" ")[0],
       negocio: c.negocio || "",

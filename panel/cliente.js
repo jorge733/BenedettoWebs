@@ -2,7 +2,7 @@
 import {
   db, TIPOS, ESTADOS, exigirSesion,
   collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, query, where, writeBatch, serverTimestamp,
-  ms, fechaCorta, html
+  ms, fechaCorta, html, clp, numero
 } from "./firebase.js";
 import { subirPartes, bajarArchivo, borrarPartes, peso, MAXIMO } from "./archivos.js";
 import { iniciarCorreo } from "./correo.js";
@@ -49,6 +49,7 @@ function mostrarCliente() {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const datos = Object.fromEntries([...new FormData(form)].map(([k, v]) => [k, String(v).trim()]));
+  datos.monto = form.elements.monto.value = clp(numero(datos.monto));
   $("msgCliente").className = "mensaje";
   $("msgCliente").textContent = "Guardando…";
   try {
