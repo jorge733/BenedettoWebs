@@ -5,7 +5,7 @@ import {
   ms, fechaCorta, html, clp, numero
 } from "./firebase.js";
 import { subirPartes, bajarArchivo, borrarPartes, peso, MAXIMO } from "./archivos.js";
-import { iniciarCorreo } from "./correo.js";
+import { iniciarCorreo, cancelarSeguimientos } from "./correo.js";
 
 const $ = (id) => document.getElementById(id);
 const form = $("formCliente");
@@ -64,8 +64,17 @@ form.addEventListener("submit", async (e) => {
     }
     cliente = { ...cliente, ...datos };
     mostrarCliente();
-    $("msgCliente").className = "mensaje ok";
-    $("msgCliente").textContent = "Guardado ✓";
+    // Si el cliente ya aprobó (o se pausó), no tiene sentido seguir insistiendo con la cotización
+    let extra = "";
+    if (datos.estado !== "Cotizando") {
+      try {
+        if (await cancelarSeguimientos(id, cliente)) extra = " · seguimiento cancelado";
+      } catch {
+        extra = " · ojo: no se pudo cancelar el seguimiento";
+      }
+    }
+    $("msgCliente").className = "mensaje " + (extra.includes("ojo") ? "error" : "ok");
+    $("msgCliente").textContent = "Guardado ✓" + extra;
   } catch (err) {
     $("msgCliente").className = "mensaje error";
     $("msgCliente").textContent = "No se pudo guardar: " + err.message;

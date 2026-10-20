@@ -75,6 +75,9 @@ progress::-moz-progress-bar { background: var(--gradient); }
 .asunto-correo strong { color: var(--ink); }
 .vista-correo { display: block; width: 100%; height: 560px; border: 1px solid var(--line); border-radius: 12px; background: #eef1f8; margin-bottom: 14px; }
 .sub-panel { font-size: .95rem; margin: 22px 0 10px; }
+.check-seguimiento { display: flex; align-items: center; gap: 10px; font-size: .9rem; margin-bottom: 14px; cursor: pointer; }
+.check-seguimiento input { width: 18px; height: 18px; accent-color: var(--primary); }
+.nota-seguimiento { color: var(--muted); font-size: .85rem; margin-top: 8px; }
 .vacio:last-child { padding: 10px 0; }
 
 @media (max-width: 640px) {

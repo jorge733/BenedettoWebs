@@ -121,6 +121,19 @@ const PLANTILLAS = {
       ${firma("Quedo atento. Saludos,")}`
   },
 
+  seguimiento2: {
+    nombre: "3b · Segundo seguimiento",
+    campos: [{ id: "fecha", label: "Fecha de la cotización", tipo: "texto", prefill: "fechaCotizacion", obligatorio: true }],
+    asunto: () => "¿Seguimos con tu página web?",
+    cuerpo: (d, e) => `
+      ${etiqueta("Seguimiento")}
+      ${titulo(`Hola, ${e.nombre}`)}
+      ${parrafo(`Te escribo por última vez sobre la cotización del <strong>${e.fecha}</strong> para la página de <strong>${e.negocio}</strong>. Te recuerdo que tiene una validez de <strong>15 días</strong>.`)}
+      ${nota("Si por ahora no es el momento, no hay ningún problema: cuando quieras retomarlo, respóndeme este correo y lo vemos.", COLOR.secundario)}
+      ${botonWhatsApp("Conversemos por WhatsApp")}
+      ${firma("Un saludo,")}`
+  },
+
   bienvenida: {
     nombre: "4 · Bienvenida e inicio",
     campos: [

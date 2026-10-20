@@ -79,9 +79,18 @@
     <div class="grid-2" id="camposCorreo"></div>
     <p class="asunto-correo">Asunto: <strong id="asuntoCorreo"></strong></p>
     <iframe class="vista-correo" id="vistaCorreo" title="Vista previa del correo"></iframe>
+    <label class="check-seguimiento" id="filaSeguimiento" hidden>
+      <input type="checkbox" id="seguimiento" checked>
+      Programar seguimiento automático: le escribo a los 3 y a los 7 días si no responde
+    </label>
     <div class="acciones">
       <button class="btn" type="button" id="enviarCorreo">Enviar correo</button>
       <span class="mensaje" id="msgCorreo"></span>
+    </div>
+    <div id="cajaSeguimientos" hidden>
+      <h3 class="sub-panel">Seguimiento programado</h3>
+      <ul class="docs" id="seguimientos"></ul>
+      <p class="nota-seguimiento">Se cancela solo cuando cambias el estado a otro que no sea "Cotizando". Si el cliente te respondió, cancélalo aquí.</p>
     </div>
     <h3 class="sub-panel">Correos enviados</h3>
     <ul class="docs" id="enviados"></ul>

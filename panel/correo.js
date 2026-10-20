@@ -1,11 +1,16 @@
 // Ficha del cliente: enviar correos con plantilla (los arma y envía api/enviar-correo.js)
 import {
-  auth, db, collection, doc, getDoc, getDocs, addDoc, setDoc, query, where, serverTimestamp, ms, html, clp, numero
+  auth, db, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, query, where, serverTimestamp, ms, html, clp, numero
 } from "./firebase.js";
 
 const $ = (id) => document.getElementById(id);
 const API = "/api/enviar-correo";
 const fechaLarga = (d) => d.toLocaleDateString("es-CL", { day: "numeric", month: "long", year: "numeric" });
+const fechaHora = (iso) =>
+  new Date(iso).toLocaleString("es-CL", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+// Seguimientos de la última cotización que todavía no salen
+const pendientes = (c) => (c.seguimientos || []).filter((s) => Date.parse(s.fecha) > Date.now());
+let redibujarSeguimientos = () => {};
 
 async function api(metodo, cuerpo) {
   const r = await fetch(API, {
@@ -16,6 +21,18 @@ async function api(metodo, cuerpo) {
   const datos = await r.json().catch(() => ({ ok: false, error: `Error ${r.status}` }));
   if (!datos.ok) throw new Error(datos.error || `Error ${r.status}`);
   return datos;
+}
+
+// Cancela en Resend los seguimientos que no han salido (al cambiar de estado, al cancelarlos a mano o al reenviar la cotización).
+// Devuelve cuántos había pendientes.
+export async function cancelarSeguimientos(clienteId, cliente) {
+  const lista = pendientes(cliente);
+  if (lista.length) await api("POST", { cancelar: lista.map((s) => s.id) });
+  if (!cliente.seguimientos?.length) return 0;
+  await updateDoc(doc(db, "clientes", clienteId), { seguimientos: [] });
+  cliente.seguimientos = [];
+  redibujarSeguimientos();
+  return lista.length;
 }
 
 // clienteId y funciones que devuelven el cliente y sus documentos actuales (cambian mientras se edita la ficha)
@@ -65,6 +82,7 @@ export async function iniciarCorreo(clienteId, verCliente, verDocumentos) {
     const r = rellenos();
     valores[p.id] ||= Object.fromEntries(p.campos.map((c) => [c.id, r[c.prefill] ?? c.valor ?? ""]));
     const v = valores[p.id];
+    $("filaSeguimiento").hidden = p.id !== "cotizacion";
     for (const c of p.campos) if (c.tipo === "opciones" && !v[c.id]) v[c.id] = c.opciones[0];
     $("camposCorreo").innerHTML = p.campos.map((c) => {
       const nombre = `${html(c.label)}${c.obligatorio ? " *" : ""}`;
@@ -110,7 +128,8 @@ export async function iniciarCorreo(clienteId, verCliente, verDocumentos) {
     $("enviarCorreo").disabled = true;
     aviso("Enviando…");
     try {
-      const r = await api("POST", { plantilla: p.id, para, datos: valores[p.id], enviar: true });
+      const seguimiento = p.id === "cotizacion" && $("seguimiento").checked;
+      const r = await api("POST", { plantilla: p.id, para, datos: valores[p.id], enviar: true, seguimiento });
       await addDoc(collection(db, "correos"), {
         clienteId, plantilla: p.id, nombre: p.nombre, asunto: r.asunto, para, enviado: serverTimestamp()
       });
@@ -120,12 +139,47 @@ export async function iniciarCorreo(clienteId, verCliente, verDocumentos) {
         Object.assign(ajustes, guardar);
         await setDoc(ajustesRef, guardar, { merge: true });
       }
-      aviso(`Enviado a ${para} ✓`, "ok");
+      let extra = "";
+      if (seguimiento) {
+        // Una cotización nueva reemplaza el seguimiento de la anterior
+        await cancelarSeguimientos(clienteId, verCliente()).catch(() => {});
+        if (r.seguimientos.length) {
+          await updateDoc(doc(db, "clientes", clienteId), { seguimientos: r.seguimientos });
+          verCliente().seguimientos = r.seguimientos;
+          dibujarSeguimientos();
+          extra = " · seguimiento programado";
+        } else {
+          extra = " · ojo: no se pudo programar el seguimiento";
+        }
+      }
+      aviso(`Enviado a ${para} ✓${extra}`, extra.includes("ojo") ? "error" : "ok");
       cargarEnviados();
     } catch (err) {
       aviso("No se pudo enviar: " + err.message, "error");
     } finally {
       $("enviarCorreo").disabled = false;
+    }
+  });
+
+  function dibujarSeguimientos() {
+    const lista = pendientes(verCliente());
+    $("cajaSeguimientos").hidden = !lista.length;
+    $("seguimientos").innerHTML = lista.map((s) => `<li>
+      <div class="doc-info"><strong>${html(s.asunto)}</strong><span>Sale solo el ${html(fechaHora(s.fecha))}</span></div>
+    </li>`).join("") + `<li><button class="btn btn-peligro btn-sm" type="button" data-cancelar>Cancelar seguimiento</button></li>`;
+  }
+  redibujarSeguimientos = dibujarSeguimientos;
+
+  $("seguimientos").addEventListener("click", async (e) => {
+    const boton = e.target.closest("[data-cancelar]");
+    if (!boton || !confirm("¿Cancelar los correos de seguimiento programados?")) return;
+    boton.disabled = true;
+    try {
+      await cancelarSeguimientos(clienteId, verCliente());
+      aviso("Seguimiento cancelado ✓", "ok");
+    } catch (err) {
+      boton.disabled = false;
+      aviso("No se pudo cancelar: " + err.message, "error");
     }
   });
 
@@ -140,5 +194,6 @@ export async function iniciarCorreo(clienteId, verCliente, verDocumentos) {
   }
 
   dibujarCampos();
+  dibujarSeguimientos();
   cargarEnviados();
 }
