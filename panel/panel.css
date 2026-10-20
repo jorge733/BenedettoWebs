@@ -58,6 +58,14 @@
 .docs .doc-info strong { display: block; }
 .docs .doc-info span { color: var(--muted); font-size: .85rem; }
 
+/* Enviar correo */
+.campo.ancho { grid-column: 1 / -1; }
+.asunto-correo { font-size: .9rem; color: var(--muted); margin: 4px 0 8px; }
+.asunto-correo strong { color: var(--ink); }
+.vista-correo { display: block; width: 100%; height: 560px; border: 1px solid var(--line); border-radius: 12px; background: #eef1f8; margin-bottom: 14px; }
+.sub-panel { font-size: .95rem; margin: 22px 0 10px; }
+.vacio:last-child { padding: 10px 0; }
+
 @media (max-width: 640px) {
   .grid-2 { grid-template-columns: 1fr; }
 }

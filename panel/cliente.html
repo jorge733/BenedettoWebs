@@ -46,6 +46,24 @@
     <p class="vacio" id="sinDocs" hidden>Todavía no hay documentos para este cliente.</p>
   </section>
 
+  <section class="caja-panel" id="seccionCorreo" hidden>
+    <h2>Enviar correo</h2>
+    <div class="grid-2">
+      <label class="campo">Plantilla <select id="plantilla"></select></label>
+      <label class="campo">Para <input id="para" type="email" placeholder="correo@cliente.cl"></label>
+    </div>
+    <div class="grid-2" id="camposCorreo"></div>
+    <p class="asunto-correo">Asunto: <strong id="asuntoCorreo"></strong></p>
+    <iframe class="vista-correo" id="vistaCorreo" title="Vista previa del correo"></iframe>
+    <div class="acciones">
+      <button class="btn" type="button" id="enviarCorreo">Enviar correo</button>
+      <span class="mensaje" id="msgCorreo"></span>
+    </div>
+    <h3 class="sub-panel">Correos enviados</h3>
+    <ul class="docs" id="enviados"></ul>
+    <p class="vacio" id="sinEnviados" hidden>Todavía no le has enviado correos desde el panel.</p>
+  </section>
+
   <div class="acciones" id="zonaBorrar" hidden>
     <button class="btn btn-peligro btn-sm" id="borrarCliente">Eliminar cliente y sus documentos</button>
   </div>

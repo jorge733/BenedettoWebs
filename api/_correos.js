@@ -152,4 +152,4 @@ const texto = (c) =>
     ["Contenido listo", c.contenido], ["Proyecto", c.mensaje]
   ].filter(([, v]) => v).map(([l, v]) => `${l}: ${v}`).join("\n");
 
-module.exports = { correoAviso, correoConfirmacion, texto };
+module.exports = { correoAviso, correoConfirmacion, texto, layout, boton, tablaDatos, etiqueta, escapar, conSaltos, COLOR, FUENTE, SITIO };

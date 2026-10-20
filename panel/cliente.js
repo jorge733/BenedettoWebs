@@ -4,6 +4,7 @@ import {
   collection, doc, getDoc, getDocs, addDoc, updateDoc, deleteDoc, query, where, writeBatch, serverTimestamp,
   ms, fechaCorta, html
 } from "./firebase.js";
+import { iniciarCorreo } from "./correo.js";
 
 const $ = (id) => document.getElementById(id);
 const form = $("formCliente");
@@ -29,6 +30,7 @@ if (id) {
   for (const [campo, valor] of Object.entries(cliente)) if (form.elements[campo]) form.elements[campo].value = valor;
   mostrarCliente();
   await cargarDocumentos();
+  iniciarCorreo(id, () => cliente, () => documentos);
 }
 
 function mostrarCliente() {
@@ -54,6 +56,7 @@ form.addEventListener("submit", async (e) => {
       id = ref.id;
       history.replaceState(null, "", `?id=${id}`);
       await cargarDocumentos();
+      iniciarCorreo(id, () => cliente, () => documentos);
     }
     cliente = { ...cliente, ...datos };
     mostrarCliente();
