@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página no encontrada | BenedettoWebs</title>
+  <meta name="description" content="La página que buscas no existe o cambió de dirección. Vuelve al inicio de BenedettoWebs.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0f1a">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+    .error-page { position: relative; flex: 1; display: flex; align-items: center; padding: 130px 0 80px; overflow: hidden; }
+    .error-inner { position: relative; text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .error-code {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: clamp(6rem, 22vw, 11rem); line-height: 1; letter-spacing: -.06em;
+      margin-bottom: 10px;
+    }
+    .error-terminal {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: .9rem; color: var(--muted);
+      background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+      padding: 10px 16px; margin-bottom: 26px; max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+    .error-terminal .accent { color: var(--secondary); }
+    .error-page h1 { font-size: clamp(1.9rem, 4.5vw, 2.8rem); }
+    .error-page .lead { margin: 16px 0 30px; }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo"><img class="logo-mark" src="/favicon.svg" alt="" width="36" height="36"><span>Benedetto<span class="accent">Webs</span></span></a>
+      <a href="/#contacto" class="btn btn-small">Cotizar</a>
+    </div>
+  </header>
+
+  <main class="error-page">
+    <div class="hero-glow"></div>
+    <div class="container error-inner">
+      <p class="error-code gradient-text" aria-hidden="true">404</p>
+      <p class="error-terminal"><span class="accent">GET</span> <span id="ruta">/esta-pagina</span> → no encontrada</p>
+      <h1>Esta página se perdió en el código.</h1>
+      <p class="lead">El enlace puede estar roto o la página cambió de dirección. Pero tranquilo, el resto del sitio sigue funcionando perfecto.</p>
+      <div class="hero-actions">
+        <a href="/" class="btn">Volver al inicio</a>
+        <a href="/#portafolio" class="btn btn-ghost">Ver trabajos</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="/" class="logo"><img class="logo-mark" src="/favicon.svg" alt="" width="36" height="36"><span>Benedetto<span class="accent">Webs</span></span></a>
+      <p>© <span id="year"></span> BenedettoWebs · Santiago Benedetto. Diseño de páginas web en Chile, hecho con pasión por la tecnología.</p>
+    </div>
+  </footer>
+
+  <script>
+    try { document.getElementById("ruta").textContent = decodeURIComponent(location.pathname); }
+    catch { document.getElementById("ruta").textContent = location.pathname; }
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
