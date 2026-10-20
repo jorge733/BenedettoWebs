@@ -43,14 +43,15 @@ $("entrar").addEventListener("click", async () => {
 $("salir").addEventListener("click", () => signOut(auth));
 
 async function cargar() {
-  $("vacio").hidden = false;
-  $("vacio").textContent = "Cargando…";
+  $("lista").innerHTML = '<div class="cliente-card esqueleto"></div>'.repeat(3);
   try {
     const snap = await getDocs(collection(db, "clientes"));
     clientes = snap.docs.map((d) => ({ id: d.id, ...d.data() }))
       .sort((a, b) => ms(b.actualizado) - ms(a.actualizado));
     pintar();
   } catch (err) {
+    $("lista").innerHTML = "";
+    $("vacio").hidden = false;
     $("vacio").textContent = "No se pudieron cargar los clientes: " + err.message;
   }
 }
@@ -77,10 +78,15 @@ function pintar() {
   $("vacio").textContent = clientes.length ? "Ningún cliente coincide con la búsqueda." : "Aún no tienes clientes. Crea el primero con “+ Nuevo cliente”.";
 }
 
-$("buscar").addEventListener("input", pintar);
+// Al escribir no se repite la cascada de tarjetas en cada tecla; al cambiar de filtro, sí
+$("buscar").addEventListener("input", () => {
+  $("lista").classList.add("quieta");
+  pintar();
+});
 $("chips").addEventListener("click", (e) => {
   const chip = e.target.closest("[data-filtro]");
   if (!chip) return;
   filtro = chip.dataset.filtro;
+  $("lista").classList.remove("quieta");
   pintar();
 });

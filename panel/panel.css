@@ -38,8 +38,8 @@
 .chip b { font-weight: 700; margin-left: 4px; }
 
 .clientes { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
-.cliente-card { display: block; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; text-decoration: none; color: var(--ink); transition: border-color .2s; }
-.cliente-card:hover { border-color: var(--primary); }
+.cliente-card { display: block; background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; text-decoration: none; color: var(--ink); transition: border-color .2s, transform .2s, box-shadow .2s; }
+.cliente-card:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 10px 24px -12px rgba(108, 99, 255, .45); }
 .cliente-card h3 { font-size: 1.05rem; margin-bottom: 2px; }
 .cliente-card p { color: var(--muted); font-size: .9rem; }
 .cliente-card .pie { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; font-size: .8rem; color: var(--muted); }
@@ -68,4 +68,54 @@
 
 @media (max-width: 640px) {
   .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ===== Animaciones ===== */
+@keyframes subir { from { opacity: 0; transform: translateY(14px); } }
+@keyframes aparecer { from { opacity: 0; } }
+@keyframes pop { 0% { opacity: 0; transform: scale(.9); } 60% { transform: scale(1.04); } }
+@keyframes brillo { to { background-position: -200% 0; } }
+
+/* Entrada: cada bloque sube un poco después del anterior */
+.panel-wrap > *, .login > * { animation: subir .5s cubic-bezier(.2, .7, .3, 1) both; }
+.panel-wrap > :nth-child(2), .login > :nth-child(2) { animation-delay: .07s; }
+.panel-wrap > :nth-child(3) { animation-delay: .14s; }
+.panel-wrap > :nth-child(4) { animation-delay: .21s; }
+.panel-wrap > :nth-child(n+5) { animation-delay: .28s; }
+
+/* Tarjetas y filas de listas: aparecen en cascada */
+.cliente-card, .docs li { animation: subir .4s cubic-bezier(.2, .7, .3, 1) both; }
+.clientes > :nth-child(2), .docs > :nth-child(2) { animation-delay: .04s; }
+.clientes > :nth-child(3), .docs > :nth-child(3) { animation-delay: .08s; }
+.clientes > :nth-child(4), .docs > :nth-child(4) { animation-delay: .12s; }
+.clientes > :nth-child(5), .docs > :nth-child(5) { animation-delay: .16s; }
+.clientes > :nth-child(6), .docs > :nth-child(6) { animation-delay: .2s; }
+.clientes > :nth-child(n+7), .docs > :nth-child(n+7) { animation-delay: .24s; }
+.clientes.quieta > .cliente-card { animation: none; }
+.vacio { animation: aparecer .4s ease both; }
+
+/* Botones, chips y filas reaccionan al pasar el mouse */
+.btn, .chip { transition: transform .15s, box-shadow .2s, border-color .2s, color .2s, background-color .2s; }
+.btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 16px -8px rgba(108, 99, 255, .6); }
+.btn-ghost:hover:not(:disabled), .btn-peligro:hover:not(:disabled) { box-shadow: 0 4px 12px -8px rgba(31, 36, 51, .4); }
+.btn:active:not(:disabled), .chip:active { transform: scale(.96); }
+.btn:disabled { opacity: .6; cursor: progress; }
+.chip:hover { border-color: var(--primary); color: var(--primary); }
+.docs li { transition: border-color .2s, background-color .2s; }
+.docs li:hover { border-color: #cfccff; background: #fcfbff; }
+.campo input, .campo select, .campo textarea, .buscar { transition: border-color .2s, box-shadow .2s; }
+.campo input:focus, .campo select:focus, .campo textarea:focus, .buscar:focus { box-shadow: 0 0 0 4px rgba(108, 99, 255, .15); }
+.estado { transition: background-color .3s, color .3s; }
+#estadoActual:not([hidden]) { animation: pop .4s ease both; }
+
+/* Avisos de guardado y error */
+.mensaje.ok, .mensaje.error { animation: pop .35s ease both; }
+
+/* Tarjetas de carga mientras llegan los clientes */
+.cliente-card.esqueleto { height: 106px; border-color: transparent; pointer-events: none;
+  background: linear-gradient(90deg, #f3f4f9 25%, #fafaff 50%, #f3f4f9 75%) 0 0 / 200% 100%;
+  animation: aparecer .3s ease both, brillo 1.2s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition-duration: .01ms !important; }
 }
