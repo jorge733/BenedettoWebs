@@ -160,3 +160,16 @@ progress::-moz-progress-bar { background: var(--gradient); }
 .tabla button { font: inherit; background: none; border: 0; color: inherit; cursor: pointer; padding: 0; }
 .tabla button::after { content: " ▸"; color: var(--muted); }
 .tabla button[aria-expanded="true"]::after { content: " ▾"; }
+
+/* Estado de cada correo enviado (lo avisa Resend) */
+.estado-correo { font-size: .75rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: #f1f1f4; color: var(--muted); white-space: nowrap; }
+.estado-correo[data-estado="entregado"] { background: #e6f8ff; color: #0077a3; }
+.estado-correo[data-estado="abierto"] { background: #e7f7ee; color: #13804b; }
+.estado-correo[data-estado="clic"] { background: var(--soft); color: var(--primary); }
+.estado-correo[data-estado="rebotado"], .estado-correo[data-estado="spam"] { background: #fdecea; color: #c0392b; }
+
+/* Inicio: lo que necesita atención */
+.atender li { gap: 10px; }
+.atender .doc-info { font-size: .92rem; }
+.atender .doc-info strong { display: inline; }
+.atender-icono { font-size: 1.1rem; }

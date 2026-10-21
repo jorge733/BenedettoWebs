@@ -12,6 +12,18 @@ const fechaHora = (iso) =>
 const pendientes = (c) => (c.seguimientos || []).filter((s) => Date.parse(s.fecha) > Date.now());
 let redibujarSeguimientos = () => {};
 
+// Lo que avisa Resend de cada correo (api/resend-webhook.js). Los enviados antes de esto no tienen estado.
+const ESTADOS_CORREO = {
+  enviado: "Enviado", entregado: "Entregado", abierto: "Abierto", clic: "Hizo clic", rebotado: "No llegó", spam: "Lo marcó como spam"
+};
+export function etiquetaEstado(c) {
+  if (!c.resendId || !ESTADOS_CORREO[c.estado]) return "";
+  const veces = c.aperturas > 1 ? ` ${c.aperturas}×` : "";
+  const cuando = c.ultimaApertura?.toDate
+    ? ` title="Última vez: ${c.ultimaApertura.toDate().toLocaleString("es-CL", { dateStyle: "medium", timeStyle: "short" })}"` : "";
+  return `<span class="estado-correo" data-estado="${c.estado}"${cuando}>${ESTADOS_CORREO[c.estado]}${c.estado === "abierto" ? veces : ""}</span>`;
+}
+
 async function api(metodo, cuerpo) {
   const r = await fetch(API, {
     method: metodo,
@@ -131,7 +143,7 @@ export async function iniciarCorreo(clienteId, verCliente, verDocumentos) {
       const seguimiento = p.id === "cotizacion" && $("seguimiento").checked;
       const r = await api("POST", { plantilla: p.id, para, datos: valores[p.id], enviar: true, seguimiento });
       await addDoc(collection(db, "correos"), {
-        clienteId, plantilla: p.id, nombre: p.nombre, asunto: r.asunto, para, enviado: serverTimestamp()
+        clienteId, plantilla: p.id, nombre: p.nombre, asunto: r.asunto, para, resendId: r.id, estado: "enviado", enviado: serverTimestamp()
       });
       // Los datos de transferencia y el link de reseñas se recuerdan para la próxima vez
       const guardar = Object.fromEntries(["transferencia", "resena"].filter((k) => valores[p.id][k]).map((k) => [k, valores[p.id][k]]));
@@ -190,6 +202,7 @@ export async function iniciarCorreo(clienteId, verCliente, verDocumentos) {
     $("enviados").innerHTML = lista.map((c) => `<li>
       <div class="doc-info"><strong>${html(c.asunto)}</strong>
         <span>${html(c.nombre)} · a ${html(c.para)} · ${c.enviado?.toDate ? c.enviado.toDate().toLocaleString("es-CL", { dateStyle: "medium", timeStyle: "short" }) : "recién"}</span></div>
+      ${etiquetaEstado(c)}
     </li>`).join("");
   }
 

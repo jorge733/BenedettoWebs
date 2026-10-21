@@ -1,0 +1,8 @@
+{
+  "name": "benedettowebs",
+  "private": true,
+  "description": "Dependencias de las funciones de Vercel (carpeta api/)",
+  "dependencies": {
+    "firebase-admin": "14.5.0"
+  }
+}

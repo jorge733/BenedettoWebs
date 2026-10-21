@@ -39,6 +39,24 @@ Listo: entra a `www.benedettowebs.cl/panel` con tu correo y clave.
 - **Correos**: en la ficha del cliente, "Enviar correo" tiene 10 plantillas con diseño (respuesta, cotización, dos de seguimiento, bienvenida, contenido pendiente, avance, web publicada, recordatorio de pago y reseña). Se rellenan con los datos del cliente y su última cotización, muestran una vista previa y se envían desde `sabenedettoa@benedettowebs.cl` con copia oculta a ese mismo correo. Los datos de transferencia y el link de reseñas se recuerdan después del primer envío. Las plantillas están en `api/_plantillas.js` y usan la misma `RESEND_API_KEY` del formulario de cotización.
 - **Seguimiento automático**: al enviar la plantilla de cotización, la casilla "Programar seguimiento automático" (marcada por defecto) deja agendados en Resend dos correos: "¿Pudiste revisar la cotización?" a los 3 días y "¿Seguimos con tu página web?" a los 7, cerca de las 10:00. Aparecen en la ficha como "Seguimiento programado". Se cancelan solos si cambias el estado del cliente a cualquiera distinto de "Cotizando" o si envías una cotización nueva; si el cliente te respondió por otro lado, usa el botón "Cancelar seguimiento".
 
+- **Inicio**: arriba de la lista de clientes están las cifras del mes (ventas, cotizaciones abiertas, proyectos en desarrollo, tasa de cierre y dominios por vencer) y "Para atender": dominios que vencen en 30 días, entregas de la semana o atrasadas, y correos que el cliente abrió o que no le llegaron en los últimos 7 días.
+- **Aperturas**: en "Correos enviados" cada correo muestra si fue entregado, abierto (y cuántas veces), si hizo clic o si no llegó. Lo avisa Resend; los correos enviados antes de activar esto no tienen estado.
+- **Aviso de dominio**: todos los días a las 10:00 aprox. se revisa la fecha "Dominio vence" de cada cliente. A los 30 y a los 7 días antes le llega al cliente el correo "Tu dominio vence pronto" (con copia oculta para ti) y queda en sus correos enviados. Necesita que el cliente tenga correo y sitio web. Cuando renueve, cambia la fecha en su ficha y el próximo año vuelve a avisarse solo. También puedes enviarlo a mano con la plantilla "10 · Renovación de dominio".
+
+## Aperturas y aviso de dominio (una sola vez, ~10 minutos)
+
+Estas dos funciones escriben en Firestore desde el servidor, así que necesitan una clave de administrador de Firebase.
+
+1. **Clave de Firebase**: Firebase → ⚙ Configuración del proyecto → **Cuentas de servicio** → **Generar nueva clave privada**. Se descarga un archivo `.json`. En Vercel → proyecto → **Settings → Environment Variables**, crea `FIREBASE_SERVICE_ACCOUNT` y pega como valor **todo el contenido** del archivo. Después borra el archivo de tu computador: con esa clave se puede leer y cambiar toda la base de datos.
+2. **Clave del aviso diario**: en Vercel crea `CRON_SECRET` con una clave larga inventada (por ejemplo, 40 letras y números al azar). Vercel la usa para llamar a `api/recordatorios-dominio.js`.
+3. **Seguimiento en Resend**: Resend → **Domains** → `benedettowebs.cl` → activa **Open tracking** y **Click tracking**.
+4. **Webhook en Resend**: Resend → **Webhooks** → **Add webhook**. URL `https://www.benedettowebs.cl/api/resend-webhook`, eventos `email.delivered`, `email.opened`, `email.clicked`, `email.bounced` y `email.complained`. Copia el **Signing secret** (empieza con `whsec_`) y en Vercel créalo como `RESEND_WEBHOOK_SECRET`.
+5. En Vercel → **Deployments**, vuelve a desplegar el último para que tome las variables.
+
+Para revisar el aviso de dominio sin enviar nada: Vercel → **Settings → Cron Jobs** muestra la tarea y su historial; sus resultados aparecen en **Logs**.
+
+> Las aperturas son aproximadas: algunos correos (por ejemplo, en iPhone) se marcan como abiertos aunque la persona no los haya leído, y otros bloquean las imágenes y no avisan. Los clics sí son confiables.
+
 ## Respaldo
 
 Firestore no borra nada por su cuenta, pero si eliminas un cliente desde el panel se eliminan también sus documentos y no se pueden recuperar.

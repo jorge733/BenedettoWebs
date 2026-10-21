@@ -12,6 +12,7 @@ const clp = (v) => {
   return n ? "$" + n.toLocaleString("es-CL") : "";
 };
 const montoDe = (d, f) => clp(d.monto) || `[${f.monto.label}]`;
+const limpiarDominio = (v) => String(v || "").trim().replace(/^https?:\/\//i, "").replace(/\/.*$/, "");
 const enlace = (url) => (/^https?:\/\//i.test(url) ? url : `https://${url}`);
 
 const titulo = (t) => `<h1 style="${FUENTE}margin:14px 0 10px;font-size:24px;line-height:1.3;color:${COLOR.texto};">${t}</h1>`;
@@ -255,6 +256,35 @@ const PLANTILLAS = {
       ${d.resena ? `<div style="margin:0 0 22px;">${boton(enlace(d.resena), "⭐ Dejar mi reseña")}</div>` : ""}
       ${nota(`${d.resena ? "Si prefieres, también puedes" : "Puedes"} <strong>responder este correo</strong> con un par de líneas y la publico en mi web junto a tu nombre y el de tu negocio.`)}
       ${firma("¡Muchas gracias!")}`
+  },
+
+  // También la envía sola api/recordatorios-dominio.js, 30 y 7 días antes de que venza
+  dominio: {
+    nombre: "10 · Renovación de dominio",
+    campos: [
+      { id: "dominio", label: "Dominio", tipo: "texto", prefill: "sitio", obligatorio: true },
+      { id: "vence", label: "Fecha de vencimiento", tipo: "texto", prefill: "vence", obligatorio: true }
+    ],
+    asunto: (d) => (limpiarDominio(d.dominio) ? `Tu dominio ${limpiarDominio(d.dominio)} vence pronto` : "Tu dominio vence pronto"),
+    cuerpo: (d, e, f) => {
+      const dominio = limpiarDominio(d.dominio);
+      return `
+      ${etiquetaColor("⏰ Renovación de dominio", "#fff4e0", "#c27a00")}
+      ${titulo(`Hola, ${e.nombre}`)}
+      ${parrafo(`Te escribo para que tu página no deje de funcionar: el dominio de <strong>${e.negocio}</strong> está por vencer.`)}
+      ${destacado(escapar(dominio || `[${f.dominio.label}]`), `Vence el ${e.vence}`)}
+      ${parrafo("Si no se renueva antes de esa fecha, tu sitio y los correos con ese dominio dejan de funcionar, y otra persona podría quedarse con él.", "0 0 22px")}
+      ${seccion("Cómo renovarlo")}
+      <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 10px;">
+        ${paso(1, "Entra a NIC Chile", "En nic.cl, con la cuenta con la que compraste el dominio.")}
+        ${paso(2, "Busca tu dominio", "En “Mis dominios”, elige la opción de renovar.")}
+        ${paso(3, "Paga la renovación", "Cuesta cerca de $10.000 por un año. Puedes renovar por más años.")}
+      </table>
+      <div style="margin:0 0 22px;">${boton("https://www.nic.cl", "Renovar en NIC Chile")}</div>
+      ${nota("¿Prefieres que lo haga yo o no recuerdas la cuenta? Escríbeme y te ayudo.", COLOR.secundario)}
+      ${botonWhatsApp("Pedir ayuda por WhatsApp")}
+      ${firma()}`;
+    }
   }
 };
 

@@ -6,10 +6,9 @@
 // Solo responde a quien inició sesión en el panel con una de las cuentas permitidas.
 // Variables de entorno en Vercel: RESEND_API_KEY (la misma del formulario de cotización).
 const { catalogo, camposDe, armar, PLANTILLAS } = require("./_plantillas");
+const { resend, enviar } = require("./_resend");
 
 const PERMITIDOS = ["sabenedettoa@gmail.com", "sabenedettoa@benedettowebs.cl"];
-const REMITENTE = "Santiago Benedetto <sabenedettoa@benedettowebs.cl>";
-const COPIA = "sabenedettoa@benedettowebs.cl";
 // Clave pública de la app web de Firebase (la misma de panel/firebase.js): solo sirve para validar la sesión
 const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY || "AIzaSyDnNaJWH3PMpex5B3vlCMPR96CHZRSXDqI";
 // Correos que salen solos después de enviar una cotización (días después, a las 10:00 aprox. de Chile)
@@ -33,20 +32,6 @@ async function usuario(req) {
   const u = (await r.json()).users?.[0];
   return u?.emailVerified && PERMITIDOS.includes(u.email) ? u.email : null;
 }
-
-const resend = (ruta, cuerpo) =>
-  fetch(`https://api.resend.com${ruta}`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${process.env.RESEND_API_KEY}`, "Content-Type": "application/json" },
-    body: cuerpo && JSON.stringify(cuerpo)
-  }).then(async (r) => {
-    if (!r.ok) throw new Error(`Resend ${r.status}: ${await r.text()}`);
-    return r.json();
-  });
-
-// Copia oculta a tu correo para que el envío quede en tu bandeja
-const enviar = (para, asunto, html, extra = {}) =>
-  resend("/emails", { from: REMITENTE, to: para, bcc: COPIA, reply_to: COPIA, subject: asunto, html, ...extra });
 
 async function programarSeguimientos(para, datos) {
   const fecha = new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", timeZone: "America/Santiago" });
