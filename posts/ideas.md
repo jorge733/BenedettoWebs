@@ -28,7 +28,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 
 ## 3. Educativo
 - [x] 5 señales de que tu negocio necesita una web (`senales`)
-- [ ] ¿Qué es un dominio .cl y cuánto cuesta?
+- [x] ¿Qué es un dominio .cl y cuánto cuesta? (`dominio`)
 - [ ] Errores comunes en webs de pymes
 - [ ] Web vs. Linktree vs. solo redes
 - [x] Mitos sobre tener página web (`mitos`)
