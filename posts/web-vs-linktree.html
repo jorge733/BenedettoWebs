@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Web vs. Linktree vs. solo redes</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --yes: #3ddc84;
+    --no: #ff6b81;
+    --meh: #ffc94d;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 44px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 14px; font-size: 76px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .table {
+    margin-top: 34px; display: grid; grid-template-columns: 1fr 150px 150px 190px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 24px; overflow: hidden;
+    position: relative;
+  }
+  .table > div {
+    padding: 17px 10px; display: flex; align-items: center; justify-content: center;
+    border-top: 1px solid var(--border); font-size: 34px; font-weight: 800;
+  }
+  .table > .label { justify-content: flex-start; padding-left: 28px; font-size: 25px; font-weight: 500; }
+  .table > .head {
+    border-top: none; padding: 20px 8px; font-family: 'JetBrains Mono', monospace;
+    font-size: 21px; font-weight: 700; color: var(--muted); text-align: center;
+  }
+  .table > .web { background: rgba(108, 99, 255, .16); }
+  .table > .head.web { color: #fff; background: var(--gradient); }
+  .yes { color: var(--yes); }
+  .no { color: var(--no); }
+  .meh { color: var(--meh); }
+  .table > .cost { font-size: 21px; font-weight: 600; color: var(--muted); text-align: center; line-height: 1.2; }
+  .table > .cost.web { color: var(--text); }
+
+  .legend {
+    margin-top: 14px; display: flex; gap: 26px; font-family: 'JetBrains Mono', monospace;
+    font-size: 19px; color: var(--muted);
+  }
+  .legend b { font-weight: 800; margin-right: 6px; }
+
+  .punch { margin-top: 30px; font-size: 44px; line-height: 1.12; font-weight: 800; letter-spacing: -1px; }
+
+  .foot {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+  .foot .contact { display: flex; flex-direction: column; gap: 4px; }
+  .foot .mail { font-size: 21px; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; diff redes linktree web_</p>
+  <h1>Solo redes, Linktree<br>o <span class="grad">tu propia web</span></h1>
+
+  <div class="table">
+    <div class="head"></div><div class="head">Solo<br>redes</div><div class="head">Linktree</div><div class="head web">Tu web</div>
+
+    <div class="label">Te encuentran en Google</div><div class="meh">~</div><div class="meh">~</div><div class="web yes">✓</div>
+    <div class="label">No depende del algoritmo</div><div class="no">✗</div><div class="no">✗</div><div class="web yes">✓</div>
+    <div class="label">Servicios, precios y fotos ordenados</div><div class="meh">~</div><div class="no">✗</div><div class="web yes">✓</div>
+    <div class="label">Dominio propio .cl</div><div class="no">✗</div><div class="no">✗</div><div class="web yes">✓</div>
+    <div class="label">Diseño con tu marca</div><div class="meh">~</div><div class="meh">~</div><div class="web yes">✓</div>
+    <div class="label">Costo</div><div class="cost">Gratis</div><div class="cost">Gratis</div><div class="cost web">Desde $30.000<br>pago único</div>
+  </div>
+  <div class="legend"><span><b class="yes">✓</b>sí</span><span><b class="meh">~</b>a medias</span><span><b class="no">✗</b>no</span></div>
+
+  <p class="punch">Las redes te hacen conocido.<br><span class="grad">Tu web te hace vender.</span></p>
+
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>
