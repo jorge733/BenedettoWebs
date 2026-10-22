@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Tu web lista antes de Navidad</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --xmas: #ff5d73;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(255, 93, 115, .20), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden; position: relative;
+  }
+  .snow { position: absolute; inset: 0; pointer-events: none; }
+  .snow i { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #fff; opacity: .18; }
+  .logo { height: 54px; align-self: flex-start; position: relative; }
+  .eyebrow {
+    margin-top: 48px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 14px; font-size: 86px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { margin-top: 18px; font-size: 30px; line-height: 1.35; color: var(--muted); max-width: 880px; }
+
+  .row { margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 26px; padding: 28px 30px;
+  }
+  .box .k { font-family: 'JetBrains Mono', monospace; font-size: 21px; color: var(--muted); }
+  .box .v { margin-top: 10px; font-size: 64px; line-height: 1; font-weight: 800; letter-spacing: -1px; }
+  .box .s { margin-top: 10px; font-size: 23px; color: var(--muted); }
+  .slots { margin-top: 18px; display: flex; gap: 12px; }
+  .slots span {
+    width: 64px; height: 64px; border-radius: 18px; display: grid; place-items: center; font-size: 30px;
+    background: rgba(255, 93, 115, .12); border: 2px solid rgba(255, 93, 115, .55);
+  }
+  .box.date { border-color: rgba(255, 93, 115, .45); }
+  .box.date .v { color: var(--xmas); }
+
+  .why { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+  .why div {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+    padding: 16px 24px; font-size: 26px; display: flex; gap: 16px; align-items: center;
+  }
+  .why b { font-weight: 700; }
+  .why span { color: var(--muted); }
+
+  .cta { margin-top: auto; font-size: 30px; font-weight: 600; }
+  .cta span { color: var(--muted); font-weight: 400; }
+  .mail { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; }
+
+  .foot {
+    margin-top: 30px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="post">
+  <div class="snow">
+    <i style="left:640px;top:70px"></i><i style="left:900px;top:140px"></i><i style="left:780px;top:230px"></i>
+    <i style="left:980px;top:320px"></i><i style="left:700px;top:380px;width:4px;height:4px"></i>
+    <i style="left:860px;top:60px;width:4px;height:4px"></i><i style="left:1010px;top:520px;width:4px;height:4px"></i>
+  </div>
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; countdown --navidad_</p>
+  <h1>Tu web lista<br><span class="grad">antes de Navidad</span> 🎄</h1>
+  <p class="lead">Diciembre es uno de los meses en que más se compra. Que tus clientes te encuentren con tu web ya publicada.</p>
+
+  <div class="row">
+    <div class="box">
+      <p class="k">cupos disponibles</p>
+      <p class="v">Solo 3</p>
+      <div class="slots"><span>🎁</span><span>🎁</span><span>🎁</span></div>
+    </div>
+    <div class="box date">
+      <p class="k">cotiza hasta el</p>
+      <p class="v">15 nov</p>
+      <p class="s">Para alcanzar a publicarla antes del 25 de diciembre.</p>
+    </div>
+  </div>
+
+  <div class="why">
+    <div>🎨 <b>Diseño a medida</b> <span>con tu marca</span></div>
+    <div>💳 <b>Desde $30.000</b> <span>en un pago único</span></div>
+    <div>🚀 <b>Publicada y lista</b> <span>para recibir clientes</span></div>
+  </div>
+
+  <p class="cta">Cotización gratis. <span>Escríbeme y reserva tu cupo.</span></p>
+  <p class="mail grad">✉ sabenedettoa@benedettowebs.cl</p>
+
+  <div class="foot">
+    <span><b>benedettowebs.cl</b></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>

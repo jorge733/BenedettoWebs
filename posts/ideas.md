@@ -48,7 +48,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] Cupos del mes
 - [ ] Fechas clave (Cyber Day, Navidad, temporada de verano)
 - [x] Reel: sorteo por metas de 500 y 1.000 seguidores (`reel-sorteo`)
-- [ ] Ten tu web lista antes de Navidad (fecha límite para cotizar)
+- [x] Ten tu web lista antes de Navidad (`navidad`, 3 cupos, cotizar hasta el 15 nov)
 - [ ] Nuevo: cotiza tu web desde el formulario de benedettowebs.cl
 
 ## 5. Proyectos propios y comunidad
