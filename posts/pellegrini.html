@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Inversiones Pellegrini</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --accent: #2f7bff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 64px 84px 56px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 30px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 10px; font-size: 70px; line-height: 1.03; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { margin-top: 16px; font-size: 30px; line-height: 1.38; color: var(--muted); max-width: 900px; }
+  .lead strong { color: var(--text); font-weight: 600; }
+
+  .status { margin-top: 22px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 10px; padding: 9px 18px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace; font-size: 21px; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .pill.live { color: #7dffb0; border-color: rgba(125, 255, 176, .35); background: rgba(125, 255, 176, .08); }
+  .pill.live::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 10px #3ddc84; }
+
+  .browser {
+    margin-top: 26px; border-radius: 24px; overflow: hidden; flex: none; background: var(--surface);
+    border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(0, 0, 0, .45);
+  }
+  .bar { display: flex; align-items: center; gap: 10px; padding: 14px 20px; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; background: #2a3354; }
+  .url {
+    margin-left: 12px; flex: 1; padding: 7px 18px; border-radius: 999px; background: #0f1528;
+    font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--muted);
+  }
+  .browser img { display: block; width: 100%; }
+
+  .quote {
+    margin-top: 34px; position: relative; background: var(--surface); border: 1px solid var(--border);
+    border-left: 6px solid var(--accent); border-radius: 24px; padding: 26px 110px 24px 40px;
+  }
+  .quote .mark {
+    position: absolute; top: -26px; right: 34px; font-size: 140px; line-height: 1; font-weight: 800;
+    background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .quote blockquote { font-size: 29px; line-height: 1.35; font-weight: 500; }
+  .quote figcaption { margin-top: 16px; font-size: 24px; color: var(--muted); }
+  .quote figcaption b { color: var(--text); font-weight: 700; }
+
+  .foot {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+  .foot .contact { display: flex; flex-direction: column; gap: 4px; }
+  .foot .mail { font-size: 21px; }
+  .foot .visit {
+    padding: 14px 28px; border-radius: 999px; background: var(--gradient);
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 25px; color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; cliente: inversionespellegrini.cl_</p>
+  <h1>Una web que transmite<br><span class="grad">confianza</span> al invertir</h1>
+  <p class="lead"><strong>Inversiones Pellegrini</strong> asesora a sus clientes para invertir a mediano y largo plazo, en Chile y el extranjero.</p>
+  <div class="status"><span class="pill live">En línea</span><span class="pill">Cliente</span></div>
+
+  <div class="browser">
+    <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url">inversionespellegrini.cl</span></div>
+    <img src="pellegrini-captura.jpg" alt="Portada del sitio inversionespellegrini.cl">
+  </div>
+
+  <figure class="quote">
+    <span class="mark" aria-hidden="true">&ldquo;</span>
+    <blockquote>Destacó su compromiso, profesionalismo y capacidad para transformar mis ideas en una página moderna y alineada con la identidad de Inversiones Pellegrini.</blockquote>
+    <figcaption><b>Luciano Pellegrini</b> · Inversiones Pellegrini</figcaption>
+  </figure>
+
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="visit">Visita inversionespellegrini.cl ›</span>
+  </div>
+</div>
+</body>
+</html>

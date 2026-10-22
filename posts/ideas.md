@@ -10,13 +10,13 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 ## 1. Portafolio
 - [x] Negra Mora (negramora.cl) (`negramora`)
 - [x] Dos Anillos (dosanillos.cl) (`dosanillos`)
-- [ ] Inversiones Pellegrini (inversionespellegrini.cl)
+- [x] Inversiones Pellegrini (inversionespellegrini.cl) (`pellegrini`, con la reseña de Luciano)
 - [x] ehda.cl (`ehda`, adelanto "próximamente")
 - [x] Service Planet (serviceplanet.cl) (`serviceplanet`)
 - [ ] Uniluva (uniluva.com)
 - [ ] Académica Michelangelo (academicamichelangelo.site)
 - [ ] Antes / después de algún cliente
-- [ ] Reseña de Luciano (Pellegrini)
+- [x] Reseña de Luciano (Pellegrini) (en `pellegrini`)
 - [ ] Reel: scroll de una web terminada en el celular
 - [x] Reel: portafolio rápido, las 9 webs (`reel-portafolio`)
 
