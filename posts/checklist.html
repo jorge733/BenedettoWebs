@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Checklist antes de pedir tu web</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 40px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 16px; font-size: 76px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .list { margin-top: 30px; display: grid; gap: 12px; }
+  .item {
+    display: flex; align-items: center; gap: 26px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+    padding: 15px 28px;
+  }
+  .check {
+    flex: none; width: 56px; height: 56px; border-radius: 16px;
+    background: var(--gradient); display: grid; place-items: center;
+    font-size: 32px; font-weight: 800; color: #fff;
+  }
+  .item h2 { font-size: 32px; line-height: 1.15; font-weight: 700; }
+  .item p { margin-top: 4px; font-size: 24px; line-height: 1.3; color: var(--muted); }
+
+  .cta { margin-top: auto; padding-top: 26px; font-size: 34px; font-weight: 600; }
+  .cta span { color: var(--muted); font-weight: 400; }
+  .mail { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; }
+
+  .foot {
+    margin-top: 32px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; checklist --antes-de-empezar_</p>
+  <h1>Lo que necesitas<br><span class="grad">antes de pedir tu web</span></h1>
+
+  <div class="list">
+    <div class="item">
+      <span class="check">✓</span>
+      <div>
+        <h2>Tu logo</h2>
+        <p>Idealmente en buena calidad. Si no tienes, lo vemos.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="check">✓</span>
+      <div>
+        <h2>Fotos de tus productos o servicios</h2>
+        <p>Reales y nítidas. Con el celular basta.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="check">✓</span>
+      <div>
+        <h2>Textos básicos</h2>
+        <p>Quién eres, qué ofreces, precios y horarios.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="check">✓</span>
+      <div>
+        <h2>Tus datos de contacto y redes</h2>
+        <p>WhatsApp, correo, dirección e Instagram.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="check">✓</span>
+      <div>
+        <h2>El nombre de tu dominio</h2>
+        <p>Por ejemplo, tunegocio.cl. Te ayudo a elegirlo.</p>
+      </div>
+    </div>
+    <div class="item">
+      <span class="check">✓</span>
+      <div>
+        <h2>Webs que te gusten</h2>
+        <p>2 o 3 de referencia para captar tu estilo.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="cta">¿Te falta algo? <span>Te guío en cada punto.</span></p>
+  <p class="mail grad">✉ sabenedettoa@benedettowebs.cl</p>
+
+  <div class="foot">
+    <span><b>benedettowebs.cl</b></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>

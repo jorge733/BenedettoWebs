@@ -10,27 +10,27 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 ## 1. Portafolio
 - [x] Negra Mora (negramora.cl) (`negramora`)
 - [x] Dos Anillos (dosanillos.cl) (`dosanillos`)
-- [ ] Inversiones Pellegrini (inversionespellegrini.cl)
+- [x] Inversiones Pellegrini (inversionespellegrini.cl) (`pellegrini`, en otra rama)
 - [x] ehda.cl (`ehda`, adelanto "próximamente")
 - [x] Service Planet (serviceplanet.cl) (`serviceplanet`)
 - [ ] Uniluva (uniluva.com)
 - [ ] Académica Michelangelo (academicamichelangelo.site)
 - [ ] Antes / después de algún cliente
-- [ ] Reseña de Luciano (Pellegrini)
+- [x] Reseña de Luciano (Pellegrini) (en `pellegrini`)
 - [ ] Reel: scroll de una web terminada en el celular
 - [x] Reel: portafolio rápido, las 9 webs (`reel-portafolio`)
 
 ## 2. Proceso / detrás de escena
-- [x] "Cómo hago una web en 4 pasos" (`proceso`)
+- [x] "Cómo hago una web en 4 pasos" (hecho en otra rama)
 - [ ] Timelapse programando
 - [ ] "Un día como dev de 16 años"
 - [ ] Del boceto a la web
 
 ## 3. Educativo
 - [x] 5 señales de que tu negocio necesita una web (`senales`)
-- [ ] ¿Qué es un dominio .cl y cuánto cuesta?
+- [x] ¿Qué es un dominio .cl y cuánto cuesta? (`dominio`, en otra rama)
 - [ ] Errores comunes en webs de pymes
-- [ ] Web vs. Linktree vs. solo redes
+- [x] Web vs. Linktree vs. solo redes (`web-vs-linktree`, en otra rama)
 - [x] Mitos sobre tener página web (`mitos`)
 
 ## 4. Ofertas
@@ -39,11 +39,13 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] Cupos del mes
 - [ ] Fechas clave (Cyber Day, Navidad, temporada de verano)
 - [x] Reel: sorteo por metas de 500 y 1.000 seguidores (`reel-sorteo`)
+- [x] Ten tu web lista antes de Navidad (`navidad`, en otra rama)
+- [x] Wix vs. BenedettoWebs (`wix-vs`, en otra rama)
 
 ## 5. Proyectos propios y comunidad
 - [ ] MetroSim: reel por modo (conductor, pasajero, centro de control)
 - [ ] MetroSim: cómo lo hice
-- [ ] listadecompras.website
+- [x] listadecompras.website (`listadecompras`, en otra rama)
 - [ ] Stories con encuestas
 - [ ] Rediseño gratis por sorteo
 
@@ -55,7 +57,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] "Cotiza en 1 minuto": paso a paso del formulario
 
 ### Educativo / tips
-- [ ] Checklist: lo que necesitas tener listo antes de pedir tu web (logo, fotos, textos, redes)
+- [x] Checklist: lo que necesitas tener listo antes de pedir tu web (`checklist`)
 - [ ] Por qué tu web tiene que verse bien en el celular
 - [ ] Botón de WhatsApp en tu web: por qué vende más
 - [ ] Qué es el SEO explicado fácil (cómo te encuentran en Google)
