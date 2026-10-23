@@ -223,6 +223,30 @@ const PLANTILLAS = {
     }
   },
 
+  acta: {
+    nombre: "7b · Envío de acta de entrega",
+    campos: [
+      { id: "acta", label: "Link del acta de entrega", tipo: "link", obligatorio: true },
+      { id: "dominio", label: "Dominio", tipo: "texto", prefill: "sitio", obligatorio: true },
+      { id: "fechaEntrega", label: "Fecha de entrega", tipo: "texto", prefill: "fechaEntrega", obligatorio: true },
+      { id: "entregado", label: "Qué se entrega", tipo: "area", obligatorio: true }
+    ],
+    asunto: (d) => `Acta de entrega página web${d.negocio ? " " + d.negocio : ""}`,
+    cuerpo: (d, e, f) => `
+      ${etiquetaColor("✓ Proyecto entregado", "#e6faf0", "#139a5b")}
+      ${titulo(`Hola, ${e.nombre}`)}
+      ${parrafo(`Te envío el acta de entrega de la página web de <strong>${e.negocio}</strong>, donde queda registrado todo lo que se entregó.`, "0 0 22px")}
+      <div style="margin:0 0 22px;">${boton(d.acta ? enlace(d.acta) : SITIO, "📄 Ver acta de entrega")}</div>
+      <div style="margin:0 0 22px;">${tablaDatos([
+        ["Sitio", limpiarDominio(d.dominio) || `[${f.dominio.label}]`],
+        ["Fecha de entrega", valor(d, f.fechaEntrega)],
+        ["Se entrega", valor(d, f.entregado)]
+      ])}</div>
+      ${nota("✍️ Revísala y, si está todo en orden, <strong>respóndeme este correo confirmando la recepción</strong> (o envíamela firmada). Si ves algo que no corresponde, avísame y lo corregimos.")}
+      ${boton(`https://wa.me/${WHATSAPP}`, "¿Dudas? Conversemos")}
+      ${firma()}`
+  },
+
   pago: {
     nombre: "8 · Recordatorio de pago",
     campos: [

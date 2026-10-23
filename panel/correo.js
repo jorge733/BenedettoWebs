@@ -82,6 +82,7 @@ export async function iniciarCorreo(clienteId, verCliente, verDocumentos) {
       fechaCotizacion: cot?.creado?.toDate ? fechaLarga(cot.creado.toDate()) : "",
       sitio: c.sitio || "",
       vence: c.vence ? fechaLarga(new Date(c.vence + "T12:00")) : "",
+      fechaEntrega: fechaLarga(c.entrega ? new Date(c.entrega + "T12:00") : new Date()),
       transferencia: ajustes.transferencia || "",
       resena: ajustes.resena || ""
     };
