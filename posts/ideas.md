@@ -9,7 +9,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 
 ## 1. Portafolio
 - [x] Negra Mora (negramora.cl) (`negramora`)
-- [x] Dos Anillos (dosanillos.cl) (`dosanillos`)
+- [x] Dos Anillos (dosanillos.cl) (`dosanillos`, y proyecto terminado en `dosanillos-terminado`)
 - [x] Inversiones Pellegrini (inversionespellegrini.cl) (`pellegrini`)
 - [x] ehda.cl (`ehda`, adelanto "próximamente")
 - [x] Service Planet (serviceplanet.cl) (`serviceplanet`)
