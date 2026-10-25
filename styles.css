@@ -165,6 +165,7 @@ h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.15; letter-spacing: -
 .testimonial figcaption { margin-top: 26px; display: grid; gap: 2px; }
 .testimonial figcaption span { color: var(--muted); font-size: .95rem; }
 .testimonial figcaption a { color: var(--secondary); }
+.testimonial + .testimonial { margin-top: 56px; }
 
 /* About */
 .about { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; align-items: center; }
