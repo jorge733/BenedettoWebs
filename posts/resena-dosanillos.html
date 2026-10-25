@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Reseña de Nicolás Bordalí (Dos Anillos)</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --mora: #c9a27a;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 64px 84px 56px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 30px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 10px; font-size: 70px; line-height: 1.03; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .quote {
+    margin-top: 76px; position: relative; background: var(--surface); border: 1px solid rgba(108, 99, 255, .45);
+    border-radius: 28px; padding: 58px 52px 40px; box-shadow: 0 30px 70px rgba(108, 99, 255, .2);
+  }
+  .quote .mark {
+    position: absolute; top: -34px; left: 52px; width: 68px; height: 68px; border-radius: 50%;
+    display: grid; place-items: center; background: var(--gradient);
+    font-size: 64px; font-weight: 800; line-height: 1; padding-top: 26px;
+  }
+  .stars { color: #ffc94d; font-size: 34px; letter-spacing: 6px; }
+  .quote blockquote { margin-top: 18px; font-size: 42px; line-height: 1.35; font-weight: 500; letter-spacing: -.3px; }
+  .quote blockquote em { font-style: normal; color: var(--mora); font-weight: 700; }
+
+  .author { margin-top: 30px; display: flex; align-items: center; gap: 18px; }
+  .avatar {
+    width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; flex: none;
+    background: rgba(201, 162, 122, .15); border: 2px solid var(--mora);
+    font-weight: 700; font-size: 24px; color: var(--mora);
+  }
+  .author b { display: block; font-size: 28px; font-weight: 700; }
+  .author span { font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--muted); }
+
+  .tags { margin-top: 44px; display: flex; gap: 14px; }
+  .tag {
+    flex: 1; text-align: center; padding: 26px 12px; border-radius: 20px;
+    background: var(--surface); border: 1px solid var(--border); border-top: 5px solid var(--mora);
+    font-size: 28px; font-weight: 700;
+  }
+  .tag span { display: block; font-size: 38px; line-height: 1; margin-bottom: 10px; }
+
+  .foot {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+  .foot .contact { display: flex; flex-direction: column; gap: 4px; }
+  .foot .mail { font-size: 21px; }
+  .foot .visit {
+    padding: 14px 28px; border-radius: 999px; background: var(--gradient);
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 25px; color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; cat reseñas/dosanillos.txt_</p>
+  <h1>Lo que dicen<br><span class="grad">mis clientes</span></h1>
+
+  <figure class="quote">
+    <span class="mark" aria-hidden="true">“</span>
+    <div class="stars">★★★★★</div>
+    <blockquote>La verdad es que es una muy buena experiencia trabajar con Santiago ya que trabaja <em>rápido y eficiente</em> tiene <em>paciencia</em> con lo que uno pide, y un montón de <em>motivación</em> por hacer una rica página web.</blockquote>
+    <figcaption class="author">
+      <span class="avatar">NB</span>
+      <div><b>Nicolás Bordalí</b><span>Dos Anillos · dosanillos.cl</span></div>
+    </figcaption>
+  </figure>
+
+  <div class="tags">
+    <div class="tag"><span>⚡</span>Rápido</div>
+    <div class="tag"><span>🤝</span>Paciente</div>
+    <div class="tag"><span>🔥</span>Motivado</div>
+  </div>
+
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="visit">Cotiza tu web ›</span>
+  </div>
+</div>
+</body>
+</html>

@@ -17,6 +17,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] Académica Michelangelo (academicamichelangelo.site)
 - [ ] Antes / después de algún cliente
 - [x] Reseña de Luciano (Pellegrini) (incluida en `pellegrini`)
+- [x] Reseña de Nicolás Bordalí (Dos Anillos) (`resena-dosanillos`)
 - [ ] Reel: scroll de una web terminada en el celular
 - [x] Reel: portafolio rápido, las 9 webs (`reel-portafolio`)
 
