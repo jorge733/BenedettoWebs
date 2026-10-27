@@ -19,7 +19,6 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Reel: portafolio rápido, las 9 webs (`reel-portafolio`)
 
 ## 2. Proceso / detrás de escena
-- [ ] Timelapse programando
 - [ ] "Un día como dev de 16 años"
 - [ ] Del boceto a la web
 
