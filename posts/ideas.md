@@ -13,7 +13,6 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Inversiones Pellegrini (inversionespellegrini.cl) (`pellegrini`)
 - [x] ehda.cl (`ehda`, adelanto "próximamente")
 - [x] Service Planet (serviceplanet.cl) (`serviceplanet`)
-- [ ] Uniluva (uniluva.com)
 - [ ] Académica Michelangelo (academicamichelangelo.site)
 - [ ] Antes / después de algún cliente
 - [x] Reseña de Luciano (Pellegrini) (incluida en `pellegrini`)
