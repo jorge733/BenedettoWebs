@@ -12,8 +12,10 @@
 <link rel="stylesheet" href="../documentos/doc.css">
 <link rel="stylesheet" href="panel.css">
 </head>
-<body>
-<main class="panel-wrap" id="app" hidden>
+<body class="panel">
+<div class="app" id="app" hidden>
+<nav class="menu" id="menu"></nav>
+<main class="panel-wrap">
   <a class="migas" href="./">← Clientes</a>
   <header class="panel-head">
     <h1 id="titulo">Nuevo cliente</h1>
@@ -101,6 +103,7 @@
     <button class="btn btn-peligro btn-sm" id="borrarCliente">Eliminar cliente y sus documentos</button>
   </div>
 </main>
+</div>
 <script type="module" src="cliente.js"></script>
 </body>
 </html>

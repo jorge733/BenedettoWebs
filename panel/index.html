@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../documentos/doc.css">
 <link rel="stylesheet" href="panel.css">
 </head>
-<body>
+<body class="panel">
 
 <main class="login" id="login" hidden>
   <img src="../img/logo/logo-fondo-claro.svg" alt="BenedettoWebs">
@@ -31,13 +31,15 @@
   </div>
 </main>
 
-<main class="panel-wrap" id="app" hidden>
+<div class="app" id="app" hidden>
+<nav class="menu" id="menu"></nav>
+<main class="panel-wrap">
   <header class="panel-head">
-    <img src="../img/logo/logo-fondo-claro.svg" alt="BenedettoWebs">
-    <h1>Clientes</h1>
-    <a class="btn btn-ghost" href="resumen.html">Resumen</a>
+    <div class="titulos">
+      <h1>Clientes</h1>
+      <p class="bajada">Tus proyectos, cotizaciones y lo que necesita atención.</p>
+    </div>
     <a class="btn" href="cliente.html">+ Nuevo cliente</a>
-    <button class="btn btn-ghost" id="salir">Cerrar sesión</button>
   </header>
 
   <div class="cifras" id="cifras"></div>
@@ -54,6 +56,7 @@
   <div class="clientes" id="lista"></div>
   <p class="vacio" id="vacio" hidden></p>
 </main>
+</div>
 
 <script type="module" src="index.js"></script>
 </body>

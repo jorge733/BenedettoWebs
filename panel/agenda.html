@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Agenda · Panel BenedettoWebs</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../documentos/doc.css">
+<link rel="stylesheet" href="panel.css">
+</head>
+<body class="panel">
+<div class="app" id="app" hidden>
+<nav class="menu" id="menu"></nav>
+<main class="panel-wrap">
+  <header class="panel-head">
+    <div class="titulos">
+      <h1 id="saludo">Agenda</h1>
+      <p class="bajada" id="fechaHoy"></p>
+    </div>
+    <button class="btn btn-ghost" id="abrirAvisos" type="button">Avisos por correo</button>
+  </header>
+
+  <section class="brief" id="brief" aria-label="Brief del día">
+    <p class="brief-resumen" id="briefResumen">Cargando tu día…</p>
+    <div class="cifras" id="cifras"></div>
+    <ul class="docs atender" id="briefLista" hidden></ul>
+    <p class="brief-idea" id="idea" hidden></p>
+  </section>
+
+  <div class="agenda-cols">
+    <section class="caja-panel tareas-caja">
+      <form class="rapida" id="rapida" autocomplete="off">
+        <input id="textoRapido" placeholder="Nueva tarea… prueba “Llamar a Daniela mañana 15:00 !”" aria-label="Nueva tarea">
+        <button class="btn" type="submit">Agregar</button>
+      </form>
+      <p class="ayuda-rapida">Escribe la fecha como <b>hoy</b>, <b>mañana</b>, <b>jueves</b> o <b>12/11</b>, la hora como <b>15:00</b> o <b>15h</b>, <b>!</b> para importante y <b>#marketing</b>, <b>#admin</b> o <b>#personal</b> para la categoría.</p>
+      <div class="filtros" id="filtroCategorias"></div>
+      <div id="grupos"></div>
+      <p class="vacio" id="sinTareas" hidden>No tienes tareas pendientes. Agrega la primera arriba.</p>
+      <button class="ver-hechas" id="verHechas" type="button" hidden></button>
+      <ul class="docs tareas hechas" id="hechas" hidden></ul>
+    </section>
+
+    <aside class="caja-panel semana-caja">
+      <div class="caja-titulo"><h2>Próximos 7 días</h2></div>
+      <ol class="semana" id="semana"></ol>
+    </aside>
+  </div>
+</main>
+</div>
+
+<dialog class="modal" id="modalTarea">
+  <form method="dialog" id="formTarea">
+    <div class="caja-titulo"><h2 id="tituloModal">Tarea</h2><button class="btn-icono" value="cancelar" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <label class="campo">Qué hay que hacer <input name="titulo" required maxlength="160"></label>
+    <div class="grid-2">
+      <label class="campo">Fecha <input name="fecha" type="date"></label>
+      <label class="campo">Hora (para el recordatorio) <input name="hora" type="time"></label>
+      <label class="campo">Cliente <select name="clienteId" id="selCliente"></select></label>
+      <label class="campo">Categoría <select name="categoria" id="selCategoria"></select></label>
+    </div>
+    <label class="campo">Notas <textarea name="notas" maxlength="2000" placeholder="Detalles, links, lo que tienes que decir…"></textarea></label>
+    <label class="check-seguimiento"><input type="checkbox" name="importante"> Importante</label>
+    <p class="nota" id="notaRecordatorio"></p>
+    <div class="acciones">
+      <button class="btn" value="guardar">Guardar</button>
+      <button class="btn btn-ghost" value="cancelar" formnovalidate>Cancelar</button>
+      <button class="btn btn-peligro btn-sm" value="borrar" id="borrarTarea" formnovalidate style="margin-left:auto">Eliminar</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="modal" id="modalAvisos">
+  <form method="dialog" id="formAvisos">
+    <div class="caja-titulo"><h2>Avisos por correo</h2><button class="btn-icono" value="cerrar" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <p class="nota">Llegan a sabenedettoa@benedettowebs.cl.</p>
+    <label class="interruptor"><input type="checkbox" name="brief"><span><strong>Brief diario</strong><small>Cada mañana cerca de las 8:00 (7:00 en horario de invierno): tareas, entregas, seguimientos, dominios y clientes que abrieron tus correos. Si no hay nada, no llega.</small></span></label>
+    <label class="campo sangria">Qué días
+      <select name="briefDias"><option value="habiles">Lunes a viernes</option><option value="todos">Todos los días</option></select>
+    </label>
+    <label class="interruptor"><input type="checkbox" name="recordatorios"><span><strong>Recordatorio de tareas con hora</strong><small>Un correo antes de cada tarea que tenga hora. Se reprograma o se cancela solo si cambias o completas la tarea.</small></span></label>
+    <label class="campo sangria">Con cuánta anticipación
+      <select name="antes"><option value="0">A la hora exacta</option><option value="5">5 minutos antes</option><option value="15">15 minutos antes</option><option value="30">30 minutos antes</option><option value="60">1 hora antes</option></select>
+    </label>
+    <label class="interruptor"><input type="checkbox" name="alertas"><span><strong>Alertas de clientes</strong><small>Al momento, cuando un cliente hace clic en un correo tuyo o cuando un correo no le llega.</small></span></label>
+    <div class="acciones">
+      <span class="mensaje" id="msgAvisos"></span>
+      <button class="btn btn-ghost btn-sm" type="button" id="verBrief" style="margin-left:auto">Ver el brief de hoy</button>
+      <button class="btn btn-ghost btn-sm" type="button" id="enviarBrief">Enviármelo ahora</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="modal modal-ancho" id="modalBrief">
+  <form method="dialog">
+    <div class="caja-titulo"><h2 id="asuntoBrief">Brief de hoy</h2><button class="btn-icono" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+    <iframe class="vista-correo" id="vistaBrief" title="Vista previa del brief"></iframe>
+  </form>
+</dialog>
+
+<script type="module" src="agenda.js"></script>
+</body>
+</html>

@@ -57,6 +57,16 @@ Para revisar el aviso de dominio sin enviar nada: Vercel → **Settings → Cron
 
 > Las aperturas son aproximadas: algunos correos (por ejemplo, en iPhone) se marcan como abiertos aunque la persona no los haya leído, y otros bloquean las imágenes y no avisan. Los clics sí son confiables.
 
+## Agenda y avisos por correo
+
+- **Agenda** (menú lateral): arriba el brief del día (lo atrasado, lo de hoy, entregas, seguimientos que salen hoy, dominios y clientes que abrieron o hicieron clic en tus correos) y la siguiente idea sin hacer de `posts/ideas.md`. Abajo tus tareas agrupadas en Atrasadas, Hoy, Mañana, Esta semana, Más adelante y Sin fecha, y a la derecha los próximos 7 días.
+- **Agregar rápido**: escribe en una línea, por ejemplo "Llamar a Daniela mañana 15:00 !". Entiende hoy, mañana, pasado mañana, en 3 días, los días de la semana, 12/11, horas como 15:00, 15h o "a las 3" (de 1 a 7 se toma como de la tarde), `!` para importante y #marketing, #admin, #personal o #clientes. Si el texto nombra a un cliente (por su negocio o su nombre completo), queda asociado. Toca una tarea para editarla y el círculo para completarla.
+- **Avisos por correo** (botón arriba en la Agenda), a `sabenedettoa@benedettowebs.cl`:
+  - **Brief diario**: a las 11:00 UTC (8:00 en Chile con horario de verano, 7:00 en invierno; en el plan gratis de Vercel puede llegar hasta una hora después). Lunes a viernes o todos los días. Si no hay nada que contar, no llega. "Ver el brief de hoy" y "Enviármelo ahora" sirven para probarlo.
+  - **Recordatorios**: las tareas con fecha y hora dejan programado un correo en Resend (5, 15, 30 o 60 minutos antes). Si cambias, completas o eliminas la tarea, se reprograma o se cancela. Resend programa hasta 30 días antes: las más lejanas las programa el brief de cada mañana cuando entran en ese plazo, que también aplica el cambio si modificas la anticipación.
+  - **Alertas**: al momento, la primera vez que un cliente hace clic en un correo del panel o cuando un correo no le llega. Las envía el mismo webhook de Resend de las aperturas.
+- No necesita configuración nueva: usa las mismas `RESEND_API_KEY`, `CRON_SECRET` y `FIREBASE_SERVICE_ACCOUNT`. Las tareas se guardan en la colección `tareas` y los ajustes en `ajustes/agenda`. La tarea diaria está en `vercel.json` (`/api/brief-diario`); en Vercel → Settings → Cron Jobs ves su historial, y llamándola con `?prueba=1` responde lo que haría sin enviar nada.
+
 ## Respaldo
 
 Firestore no borra nada por su cuenta, pero si eliminas un cliente desde el panel se eliminan también sus documentos y no se pueden recuperar.

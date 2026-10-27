@@ -7,10 +7,8 @@
 // Variables de entorno en Vercel: RESEND_API_KEY (la misma del formulario de cotización).
 const { catalogo, camposDe, armar, PLANTILLAS } = require("./_plantillas");
 const { resend, enviar } = require("./_resend");
+const { usuario } = require("./_sesion");
 
-const PERMITIDOS = ["sabenedettoa@gmail.com", "sabenedettoa@benedettowebs.cl"];
-// Clave pública de la app web de Firebase (la misma de panel/firebase.js): solo sirve para validar la sesión
-const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY || "AIzaSyDnNaJWH3PMpex5B3vlCMPR96CHZRSXDqI";
 // Correos que salen solos después de enviar una cotización (días después, a las 10:00 aprox. de Chile)
 const SEGUIMIENTOS = [
   { dias: 3, plantilla: "seguimiento" },
@@ -18,20 +16,6 @@ const SEGUIMIENTOS = [
 ];
 
 const correoValido = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
-
-// Valida el token de sesión de Firebase con Google y devuelve el correo de quien lo envió
-async function usuario(req) {
-  const token = String(req.headers.authorization || "").replace(/^Bearer\s+/i, "");
-  if (!token) return null;
-  const r = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${FIREBASE_API_KEY}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ idToken: token })
-  });
-  if (!r.ok) return null;
-  const u = (await r.json()).users?.[0];
-  return u?.emailVerified && PERMITIDOS.includes(u.email) ? u.email : null;
-}
 
 async function programarSeguimientos(para, datos) {
   const fecha = new Date().toLocaleDateString("es-CL", { day: "numeric", month: "long", timeZone: "America/Santiago" });

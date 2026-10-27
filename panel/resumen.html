@@ -12,11 +12,15 @@
 <link rel="stylesheet" href="../documentos/doc.css">
 <link rel="stylesheet" href="panel.css">
 </head>
-<body>
-<main class="panel-wrap" id="app" hidden>
-  <a class="migas" href="./">← Clientes</a>
+<body class="panel">
+<div class="app" id="app" hidden>
+<nav class="menu" id="menu"></nav>
+<main class="panel-wrap">
   <header class="panel-head">
-    <h1>Resultado mensual</h1>
+    <div class="titulos">
+      <h1>Resultado mensual</h1>
+      <p class="bajada">Ventas aprobadas por mes, menos el costo de IA.</p>
+    </div>
   </header>
 
   <div class="ajustes-resumen">
@@ -40,6 +44,7 @@
   <p class="nota" id="aviso"></p>
   <p class="nota">Resultado = ventas aprobadas − costo de IA. Las ventas se cuentan en el mes en que se aprobó la cotización (se anota en la ficha de cada cliente). No equivale a pagos recibidos ni a utilidad neta.</p>
 </main>
+</div>
 <script type="module" src="resumen.js"></script>
 </body>
 </html>

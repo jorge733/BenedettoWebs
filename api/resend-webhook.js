@@ -3,6 +3,7 @@
 // Variables de entorno en Vercel: RESEND_WEBHOOK_SECRET (el "Signing secret" del webhook en Resend), FIREBASE_SERVICE_ACCOUNT.
 const crypto = require("crypto");
 const { db, FieldValue } = require("./_firestore");
+const { leerAjustes, armarAlerta, avisarme } = require("./_agenda");
 
 // Orden de avance: un "entregado" que llega tarde no pisa un "abierto"
 const NIVEL = { enviado: 0, entregado: 1, abierto: 2, clic: 3 };
@@ -13,6 +14,8 @@ const EVENTOS = {
   "email.bounced": "rebotado",
   "email.complained": "spam"
 };
+// Estados que te avisan por correo (las aperturas no: iPhone las marca solas)
+const ALERTAS = ["clic", "rebotado", "spam"];
 
 const leerCuerpo = async (req) => {
   const partes = [];
@@ -66,5 +69,21 @@ module.exports = async (req, res) => {
   const fijo = actual.estado && !(actual.estado in NIVEL);
   if (!fijo && (!(estado in NIVEL) || NIVEL[estado] > (NIVEL[actual.estado] ?? 0))) cambios.estado = estado;
   await ref.update(cambios);
+
+  // Alerta por correo la primera vez que el cliente hace clic o que el correo no llega (Agenda → Avisos por correo)
+  if (cambios.estado && ALERTAS.includes(estado)) {
+    try {
+      const base = db();
+      const [ajustes, cliente] = await Promise.all([
+        leerAjustes(base), base.collection("clientes").doc(actual.clienteId).get().then((d) => d.data())
+      ]);
+      if (ajustes.alertas && cliente) {
+        const { asunto, html } = armarAlerta(estado, actual, actual.clienteId, cliente);
+        await avisarme(asunto, html);
+      }
+    } catch (err) {
+      console.error("No se pudo enviar la alerta", err); // El estado del correo ya quedó guardado
+    }
+  }
   res.status(200).json({ ok: true });
 };

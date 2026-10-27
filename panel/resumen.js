@@ -1,5 +1,6 @@
 // Resumen: ventas aprobadas por mes menos el costo de IA, como la hoja "Resumen mensual" del Excel
 import { db, exigirSesion, collection, doc, getDoc, getDocs, setDoc, html, clp, numero } from "./firebase.js";
+import { montarMenu } from "./menu.js";
 
 const $ = (id) => document.getElementById(id);
 const MESES = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
@@ -10,6 +11,7 @@ const conSigno = (n) => `<span class="${n < 0 ? "negativo" : n > 0 ? "positivo" 
 
 await exigirSesion();
 $("app").hidden = false;
+montarMenu("resumen");
 
 const [snap, ajustes] = await Promise.all([getDocs(collection(db, "clientes")), getDoc(ajustesRef)]);
 const clientes = snap.docs.map((d) => ({ id: d.id, ...d.data() }));

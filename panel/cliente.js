@@ -6,6 +6,7 @@ import {
 } from "./firebase.js";
 import { subirPartes, bajarArchivo, borrarPartes, peso, MAXIMO } from "./archivos.js";
 import { iniciarCorreo, cancelarSeguimientos } from "./correo.js";
+import { montarMenu } from "./menu.js";
 
 const $ = (id) => document.getElementById(id);
 const form = $("formCliente");
@@ -21,6 +22,7 @@ $("tipoDoc").innerHTML = Object.entries(NOMBRES).map(([k, n]) => `<option value=
 
 await exigirSesion();
 $("app").hidden = false;
+montarMenu("clientes");
 
 if (id) {
   const snap = await getDoc(doc(db, "clientes", id));

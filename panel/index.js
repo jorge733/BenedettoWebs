@@ -4,10 +4,19 @@ import {
   collection, getDocs, query, where, ms, fechaCorta, html, clp, numero
 } from "./firebase.js";
 import { etiquetaEstado } from "./correo.js";
+import { montarMenu } from "./menu.js";
 
 const $ = (id) => document.getElementById(id);
 let clientes = [];
 let filtro = "Todos";
+
+// Iniciales del cliente sobre un color fijo según su nombre
+const COLORES = ["#6c63ff", "#0b78a6", "#138a52", "#c2410c", "#be185d", "#7c3aed", "#0f766e", "#4d5bce"];
+const avatar = (nombre = "") => {
+  const letras = nombre.trim().split(/s+/).slice(0, 2).map((p) => p[0]).join("").toUpperCase() || "?";
+  const color = COLORES[[...nombre].reduce((s, c) => s + c.charCodeAt(0), 0) % COLORES.length];
+  return `<span class="avatar" style="background:${color}" aria-hidden="true">${html(letras)}</span>`;
+};
 
 const avisoLogin = (texto, error) => {
   $("msgLogin").className = "mensaje" + (error ? " error" : "");
@@ -28,6 +37,7 @@ if (!configurado) {
     if (!usuario) return;
     const volver = new URLSearchParams(location.search).get("volver");
     if (volver?.startsWith("/")) return location.replace(volver);
+    montarMenu("clientes");
     cargar();
   });
 }
@@ -41,7 +51,6 @@ $("entrar").addEventListener("click", async () => {
   }
 });
 
-$("salir").addEventListener("click", () => signOut(auth));
 
 async function cargar() {
   $("lista").innerHTML = '<div class="cliente-card esqueleto"></div>'.repeat(3);
@@ -71,6 +80,7 @@ function pintar() {
 
   $("lista").innerHTML = visibles.map((c) => `
     <a class="cliente-card" href="cliente.html?id=${c.id}">
+      ${avatar(c.negocio || c.nombre)}
       <h3>${html(c.negocio || c.nombre || "Sin nombre")}</h3>
       <p>${html(c.negocio ? c.nombre : c.email)}</p>
       <div class="pie"><span class="estado" data-estado="${html(c.estado)}">${html(c.estado)}</span><span>${fechaCorta(c.actualizado)}</span></div>
@@ -157,12 +167,24 @@ async function resumen() {
     console.error("No se pudieron cargar los correos recientes", err);
   }
 
+  try {
+    // Tareas de la Agenda atrasadas o de hoy: un solo aviso que lleva a la Agenda
+    const pendientes = (await getDocs(query(collection(db, "tareas"), where("hecha", "==", false)))).docs.map((d) => d.data());
+    const atrasadas = pendientes.filter((t) => t.fecha && t.fecha < hoyISO()).length;
+    const deHoy = pendientes.filter((t) => t.fecha === hoyISO()).length;
+    if (atrasadas || deHoy) items.push([atrasadas ? -1 : 0.1, atrasadas ? "⏳" : "✅",
+      [deHoy && `<strong>${deHoy} ${deHoy === 1 ? "tarea" : "tareas"}</strong> para hoy`, atrasadas && `<strong>${atrasadas} atrasada${atrasadas === 1 ? "" : "s"}</strong>`]
+        .filter(Boolean).join(" y ") + " en tu agenda", null, "", "agenda.html"]);
+  } catch (err) {
+    console.error("No se pudieron cargar las tareas", err);
+  }
+
   items.sort((a, b) => a[0] - b[0]);
   $("atender").hidden = !items.length;
-  $("listaAtender").innerHTML = items.slice(0, 8).map(([, icono, texto, id, etiqueta = ""]) => `<li>
+  $("listaAtender").innerHTML = items.slice(0, 8).map(([, icono, texto, id, etiqueta = "", enlace = `cliente.html?id=${id}`]) => `<li>
     <span class="atender-icono">${icono}</span>
     <div class="doc-info">${texto}</div>
     ${etiqueta}
-    <a class="btn btn-ghost btn-sm" href="cliente.html?id=${id}">Ver</a>
+    <a class="btn btn-ghost btn-sm" href="${enlace}">Ver</a>
   </li>`).join("");
 }
