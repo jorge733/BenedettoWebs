@@ -39,6 +39,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] Cupos del mes
 - [ ] Fechas clave (Cyber Day, Navidad, temporada de verano)
 - [x] Reel: sorteo por metas de 500 y 1.000 seguidores (`reel-sorteo`)
+- [x] Reel: recordatorio del sorteo (`reel-sorteo-recordatorio`)
 
 ## 5. Proyectos propios y comunidad
 - [ ] MetroSim: reel por modo (conductor, pasajero, centro de control)

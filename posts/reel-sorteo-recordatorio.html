@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Reel: recordatorio del sorteo</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --hot: #ff4d8d;
+    --gold: #ffc94d;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .stage {
+    position: relative; width: 1080px; height: 1920px; overflow: hidden;
+    font-family: 'Outfit', sans-serif; color: var(--text); background: var(--bg);
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hot { background: linear-gradient(135deg, var(--hot), var(--gold)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* Fondo que se mueve todo el reel */
+  .glow { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; filter: blur(60px); opacity: .55; }
+  .glow.a { background: radial-gradient(circle, rgba(108, 99, 255, .7), transparent 65%); top: -400px; right: -400px; animation: drift-a 16s ease-in-out both; }
+  .glow.b { background: radial-gradient(circle, rgba(0, 212, 255, .45), transparent 65%); bottom: -450px; left: -450px; animation: drift-b 16s ease-in-out both; }
+  @keyframes drift-a { 0% { transform: translate(0, 0); } 50% { transform: translate(-260px, 520px); } 100% { transform: translate(-80px, 900px); } }
+  @keyframes drift-b { 0% { transform: translate(0, 0); } 50% { transform: translate(300px, -500px); } 100% { transform: translate(120px, -900px); } }
+  .rays {
+    position: absolute; left: 50%; top: 50%; width: 3000px; height: 3000px; margin: -1500px 0 0 -1500px; opacity: .07;
+    background: repeating-conic-gradient(from 0deg, #fff 0deg 6deg, transparent 6deg 18deg);
+    -webkit-mask: radial-gradient(circle, #000 0, transparent 55%); mask: radial-gradient(circle, #000 0, transparent 55%);
+    animation: spin 16s linear both;
+  }
+  @keyframes spin { to { transform: rotate(120deg); } }
+
+  .logo { position: absolute; top: 160px; left: 84px; height: 58px; z-index: 5; }
+  .handle { position: absolute; top: 172px; right: 84px; z-index: 5; font-size: 28px; color: var(--muted); }
+
+  /* Cada escena vive en su propia ventana de tiempo */
+  .scene {
+    position: absolute; inset: 0; padding: 300px 84px 400px;
+    display: flex; flex-direction: column; justify-content: center; opacity: 0;
+  }
+  .scene > * { opacity: 0; }
+
+  @keyframes show { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes pop { 0% { opacity: 0; transform: scale(.3) rotate(-8deg); } 60% { opacity: 1; transform: scale(1.12) rotate(2deg); } 100% { opacity: 1; transform: scale(1) rotate(0); } }
+  @keyframes slam { 0% { opacity: 0; transform: scale(2.6); filter: blur(12px); } 70% { opacity: 1; transform: scale(.94); filter: blur(0); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes up { 0% { opacity: 0; transform: translateY(80px); } 100% { opacity: 1; transform: translateY(0); } }
+  @keyframes left { 0% { opacity: 0; transform: translateX(-140%); } 70% { opacity: 1; transform: translateX(4%); } 100% { opacity: 1; transform: translateX(0); } }
+  @keyframes right { 0% { opacity: 0; transform: translateX(140%); } 70% { opacity: 1; transform: translateX(-4%); } 100% { opacity: 1; transform: translateX(0); } }
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(1.15); filter: blur(10px); } }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+  @keyframes shake { 0%, 100% { transform: rotate(0); } 20% { transform: rotate(-14deg); } 40% { transform: rotate(12deg); } 60% { transform: rotate(-8deg); } 80% { transform: rotate(6deg); } }
+  @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+  /* Destello blanco en cada corte */
+  .flash { position: absolute; inset: 0; background: #fff; opacity: 0; z-index: 20; pointer-events: none; }
+  @keyframes flash { 0% { opacity: .85; } 100% { opacity: 0; } }
+
+  /* Escena 1: gancho (0 - 3 s) */
+  .s1 { animation: show .01s 0s both, out .25s 2.85s forwards; text-align: center; align-items: center; }
+  .s1 .bell { font-size: 210px; line-height: 1; animation: pop .5s .05s both, shake .6s .55s 3; }
+  .s1 .tag {
+    margin-top: 50px; padding: 16px 36px; border-radius: 999px; background: var(--hot); color: #fff;
+    font-size: 40px; font-weight: 800; letter-spacing: 6px; animation: pop .45s .35s both;
+  }
+  .s1 h1 { margin-top: 40px; font-size: 200px; line-height: .9; font-weight: 900; letter-spacing: -7px; animation: slam .55s .6s both; }
+  .s1 h1 small { display: block; font-size: 110px; letter-spacing: -3px; }
+  .s1 .lead { margin-top: 44px; font-size: 46px; color: var(--muted); animation: up .45s 1.3s both; }
+  .s1 .lead b { color: var(--text); }
+
+  /* Escena 2: premios (3 - 7.5 s) */
+  .s2 { animation: show .01s 3s both, out .25s 7.35s forwards; }
+  .s2 .eyebrow { font-size: 36px; color: var(--secondary); animation: fade .3s 3.05s both; }
+  .s2 h2 { margin-top: 14px; font-size: 120px; line-height: .95; font-weight: 900; letter-spacing: -4px; animation: slam .5s 3.1s both; }
+  .prize {
+    position: relative; margin-top: 48px; padding: 44px 48px; border-radius: 40px; background: var(--surface);
+    border: 1px solid var(--border); box-shadow: 0 40px 100px rgba(0, 0, 0, .5), 0 0 0 2px rgba(108, 99, 255, .45);
+    display: flex; gap: 36px; align-items: center;
+  }
+  .prize.p1 { animation: left .55s 3.6s both; }
+  .prize.p2 { animation: right .55s 4.6s both; box-shadow: 0 40px 100px rgba(0, 0, 0, .5), 0 0 0 2px rgba(255, 77, 141, .6); }
+  .prize .ico { flex: none; font-size: 120px; line-height: 1; }
+  .prize .goal { font-size: 34px; color: var(--muted); }
+  .prize .goal b { color: var(--text); }
+  .prize h3 { margin-top: 8px; font-size: 68px; line-height: 1; font-weight: 800; letter-spacing: -2px; }
+  .prize .price { font-size: 110px; line-height: 1; font-weight: 900; letter-spacing: -3px; }
+  .prize .was { margin-top: 6px; font-size: 32px; color: var(--muted); }
+  .prize .was s { color: var(--text); }
+  .sticker {
+    position: absolute; top: -34px; right: -14px; padding: 12px 26px; border-radius: 16px; transform: rotate(8deg);
+    background: var(--gold); color: #1a1300; font-size: 34px; font-weight: 900;
+  }
+  .p1 .sticker { animation: pop .4s 4.1s both; }
+  .p2 .sticker { animation: pop .4s 5.1s both; background: var(--hot); color: #fff; }
+  .s2 .note { margin-top: 44px; font-size: 38px; color: var(--muted); animation: up .4s 5.8s both; }
+  .s2 .note b { color: var(--text); }
+
+  /* Escena 3: metas (7.5 - 11 s) */
+  .s3 { animation: show .01s 7.5s both, out .25s 10.85s forwards; }
+  .s3 .eyebrow { font-size: 36px; color: var(--secondary); animation: fade .3s 7.55s both; }
+  .s3 h2 { margin-top: 14px; font-size: 128px; line-height: .95; font-weight: 900; letter-spacing: -4px; animation: slam .5s 7.6s both; }
+  .track { margin: 90px 80px 0 0; position: relative; animation: fade .3s 8s both; }
+  .bar { height: 56px; border-radius: 999px; background: var(--surface); border: 1px solid var(--border); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; border-radius: 999px; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--hot)); animation: fill 2.2s 8.2s cubic-bezier(.3, .1, .3, 1) both; }
+  @keyframes fill { to { width: 100%; } }
+  .mark { position: absolute; top: 90px; transform: translateX(-50%); text-align: center; }
+  .mark.m1 { left: 50%; animation: pop .4s 9.1s both; }
+  .mark.m2 { left: 100%; animation: pop .4s 10.2s both; }
+  .mark::before { content: ''; position: absolute; top: -110px; left: 50%; width: 6px; height: 80px; margin-left: -3px; border-radius: 3px; background: var(--text); }
+  .mark b { display: block; font-size: 80px; font-weight: 900; letter-spacing: -2px; line-height: 1; }
+  .mark span { display: block; margin-top: 6px; font-size: 52px; }
+  .s3 .lead { margin-top: 300px; font-size: 54px; line-height: 1.2; font-weight: 700; animation: up .45s 9.4s both; }
+  .s3 .lead span { color: var(--muted); font-weight: 500; }
+
+  /* Escena 4: plazo (11 - 13.5 s) */
+  .s4 { animation: show .01s 11s both, out .25s 13.35s forwards; text-align: center; align-items: center; }
+  .s4 .eyebrow { font-size: 40px; color: var(--hot); font-weight: 700; animation: fade .3s 11.05s both; }
+  .cal {
+    margin-top: 40px; width: 560px; border-radius: 48px; overflow: hidden; background: var(--text); color: var(--bg);
+    box-shadow: 0 50px 120px rgba(0, 0, 0, .6); animation: pop .55s 11.15s both;
+  }
+  .cal .top { padding: 26px 0; background: linear-gradient(135deg, var(--hot), var(--primary)); color: #fff; font-size: 54px; font-weight: 900; letter-spacing: 10px; }
+  .cal .day { font-size: 300px; line-height: 1.05; font-weight: 900; letter-spacing: -10px; }
+  .cal .wd { padding-bottom: 34px; font-size: 44px; font-weight: 700; color: #5a6380; }
+  .s4 h2 { margin-top: 56px; font-size: 96px; line-height: 1; font-weight: 900; letter-spacing: -3px; animation: slam .5s 11.7s both; }
+  .s4 .lead { margin-top: 22px; font-size: 46px; color: var(--muted); animation: up .4s 12.2s both; }
+
+  /* Escena 5: llamado a la acción (13.5 - 17 s) */
+  .s5 { animation: show .01s 13.5s both; }
+  .s5 .eyebrow { font-size: 36px; color: var(--secondary); animation: fade .3s 13.55s both; }
+  .s5 .eyebrow i { font-style: normal; animation: blink .8s 13.5s 5; }
+  .s5 h1 { margin-top: 14px; font-size: 150px; line-height: .92; font-weight: 900; letter-spacing: -5px; animation: slam .5s 13.6s both; }
+  .acts { margin-top: 56px; display: flex; flex-direction: column; gap: 22px; }
+  .acts { animation: fade .01s 13.9s both; }
+  .act {
+    display: flex; align-items: center; gap: 28px; padding: 30px 36px; border-radius: 30px;
+    background: var(--surface); border: 1px solid var(--border); font-size: 48px; font-weight: 700;
+  }
+  .act .e { flex: none; width: 92px; height: 92px; border-radius: 50%; display: grid; place-items: center; font-size: 50px; background: var(--gradient); }
+  .act:nth-child(1) { animation: left .45s 14.0s both; }
+  .act:nth-child(2) { animation: left .45s 14.25s both; }
+  .act:nth-child(3) { animation: left .45s 14.5s both; }
+  .act span { display: block; font-size: 30px; font-weight: 500; color: var(--muted); }
+  .s5 .pin { margin-top: 44px; font-size: 36px; color: var(--muted); animation: up .4s 15s both; }
+  .s5 .pin b { color: var(--text); }
+  .s5 .cta {
+    margin-top: 40px; align-self: flex-start; padding: 28px 52px; border-radius: 999px; background: var(--gradient);
+    font-size: 46px; font-weight: 800; color: #fff; box-shadow: 0 20px 60px rgba(108, 99, 255, .5);
+    animation: pop .45s 15.2s both, pulse .7s 15.7s 2 ease-in-out;
+  }
+
+  /* Confeti */
+  .confetti { position: absolute; inset: 0; z-index: 10; pointer-events: none; }
+  .confetti b { position: absolute; top: -60px; width: 22px; height: 34px; border-radius: 4px; opacity: 0; }
+  @keyframes drop {
+    0% { opacity: 1; transform: translate(0, 0) rotate(0); }
+    100% { opacity: 1; transform: translate(var(--dx), 2100px) rotate(var(--r)); }
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="glow a"></div>
+  <div class="glow b"></div>
+  <div class="rays"></div>
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <section class="scene s1">
+    <p class="bell">⏰</p>
+    <p class="tag">RECORDATORIO</p>
+    <h1><span class="hot">¡EL SORTEO</span><small>sigue activo!</small></h1>
+    <p class="lead">Y todavía puedes <b>ayudar a que se cumpla</b> 🙌</p>
+  </section>
+
+  <section class="scene s2">
+    <p class="eyebrow mono">&gt; premios.list()_</p>
+    <h2>Esto es lo que <span class="grad">está en juego</span></h2>
+    <div class="prize p1">
+      <span class="ico">🎯</span>
+      <div>
+        <p class="goal">Meta <b>500</b> seguidores</p>
+        <h3>Asesoría <span class="grad">GRATIS</span> para tu próxima web</h3>
+      </div>
+      <span class="sticker">GRATIS</span>
+    </div>
+    <div class="prize p2">
+      <span class="ico">🚀</span>
+      <div>
+        <p class="goal">Meta <b>1.000</b> seguidores</p>
+        <p class="price hot">$15.000</p>
+        <p class="was">Tu página web · antes <s>desde $30.000</s></p>
+      </div>
+      <span class="sticker">-50%</span>
+    </div>
+    <p class="note">Si se cumplen las 2 metas, <b>se sortean los 2 premios</b> 🔥</p>
+  </section>
+
+  <section class="scene s3">
+    <p class="eyebrow mono">&gt; meta.progress()_</p>
+    <h2>¡Ayúdanos a <span class="grad">llegar!</span></h2>
+    <div class="track">
+      <div class="bar"><i></i></div>
+      <div class="mark m1"><b>500</b><span>🎯</span></div>
+      <div class="mark m2"><b>1.000</b><span>🚀</span></div>
+    </div>
+    <p class="lead">Cada seguidor nuevo nos acerca al premio.<br><span>Mientras más seamos, antes se sortea.</span></p>
+  </section>
+
+  <section class="scene s4">
+    <p class="eyebrow mono">⏳ EL PLAZO CIERRA EL</p>
+    <div class="cal">
+      <p class="top">NOV</p>
+      <p class="day">28</p>
+      <p class="wd">SÁBADO</p>
+    </div>
+    <h2>¡Que no se <span class="hot">te pase!</span></h2>
+    <p class="lead">Si no llegamos a la meta, ese premio no se sortea.</p>
+  </section>
+
+  <section class="scene s5">
+    <p class="eyebrow mono">&gt; ayudar.now()<i>_</i></p>
+    <h1>¿Cómo <span class="grad">ayudas?</span></h1>
+    <div class="acts">
+      <div class="act"><span class="e">➕</span><div>Sigue a @benedettowebs</div></div>
+      <div class="act"><span class="e">📤</span><div>Comparte este reel<span>con quien necesite una web</span></div></div>
+      <div class="act"><span class="e">💬</span><div>Etiqueta a un amigo<span>en los comentarios 👇</span></div></div>
+    </div>
+    <p class="pin">📌 Bases en el <b>reel del sorteo</b> de nuestro perfil</p>
+    <span class="cta">¡Vamos por la meta! 🚀</span>
+  </section>
+
+  <div class="flash" style="animation: flash .35s 3s forwards"></div>
+  <div class="flash" style="animation: flash .35s 7.5s forwards"></div>
+  <div class="flash" style="animation: flash .35s 11s forwards"></div>
+  <div class="flash" style="animation: flash .35s 13.5s forwards"></div>
+  <div class="confetti" id="confetti"></div>
+</div>
+
+<script>
+  // Confeti con semilla fija: el video sale igual cada vez que se graba
+  let seed = 7;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  const colors = ['#6c63ff', '#00d4ff', '#ff4d8d', '#ffc94d', '#e8ecf6'];
+  const box = document.getElementById('confetti');
+  const burst = (start, n) => {
+    for (let k = 0; k < n; k++) {
+      const b = document.createElement('b');
+      b.style.left = (rnd() * 1080) + 'px';
+      b.style.background = colors[k % colors.length];
+      b.style.setProperty('--dx', ((rnd() - .5) * 500) + 'px');
+      b.style.setProperty('--r', ((rnd() - .5) * 1440) + 'deg');
+      if (k % 3 === 0) b.style.borderRadius = '50%';
+      b.style.animation = `drop ${1.8 + rnd() * 1.4}s ${start + rnd() * .5}s cubic-bezier(.2, .5, .4, 1) both`;
+      box.appendChild(b);
+    }
+  };
+  burst(0.6, 70);
+  burst(13.6, 80);
+
+  // Para grabar: window.seek(segundos) congela todas las animaciones en ese instante
+  window.seek = (s) => document.getAnimations().forEach((a) => { a.pause(); a.currentTime = s * 1000; });
+  if (location.hash) seek(Number(location.hash.slice(1)));
+</script>
+</body>
+</html>
