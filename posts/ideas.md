@@ -6,6 +6,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Presentación (`presentacion`)
 - [x] Panel privado y cambios de diseño a $15.000 (`panel-privado`)
 - [x] MetroSim (`metrosim`)
+- [x] Negra Mora (`negramora`)
 
 ## 1. Portafolio
 - [x] Negra Mora (negramora.cl) (`negramora`)
@@ -21,7 +22,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Reel: portafolio rápido, las 9 webs (`reel-portafolio`)
 
 ## 2. Proceso / detrás de escena
-- [ ] "Cómo hago una web en 4 pasos" (Conversamos → Cotizo → Diseño → Publicamos)
+- [x] "Cómo hago una web en 4 pasos" (Conversamos → Cotizo → Diseño → Publicamos) (`proceso`, 7 láminas)
 - [ ] Timelapse programando
 - [ ] "Un día como dev de 16 años"
 - [ ] Del boceto a la web
