@@ -13,12 +13,11 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Inversiones Pellegrini (inversionespellegrini.cl) (`pellegrini`)
 - [x] ehda.cl (`ehda`, adelanto "próximamente")
 - [x] Service Planet (serviceplanet.cl) (`serviceplanet`)
-- [ ] Uniluva (uniluva.com)
-- [ ] Académica Michelangelo (academicamichelangelo.site)
 - [ ] Antes / después de algún cliente
 - [x] Reseña de Luciano (Pellegrini) (incluida en `pellegrini`)
+- [x] Negra Mora terminada + reseña de Daniela (`negramora-final`)
 - [ ] Reel: scroll de una web terminada en el celular
-- [x] Reel: portafolio rápido, las 9 webs (`reel-portafolio`)
+- [x] Reel: portafolio rápido, las 7 webs (`reel-portafolio`)
 
 ## 2. Proceso / detrás de escena
 - [ ] "Cómo hago una web en 4 pasos" (Conversamos → Cotizo → Diseño → Publicamos)

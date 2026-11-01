@@ -9,9 +9,7 @@ Sitio web promocional de **BenedettoWebs**, el emprendimiento de **Santiago Bene
 - [inversionespellegrini.cl](https://inversionespellegrini.cl)
 - [negramora.cl](https://negramora.cl)
 - [dosanillos.cl](https://dosanillos.cl)
-- [uniluva.com](https://uniluva.com)
 - [serviceplanet.cl](https://serviceplanet.cl)
-- [academicamichelangelo.site](https://academicamichelangelo.site)
 
 ## Estructura
 

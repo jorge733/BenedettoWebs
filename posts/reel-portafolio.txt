@@ -1,4 +1,4 @@
-💻 9 páginas web que hice yo, con 16 años y desde cero.
+💻 7 páginas web que hice yo, con 16 años y desde cero.
 
 Algunas son de clientes reales y otras son proyectos propios:
 
@@ -7,9 +7,7 @@ Algunas son de clientes reales y otras son proyectos propios:
 🌐 negramora.cl
 🌐 dosanillos.cl
 🌐 listadecompras.website
-🌐 uniluva.com
 🌐 serviceplanet.cl
-🌐 academicamichelangelo.site
 🎮 metrosimulator.vercel.app
 
 ¿Cuál te gustó más? 👇
