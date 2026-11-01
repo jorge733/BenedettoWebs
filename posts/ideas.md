@@ -20,16 +20,16 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Reel: portafolio rápido, las 7 webs (`reel-portafolio`)
 
 ## 2. Proceso / detrás de escena
-- [ ] "Cómo hago una web en 4 pasos" (Conversamos → Cotizo → Diseño → Publicamos)
+- [x] "Cómo hago una web en 4 pasos" (Conversamos → Cotizo → Diseño → Publicamos)
 - [ ] Timelapse programando
 - [ ] "Un día como dev de 16 años"
 - [ ] Del boceto a la web
 
 ## 3. Educativo
 - [x] 5 señales de que tu negocio necesita una web (`senales`)
-- [ ] ¿Qué es un dominio .cl y cuánto cuesta?
-- [ ] Errores comunes en webs de pymes
-- [ ] Web vs. Linktree vs. solo redes
+- [x] ¿Qué es un dominio .cl y cuánto cuesta?
+- [x] Errores comunes en webs de pymes
+- [x] Web vs. Linktree vs. solo redes
 - [x] Mitos sobre tener página web (`mitos`)
 
 ## 4. Ofertas
@@ -54,7 +54,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] "Cotiza en 1 minuto": paso a paso del formulario
 
 ### Educativo / tips
-- [ ] Checklist: lo que necesitas tener listo antes de pedir tu web (logo, fotos, textos, redes)
+- [x] Checklist: lo que necesitas tener listo antes de pedir tu web (logo, fotos, textos, redes) (`checklist`)
 - [ ] Por qué tu web tiene que verse bien en el celular
 - [ ] Botón de WhatsApp en tu web: por qué vende más
 - [ ] Qué es el SEO explicado fácil (cómo te encuentran en Google)
