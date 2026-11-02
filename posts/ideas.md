@@ -55,7 +55,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 
 ### Educativo / tips
 - [x] Checklist: lo que necesitas tener listo antes de pedir tu web (logo, fotos, textos, redes) (`checklist`)
-- [ ] Por qué tu web tiene que verse bien en el celular
+- [x] Por qué tu web tiene que verse bien en el celular (`celular`)
 - [ ] Botón de WhatsApp en tu web: por qué vende más
 - [ ] Qué es el SEO explicado fácil (cómo te encuentran en Google)
 - [ ] Google Business vs. página web: ¿necesito los dos?

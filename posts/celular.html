@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Por qué tu web tiene que verse bien en el celular</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --ok: #3ddc84;
+    --bad: #ff5c7a;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 36px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 14px; font-size: 72px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* Comparación de celulares */
+  .compare { margin-top: 28px; display: flex; justify-content: center; gap: 70px; }
+  .side { display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700;
+    padding: 6px 16px; border-radius: 999px;
+  }
+  .label.bad { color: var(--bad); background: rgba(255, 92, 122, .12); }
+  .label.ok { color: var(--ok); background: rgba(61, 220, 132, .12); }
+  .phone {
+    width: 180px; height: 316px; border-radius: 34px; padding: 12px;
+    background: #05070d; border: 3px solid #2a3352; position: relative;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, .45);
+  }
+  .phone::before {
+    content: ""; position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+    width: 56px; height: 12px; border-radius: 999px; background: #05070d; z-index: 2;
+  }
+  .screen { width: 100%; height: 100%; border-radius: 24px; overflow: hidden; background: #f4f6fb; }
+  .phone.ok { border-color: rgba(61, 220, 132, .6); }
+  .phone.bad { border-color: rgba(255, 92, 122, .5); }
+
+  /* Web de escritorio "encogida" */
+  .desk { transform-origin: top left; transform: scale(.35); width: 440px; padding: 64px 18px 0; color: #222; }
+  .desk .nav { display: flex; justify-content: space-between; align-items: center; font-size: 15px; font-weight: 700; }
+  .desk .nav span { display: flex; gap: 14px; font-weight: 400; font-size: 13px; color: #555; }
+  .desk .hero { margin-top: 18px; display: flex; gap: 14px; }
+  .desk .hero .txt { flex: 1; font-size: 13px; line-height: 1.4; color: #444; }
+  .desk .hero .txt b { display: block; font-size: 22px; color: #111; margin-bottom: 6px; }
+  .desk .hero .img { width: 180px; height: 120px; border-radius: 6px; background: linear-gradient(135deg, #c9cde0, #9aa1bd); }
+  .desk .cols { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .desk .cols div { height: 90px; border-radius: 6px; background: #dfe2ee; }
+  .desk .lines { margin-top: 16px; display: flex; flex-direction: column; gap: 7px; }
+  .desk .lines i { display: block; height: 8px; border-radius: 4px; background: #d3d7e6; }
+  .desk .lines i:nth-child(2n) { width: 85%; }
+  .desk .btn { margin-top: 14px; display: inline-block; font-size: 11px; padding: 4px 10px; border-radius: 4px; background: #6c63ff; color: #fff; }
+  .pinch {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    font-size: 15px; font-weight: 600; color: #fff; background: rgba(5, 7, 13, .78);
+    padding: 6px 12px; border-radius: 999px; white-space: nowrap;
+  }
+
+  /* Web adaptada */
+  .mob { padding: 36px 12px 0; color: #111; }
+  .mob .nav { display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 800; }
+  .mob .nav i { width: 20px; height: 14px; border-top: 3px solid #111; border-bottom: 3px solid #111; position: relative; }
+  .mob .nav i::after { content: ""; position: absolute; left: 0; right: 0; top: 2.5px; border-top: 3px solid #111; }
+  .mob .img { margin-top: 10px; height: 70px; border-radius: 12px; background: linear-gradient(135deg, #6c63ff, #00d4ff); }
+  .mob h3 { margin-top: 10px; font-size: 18px; line-height: 1.1; font-weight: 800; }
+  .mob p { margin-top: 6px; font-size: 12px; line-height: 1.35; color: #555; }
+  .mob .btn {
+    margin-top: 12px; display: block; text-align: center; font-size: 13px; font-weight: 700;
+    padding: 10px; border-radius: 10px; background: #25d366; color: #fff;
+  }
+  .mob .card { margin-top: 10px; height: 46px; border-radius: 10px; background: #e3e6f1; }
+
+  /* Razones */
+  .list { margin-top: 34px; display: flex; flex-direction: column; gap: 12px; }
+  .item {
+    display: flex; align-items: center; gap: 22px; padding: 14px 26px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
+  }
+  .item .ic { flex: none; font-size: 38px; line-height: 1; }
+  .item h2 { font-size: 30px; line-height: 1.1; font-weight: 700; }
+  .item p { margin-top: 4px; font-size: 22px; line-height: 1.3; color: var(--muted); }
+
+  .cta { margin-top: auto; font-size: 30px; font-weight: 600; }
+  .cta span { color: var(--muted); font-weight: 400; }
+  .mail { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; }
+
+  .foot {
+    margin-top: 30px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; @media (max-width: celular)_</p>
+  <h1>Tu web tiene que verse<br><span class="grad">bien en el celular</span></h1>
+
+  <div class="compare">
+    <div class="side">
+      <span class="label bad">✕ No adaptada</span>
+      <div class="phone bad">
+        <div class="screen">
+          <div class="desk">
+            <div class="nav">Tu Negocio <span>Inicio · Servicios · Galería · Contacto</span></div>
+            <div class="hero">
+              <div class="txt"><b>Bienvenidos a nuestra tienda</b>Llevamos años atendiendo a nuestros clientes con la mejor calidad y el mejor precio de la zona.<br><span class="btn">Contáctanos</span></div>
+              <div class="img"></div>
+            </div>
+            <div class="cols"><div></div><div></div><div></div></div>
+            <div class="lines"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <span class="pinch">🤏 ¿Hago zoom?</span>
+      </div>
+    </div>
+
+    <div class="side">
+      <span class="label ok">✓ Adaptada</span>
+      <div class="phone ok">
+        <div class="screen">
+          <div class="mob">
+            <div class="nav">Tu Negocio <i></i></div>
+            <div class="img"></div>
+            <h3>Bienvenidos a nuestra tienda</h3>
+            <p>Calidad y buen precio, cerca de ti.</p>
+            <span class="btn">💬 Escríbenos</span>
+            <div class="card"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="list">
+    <div class="item">
+      <span class="ic">📱</span>
+      <div><h2>Casi todos te visitan desde el celular</h2><p>Llegan desde Instagram, WhatsApp o Google en el teléfono.</p></div>
+    </div>
+    <div class="item">
+      <span class="ic">⏱️</span>
+      <div><h2>Si cuesta leerla, se van en segundos</h2><p>Nadie hace zoom para buscar tu precio o tu dirección.</p></div>
+    </div>
+    <div class="item">
+      <span class="ic">🔍</span>
+      <div><h2>Google también se fija</h2><p>Prioriza las webs que se ven bien en el celular.</p></div>
+    </div>
+  </div>
+
+  <p class="cta">Todas mis webs se adaptan al celular. <span>Siempre.</span></p>
+  <p class="mail grad">✉ sabenedettoa@benedettowebs.cl</p>
+
+  <div class="foot">
+    <span><b>benedettowebs.cl</b></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>
