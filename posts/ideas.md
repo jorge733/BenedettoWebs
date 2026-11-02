@@ -57,7 +57,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Checklist: lo que necesitas tener listo antes de pedir tu web (logo, fotos, textos, redes) (`checklist`)
 - [x] Por qué tu web tiene que verse bien en el celular (`celular`)
 - [x] Botón de WhatsApp en tu web: por qué vende más (`whatsapp`)
-- [ ] Qué es el SEO explicado fácil (cómo te encuentran en Google)
+- [x] Qué es el SEO explicado fácil (cómo te encuentran en Google) (`seo`)
 - [ ] Google Business vs. página web: ¿necesito los dos?
 - [ ] 3 webs que me inspiran (y qué aprender de cada una)
 - [x] Glosario en carrusel: dominio, hosting, SSL, responsive (`glosario`, 7 láminas)

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Qué es el SEO explicado fácil</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --ok: #3ddc84;
+    --bad: #ff5c7a;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 36px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 14px; font-size: 72px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .def { margin-top: 14px; font-size: 27px; line-height: 1.35; color: var(--muted); }
+  .def b { color: var(--text); }
+
+  /* Búsqueda */
+  .search {
+    margin-top: 24px; padding: 18px 22px 14px; border-radius: 26px;
+    background: #f4f6fb; color: #1b2033; box-shadow: 0 24px 50px rgba(0, 0, 0, .4);
+  }
+  .bar {
+    display: flex; align-items: center; gap: 14px; padding: 12px 20px;
+    border-radius: 999px; border: 2px solid #dde1ee; background: #fff; font-size: 24px;
+  }
+  .bar .q { flex: 1; }
+  .bar .caret { display: inline-block; width: 2px; height: 26px; background: #6c63ff; vertical-align: middle; margin-left: 2px; }
+  .res { margin-top: 12px; padding: 12px 16px; border-radius: 16px; position: relative; }
+  .res .url { font-size: 17px; color: #5b6277; }
+  .res .t { margin-top: 2px; font-size: 24px; font-weight: 700; color: #3b39c9; }
+  .res .d { margin-top: 2px; font-size: 18px; color: #5b6277; }
+  .res.me { background: rgba(108, 99, 255, .1); border: 2px solid #6c63ff; }
+  .res.me .tag {
+    position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+    font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 700;
+    color: #fff; background: var(--gradient); padding: 6px 12px; border-radius: 999px;
+  }
+  .res.ph { display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; }
+  .res.ph i { display: block; height: 12px; border-radius: 6px; background: #dfe2ee; }
+  .res.ph i:first-child { width: 35%; }
+  .res.ph i:nth-child(2) { width: 70%; height: 16px; }
+
+  /* Claves */
+  .list { margin-top: 22px; display: flex; flex-direction: column; gap: 12px; }
+  .item {
+    display: flex; align-items: center; gap: 22px; padding: 12px 26px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 22px;
+  }
+  .item .ic { flex: none; font-size: 36px; line-height: 1; }
+  .item h2 { font-size: 29px; line-height: 1.1; font-weight: 700; }
+  .item p { margin-top: 4px; font-size: 22px; line-height: 1.3; color: var(--muted); }
+
+  .cta { margin-top: auto; font-size: 30px; font-weight: 600; }
+  .cta span { color: var(--muted); font-weight: 400; }
+  .mail { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; }
+
+  .foot {
+    margin-top: 30px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; seo --explicado-facil_</p>
+  <h1>¿Qué es el SEO?<br><span class="grad">Cómo te encuentran</span></h1>
+  <p class="def"><b>SEO</b> es todo lo que hace tu web para que Google <b>te muestre a ti</b> cuando alguien busca lo que vendes.</p>
+
+  <div class="search">
+    <div class="bar">🔍 <span class="q">tortas a pedido en ñuñoa<span class="caret"></span></span></div>
+    <div class="res me">
+      <div class="url">tunegocio.cl</div>
+      <div class="t">Tortas a pedido en Ñuñoa · Tu Negocio</div>
+      <div class="d">Tortas de cumpleaños y eventos. Pide por WhatsApp.</div>
+      <span class="tag">← tú</span>
+    </div>
+    <div class="res ph"><i></i><i></i></div>
+  </div>
+
+  <div class="list">
+    <div class="item">
+      <span class="ic">🗣️</span>
+      <div><h2>Las palabras que usa tu cliente</h2><p>Qué vendes y dónde, dicho como lo buscaría alguien.</p></div>
+    </div>
+    <div class="item">
+      <span class="ic">⚡</span>
+      <div><h2>Rápida y adaptada al celular</h2><p>Google prefiere las webs que se ven bien y cargan rápido.</p></div>
+    </div>
+    <div class="item">
+      <span class="ic">📍</span>
+      <div><h2>Tus datos claros</h2><p>Rubro, comuna, horario y contacto, siempre a la vista.</p></div>
+    </div>
+  </div>
+
+  <p class="cta">Mis webs están hechas <span>para que te encuentren en Google.</span></p>
+  <p class="mail grad">✉ sabenedettoa@benedettowebs.cl</p>
+
+  <div class="foot">
+    <span><b>benedettowebs.cl</b></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>
