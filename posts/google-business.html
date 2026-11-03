@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Google Business vs. página web</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --ok: #3ddc84;
+    --bad: #ff5c7a;
+    --warn: #ffb547;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 36px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 14px; font-size: 72px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  .sub { margin-top: 14px; font-size: 32px; font-weight: 600; color: var(--muted); }
+
+  .compare { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .card { padding: 26px 26px 22px; border-radius: 26px; background: var(--surface); border: 1px solid var(--border); display: flex; flex-direction: column; }
+  .card .ic { font-size: 44px; line-height: 1; }
+  .card h2 { margin-top: 12px; font-size: 32px; line-height: 1.05; font-weight: 800; }
+  .card .role { margin-top: 6px; font-family: 'JetBrains Mono', monospace; font-size: 19px; color: var(--secondary); }
+  .card ul { margin-top: 18px; list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .card li { display: flex; gap: 12px; font-size: 23px; line-height: 1.25; }
+  .card li::before { content: "✓"; flex: none; color: var(--ok); font-weight: 800; }
+  .card li.no { color: var(--muted); }
+  .card li.no::before { content: "–"; color: var(--warn); }
+
+  .combo {
+    margin-top: 22px; padding: 22px 28px; border-radius: 24px;
+    background: linear-gradient(135deg, rgba(108, 99, 255, .22), rgba(0, 212, 255, .12));
+    border: 1px solid rgba(108, 99, 255, .5);
+  }
+  .combo h3 { font-size: 34px; font-weight: 800; }
+  .combo p { margin-top: 8px; font-size: 24px; line-height: 1.35; color: var(--muted); }
+  .combo p b { color: var(--text); }
+
+  .cta { margin-top: auto; font-size: 30px; font-weight: 600; }
+  .cta span { color: var(--muted); font-weight: 400; }
+  .mail { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; }
+
+  .foot {
+    margin-top: 30px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; perfil_google &amp;&amp; pagina_web_</p>
+  <h1>Google Business<br>vs. <span class="grad">página web</span></h1>
+  <p class="sub">¿Necesito los dos? Spoiler: sí 😉</p>
+
+  <div class="compare">
+    <div class="card">
+      <span class="ic">📍</span>
+      <h2>Perfil de Google</h2>
+      <p class="role">// te pone en el mapa</p>
+      <ul>
+        <li>Apareces en Google Maps</li>
+        <li>Dirección, horario y cómo llegar</li>
+        <li>Reseñas de tus clientes</li>
+        <li>Es gratis</li>
+        <li class="no">Poco espacio y el mismo diseño para todos</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="ic">🌐</span>
+      <h2>Página web</h2>
+      <p class="role">// convence y vende</p>
+      <ul>
+        <li>Tu marca y tu propio diseño</li>
+        <li>Productos, precios y fotos</li>
+        <li>Botón de WhatsApp y formulario</li>
+        <li>Tu dominio .cl propio</li>
+        <li>Toda la info que quieras mostrar</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="combo">
+    <h3>🤝 Juntos funcionan mejor</h3>
+    <p>Te encuentran en el mapa, entran a tu web y te escriben. <b>Pon el link de tu web en tu perfil de Google.</b></p>
+  </div>
+
+  <p class="cta">Tu web desde $30.000. <span>Cotización gratis.</span></p>
+  <p class="mail grad">✉ sabenedettoa@benedettowebs.cl</p>
+
+  <div class="foot">
+    <span><b>benedettowebs.cl</b></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>

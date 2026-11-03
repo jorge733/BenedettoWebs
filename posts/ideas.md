@@ -58,7 +58,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Por qué tu web tiene que verse bien en el celular (`celular`)
 - [x] Botón de WhatsApp en tu web: por qué vende más (`whatsapp`)
 - [x] Qué es el SEO explicado fácil (cómo te encuentran en Google) (`seo`)
-- [ ] Google Business vs. página web: ¿necesito los dos?
+- [x] Google Business vs. página web: ¿necesito los dos? (`google-business`)
 - [ ] 3 webs que me inspiran (y qué aprender de cada una)
 - [x] Glosario en carrusel: dominio, hosting, SSL, responsive (`glosario`, 7 láminas)
 
