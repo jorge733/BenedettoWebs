@@ -78,4 +78,4 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 ### Temporadas
 - [ ] Fiestas Patrias / septiembre: web para emprendimientos de temporada
 - [ ] Vuelta a clases (marzo): webs para colegios y academias
-- [ ] Fin de año: "empieza 2027 con tu negocio en internet"
+- [x] Fin de año: "empieza 2027 con tu negocio en internet" (`reel-2027`, incluye scroll de la web en el celular)
