@@ -73,7 +73,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] Mis herramientas para hacer webs (editor, Figma, etc.)
 - [ ] Por qué empecé a hacer páginas web
 - [ ] Meta alcanzada: agradecimiento al llegar a X seguidores
-- [ ] Preguntas frecuentes de clientes (precio, plazos, cambios, dominio)
+- [x] Preguntas frecuentes de clientes (precio, plazos, cambios, dominio) (`preguntas`)
 
 ### Temporadas
 - [ ] Fiestas Patrias / septiembre: web para emprendimientos de temporada
