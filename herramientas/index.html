@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8KR8XKBWZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q8KR8XKBWZ');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herramientas gratis para emprendedores en Chile | BenedettoWebs</title>
+  <meta name="description" content="Herramientas gratis para tu negocio: link de WhatsApp, generador de QR, calculadora de IVA, precio de venta y margen, validador de RUT, vista previa en Google y contador para Instagram.">
+  <link rel="canonical" href="https://www.benedettowebs.cl/herramientas">
+
+  <!-- Vista previa al compartir (WhatsApp, Facebook, Instagram, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BenedettoWebs">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://www.benedettowebs.cl/herramientas">
+  <meta property="og:title" content="Herramientas gratis para tu negocio">
+  <meta property="og:description" content="Link de WhatsApp, QR, IVA, margen, RUT y más. Gratis y sin registrarte.">
+  <meta property="og:image" content="https://www.benedettowebs.cl/og-image.jpg">
+  <meta property="og:image:secure_url" content="https://www.benedettowebs.cl/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="BenedettoWebs: foto de Santiago de espaldas trabajando en su notebook.">
+
+  <!-- Vista previa en X / Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Herramientas gratis para tu negocio">
+  <meta name="twitter:description" content="Link de WhatsApp, QR, IVA, margen, RUT y más. Gratis y sin registrarte.">
+  <meta name="twitter:image" content="https://www.benedettowebs.cl/og-image.jpg">
+  <meta name="theme-color" content="#0b0f1a">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+
+  <!-- Datos estructurados para Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://www.benedettowebs.cl/herramientas#pagina",
+    "name": "Herramientas gratis para emprendedores",
+    "url": "https://www.benedettowebs.cl/herramientas",
+    "publisher": { "@id": "https://www.benedettowebs.cl/#negocio" },
+    "hasPart": [
+      { "@type": "WebApplication", "name": "Generador de link de WhatsApp", "url": "https://www.benedettowebs.cl/herramientas#whatsapp", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": 0, "priceCurrency": "CLP" } },
+      { "@type": "WebApplication", "name": "Generador de código QR", "url": "https://www.benedettowebs.cl/herramientas#qr", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": 0, "priceCurrency": "CLP" } },
+      { "@type": "WebApplication", "name": "Calculadora de IVA Chile", "url": "https://www.benedettowebs.cl/herramientas#iva", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": 0, "priceCurrency": "CLP" } },
+      { "@type": "WebApplication", "name": "Calculadora de precio de venta y margen", "url": "https://www.benedettowebs.cl/herramientas#margen", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": 0, "priceCurrency": "CLP" } },
+      { "@type": "WebApplication", "name": "Validador de RUT", "url": "https://www.benedettowebs.cl/herramientas#rut", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": 0, "priceCurrency": "CLP" } },
+      { "@type": "WebApplication", "name": "Vista previa en Google", "url": "https://www.benedettowebs.cl/herramientas#google", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": 0, "priceCurrency": "CLP" } },
+      { "@type": "WebApplication", "name": "Contador de caracteres para Instagram", "url": "https://www.benedettowebs.cl/herramientas#instagram", "applicationCategory": "BusinessApplication", "offers": { "@type": "Offer", "price": 0, "priceCurrency": "CLP" } }
+    ]
+  }
+  </script>
+
+  <style>
+    /* Índice de herramientas */
+    [hidden] { display: none !important; }
+    .hero-text { width: 100%; min-width: 0; }
+    .tools-index { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 40%), 1fr)); gap: 12px; margin-top: 36px; width: 100%; max-width: 900px; }
+    .tools-index a {
+      display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 16px 10px; border-radius: 14px;
+      background: var(--surface); border: 1px solid var(--border); font-weight: 600; font-size: .95rem; transition: border-color .2s, transform .2s;
+    }
+    .tools-index a:hover { border-color: rgba(0,212,255,.5); transform: translateY(-3px); }
+    .tools-index span { font-size: 1.6rem; }
+
+    /* Herramienta */
+    .tool { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 34px; border-radius: 24px; background: var(--surface); border: 1px solid var(--border); }
+    .tool-head { grid-column: 1 / -1; }
+    .tool-head h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 6px; }
+    .tool-head p { color: var(--muted); }
+    .tool-form { display: grid; gap: 16px; align-content: start; }
+    .tool label { display: grid; gap: 8px; font-weight: 500; font-size: .95rem; }
+    .tool input, .tool textarea, .tool select {
+      width: 100%; padding: 13px 16px; border-radius: 12px; border: 1px solid var(--border); background: var(--bg);
+      color: var(--text); font: inherit; resize: vertical; transition: border-color .2s;
+    }
+    .tool input:focus, .tool textarea:focus, .tool select:focus { outline: none; border-color: var(--primary); }
+    .tool input[type="color"] { padding: 4px; height: 48px; cursor: pointer; }
+    .tool .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .tool .hint { color: var(--muted); font-size: .85rem; font-weight: 400; }
+    .tool-out { display: grid; gap: 14px; align-content: start; padding: 24px; border-radius: 18px; background: var(--bg); border: 1px solid var(--border); min-width: 0; }
+    .tool-out .out-label { color: var(--muted); font-size: .85rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+    .big { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -.02em; line-height: 1.2; word-break: break-word; }
+    .mono { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: .92rem; word-break: break-all; color: var(--secondary); }
+    .out-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .out-grid { display: grid; gap: 10px; }
+    .out-grid div { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .out-grid div:last-child { border-bottom: 0; padding-bottom: 0; }
+    .out-grid span { color: var(--muted); }
+    .out-grid strong { font-size: 1.1rem; text-align: right; }
+    .ok { color: #4ade80; }
+    .bad { color: #ff6b81; }
+    .warn { color: #fbbf24; }
+
+    /* Segmentado */
+    .seg { display: flex; padding: 4px; border-radius: 999px; background: var(--bg); border: 1px solid var(--border); }
+    .seg button { flex: 1; padding: 10px 12px; border-radius: 999px; border: 0; background: none; color: var(--muted); font: inherit; font-weight: 600; cursor: pointer; }
+    .seg button.active { background: var(--gradient); color: #fff; }
+
+    /* QR */
+    .qr-box { display: grid; place-items: center; padding: 18px; border-radius: 14px; background: #fff; justify-self: center; }
+    .qr-box img, .qr-box canvas { width: 200px; height: 200px; }
+    .qr-box.small img, .qr-box.small canvas { width: 140px; height: 140px; }
+
+    /* Vista previa Google */
+    .serp { padding: 18px; border-radius: 14px; background: #fff; color: #202124; font-family: Arial, sans-serif; }
+    .serp-site { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+    .serp-fav { width: 28px; height: 28px; border-radius: 50%; background: #f1f3f4; display: grid; place-items: center; font-size: 14px; }
+    .serp-site small { display: block; color: #4d5156; font-size: 12px; }
+    .serp-title { color: #1a0dab; font-size: 20px; line-height: 1.3; margin: 8px 0 4px; overflow-wrap: anywhere; }
+    .serp-desc { color: #4d5156; font-size: 14px; line-height: 1.58; overflow-wrap: anywhere; }
+    .meter { height: 6px; border-radius: 999px; background: rgba(255,255,255,.08); overflow: hidden; }
+    .meter i { display: block; height: 100%; width: 0; background: #4ade80; transition: width .2s, background .2s; }
+
+    /* Botón copiar */
+    .btn.copied { background: #25d366; color: #05210f; }
+
+    /* Llamado a la acción */
+    .tools-cta { text-align: center; max-width: 760px; margin-inline: auto; padding: 44px 32px; border-radius: 24px; background: linear-gradient(160deg, rgba(108,99,255,.18), rgba(0,212,255,.08)); border: 1px solid rgba(108,99,255,.45); }
+    .tools-cta p { color: var(--muted); font-size: 1.1rem; margin-bottom: 26px; }
+    .tool-section { padding: 36px 0; }
+    .tool-section:first-of-type { padding-top: 0; }
+
+    @media (max-width: 860px) { .tool { grid-template-columns: 1fr; padding: 24px 18px; } }
+    @media (max-width: 520px) { .tool .row { grid-template-columns: 1fr; } .tool-out { padding: 18px; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="/" class="logo"><img class="logo-mark" src="/favicon.svg" alt="" width="36" height="36"><span>Benedetto<span class="accent">Webs</span></span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#whatsapp">WhatsApp</a>
+        <a href="#qr">QR</a>
+        <a href="#iva">IVA</a>
+        <a href="#margen">Margen</a>
+        <a href="/">Páginas web</a>
+        <a href="/#contacto" class="btn btn-small">Cotizar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- PORTADA -->
+    <section class="hero" id="inicio">
+      <div class="hero-glow"></div>
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <span class="eyebrow">Herramientas gratis</span>
+          <h1>Herramientas para <span class="gradient-text">tu negocio</span></h1>
+          <p class="lead">Gratis, sin registrarte y desde el celular. Todo se calcula en tu navegador: no guardamos nada de lo que escribes.</p>
+          <nav class="tools-index" aria-label="Herramientas">
+            <a href="#whatsapp"><span aria-hidden="true">💬</span>Link de WhatsApp</a>
+            <a href="#qr"><span aria-hidden="true">🔳</span>Código QR</a>
+            <a href="#iva"><span aria-hidden="true">🧾</span>Calculadora IVA</a>
+            <a href="#margen"><span aria-hidden="true">📈</span>Precio y margen</a>
+            <a href="#rut"><span aria-hidden="true">🪪</span>Validar RUT</a>
+            <a href="#google"><span aria-hidden="true">🔎</span>Vista en Google</a>
+            <a href="#instagram"><span aria-hidden="true">📸</span>Texto Instagram</a>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+
+      <!-- 1. LINK DE WHATSAPP -->
+      <section class="tool-section" id="whatsapp">
+        <div class="tool">
+          <div class="tool-head">
+            <span class="eyebrow">Herramienta 1</span>
+            <h2>Generador de link de WhatsApp</h2>
+            <p>Crea un link que abre un chat contigo con un mensaje ya escrito. Ponlo en tu bio de Instagram, tu web o tus anuncios.</p>
+          </div>
+          <div class="tool-form">
+            <label>Tu número de WhatsApp
+              <input id="waNum" type="tel" inputmode="tel" placeholder="9 1234 5678" autocomplete="off">
+              <span class="hint">Si es de Chile, basta con los 9 dígitos. Le agregamos el +56.</span>
+            </label>
+            <label>Mensaje que llega escrito (opcional)
+              <textarea id="waMsg" rows="3" placeholder="Hola, vi tu página y quiero cotizar"></textarea>
+            </label>
+          </div>
+          <div class="tool-out" aria-live="polite">
+            <span class="out-label">Tu link</span>
+            <p class="mono" id="waLink">Escribe tu número para generar el link.</p>
+            <div class="out-actions">
+              <button class="btn btn-small" type="button" data-copy="waLink" disabled>Copiar link</button>
+              <a class="btn btn-small btn-ghost" id="waTest" href="#" target="_blank" rel="noopener" hidden>Probar</a>
+            </div>
+            <div class="qr-box small" id="waQr" hidden></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. CÓDIGO QR -->
+      <section class="tool-section" id="qr">
+        <div class="tool">
+          <div class="tool-head">
+            <span class="eyebrow">Herramienta 2</span>
+            <h2>Generador de código QR</h2>
+            <p>Convierte cualquier link o texto en un QR para tu local, tus tarjetas, tu menú o tus volantes.</p>
+          </div>
+          <div class="tool-form">
+            <label>Link o texto
+              <input id="qrText" type="text" placeholder="https://www.tunegocio.cl" autocomplete="off">
+            </label>
+            <div class="row">
+              <label>Color del QR
+                <input id="qrColor" type="color" value="#0b0f1a">
+              </label>
+              <label>Tamaño de descarga
+                <select id="qrSize">
+                  <option value="512">Mediano (512 px)</option>
+                  <option value="1024" selected>Grande (1024 px)</option>
+                  <option value="2048">Para imprimir (2048 px)</option>
+                </select>
+              </label>
+            </div>
+            <span class="hint">Usa un color oscuro para que todos los celulares lo lean bien.</span>
+          </div>
+          <div class="tool-out">
+            <span class="out-label">Vista previa</span>
+            <div class="qr-box" id="qrBox"></div>
+            <div class="out-actions" style="justify-content:center">
+              <button class="btn btn-small" type="button" id="qrDownload" disabled>Descargar PNG</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. IVA -->
+      <section class="tool-section" id="iva">
+        <div class="tool">
+          <div class="tool-head">
+            <span class="eyebrow">Herramienta 3</span>
+            <h2>Calculadora de IVA (19%)</h2>
+            <p>Agrega o saca el IVA a un monto en segundos.</p>
+          </div>
+          <div class="tool-form">
+            <div class="seg" role="group" aria-label="Tipo de cálculo">
+              <button type="button" class="active" data-iva="agregar">Agregar IVA</button>
+              <button type="button" data-iva="sacar">Sacar IVA</button>
+            </div>
+            <label><span id="ivaLabel">Monto neto (sin IVA)</span>
+              <input id="ivaMonto" type="text" inputmode="numeric" placeholder="$10.000" autocomplete="off">
+            </label>
+          </div>
+          <div class="tool-out" aria-live="polite">
+            <div class="out-grid">
+              <div><span>Neto</span><strong id="ivaNeto">$0</strong></div>
+              <div><span>IVA (19%)</span><strong id="ivaIva">$0</strong></div>
+              <div><span>Total con IVA</span><strong id="ivaTotal">$0</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. PRECIO Y MARGEN -->
+      <section class="tool-section" id="margen">
+        <div class="tool">
+          <div class="tool-head">
+            <span class="eyebrow">Herramienta 4</span>
+            <h2>Calculadora de precio de venta</h2>
+            <p>Pon lo que te cuesta tu producto y cuánto quieres ganar. Te decimos a cuánto venderlo.</p>
+          </div>
+          <div class="tool-form">
+            <label>Costo del producto
+              <input id="mgCosto" type="text" inputmode="numeric" placeholder="$5.000" autocomplete="off">
+              <span class="hint">Lo que te cuesta a ti: materiales, compra, envío.</span>
+            </label>
+            <label>Margen de ganancia: <strong id="mgPctLabel">40%</strong>
+              <input id="mgPct" type="range" min="5" max="90" step="1" value="40">
+              <span class="hint">Qué parte del precio final es ganancia para ti.</span>
+            </label>
+            <label>Comisión de pago (opcional)
+              <select id="mgCom">
+                <option value="0">Sin comisión (efectivo o transferencia)</option>
+                <option value="2.95">Tarjeta (~2,95%)</option>
+                <option value="3.49">Link de pago (~3,49%)</option>
+              </select>
+            </label>
+          </div>
+          <div class="tool-out" aria-live="polite">
+            <span class="out-label">Precio de venta sugerido</span>
+            <p class="big" id="mgPrecio">$0</p>
+            <div class="out-grid">
+              <div><span>Con IVA incluido</span><strong id="mgPrecioIva">$0</strong></div>
+              <div><span>Ganancia por venta</span><strong id="mgGanancia">$0</strong></div>
+              <div><span>Comisión de pago</span><strong id="mgComision">$0</strong></div>
+            </div>
+            <span class="hint" id="mgNota">El precio sin IVA es lo que te queda a ti. Si emites boleta, cobra el precio con IVA.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. RUT -->
+      <section class="tool-section" id="rut">
+        <div class="tool">
+          <div class="tool-head">
+            <span class="eyebrow">Herramienta 5</span>
+            <h2>Validador de RUT</h2>
+            <p>Revisa si un RUT es válido y déjalo con el formato correcto, con puntos y guion.</p>
+          </div>
+          <div class="tool-form">
+            <label>RUT
+              <input id="rutIn" type="text" placeholder="12345678-5" autocomplete="off" spellcheck="false">
+              <span class="hint">Con o sin puntos y guion. Si el dígito verificador está mal, te decimos cuál es el correcto.</span>
+            </label>
+          </div>
+          <div class="tool-out" aria-live="polite">
+            <span class="out-label">Resultado</span>
+            <p class="big" id="rutFmt">—</p>
+            <p id="rutEstado" class="hint">Escribe un RUT para revisarlo.</p>
+            <div class="out-actions">
+              <button class="btn btn-small" type="button" data-copy="rutFmt" disabled>Copiar RUT</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. VISTA PREVIA EN GOOGLE -->
+      <section class="tool-section" id="google">
+        <div class="tool">
+          <div class="tool-head">
+            <span class="eyebrow">Herramienta 6</span>
+            <h2>Vista previa en Google</h2>
+            <p>Mira cómo se vería tu página en los resultados de Google y si el título y la descripción tienen el largo justo.</p>
+          </div>
+          <div class="tool-form">
+            <label>Dirección de tu web
+              <input id="gUrl" type="text" placeholder="www.tunegocio.cl" autocomplete="off">
+            </label>
+            <label>Título <span class="hint" id="gTitleCount">0 / 60</span>
+              <input id="gTitle" type="text" placeholder="Pastelería en Ñuñoa | Tortas a pedido" autocomplete="off">
+              <div class="meter"><i id="gTitleBar"></i></div>
+            </label>
+            <label>Descripción <span class="hint" id="gDescCount">0 / 155</span>
+              <textarea id="gDesc" rows="3" placeholder="Tortas y pasteles hechos a mano en Ñuñoa. Pide la tuya por WhatsApp con 48 horas de anticipación."></textarea>
+              <div class="meter"><i id="gDescBar"></i></div>
+            </label>
+          </div>
+          <div class="tool-out">
+            <span class="out-label">Así se vería</span>
+            <div class="serp">
+              <div class="serp-site">
+                <div class="serp-fav" aria-hidden="true">🌐</div>
+                <div><span id="gSiteName">Tu negocio</span><small id="gSiteUrl">https://www.tunegocio.cl</small></div>
+              </div>
+              <div class="serp-title" id="gPrevTitle">Pastelería en Ñuñoa | Tortas a pedido</div>
+              <div class="serp-desc" id="gPrevDesc">Tortas y pasteles hechos a mano en Ñuñoa. Pide la tuya por WhatsApp con 48 horas de anticipación.</div>
+            </div>
+            <span class="hint" id="gTip">Ideal: título de 30 a 60 caracteres y descripción de 70 a 155.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. INSTAGRAM -->
+      <section class="tool-section" id="instagram">
+        <div class="tool">
+          <div class="tool-head">
+            <span class="eyebrow">Herramienta 7</span>
+            <h2>Contador para Instagram</h2>
+            <p>Revisa que tu bio o tu publicación no se pase del límite de Instagram, y cuántos hashtags llevas.</p>
+          </div>
+          <div class="tool-form">
+            <div class="seg" role="group" aria-label="Tipo de texto">
+              <button type="button" class="active" data-ig="150">Bio</button>
+              <button type="button" data-ig="2200">Publicación</button>
+            </div>
+            <label>Tu texto
+              <textarea id="igText" rows="6" placeholder="Pastelería artesanal en Ñuñoa 🎂&#10;Pedidos por WhatsApp 👇"></textarea>
+            </label>
+          </div>
+          <div class="tool-out" aria-live="polite">
+            <div class="out-grid">
+              <div><span>Caracteres</span><strong id="igChars">0 / 150</strong></div>
+              <div><span>Te quedan</span><strong id="igLeft">150</strong></div>
+              <div><span>Hashtags</span><strong id="igTags">0 / 30</strong></div>
+              <div><span>Líneas</span><strong id="igLines">0</strong></div>
+            </div>
+            <div class="meter"><i id="igBar"></i></div>
+            <span class="hint" id="igTip">Antes del "más", Instagram muestra unos 125 caracteres: pon lo importante al principio.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- CIERRE -->
+      <section class="section" id="contacto">
+        <div class="tools-cta">
+          <h2>¿Y si tu negocio tuviera <span class="gradient-text">su propia web</span>?</h2>
+          <p>Te hago una página moderna, rápida y con botón de WhatsApp, desde $30.000 en un pago único.</p>
+          <div class="hero-actions">
+            <a href="/#contacto" class="btn">Cotizar mi web</a>
+            <a href="/#portafolio" class="btn btn-ghost">Ver trabajos</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="/" class="logo"><img class="logo-mark" src="/favicon.svg" alt="" width="36" height="36"><span>Benedetto<span class="accent">Webs</span></span></a>
+      <p>© <span id="year"></span> BenedettoWebs · Santiago Benedetto. Diseño de páginas web en Chile, hecho con pasión por la tecnología.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script>
+    // ===== Utilidades =====
+    const $ = (id) => document.getElementById(id);
+    const clp = (n) => "$" + Math.round(n).toLocaleString("es-CL");
+    const soloNumero = (s) => Number(String(s).replace(/[^\d]/g, "")) || 0;
+    const debounce = (fn, ms = 200) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+    const evento = (nombre) => { try { gtag("event", "herramienta_uso", { herramienta: nombre }); } catch (e) {} };
+    const usadas = new Set();
+    const usar = (nombre) => { if (!usadas.has(nombre)) { usadas.add(nombre); evento(nombre); } };
+
+    // Montos con formato $10.000 mientras se escribe
+    document.querySelectorAll('input[inputmode="numeric"]').forEach((el) => {
+      el.addEventListener("input", () => {
+        const n = soloNumero(el.value);
+        el.value = n ? clp(n) : "";
+      });
+    });
+
+    // Botones de copiar
+    document.querySelectorAll("[data-copy]").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const texto = $(btn.dataset.copy).textContent;
+        try { await navigator.clipboard.writeText(texto); }
+        catch (e) {
+          const ta = document.createElement("textarea"); ta.value = texto; document.body.appendChild(ta);
+          ta.select(); document.execCommand("copy"); ta.remove();
+        }
+        const original = btn.textContent;
+        btn.textContent = "¡Copiado!"; btn.classList.add("copied");
+        setTimeout(() => { btn.textContent = original; btn.classList.remove("copied"); }, 1600);
+      });
+    });
+
+    // Dibuja un QR dentro de un elemento
+    const dibujarQr = (el, texto, color = "#0b0f1a", size = 400) => {
+      el.innerHTML = "";
+      if (typeof QRCode === "undefined") { el.textContent = "No se pudo cargar el generador de QR."; return null; }
+      return new QRCode(el, { text: texto, width: size, height: size, colorDark: color, colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M });
+    };
+
+    // ===== 1. Link de WhatsApp =====
+    const waActualizar = () => {
+      let num = $("waNum").value.replace(/[^\d]/g, "");
+      if (num.length === 9 && num.startsWith("9")) num = "56" + num;
+      if (num.length === 8) num = "569" + num;
+      const msg = $("waMsg").value.trim();
+      const btn = document.querySelector('[data-copy="waLink"]');
+      if (num.length < 10) {
+        $("waLink").textContent = "Escribe tu número para generar el link.";
+        btn.disabled = true; $("waTest").hidden = true; $("waQr").hidden = true;
+        return;
+      }
+      const link = "https://wa.me/" + num + (msg ? "?text=" + encodeURIComponent(msg) : "");
+      $("waLink").textContent = link;
+      $("waTest").href = link;
+      btn.disabled = false; $("waTest").hidden = false; $("waQr").hidden = false;
+      dibujarQr($("waQr"), link, "#0b0f1a", 280);
+      usar("whatsapp");
+    };
+    $("waNum").addEventListener("input", debounce(waActualizar));
+    $("waMsg").addEventListener("input", debounce(waActualizar));
+
+    // ===== 2. Código QR =====
+    const qrActualizar = () => {
+      const texto = $("qrText").value.trim();
+      $("qrDownload").disabled = !texto;
+      if (!texto) { $("qrBox").innerHTML = '<span style="color:#9aa4bf;padding:70px 20px">Escribe un link o texto</span>'; return; }
+      dibujarQr($("qrBox"), texto, $("qrColor").value, 400);
+      usar("qr");
+    };
+    $("qrText").addEventListener("input", debounce(qrActualizar));
+    $("qrColor").addEventListener("input", debounce(qrActualizar));
+    $("qrDownload").addEventListener("click", () => {
+      const texto = $("qrText").value.trim();
+      if (!texto) return;
+      const size = Number($("qrSize").value);
+      const tmp = document.createElement("div");
+      dibujarQr(tmp, texto, $("qrColor").value, size);
+      const canvas = tmp.querySelector("canvas");
+      // Margen blanco alrededor para que se lea bien al imprimir
+      const borde = Math.round(size * 0.08);
+      const final = document.createElement("canvas");
+      final.width = final.height = size + borde * 2;
+      const ctx = final.getContext("2d");
+      ctx.fillStyle = "#ffffff"; ctx.fillRect(0, 0, final.width, final.height);
+      ctx.drawImage(canvas, borde, borde);
+      const a = document.createElement("a");
+      a.href = final.toDataURL("image/png");
+      a.download = "codigo-qr-benedettowebs.png";
+      a.click();
+      evento("qr_descarga");
+    });
+    qrActualizar();
+
+    // ===== 3. IVA =====
+    let ivaModo = "agregar";
+    const ivaActualizar = () => {
+      const monto = soloNumero($("ivaMonto").value);
+      let neto, total;
+      if (ivaModo === "agregar") { neto = monto; total = Math.round(monto * 1.19); }
+      else { total = monto; neto = Math.round(monto / 1.19); }
+      $("ivaNeto").textContent = clp(neto);
+      $("ivaIva").textContent = clp(total - neto);
+      $("ivaTotal").textContent = clp(total);
+      if (monto) usar("iva");
+    };
+    document.querySelectorAll("[data-iva]").forEach((b) => b.addEventListener("click", () => {
+      document.querySelectorAll("[data-iva]").forEach((x) => x.classList.toggle("active", x === b));
+      ivaModo = b.dataset.iva;
+      $("ivaLabel").textContent = ivaModo === "agregar" ? "Monto neto (sin IVA)" : "Monto total (con IVA)";
+      ivaActualizar();
+    }));
+    $("ivaMonto").addEventListener("input", ivaActualizar);
+
+    // ===== 4. Precio y margen =====
+    const mgActualizar = () => {
+      const costo = soloNumero($("mgCosto").value);
+      const pct = Number($("mgPct").value) / 100;
+      const com = Number($("mgCom").value) / 100;
+      $("mgPctLabel").textContent = Math.round(pct * 100) + "%";
+      // Precio neto tal que: precio - comisión - costo = margen * precio
+      const precio = costo ? costo / (1 - pct - com) : 0;
+      const comision = precio * com;
+      const precioRedondo = Math.ceil(precio / 10) * 10;
+      $("mgPrecio").textContent = clp(precioRedondo);
+      $("mgPrecioIva").textContent = clp(Math.ceil(precioRedondo * 1.19 / 10) * 10);
+      $("mgGanancia").textContent = clp(precioRedondo - costo - comision);
+      $("mgComision").textContent = clp(comision);
+      if (costo) usar("margen");
+    };
+    ["mgCosto", "mgPct", "mgCom"].forEach((id) => $(id).addEventListener("input", mgActualizar));
+    mgActualizar();
+
+    // ===== 5. RUT =====
+    const rutDv = (cuerpo) => {
+      let suma = 0, mult = 2;
+      for (let i = cuerpo.length - 1; i >= 0; i--) { suma += Number(cuerpo[i]) * mult; mult = mult === 7 ? 2 : mult + 1; }
+      const r = 11 - (suma % 11);
+      return r === 11 ? "0" : r === 10 ? "K" : String(r);
+    };
+    const rutActualizar = () => {
+      const limpio = $("rutIn").value.toUpperCase().replace(/[^\dK]/g, "");
+      const btn = document.querySelector('[data-copy="rutFmt"]');
+      const estado = $("rutEstado");
+      if (limpio.length < 2) { $("rutFmt").textContent = "—"; estado.textContent = "Escribe un RUT para revisarlo."; estado.className = "hint"; btn.disabled = true; return; }
+      // El último carácter es siempre el dígito verificador
+      const cuerpo = limpio.slice(0, -1), dv = limpio.slice(-1);
+      if (!/^\d+$/.test(cuerpo) || cuerpo.length < 6) { $("rutFmt").textContent = "—"; estado.textContent = "Faltan números."; estado.className = "hint warn"; btn.disabled = true; return; }
+      const correcto = rutDv(cuerpo);
+      const fmt = Number(cuerpo).toLocaleString("es-CL") + "-" + correcto;
+      $("rutFmt").textContent = fmt;
+      btn.disabled = false;
+      if (dv === correcto) { estado.textContent = "✓ RUT válido."; estado.className = "ok"; }
+      else { estado.textContent = "✗ RUT no válido: el dígito verificador debería ser " + correcto + ", no " + dv + "."; estado.className = "bad"; }
+      usar("rut");
+    };
+    $("rutIn").addEventListener("input", rutActualizar);
+
+    // ===== 6. Vista previa en Google =====
+    const barra = (el, largo, min, max) => {
+      el.style.width = Math.min(100, (largo / max) * 100) + "%";
+      el.style.background = largo === 0 ? "transparent" : largo > max ? "#ff6b81" : largo < min ? "#fbbf24" : "#4ade80";
+    };
+    const cortar = (t, max) => t.length > max ? t.slice(0, max - 1).trimEnd() + "…" : t;
+    const gActualizar = () => {
+      const url = $("gUrl").value.trim().replace(/^https?:\/\//, "").replace(/\/$/, "");
+      const titulo = $("gTitle").value.trim();
+      const desc = $("gDesc").value.trim();
+      const dominio = url.split("/")[0] || "www.tunegocio.cl";
+      $("gSiteUrl").textContent = "https://" + (url || "www.tunegocio.cl").replace(/\//g, " › ");
+      const nombre = dominio.replace(/^www\./, "").split(".")[0];
+      $("gSiteName").textContent = nombre ? nombre.charAt(0).toUpperCase() + nombre.slice(1) : "Tu negocio";
+      $("gPrevTitle").textContent = titulo ? cortar(titulo, 62) : $("gTitle").placeholder;
+      $("gPrevDesc").textContent = desc ? cortar(desc, 158) : $("gDesc").placeholder;
+      $("gTitleCount").textContent = titulo.length + " / 60";
+      $("gDescCount").textContent = desc.length + " / 155";
+      barra($("gTitleBar"), titulo.length, 30, 60);
+      barra($("gDescBar"), desc.length, 70, 155);
+      const avisos = [];
+      if (titulo.length > 60) avisos.push("El título es largo: Google lo va a cortar.");
+      else if (titulo && titulo.length < 30) avisos.push("El título es corto: agrega tu rubro y comuna.");
+      if (desc.length > 155) avisos.push("La descripción es larga: Google la va a cortar.");
+      else if (desc && desc.length < 70) avisos.push("La descripción es corta: cuenta qué ofreces y cómo contactarte.");
+      const t = $("gTip");
+      if (!titulo && !desc) { t.textContent = "Ideal: título de 30 a 60 caracteres y descripción de 70 a 155."; t.className = "hint"; }
+      else if (avisos.length) { t.textContent = avisos.join(" "); t.className = "hint warn"; }
+      else { t.textContent = "✓ Largos perfectos."; t.className = "ok"; }
+      if (titulo || desc) usar("google");
+    };
+    ["gUrl", "gTitle", "gDesc"].forEach((id) => $(id).addEventListener("input", gActualizar));
+
+    // ===== 7. Instagram =====
+    let igMax = 150;
+    const igActualizar = () => {
+      const texto = $("igText").value;
+      const largo = [...texto].length;
+      const tags = (texto.match(/#[\p{L}\p{N}_]+/gu) || []).length;
+      const lineas = texto ? texto.split("\n").length : 0;
+      const quedan = igMax - largo;
+      $("igChars").textContent = largo + " / " + igMax;
+      $("igLeft").textContent = quedan;
+      $("igLeft").className = quedan < 0 ? "bad" : quedan < igMax * 0.1 ? "warn" : "";
+      $("igTags").textContent = tags + " / 30";
+      $("igTags").className = tags > 30 ? "bad" : "";
+      $("igLines").textContent = lineas;
+      const bar = $("igBar");
+      bar.style.width = Math.min(100, (largo / igMax) * 100) + "%";
+      bar.style.background = quedan < 0 ? "#ff6b81" : quedan < igMax * 0.1 ? "#fbbf24" : "#4ade80";
+      const tip = $("igTip");
+      if (quedan < 0) { tip.textContent = "Te pasaste por " + (-quedan) + " caracteres. Instagram no te dejará guardarlo."; tip.className = "bad"; }
+      else if (tags > 30) { tip.textContent = "Instagram permite máximo 30 hashtags."; tip.className = "bad"; }
+      else if (igMax === 150) { tip.textContent = "En la bio, di qué haces, dónde y cómo contactarte. Pon tu link de WhatsApp en el enlace."; tip.className = "hint"; }
+      else { tip.textContent = "Antes del \"más\", Instagram muestra unos 125 caracteres: pon lo importante al principio."; tip.className = "hint"; }
+      if (largo) usar("instagram");
+    };
+    document.querySelectorAll("[data-ig]").forEach((b) => b.addEventListener("click", () => {
+      document.querySelectorAll("[data-ig]").forEach((x) => x.classList.toggle("active", x === b));
+      igMax = Number(b.dataset.ig);
+      igActualizar();
+    }));
+    $("igText").addEventListener("input", igActualizar);
+    igActualizar();
+
+    // ===== Menú en celular =====
+    const nav = $("nav"), navToggle = $("navToggle"), navLinks = $("navLinks");
+    const onScroll = () => nav.classList.toggle("scrolled", window.scrollY > 20);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    navToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      navToggle.classList.toggle("open", open);
+      navToggle.setAttribute("aria-expanded", open);
+    });
+    navLinks.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+      navLinks.classList.remove("open"); navToggle.classList.remove("open"); navToggle.setAttribute("aria-expanded", "false");
+    }));
+
+    $("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
