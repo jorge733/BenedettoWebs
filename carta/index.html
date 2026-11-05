@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Carta digital</title>
+  <meta name="description" content="Carta digital del local: platos, precios, horario y contacto.">
+  <meta name="theme-color" content="#2A1D15">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/carta/carta.css">
+  <script src="/carta/carta.js" defer></script>
+</head>
+<body class="cargando">
+  <!--
+    Esta es la PLANTILLA que usan todas las cartas.
+    No hace falta editarla para agregar un cliente:
+    los datos de cada local están en /carta/clientes/<nombre-del-local>/datos.json
+  -->
+  <div id="app" aria-live="polite">
+    <div class="cargador" aria-label="Cargando carta"><span></span><span></span><span></span></div>
+  </div>
+  <noscript>
+    <p class="aviso-sin-js">Para ver la carta, activa JavaScript en tu navegador.</p>
+  </noscript>
+
+  <dialog id="detalle" class="detalle" aria-labelledby="detalle-nombre">
+    <form method="dialog" class="detalle-cerrar-form">
+      <button class="detalle-cerrar" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </form>
+    <div id="detalle-contenido"></div>
+  </dialog>
+</body>
+</html>

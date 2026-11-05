@@ -1,6 +1,22 @@
 {
   "crons": [
-    { "path": "/api/recordatorios-dominio", "schedule": "0 13 * * *" },
-    { "path": "/api/brief-diario", "schedule": "0 11 * * *" }
+    {
+      "path": "/api/recordatorios-dominio",
+      "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/brief-diario",
+      "schedule": "0 11 * * *"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/carta/:local([a-z0-9-]+)",
+      "destination": "/carta/index.html"
+    },
+    {
+      "source": "/carta/:local([a-z0-9-]+)/",
+      "destination": "/carta/index.html"
+    }
   ]
 }

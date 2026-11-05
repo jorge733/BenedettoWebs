@@ -1,8 +1,16 @@
 {
   "name": "benedettowebs",
   "private": true,
-  "description": "Dependencias de las funciones de Vercel (carpeta api/)",
+  "description": "Sitio BenedettoWebs: funciones de Vercel (api/) y cartas digitales (carta/)",
+  "scripts": {
+    "carta": "node scripts/servidor-local.js",
+    "revisar": "node scripts/revisar-cartas.js",
+    "qr": "node scripts/generar-qr.js"
+  },
   "dependencies": {
     "firebase-admin": "14.5.0"
+  },
+  "devDependencies": {
+    "qrcode": "1.5.4"
   }
 }

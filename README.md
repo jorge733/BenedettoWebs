@@ -38,3 +38,9 @@ Configuración (una sola vez):
 ## Sitio publicado
 
 https://www.benedettowebs.cl (Vercel, se actualiza con cada push a `main`).
+
+## Cartas digitales con QR
+
+Servicio de cartas para restaurantes y cafés en `/carta/nombre-del-local` (demo: [/carta/cafe-almendra](https://www.benedettowebs.cl/carta/cafe-almendra)). Instrucciones completas en [`carta/README.md`](carta/README.md).
+
+Comandos: `npm run carta` (ver en el computador), `npm run revisar` (revisar datos) y `npm run qr` (generar QR).

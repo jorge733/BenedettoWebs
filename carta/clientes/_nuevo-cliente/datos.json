@@ -1,0 +1,63 @@
+{
+  "nombre": "Nombre del Local",
+  "descripcion": "Una frase corta que describa el local.",
+  "logo": "img/logo.svg",
+  "colores": {
+    "principal": "#1F2A44",
+    "acento": "#C2410C",
+    "fondo": "#F4F1EC",
+    "texto": "#1C1917"
+  },
+  "tipografia": "Playfair Display",
+  "direccion": "Calle 123, Comuna, Ciudad",
+  "mapa": "",
+  "whatsapp": "+56912345678",
+  "mensajeWhatsapp": "",
+  "instagram": "usuario_del_local",
+  "horario": {
+    "lunes": "09:00 - 19:00",
+    "martes": "09:00 - 19:00",
+    "miercoles": "09:00 - 19:00",
+    "jueves": "09:00 - 19:00",
+    "viernes": "09:00 - 19:00",
+    "sabado": "10:00 - 14:00",
+    "domingo": "cerrado"
+  },
+  "nota": "Precios en pesos chilenos, IVA incluido.",
+  "demo": false,
+  "categorias": [
+    {
+      "nombre": "Primera categoría",
+      "descripcion": "",
+      "productos": [
+        {
+          "nombre": "Producto con foto",
+          "descripcion": "Descripción corta del producto.",
+          "precio": 4500,
+          "foto": "img/logo.svg",
+          "etiquetas": ["vegetariano"],
+          "destacado": true
+        },
+        {
+          "nombre": "Producto sin foto",
+          "descripcion": "Si no hay foto, simplemente no pongas la línea \"foto\".",
+          "precio": 3900
+        },
+        {
+          "nombre": "Producto con tamaños",
+          "descripcion": "Usa \"variantes\" en vez de \"precio\".",
+          "variantes": [
+            { "nombre": "Chico", "precio": 2500 },
+            { "nombre": "Grande", "precio": 3200 }
+          ]
+        },
+        {
+          "nombre": "Producto agotado",
+          "descripcion": "Se ve en gris con la marca Agotado.",
+          "precio": 5000,
+          "agotado": true
+        }
+      ]
+    }
+  ]
+}

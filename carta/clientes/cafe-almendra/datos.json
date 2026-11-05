@@ -1,0 +1,203 @@
+{
+  "nombre": "Café Almendra",
+  "descripcion": "Café de especialidad y pastelería casera, horneada cada mañana.",
+  "logo": "img/logo.svg",
+  "colores": {
+    "principal": "#3B2A20",
+    "acento": "#B8652F",
+    "fondo": "#F6EFE5",
+    "texto": "#2A1D15"
+  },
+  "tipografia": "Fraunces",
+  "direccion": "Av. Italia 1450, Providencia, Santiago",
+  "mapa": "https://www.google.com/maps/search/?api=1&query=Av.+Italia+1450,+Providencia,+Santiago",
+  "whatsapp": "+56932698141",
+  "mensajeWhatsapp": "Hola, vi la carta de demostración de Café Almendra y quiero una carta digital para mi local.",
+  "instagram": "benedettowebs",
+  "horario": {
+    "lunes": "08:00 - 20:00",
+    "martes": "08:00 - 20:00",
+    "miercoles": "08:00 - 20:00",
+    "jueves": "08:00 - 20:00",
+    "viernes": "08:00 - 21:00",
+    "sabado": "09:00 - 21:00",
+    "domingo": "10:00 - 18:00"
+  },
+  "nota": "Precios en pesos chilenos, IVA incluido. Leche vegetal (avena o almendra) sin costo extra. Consulta por alergias a nuestro equipo.",
+  "demo": true,
+  "categorias": [
+    {
+      "nombre": "Cafés",
+      "descripcion": "Granos de origen Colombia y Perú, tostados en Santiago.",
+      "productos": [
+        {
+          "nombre": "Espresso",
+          "descripcion": "Corto e intenso, con crema dorada.",
+          "precio": 2200,
+          "etiquetas": ["vegano", "sin gluten"]
+        },
+        {
+          "nombre": "Americano",
+          "descripcion": "Espresso alargado con agua caliente.",
+          "precio": 2600,
+          "etiquetas": ["vegano", "sin gluten"]
+        },
+        {
+          "nombre": "Cappuccino",
+          "descripcion": "Espresso, leche vaporizada y una capa generosa de espuma.",
+          "precio": 3400,
+          "foto": "img/cappuccino.svg",
+          "etiquetas": ["vegetariano", "sin gluten"]
+        },
+        {
+          "nombre": "Latte de la casa",
+          "descripcion": "Espresso doble, leche de almendras y un toque de miel de ulmo.",
+          "precio": 3900,
+          "foto": "img/latte-almendra.svg",
+          "etiquetas": ["vegetariano", "sin lactosa"],
+          "destacado": true
+        },
+        {
+          "nombre": "Mocha",
+          "descripcion": "Espresso, chocolate semiamargo y leche cremosa.",
+          "variantes": [
+            { "nombre": "Mediano", "precio": 3800 },
+            { "nombre": "Grande", "precio": 4300 }
+          ],
+          "etiquetas": ["vegetariano"]
+        }
+      ]
+    },
+    {
+      "nombre": "Otras bebidas",
+      "descripcion": "Para los que prefieren algo distinto al café.",
+      "productos": [
+        {
+          "nombre": "Chocolate caliente",
+          "descripcion": "Chocolate 60% cacao derretido en leche, con crema batida.",
+          "precio": 3600,
+          "foto": "img/chocolate.svg",
+          "etiquetas": ["vegetariano", "sin gluten"]
+        },
+        {
+          "nombre": "Té en hebras",
+          "descripcion": "Negro, verde o rooibos. Pregunta por el blend del mes.",
+          "precio": 2500,
+          "etiquetas": ["vegano", "sin gluten"]
+        },
+        {
+          "nombre": "Cold brew",
+          "descripcion": "Café infusionado en frío por 18 horas, servido con hielo.",
+          "precio": 3800,
+          "etiquetas": ["vegano", "sin gluten"]
+        },
+        {
+          "nombre": "Jugo natural del día",
+          "descripcion": "Fruta de temporada, sin azúcar añadida.",
+          "precio": 3500,
+          "etiquetas": ["vegano", "sin gluten"]
+        },
+        {
+          "nombre": "Limonada menta jengibre",
+          "descripcion": "Limón exprimido, menta fresca y jengibre.",
+          "precio": 3400,
+          "etiquetas": ["vegano", "sin gluten"]
+        }
+      ]
+    },
+    {
+      "nombre": "Desayunos y brunch",
+      "descripcion": "Servimos desayunos todo el día.",
+      "productos": [
+        {
+          "nombre": "Tostada de palta",
+          "descripcion": "Pan de masa madre, palta, tomate cherry, semillas y aceite de oliva.",
+          "precio": 5900,
+          "foto": "img/tostada-palta.svg",
+          "etiquetas": ["vegano"],
+          "destacado": true
+        },
+        {
+          "nombre": "Huevos revueltos",
+          "descripcion": "Tres huevos de campo, ciboulette y pan de masa madre tostado.",
+          "precio": 5500,
+          "etiquetas": ["vegetariano"]
+        },
+        {
+          "nombre": "Bowl de yogurt",
+          "descripcion": "Yogurt natural, granola casera, plátano y berries.",
+          "precio": 4900,
+          "foto": "img/yogurt.svg",
+          "etiquetas": ["vegetariano"]
+        },
+        {
+          "nombre": "Desayuno Almendra",
+          "descripcion": "Café a elección, jugo natural y tostada con palta o huevos.",
+          "precio": 8900,
+          "etiquetas": ["vegetariano"]
+        }
+      ]
+    },
+    {
+      "nombre": "Sándwiches",
+      "descripcion": "En pan ciabatta o croissant, acompañados de hojas verdes.",
+      "productos": [
+        {
+          "nombre": "Croissant jamón queso",
+          "descripcion": "Croissant de mantequilla, jamón artesanal y queso mantecoso fundido.",
+          "precio": 5200
+        },
+        {
+          "nombre": "Ave palta",
+          "descripcion": "Pollo desmenuzado, palta y mayonesa casera en pan ciabatta.",
+          "precio": 7400
+        },
+        {
+          "nombre": "Caprese",
+          "descripcion": "Tomate, mozzarella fresca, albahaca y pesto en pan ciabatta.",
+          "precio": 6900,
+          "etiquetas": ["vegetariano"]
+        }
+      ]
+    },
+    {
+      "nombre": "Pastelería",
+      "descripcion": "Hecha en casa, en pequeñas tandas.",
+      "productos": [
+        {
+          "nombre": "Croissant de almendras",
+          "descripcion": "Relleno de crema de almendras y cubierto con almendras laminadas.",
+          "precio": 3200,
+          "foto": "img/croissant.svg",
+          "etiquetas": ["vegetariano"]
+        },
+        {
+          "nombre": "Cheesecake de maracuyá",
+          "descripcion": "Base de galleta, crema de queso suave y salsa de maracuyá.",
+          "precio": 4200,
+          "foto": "img/cheesecake.svg",
+          "etiquetas": ["vegetariano"]
+        },
+        {
+          "nombre": "Kuchen de manzana",
+          "descripcion": "Receta sureña, con manzana, canela y masa de mantequilla.",
+          "precio": 3500,
+          "etiquetas": ["vegetariano"],
+          "agotado": true
+        },
+        {
+          "nombre": "Brownie de chocolate",
+          "descripcion": "Húmedo, con nueces y hecho con harina de almendras.",
+          "precio": 2900,
+          "etiquetas": ["vegetariano", "sin gluten"]
+        },
+        {
+          "nombre": "Alfajor de manjar",
+          "descripcion": "Dos tapitas de maicena rellenas con manjar y coco rallado.",
+          "precio": 1900,
+          "etiquetas": ["vegetariano"]
+        }
+      ]
+    }
+  ]
+}
