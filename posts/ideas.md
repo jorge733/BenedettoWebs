@@ -36,7 +36,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Qué incluye tu web desde $30.000 (`incluye`)
 - [ ] Recordatorio: cambios de diseño a $15.000
 - [ ] Cupos del mes
-- [ ] Fechas clave (Cyber Day, Navidad, temporada de verano)
+- [x] Fechas clave (Cyber Day, Navidad, temporada de verano) (`fechas-clave`)
 - [x] Reel: sorteo por metas de 500 y 1.000 seguidores (`reel-sorteo`)
 
 ## 5. Proyectos propios y comunidad
