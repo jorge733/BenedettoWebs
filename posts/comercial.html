@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Comercial BenedettoWebs</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --ok: #3ddc84;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #000; }
+  .stage {
+    position: relative; width: 1080px; height: 1920px; overflow: hidden;
+    font-family: 'Outfit', sans-serif; color: var(--text); background: var(--bg);
+  }
+  .blob { position: absolute; border-radius: 50%; filter: blur(40px); pointer-events: none; }
+  .blob.a { width: 1100px; height: 900px; background: radial-gradient(closest-side, rgba(108, 99, 255, .42), transparent); }
+  .blob.b { width: 1000px; height: 900px; background: radial-gradient(closest-side, rgba(0, 212, 255, .24), transparent); }
+  .grid {
+    position: absolute; inset: 0; opacity: .5;
+    background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 90px 90px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+  .progress { position: absolute; left: 0; top: 0; height: 8px; background: var(--gradient); z-index: 5; }
+
+  .scene {
+    position: absolute; inset: 0; padding: 230px 84px 400px;
+    display: flex; flex-direction: column; visibility: hidden;
+  }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .logo { height: 60px; align-self: flex-start; }
+  .eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 34px; color: var(--secondary); }
+  h1, h2 { font-weight: 800; letter-spacing: -3px; line-height: 1.02; }
+
+  /* 1 · Gancho */
+  .search {
+    margin-top: 70px; display: flex; align-items: center; gap: 24px; padding: 30px 36px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+    box-shadow: 0 30px 80px rgba(0,0,0,.45); font-size: 46px;
+  }
+  .search svg { flex: none; }
+  .search .caret { display: inline-block; width: 4px; height: 52px; background: var(--secondary); vertical-align: middle; margin-left: 4px; }
+  .result {
+    margin-top: 40px; padding: 36px 40px; border-radius: 28px; border: 1px dashed rgba(255,255,255,.18);
+    font-size: 36px; color: var(--muted); line-height: 1.4;
+  }
+  .result b { display: block; color: #ff6b81; font-family: 'JetBrains Mono', monospace; font-size: 40px; margin-bottom: 8px; }
+  .hook h1 { margin-top: auto; font-size: 118px; }
+
+  /* 2 · Revelación */
+  .reveal { align-items: flex-start; justify-content: center; }
+  .reveal .eyebrow { font-size: 40px; }
+  .reveal h1 { margin-top: 26px; font-size: 150px; }
+  .reveal .biglogo { margin-top: 90px; width: 912px; }
+  .reveal .lead { margin-top: 50px; font-size: 46px; color: var(--muted); line-height: 1.32; }
+  .reveal .lead strong { color: var(--text); }
+
+  /* 3 · Portafolio */
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .count { font-size: 36px; color: var(--muted); }
+  .count b { color: var(--text); }
+  .work h2 { margin-top: 80px; font-size: 112px; }
+  .work .domain { margin-top: 30px; font-size: 54px; font-weight: 700; color: var(--muted); min-height: 66px; }
+  .work .tag {
+    display: inline-block; margin-left: 18px; vertical-align: middle; font-size: 26px; font-weight: 700;
+    padding: 8px 20px; border-radius: 999px; color: #fff; background: var(--gradient);
+  }
+  .work .tag.own { color: var(--secondary); background: rgba(0, 212, 255, .12); }
+  .browser {
+    margin-top: auto; position: relative; border-radius: 30px; overflow: hidden; background: var(--surface);
+    border: 1px solid var(--border); box-shadow: 0 40px 100px rgba(0,0,0,.55), 0 0 0 1px rgba(108,99,255,.3);
+  }
+  .bar { display: flex; align-items: center; gap: 12px; padding: 20px 24px; }
+  .dot { width: 18px; height: 18px; border-radius: 50%; background: #2a3354; }
+  .url { margin-left: 14px; flex: 1; padding: 10px 22px; border-radius: 999px; background: #0f1528; font-size: 26px; color: var(--muted); }
+  .url .lock { color: var(--ok); margin-right: 10px; }
+  .shots { position: relative; aspect-ratio: 8 / 5; overflow: hidden; }
+  .shots img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+  /* 4 · Incluye */
+  .feat h2 { margin-top: 70px; font-size: 104px; }
+  .list { margin-top: 64px; display: flex; flex-direction: column; gap: 22px; }
+  .item {
+    display: flex; align-items: center; gap: 28px; padding: 26px 32px; border-radius: 26px;
+    background: var(--surface); border: 1px solid var(--border); font-size: 44px; font-weight: 600;
+  }
+  .check {
+    flex: none; width: 64px; height: 64px; border-radius: 18px; background: var(--gradient);
+    display: grid; place-items: center;
+  }
+  .item small { display: block; font-size: 28px; font-weight: 400; color: var(--muted); margin-top: 4px; }
+
+  /* 5 · Reseña */
+  .review { justify-content: center; }
+  .stars { display: flex; gap: 18px; }
+  .stars svg { width: 104px; height: 104px; }
+  .review blockquote { margin-top: 60px; font-size: 64px; line-height: 1.22; font-weight: 600; letter-spacing: -1px; }
+  .review cite { margin-top: 50px; display: flex; align-items: center; gap: 24px; font-style: normal; }
+  .review .avatar {
+    width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, #e3a49c, #efd9d2);
+    display: grid; place-items: center; font-size: 42px; font-weight: 800; color: #5a3a35;
+  }
+  .review cite b { display: block; font-size: 40px; }
+  .review cite span { font-family: 'JetBrains Mono', monospace; font-size: 28px; color: var(--muted); }
+
+  /* 6 · Precio */
+  .price { justify-content: center; }
+  .price .eyebrow { font-size: 40px; }
+  .price .from { margin-top: 30px; font-size: 64px; color: var(--muted); font-weight: 600; }
+  .price .amount { font-size: 210px; font-weight: 800; letter-spacing: -6px; line-height: 1; margin-top: 6px; }
+  .chips { margin-top: 70px; display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 18px; padding: 18px 32px; border-radius: 999px;
+    font-size: 40px; font-weight: 600; background: rgba(61, 220, 132, .1); border: 1px solid rgba(61, 220, 132, .35); color: #9dffc6;
+  }
+  .chip::before { content: ''; width: 16px; height: 16px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 14px var(--ok); }
+
+  /* 7 · Cierre */
+  .cta .eyebrow { margin-top: 110px; }
+  .cta h1 { margin-top: 26px; font-size: 132px; }
+  .cta .btn {
+    margin-top: auto; align-self: flex-start; padding: 32px 56px; border-radius: 999px; background: var(--gradient);
+    font-size: 50px; font-weight: 700; color: #fff; box-shadow: 0 20px 60px rgba(108, 99, 255, .45);
+  }
+  .cta .web { margin-top: 50px; font-size: 64px; font-weight: 800; letter-spacing: -1px; }
+  .cta .handles { margin-top: 18px; font-size: 32px; color: var(--muted); }
+  .cta .handles b { color: var(--text); }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="blob a" id="blobA"></div>
+  <div class="blob b" id="blobB"></div>
+  <div class="grid"></div>
+  <div class="progress" id="progress"></div>
+
+  <!-- 1 · Gancho -->
+  <section class="scene hook" data-start="0" data-end="4">
+    <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs" data-in="0" data-fx="fade">
+    <div class="search" data-in="0.1" data-fx="up">
+      <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#9aa4bf" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <span><span id="typed"></span><span class="caret" id="caret"></span></span>
+    </div>
+    <div class="result" data-in="1.75" data-fx="up">
+      <b>0 resultados</b>
+      No encontramos ninguna web de tu negocio.
+    </div>
+    <h1 data-in="2.2" data-fx="up">¿Te buscan…<br>y <span class="grad">no te encuentran?</span></h1>
+  </section>
+
+  <!-- 2 · Revelación -->
+  <section class="scene reveal" data-start="4" data-end="8">
+    <p class="eyebrow" data-in="0" data-fx="up">&gt; eso tiene solución_</p>
+    <img class="biglogo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs" data-in="0.5" data-fx="scale">
+    <p class="lead" data-in="1.3" data-fx="up">Páginas web <strong>a medida</strong> para tu negocio,<br>hechas en Chile por <strong>Santiago, 16 años</strong>.</p>
+  </section>
+
+  <!-- 3 · Portafolio -->
+  <section class="scene work" data-start="8" data-end="14">
+    <div class="top" data-in="0" data-fx="fade">
+      <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+      <span class="count mono"><b id="wnum">01</b> / 08</span>
+    </div>
+    <h2 data-in="0" data-fx="up">Webs <span class="grad">reales</span>,<br>en línea hoy.</h2>
+    <p class="domain mono" data-in="0.2" data-fx="up"><span id="wdomain"></span><span class="tag" id="wtag"></span></p>
+    <div class="browser" data-in="0.15" data-fx="rise">
+      <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="url mono"><span class="lock">●</span><span id="wurl"></span></span></div>
+      <div class="shots" id="shots"></div>
+    </div>
+  </section>
+
+  <!-- 4 · Incluye -->
+  <section class="scene feat" data-start="14" data-end="20">
+    <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs" data-in="0" data-fx="fade">
+    <h2 data-in="0" data-fx="up">Todo lo que<br>tu web <span class="grad">necesita</span></h2>
+    <div class="list" id="list"></div>
+  </section>
+
+  <!-- 5 · Reseña -->
+  <section class="scene review" data-start="20" data-end="24">
+    <div class="stars" id="stars"></div>
+    <blockquote data-in="0.8" data-fx="up">“Acogió <span class="grad">exactamente</span> lo que quería y necesitaba. Desde el primer momento me sentí muy cómoda.”</blockquote>
+    <cite data-in="1.4" data-fx="up">
+      <span class="avatar">M</span>
+      <span><b>Macarena Contreras</b><span>Es de Tela · esdetela.cl</span></span>
+    </cite>
+  </section>
+
+  <!-- 6 · Precio -->
+  <section class="scene price" data-start="24" data-end="28">
+    <p class="eyebrow" data-in="0" data-fx="up">&gt; precio_</p>
+    <p class="from" data-in="0.1" data-fx="up">Tu web desde</p>
+    <p class="amount grad" id="amount" data-in="0.2" data-fx="scale">$0</p>
+    <div class="chips">
+      <span class="chip" data-in="1.3" data-fx="left">Pago único</span>
+      <span class="chip" data-in="1.55" data-fx="left">Sin mensualidades</span>
+      <span class="chip" data-in="1.8" data-fx="left">Cotización gratis</span>
+    </div>
+  </section>
+
+  <!-- 7 · Cierre -->
+  <section class="scene cta" data-start="28" data-end="32.5">
+    <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs" data-in="0" data-fx="fade">
+    <p class="eyebrow" data-in="0.1" data-fx="up">&gt; tu_negocio.cl_</p>
+    <h1 data-in="0.25" data-fx="up">Tu negocio<br>merece una<br><span class="grad">página web.</span></h1>
+    <span class="btn" data-in="1" data-fx="scale">Cotiza gratis ›</span>
+    <p class="web" data-in="1.3" data-fx="up">benedettowebs.cl</p>
+    <p class="handles mono" data-in="1.5" data-fx="up"><b>@benedettowebs</b> · DM abierto</p>
+  </section>
+</div>
+
+<script>
+  const DURATION = 32.5;
+  const SITES = [
+    ['esdetela.cl', 'esdetela', 'Cliente'],
+    ['ehda.cl', 'ehda', 'Cliente'],
+    ['inversionespellegrini.cl', 'inversionespellegrini', 'Cliente'],
+    ['negramora.cl', 'negramora', 'Cliente'],
+    ['dosanillos.cl', 'dosanillos', 'Cliente'],
+    ['listadecompras.website', 'listadecompras', 'Proyecto propio'],
+    ['serviceplanet.cl', 'serviceplanet', 'Proyecto propio'],
+    ['metrosimulator.vercel.app', 'metrosimulator', 'Proyecto propio'],
+  ];
+  const FEATURES = [
+    ['Diseño a medida', 'Con los colores y el estilo de tu marca'],
+    ['Perfecta en el celular', 'Y en tablets y computadores'],
+    ['Rápida y lista para Google', 'Para que te encuentren'],
+    ['Botón de WhatsApp', 'Tus clientes te escriben con un clic'],
+    ['Dominio y publicación', 'La dejo en línea y funcionando'],
+  ];
+  const STAR = '<svg viewBox="0 0 24 24"><path fill="#ffc94d" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z"/></svg>';
+  const CHECK = '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+  document.getElementById('shots').innerHTML = SITES.map(s => `<img src="../img/portafolio/${s[1]}.jpg" alt="">`).join('');
+  document.getElementById('list').innerHTML = FEATURES.map((f, i) =>
+    `<div class="item" data-in="${0.55 + i * 0.4}" data-fx="left"><span class="check">${CHECK}</span><span>${f[0]}<small>${f[1]}</small></span></div>`).join('');
+  document.getElementById('stars').innerHTML = STAR.repeat(5);
+
+  const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+  const outCubic = x => 1 - Math.pow(1 - x, 3);
+  const outBack = x => { const c = 1.7; return 1 + (c + 1) * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); };
+  const scenes = [...document.querySelectorAll('.scene')];
+  const shots = [...document.querySelectorAll('#shots img')];
+  const stars = [...document.querySelectorAll('#stars svg')];
+
+  function fx(el, p, kind) {
+    const e = outCubic(p);
+    let tr = '';
+    if (kind === 'up') tr = `translateY(${(1 - e) * 70}px)`;
+    else if (kind === 'rise') tr = `translateY(${(1 - e) * 260}px) scale(${0.94 + 0.06 * e})`;
+    else if (kind === 'left') tr = `translateX(${(1 - e) * -120}px)`;
+    else if (kind === 'scale') tr = `scale(${0.6 + 0.4 * outBack(p)})`;
+    el.style.opacity = e;
+    el.style.transform = tr;
+    if (kind === 'scale') el.style.transformOrigin = 'left center';
+  }
+
+  function render(t) {
+    // Fondo vivo
+    document.getElementById('blobA').style.transform = `translate(${300 + Math.sin(t * .35) * 160}px, ${-300 + Math.cos(t * .27) * 140}px)`;
+    document.getElementById('blobB').style.transform = `translate(${-420 + Math.cos(t * .3) * 160}px, ${1250 + Math.sin(t * .22) * 160}px)`;
+    document.getElementById('progress').style.width = (clamp(t / DURATION) * 100) + '%';
+
+    for (const s of scenes) {
+      const a = +s.dataset.start, b = +s.dataset.end, lt = t - a;
+      const on = t >= a && t < b;
+      s.style.visibility = on ? 'visible' : 'hidden';
+      if (!on) continue;
+      // salida rápida en los últimos 0,25 s (menos la escena final)
+      const out = b >= DURATION ? 1 : clamp((b - t) / 0.25);
+      s.style.opacity = out;
+      s.style.transform = `translateY(${(1 - out) * -40}px)`;
+      s.querySelectorAll('[data-in]').forEach(el => fx(el, clamp((lt - +el.dataset.in) / 0.5), el.dataset.fx));
+    }
+
+    // 1 · escritura en el buscador
+    const q = 'tu negocio';
+    const n = Math.floor(clamp((t - 0.45) / 1.1) * q.length);
+    document.getElementById('typed').textContent = q.slice(0, n);
+    document.getElementById('caret').style.opacity = (Math.floor(t * 2.5) % 2 === 0 || (t > 0.45 && t < 1.6)) ? 1 : 0;
+
+    // 3 · carrusel del portafolio (0,7 s por web)
+    if (t >= 8 && t < 14) {
+      const lt = t - 8.15, per = 0.72;
+      const idx = clamp(Math.floor(lt / per), 0, SITES.length - 1);
+      const local = lt - idx * per;
+      shots.forEach((img, i) => {
+        if (i === idx) { const p = outCubic(clamp(local / 0.22)); img.style.opacity = 1; img.style.transform = `translateX(${(1 - p) * 100}%)`; img.style.zIndex = 2; }
+        else if (i === idx - 1) { img.style.opacity = 1; img.style.transform = 'none'; img.style.zIndex = 1; }
+        else img.style.opacity = 0;
+      });
+      const [dom, , tag] = SITES[idx];
+      const typed = dom.slice(0, Math.ceil(clamp(local / 0.3) * dom.length));
+      document.getElementById('wurl').textContent = typed;
+      document.getElementById('wdomain').textContent = dom;
+      const tg = document.getElementById('wtag');
+      tg.textContent = tag; tg.className = 'tag' + (tag === 'Cliente' ? '' : ' own');
+      tg.style.display = dom.length > 20 ? 'none' : 'inline-block';
+      document.getElementById('wnum').textContent = String(idx + 1).padStart(2, '0');
+    }
+
+    // 5 · estrellas
+    stars.forEach((s, i) => {
+      const p = clamp((t - 20.1 - i * 0.12) / 0.35);
+      s.style.opacity = p;
+      s.style.transform = `scale(${0.3 + 0.7 * outBack(p)}) rotate(${(1 - p) * -40}deg)`;
+    });
+
+    // 6 · contador de precio
+    if (t >= 24 && t < 28) {
+      const p = outCubic(clamp((t - 24.25) / 1.1));
+      const v = Math.round(p * 30) * 1000;
+      document.getElementById('amount').textContent = '$' + v.toLocaleString('es-CL');
+    }
+  }
+
+  window.render = render;
+  window.DURATION = DURATION;
+
+  // Vista previa: se reproduce sola al abrir el archivo (agrega #captura para controlarlo desde el script)
+  if (location.hash !== '#captura') {
+    const t0 = performance.now();
+    (function loop() { render(((performance.now() - t0) / 1000) % DURATION); requestAnimationFrame(loop); })();
+  } else {
+    render(0);
+  }
+</script>
+</body>
+</html>
