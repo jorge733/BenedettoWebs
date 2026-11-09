@@ -118,15 +118,59 @@
 
   <main>
     <!-- HERO -->
-    <section class="hero" id="inicio">
+    <section class="hero hero-intro" id="inicio">
       <div class="hero-glow"></div>
+      <div class="hero-lines" aria-hidden="true"></div>
       <div class="container hero-inner">
-        <div class="hero-text reveal">
-          <h1>Tu negocio merece una <span class="gradient-text">página web</span> que venda.</h1>
-          <p class="lead">Diseño y desarrollo sitios web modernos, rápidos y adaptados a celulares para negocios de todo Chile. Un <strong>pago único desde $30.000</strong>, sin mensualidades escondidas.</p>
-          <div class="hero-actions">
-            <a href="#contacto" class="btn">Quiero mi página</a>
+        <div class="hero-text">
+          <span class="hero-chip hero-in" style="--d:0"><span class="hero-dot"></span>Páginas web para negocios de todo Chile</span>
+          <h1 class="hero-in" style="--d:1"><span class="hero-word-line">Tu <span class="hero-word"><span id="heroWord">negocio</span><i class="hero-caret"></i></span></span> merece una <span class="gradient-text">página web</span> que venda.</h1>
+          <p class="lead hero-in" style="--d:2">Tus clientes ya te están buscando en internet. Yo hago que te encuentren, con un sitio moderno, rápido y adaptado a celulares. <strong>Pago único desde $30.000</strong>, sin mensualidades escondidas.</p>
+          <div class="hero-actions hero-in" style="--d:3">
+            <a href="#contacto" class="btn">Quiero mi página →</a>
             <a href="#portafolio" class="btn btn-ghost">Ver trabajos</a>
+          </div>
+          <a class="hero-proof hero-in" style="--d:4" href="#portafolio"><span>Ya en línea:</span> negramora.cl · dosanillos.cl · ehda.cl · inversionespellegrini.cl</a>
+        </div>
+
+        <!-- Demostración animada: un sitio de ejemplo que se construye solo (ver script.js) -->
+        <div class="hero-stage hero-in" style="--d:3" aria-hidden="true">
+          <div class="mock skeleton">
+            <div class="mock-bar">
+              <i></i><i></i><i></i>
+              <div class="mock-url"><span id="mockUrl">tunegocio.cl</span><b></b></div>
+            </div>
+            <div class="mock-page">
+              <div class="mock-nav">
+                <strong class="mk" style="--i:0" data-m="marca">Tu Negocio</strong>
+                <span class="mock-links"><u class="mk" style="--i:0"></u><u class="mk" style="--i:0"></u><u class="mk" style="--i:0"></u></span>
+              </div>
+              <div class="mock-banner mk" style="--i:1">
+                <h3 class="mk" style="--i:2" data-m="titulo">Tus clientes te buscan</h3>
+                <p class="mk" style="--i:3" data-m="bajada">Todo lo que ofreces, en un solo lugar.</p>
+                <span class="mock-cta mk" style="--i:4" data-m="cta">Cotizar</span>
+              </div>
+              <div class="mock-cards">
+                <div class="mock-card mk" style="--i:5"><span data-m="icono">✨</span><b data-m="c1">Servicios</b></div>
+                <div class="mock-card mk" style="--i:6"><span data-m="icono">✨</span><b data-m="c2">Galería</b></div>
+                <div class="mock-card mk" style="--i:7"><span data-m="icono">✨</span><b data-m="c3">Contacto</b></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mock mock-phone skeleton">
+            <div class="mock-notch"></div>
+            <strong class="mk" style="--i:2" data-m="marca">Tu Negocio</strong>
+            <div class="mock-banner mk" style="--i:3">
+              <h3 class="mk" style="--i:4" data-m="titulo">Tus clientes te buscan</h3>
+              <span class="mock-cta mk" style="--i:5" data-m="cta">Cotizar</span>
+            </div>
+            <div class="mock-card mk" style="--i:6"><span data-m="icono">✨</span><b data-m="c1">Servicios</b></div>
+          </div>
+
+          <div class="mock-toast" id="mockToast">
+            <span class="mock-toast-icon">💬</span>
+            <span><b>Nuevo mensaje</b><small data-m="mensaje">Hola, ¿me puedes cotizar?</small></span>
           </div>
         </div>
       </div>

@@ -145,4 +145,76 @@ const observer = new IntersectionObserver(
 );
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
+// ===== Intro de la portada: sitios de ejemplo que se construyen solos =====
+// Los rubros, marcas y mensajes son ficticios: solo ilustran lo que puede tener cada negocio.
+const RUBROS = [
+  { palabra: "negocio", url: "tunegocio.cl", marca: "Tu Negocio", titulo: "Tus clientes te buscan", bajada: "Todo lo que ofreces, en un solo lugar.", cta: "Cotizar", c1: "Servicios", c2: "Galería", c3: "Contacto", icono: "✨", mensaje: "Hola, ¿me puedes cotizar?", color1: "#6c63ff", color2: "#00d4ff" },
+  { palabra: "pastelería", url: "tupasteleria.cl", marca: "Dulce Antojo", titulo: "Tortas para celebrar", bajada: "Hechas a mano y a tu pedido.", cta: "Encargar torta", c1: "Tortas", c2: "Cupcakes", c3: "Eventos", icono: "🎂", mensaje: "¿Hacen tortas para 20 personas?", color1: "#ff5c93", color2: "#ffb36b" },
+  { palabra: "taller", url: "tutaller.cl", marca: "Taller Ruta Sur", titulo: "Tu auto en buenas manos", bajada: "Mantención y diagnóstico sin vueltas.", cta: "Agendar revisión", c1: "Mantención", c2: "Frenos", c3: "Diagnóstico", icono: "🔧", mensaje: "¿Tienen hora para el viernes?", color1: "#f2600c", color2: "#f9b233" },
+  { palabra: "consulta", url: "tuconsulta.cl", marca: "Centro Aire", titulo: "Un espacio para ti", bajada: "Atención presencial y online.", cta: "Reservar hora", c1: "Terapia", c2: "Talleres", c3: "Online", icono: "🌿", mensaje: "Quisiera reservar una hora", color1: "#0f9d8a", color2: "#6ee7a8" },
+  { palabra: "restaurante", url: "turestaurante.cl", marca: "La Mesa Larga", titulo: "Cocina casera de verdad", bajada: "Almuerzos todos los días.", cta: "Ver la carta", c1: "Almuerzos", c2: "Carta", c3: "Delivery", icono: "🍲", mensaje: "¿Tienen mesa para 6 hoy?", color1: "#dc3545", color2: "#f59e0b" },
+  { palabra: "tienda", url: "tutienda.cl", marca: "Tienda Norte", titulo: "Lo que buscas, a un clic", bajada: "Envíos a todo Chile.", cta: "Comprar ahora", c1: "Novedades", c2: "Ofertas", c3: "Envíos", icono: "🛍️", mensaje: "¿Hacen envíos a Temuco?", color1: "#7c4dff", color2: "#ec4899" }
+];
+
+(() => {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const hero = document.getElementById("inicio");
+  const palabra = document.getElementById("heroWord");
+  const url = document.getElementById("mockUrl");
+  const toast = document.getElementById("mockToast");
+  const maquetas = hero.querySelectorAll(".mock");
+
+  const pausa = (ms) => new Promise((r) => setTimeout(r, ms));
+  const borrar = async (el, ms) => {
+    while (el.textContent) {
+      el.textContent = el.textContent.slice(0, -1);
+      await pausa(ms);
+    }
+  };
+  const escribir = async (el, texto, ms) => {
+    for (let i = 1; i <= texto.length; i++) {
+      el.textContent = texto.slice(0, i);
+      await pausa(ms);
+    }
+  };
+  const cambiarPalabra = async (texto) => {
+    if (palabra.textContent === texto) return;
+    await borrar(palabra, 40);
+    await pausa(120);
+    await escribir(palabra, texto, 75);
+  };
+  const pintar = (r) => {
+    hero.querySelectorAll("[data-m]").forEach((el) => (el.textContent = r[el.dataset.m]));
+    maquetas.forEach((m) => {
+      m.style.setProperty("--c1", r.color1);
+      m.style.setProperty("--c2", r.color2);
+    });
+  };
+
+  // No gastar batería si la portada no está a la vista
+  let visible = true;
+  new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(hero);
+
+  const ciclo = async () => {
+    for (let i = 0; ; i = (i + 1) % RUBROS.length) {
+      while (!visible || document.hidden) await pausa(400);
+      const rubro = RUBROS[i];
+
+      toast.classList.remove("show");
+      maquetas.forEach((m) => m.classList.add("skeleton"));
+      await borrar(url, 18);
+      pintar(rubro);
+      await Promise.all([cambiarPalabra(rubro.palabra), escribir(url, rubro.url, 55)]);
+      await pausa(250);
+
+      maquetas.forEach((m) => m.classList.remove("skeleton"));
+      await pausa(2300);
+      toast.classList.add("show");
+      await pausa(2900);
+    }
+  };
+  ciclo();
+})();
+
 document.getElementById("year").textContent = new Date().getFullYear();
