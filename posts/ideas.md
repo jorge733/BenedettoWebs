@@ -50,7 +50,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 ## 6. Nuevas ideas (2026-10-19)
 
 ### Novedades de la web
-- [ ] Nuevo formulario de cotización: cuéntame tu idea y te respondo al correo
+- [x] Nuevo formulario de cotización: cuéntame tu idea y te respondo al correo (`formulario`)
 - [ ] Reel: así se ve el panel privado de clientes por dentro
 - [ ] "Cotiza en 1 minuto": paso a paso del formulario
 
