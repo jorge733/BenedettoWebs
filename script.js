@@ -133,14 +133,23 @@ navLinks.querySelectorAll("a").forEach((a) =>
 );
 
 // ===== Animaciones al hacer scroll =====
+// Los elementos que aparecen juntos entran en cascada. Al terminar se les quita .reveal
+// para que recuperen sus propias transiciones de hover.
 const observer = new IntersectionObserver(
   (entries) =>
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    }),
+    entries
+      .filter((entry) => entry.isIntersecting)
+      .forEach((entry, i) => {
+        const el = entry.target;
+        const espera = Math.min(i, 5) * 90;
+        el.style.transitionDelay = `${espera}ms`;
+        el.classList.add("visible");
+        observer.unobserve(el);
+        setTimeout(() => {
+          el.classList.remove("reveal", "visible");
+          el.style.transitionDelay = "";
+        }, espera + 800);
+      }),
   { threshold: 0.12 }
 );
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
@@ -215,6 +224,105 @@ const RUBROS = [
     }
   };
   ciclo();
+})();
+
+// ===== Simulador: el visitante arma una vista de ejemplo de su página =====
+(() => {
+  const demo = document.getElementById("simulador");
+  const mock = document.getElementById("demoMock");
+  const toast = document.getElementById("demoToast");
+  const url = document.getElementById("demoUrl");
+  const nombre = document.getElementById("demoNombre");
+  const rubros = document.getElementById("demoRubros");
+  const colores = document.getElementById("demoColores");
+
+  const TONOS = ["Violeta", "Rosa", "Naranja", "Verde", "Rojo", "Púrpura"];
+  const ORDEN_RUBROS = [1, 2, 3, 4, 5, 0]; // "Otro" (negocio) va al final
+  const estado = { rubro: 1, color: 1 };
+
+  const etiqueta = (r) => (r.palabra === "negocio" ? "Otro" : r.palabra[0].toUpperCase() + r.palabra.slice(1));
+  const paraDominio = (texto) =>
+    texto.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]/g, "");
+
+  const pintar = () => {
+    const rubro = RUBROS[estado.rubro];
+    const escrito = nombre.value.trim();
+    const datos = { ...rubro, marca: escrito || rubro.marca };
+    demo.querySelectorAll("[data-m]").forEach((el) => (el.textContent = datos[el.dataset.m]));
+    url.textContent = (paraDominio(escrito) || paraDominio(rubro.marca)) + ".cl";
+    mock.style.setProperty("--c1", RUBROS[estado.color].color1);
+    mock.style.setProperty("--c2", RUBROS[estado.color].color2);
+    rubros.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", +b.dataset.i === estado.rubro));
+    colores.querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", +b.dataset.i === estado.color));
+  };
+
+  let tArmar, tMensaje;
+  const construir = () => {
+    clearTimeout(tArmar);
+    clearTimeout(tMensaje);
+    toast.classList.remove("show");
+    mock.classList.add("skeleton");
+    tArmar = setTimeout(() => {
+      mock.classList.remove("skeleton");
+      tMensaje = setTimeout(() => toast.classList.add("show"), 2100);
+    }, 300);
+  };
+
+  const crearBoton = (contenedor, i, clase, contenido, aria) => {
+    const b = document.createElement("button");
+    b.type = "button";
+    b.className = clase;
+    b.dataset.i = i;
+    b.textContent = contenido;
+    if (aria) b.setAttribute("aria-label", aria);
+    contenedor.append(b);
+    return b;
+  };
+  ORDEN_RUBROS.forEach((i) => crearBoton(rubros, i, "demo-chip", `${RUBROS[i].icono} ${etiqueta(RUBROS[i])}`));
+  RUBROS.forEach((r, i) => {
+    crearBoton(colores, i, "demo-swatch", "", TONOS[i]).style.background = `linear-gradient(135deg, ${r.color1}, ${r.color2})`;
+  });
+
+  rubros.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    estado.rubro = estado.color = +b.dataset.i;
+    pintar();
+    construir();
+  });
+  colores.addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    estado.color = +b.dataset.i;
+    pintar();
+  });
+  nombre.addEventListener("input", pintar);
+
+  // Lleva lo que eligió al formulario para que no tenga que escribirlo de nuevo
+  document.getElementById("demoCta").addEventListener("click", () => {
+    const campos = contactForm.elements;
+    const escrito = nombre.value.trim();
+    if (escrito) campos.negocio.value = escrito;
+    if (!campos.mensaje.value.trim()) {
+      const rubro = RUBROS[estado.rubro];
+      const detalle = rubro.palabra === "negocio" ? "" : ` para mi ${rubro.palabra}`;
+      campos.mensaje.value = `Probé el simulador y quiero una página${detalle}, en tono ${TONOS[estado.color].toLowerCase()}.`;
+    }
+    contactForm.classList.remove("form-flash");
+    void contactForm.offsetWidth;
+    contactForm.classList.add("form-flash");
+  });
+
+  pintar();
+  const alVer = new IntersectionObserver(
+    ([e]) => {
+      if (!e.isIntersecting) return;
+      alVer.disconnect();
+      construir();
+    },
+    { threshold: 0.35 }
+  );
+  alVer.observe(mock);
 })();
 
 document.getElementById("year").textContent = new Date().getFullYear();

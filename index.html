@@ -176,6 +176,59 @@
       </div>
     </section>
 
+    <!-- SIMULADOR: el visitante arma una vista de ejemplo de su página (ver script.js) -->
+    <section class="section section-alt" id="simulador">
+      <div class="container demo-wrap">
+        <div class="demo-controls reveal">
+          <span class="eyebrow">Pruébalo ahora</span>
+          <h2>Mira cómo se vería <span class="gradient-text">tu página</span></h2>
+          <p>Escribe el nombre de tu negocio, elige tu rubro y tu color.</p>
+          <label class="demo-field">Nombre de tu negocio
+            <input id="demoNombre" type="text" maxlength="24" placeholder="Ej: Dulce Antojo" autocomplete="off">
+          </label>
+          <div class="demo-field">
+            <span id="demoRubroLabel">Rubro</span>
+            <div class="demo-chips" id="demoRubros" role="group" aria-labelledby="demoRubroLabel"></div>
+          </div>
+          <div class="demo-field">
+            <span id="demoColorLabel">Color</span>
+            <div class="demo-chips" id="demoColores" role="group" aria-labelledby="demoColorLabel"></div>
+          </div>
+          <a href="#contacto" class="btn demo-cta" id="demoCta">Quiero una así →</a>
+          <small class="demo-note">Vista de ejemplo. Tu sitio real se diseña a la medida de tu negocio.</small>
+        </div>
+
+        <div class="demo-preview reveal" aria-hidden="true">
+          <div class="mock skeleton" id="demoMock">
+            <div class="mock-bar">
+              <i></i><i></i><i></i>
+              <div class="mock-url"><span id="demoUrl"></span><b></b></div>
+            </div>
+            <div class="mock-page">
+              <div class="mock-nav">
+                <strong class="mk" style="--i:0" data-m="marca"></strong>
+                <span class="mock-links"><u class="mk" style="--i:0"></u><u class="mk" style="--i:0"></u><u class="mk" style="--i:0"></u></span>
+              </div>
+              <div class="mock-banner mk" style="--i:1">
+                <h3 class="mk" style="--i:2" data-m="marca"></h3>
+                <p class="mk" style="--i:3" data-m="titulo"></p>
+                <span class="mock-cta mk" style="--i:4" data-m="cta"></span>
+              </div>
+              <div class="mock-cards">
+                <div class="mock-card mk" style="--i:5"><span data-m="icono"></span><b data-m="c1"></b></div>
+                <div class="mock-card mk" style="--i:6"><span data-m="icono"></span><b data-m="c2"></b></div>
+                <div class="mock-card mk" style="--i:7"><span data-m="icono"></span><b data-m="c3"></b></div>
+              </div>
+            </div>
+          </div>
+          <div class="mock-toast" id="demoToast">
+            <span class="mock-toast-icon">💬</span>
+            <span><b>Nuevo mensaje</b><small data-m="mensaje"></small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SERVICIOS -->
     <section class="section" id="servicios">
       <div class="container">
@@ -234,7 +287,7 @@
         <div class="price-card reveal">
           <span class="price-badge">Pago único</span>
           <p class="price-from">desde</p>
-          <p class="price"><span>$</span>30.000</p>
+          <p class="price"><span>$</span><b id="precioNum">30.000</b></p>
           <p class="price-note">CLP · según contenido del sitio</p>
           <a href="#contacto" class="btn btn-block">Pedir cotización</a>
         </div>
@@ -575,5 +628,6 @@
   </a>
 
   <script src="script.js"></script>
+  <script src="animaciones.js"></script>
 </body>
 </html>
