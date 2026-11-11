@@ -3,7 +3,7 @@ import {
   auth, db, exigirSesion, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, query, where, serverTimestamp, ms, html
 } from "./firebase.js";
 import { montarMenu } from "./menu.js";
-import { interpretar, sumar, CATEGORIAS, DIA } from "./agenda-texto.js";
+import { interpretar, sumar, siguiente, ocurre, textoRepetir, REPETIR, CATEGORIAS, DIA } from "./agenda-texto.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -47,6 +47,7 @@ try {
 }
 $("selCliente").innerHTML = `<option value="">Sin cliente</option>` +
   [...clientes].sort((a, b) => nombre(a).localeCompare(nombre(b))).map((c) => `<option value="${c.id}">${html(nombre(c))}</option>`).join("");
+$("selRepetir").innerHTML = `<option value="">No se repite</option>` + Object.entries(REPETIR).map(([v, t]) => `<option value="${v}">${t}</option>`).join("");
 $("selCategoria").innerHTML = `<option value="">Sin categoría</option>` + Object.keys(CATEGORIAS).map((c) => `<option>${c}</option>`).join("");
 function pintarTodo() {
   pintarBrief();
@@ -151,6 +152,7 @@ function filaTarea(t, grupo) {
   const meta = [
     t.hora ? `<span class="pill hora">${t.hora}</span>` : "",
     t.fecha && !["hoy", "manana"].includes(grupo) ? `<span class="meta-fecha${grupo === "atrasadas" ? " negativo" : ""}">${cuandoEs(t.fecha)}</span>` : "",
+    t.repetir && !t.hecha ? `<span class="pill" title="Al completarla vuelve a aparecer">🔁 ${html(textoRepetir(t))}</span>` : "",
     t.categoria ? `<span class="pill">${CATEGORIAS[t.categoria] || ""} ${html(t.categoria)}</span>` : "",
     c ? `<a class="pill pill-cliente" href="cliente.html?id=${c.id}">${html(nombre(c))}</a>` : "",
     aviso ? `<span class="pill" title="Te llega un correo a las ${new Date(t.recordatorio.fecha).toTimeString().slice(0, 5)}">🔔 aviso</span>` : "",
@@ -210,6 +212,7 @@ for (const lista of [$("grupos"), $("hechas"), $("semana")]) {
     if (!e.target.closest("[data-check]")) return abrirTarea(t);
     fila.classList.add(t.hecha ? "volviendo" : "completando");
     await new Promise((r) => setTimeout(r, t.hecha ? 150 : 380));
+    if (t.repetir && t.fecha && !t.hecha) return completarRepetida(t);
     t.hecha = !t.hecha;
     t.hechaEl = t.hecha ? { toMillis: () => Date.now() } : null;
     pintarTodo();
@@ -222,6 +225,25 @@ for (const lista of [$("grupos"), $("hechas"), $("semana")]) {
     }
   });
 }
+// Una tarea que se repite no queda lista: su fecha salta a la próxima vez (que ya no haya pasado)
+async function completarRepetida(t) {
+  const antes = { fecha: t.fecha, ultimaVez: t.ultimaVez || "" };
+  let proxima = siguiente(t.fecha, t.repetir);
+  while (proxima <= hoyISO()) proxima = siguiente(proxima, t.repetir);
+  await moverRepetida(t, { fecha: proxima, ultimaVez: hoyISO() });
+  aviso(`Lista: ${t.titulo} · vuelve ${cuandoEs(proxima).toLowerCase()}`, () => moverRepetida(t, antes));
+}
+async function moverRepetida(t, cambios) {
+  Object.assign(t, cambios);
+  pintarTodo();
+  try {
+    await updateDoc(doc(db, "tareas", t.id), { ...cambios, actualizado: serverTimestamp() });
+    if (t.recordatorio || t.hora) await sincronizar(t);
+  } catch (err) {
+    aviso("No se pudo guardar: " + err.message, null, true);
+  }
+}
+
 // "Deshacer" del aviso al completar una tarea
 async function deshacer(t) {
   t.hecha = false;
@@ -246,8 +268,8 @@ $("rapida").addEventListener("submit", async (e) => {
 function abrirTarea(t, base = {}) {
   editando = t;
   const f = $("formTarea");
-  const datos = t || { titulo: "", fecha: hoyISO(), hora: "", clienteId: "", categoria: "", notas: "", importante: false, ...base };
-  for (const campo of ["titulo", "fecha", "hora", "clienteId", "categoria", "notas"]) f.elements[campo].value = datos[campo] || "";
+  const datos = t || { titulo: "", fecha: hoyISO(), hora: "", clienteId: "", categoria: "", notas: "", importante: false, repetir: "", ...base };
+  for (const campo of ["titulo", "fecha", "hora", "clienteId", "categoria", "notas", "repetir"]) f.elements[campo].value = datos[campo] || "";
   f.elements.importante.checked = !!datos.importante;
   $("tituloModal").textContent = t ? "Editar tarea" : "Nueva tarea";
   $("borrarTarea").hidden = !t;
@@ -258,6 +280,7 @@ function abrirTarea(t, base = {}) {
 function notaRecordatorio() {
   const f = $("formTarea");
   const conHora = f.elements.fecha.value && f.elements.hora.value;
+  f.elements.repetir.disabled = !f.elements.fecha.value;
   $("notaRecordatorio").textContent = !conHora ? "Ponle fecha y hora si quieres que te llegue un recordatorio por correo."
     : ajustes.recordatorios === false ? "Los recordatorios por correo están desactivados (Avisos por correo)."
     : `Te llega un correo ${Number(ajustes.antes) ? `${ajustes.antes} minutos antes` : "a la hora exacta"}.`;
@@ -287,7 +310,7 @@ $("modalTarea").addEventListener("close", async () => {
   const datos = {
     titulo: f.elements.titulo.value.trim(), fecha: f.elements.fecha.value, hora: f.elements.fecha.value ? f.elements.hora.value : "",
     clienteId: f.elements.clienteId.value, categoria: f.elements.categoria.value, notas: f.elements.notas.value.trim(),
-    importante: f.elements.importante.checked
+    importante: f.elements.importante.checked, repetir: f.elements.fecha.value ? f.elements.repetir.value : ""
   };
   if (datos.titulo) await guardar(datos, editando);
 });
@@ -342,8 +365,8 @@ function pintarSemana() {
       ...clientes.filter((c) => c.estado === "En desarrollo" && c.entrega === dia)
         .map((c) => `<li class="evento entrega"><a href="cliente.html?id=${c.id}">📦 Entrega · ${html(nombre(c))}</a></li>`),
       ...clientes.filter((c) => c.vence === dia).map((c) => `<li class="evento"><a href="cliente.html?id=${c.id}">🌐 Vence dominio · ${html(nombre(c))}</a></li>`),
-      ...tareas.filter((t) => t.fecha === dia && !t.hecha).sort(ordenar)
-        .map((t) => `<li class="evento${t.importante ? " importante" : ""}" data-id="${t.id}">${t.hora ? `<b>${t.hora}</b> ` : ""}${html(t.titulo)}</li>`)
+      ...tareas.filter((t) => !t.hecha && ocurre(t, dia)).sort((a, b) => (a.hora || "99").localeCompare(b.hora || "99"))
+        .map((t) => `<li class="evento${t.importante ? " importante" : ""}${t.fecha !== dia ? " repetida" : ""}" data-id="${t.id}">${t.hora ? `<b>${t.hora}</b> ` : ""}${html(t.titulo)}${t.repetir ? " 🔁" : ""}</li>`)
     ];
     const etiqueta = i === 0 ? "Hoy" : i === 1 ? "Mañana" : fecha(dia, { weekday: "long" });
     return `<li class="dia${i === 0 ? " es-hoy" : ""}${cosas.length ? "" : " libre"}">

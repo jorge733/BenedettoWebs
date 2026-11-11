@@ -34,10 +34,10 @@
   <div class="agenda-cols">
     <section class="caja-panel tareas-caja">
       <form class="rapida" id="rapida" autocomplete="off">
-        <input id="textoRapido" placeholder="Nueva tarea… prueba “Llamar a Daniela mañana 15:00 !”" aria-label="Nueva tarea">
+        <input id="textoRapido" placeholder="Nueva tarea… prueba “Llamar a Daniela mañana 15:00 !” o “Subir post todos los lunes 10:00”" aria-label="Nueva tarea">
         <button class="btn" type="submit">Agregar</button>
       </form>
-      <p class="ayuda-rapida">Escribe la fecha como <b>hoy</b>, <b>mañana</b>, <b>jueves</b> o <b>12/11</b>, la hora como <b>15:00</b> o <b>15h</b>, <b>!</b> para importante y <b>#marketing</b>, <b>#admin</b> o <b>#personal</b> para la categoría.</p>
+      <p class="ayuda-rapida">Escribe la fecha como <b>hoy</b>, <b>mañana</b>, <b>jueves</b> o <b>12/11</b>, la hora como <b>15:00</b> o <b>15h</b>, <b>!</b> para importante y <b>#marketing</b>, <b>#admin</b> o <b>#personal</b> para la categoría. Para que se repita: <b>todos los lunes</b>, <b>todos los días</b>, <b>de lunes a viernes</b> o <b>cada mes</b>.</p>
       <div class="filtros" id="filtroCategorias"></div>
       <div id="grupos"></div>
       <p class="vacio" id="sinTareas" hidden>No tienes tareas pendientes. Agrega la primera arriba.</p>
@@ -62,6 +62,7 @@
       <label class="campo">Hora (para el recordatorio) <input name="hora" type="time"></label>
       <label class="campo">Cliente <select name="clienteId" id="selCliente"></select></label>
       <label class="campo">Categoría <select name="categoria" id="selCategoria"></select></label>
+      <label class="campo">Se repite <select name="repetir" id="selRepetir"></select></label>
     </div>
     <label class="campo">Notas <textarea name="notas" maxlength="2000" placeholder="Detalles, links, lo que tienes que decir…"></textarea></label>
     <label class="check-seguimiento"><input type="checkbox" name="importante"> Importante</label>

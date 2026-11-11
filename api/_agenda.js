@@ -22,6 +22,25 @@ const diasEntre = (desde, hasta) => Math.round((Date.parse(hasta) - Date.parse(d
 const diaSemana = (iso) => new Date(iso + "T12:00:00Z").getUTCDay(); // 0 domingo
 const fechaTexto = (iso, opciones = { weekday: "long", day: "numeric", month: "long" }) =>
   new Date(iso + "T12:00:00Z").toLocaleDateString("es-CL", { ...opciones, timeZone: "UTC" });
+// ¿La tarea cae en "dia"? Las que se repiten (campo repetir) también cuentan sus próximas veces.
+// Es la misma regla que ocurre() en panel/agenda-texto.js.
+function ocurre(t, dia) {
+  if (!t.fecha || dia < t.fecha) return false;
+  if (dia === t.fecha) return true;
+  const n = diasEntre(t.fecha, dia);
+  switch (t.repetir) {
+    case "diaria": return true;
+    case "habiles": return ![0, 6].includes(diaSemana(dia));
+    case "semanal": return n % 7 === 0;
+    case "quincenal": return n % 14 === 0;
+    case "mensual": {
+      const d = Number(t.fecha.slice(8));
+      const ultimo = new Date(Date.UTC(Number(dia.slice(0, 4)), Number(dia.slice(5, 7)), 0)).getUTCDate();
+      return Number(dia.slice(8)) === Math.min(d, ultimo);
+    }
+    default: return false;
+  }
+}
 const mayuscula = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 // Diferencia entre la hora de Chile y UTC en un instante (cambia con el horario de verano)
@@ -135,7 +154,7 @@ function armarBrief({ hoy, tareas, clientes, correos, idea = "" }) {
   const pendientes = tareas.filter((t) => !t.hecha);
   const lunes = diaSemana(hoy) === 1;
   const fin = sumarDias(hoy, 7);
-  const textoTarea = (t) => `${t.importante ? "★ " : ""}${escapar(t.titulo)}`;
+  const textoTarea = (t) => `${t.importante ? "★ " : ""}${escapar(t.titulo)}${t.repetir ? " 🔁" : ""}`;
   const detalleTarea = (t, conFecha) => [
     conFecha ? fechaTexto(t.fecha, { weekday: "short", day: "numeric", month: "short" }) : "",
     t.hora, t.categoria, porId[t.clienteId] ? nombreCliente(porId[t.clienteId]) : ""
@@ -173,7 +192,7 @@ function armarBrief({ hoy, tareas, clientes, correos, idea = "" }) {
     const dia = sumarDias(hoy, i);
     const cosas = [
       ...desarrollo.filter((c) => c.entrega === dia).map((c) => `📦 Entrega ${nombreCliente(c)}`),
-      ...pendientes.filter((t) => t.fecha === dia).sort(porHora).map((t) => `${t.hora ? t.hora + " " : ""}${textoTarea(t)}`),
+      ...pendientes.filter((t) => ocurre(t, dia)).sort(porHora).map((t) => `${t.hora ? t.hora + " " : ""}${textoTarea(t)}`),
       ...dominios.filter((c) => c.vence === dia).map((c) => `🌐 Vence dominio ${nombreCliente(c)}`)
     ];
     if (cosas.length) semana.push(["📅", `<strong>${escapar(mayuscula(fechaTexto(dia, { weekday: "long", day: "numeric" })))}</strong>`, cosas.join(" · ")]);
