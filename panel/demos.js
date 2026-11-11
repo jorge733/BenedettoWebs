@@ -9,6 +9,25 @@ const SITIO = "https://www.benedettowebs.cl";
 // whatsapp: número sin "+" ni espacios (vacío si no lo tenemos todavía)
 const DEMOS = [
   {
+    id: "lienzo-y-latte",
+    negocio: "Lienzo y Latte",
+    rubro: "Cafetería y espacio creativo",
+    direccion: "Av. Larraín 6276, La Reina",
+    caso: "Sin web (solo Instagram)",
+    whatsapp: "56935264428",
+    creada: "2026-11-11",
+    mensaje: `Hola, ¿cómo están? Soy Santiago Benedetto, vecino de La Reina, y hago páginas web para negocios del barrio con BenedettoWebs.
+
+Les escribo porque vi su ficha de Google: un 4,9 con 115 reseñas, y varios destacan las tortas, el banana bread, las opciones veganas y lo lindo que es el local. Pero el "sitio web" de la ficha lleva a Instagram, y quien no tiene cuenta choca con la pantalla que pide iniciar sesión.
+
+Así que les armé una propuesta con su información: un "Pinta tu latte" donde la persona dibuja el arte sobre la espuma (o elige corazón, rosetta o tulipán) y lo pide; la carta; los talleres de arte; pedidos para servir o llevar eligiendo la hora (el mensaje les llega listo por WhatsApp); el horario con "abierto ahora" en vivo, sus reseñas y la ubicación.
+
+https://www.benedettowebs.cl/demos/lienzo-y-latte/
+
+En la demo hay un botón abajo que dice "Comparar". Ahí pueden ver lo que hay hoy y la página nueva lado a lado, en celular y en computador.`,
+    seguimiento: "Hola de nuevo. ¿Alcanzaron a ver la propuesta? Si quieren, paso por el café y se la muestro en 5 minutos. Las páginas parten en $30.000, pago único, y el dominio lienzoylatte.cl está disponible para dejarla funcionando ahí."
+  },
+  {
     id: "taller-de-la-kleta",
     negocio: "Taller de la Kleta",
     rubro: "Taller de bicicletas",
