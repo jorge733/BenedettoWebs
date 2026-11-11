@@ -340,6 +340,26 @@ progress::-moz-progress-bar { background: var(--gradient); }
 .pill.hora { background: var(--soft); color: var(--primary); font-weight: 600; font-variant-numeric: tabular-nums; }
 .pill-cliente:hover { background: var(--soft); color: var(--primary); }
 .meta-fecha { font-size: .78rem; font-weight: 500; color: var(--muted); }
+/* Posponer rápido */
+.tarea .doc-info { flex: 1; min-width: 0; }
+.tarea .posponer { flex: none; width: 30px; height: 30px; margin: -4px -6px -4px 0; opacity: 0; transition: opacity .15s, background-color .15s, color .15s; }
+.tarea:hover .posponer, .tarea:focus-within .posponer, .posponer[aria-expanded="true"] { opacity: 1; }
+.posponer[aria-expanded="true"] { background: var(--soft); color: var(--primary); }
+@media (hover: none) { .tarea .posponer { opacity: 1; } }
+.sub-panel .mover-hoy { margin-left: auto; padding: 5px 10px; font-size: .78rem; letter-spacing: 0; text-transform: none; color: var(--peligro) !important; }
+.menu-posponer {
+  position: fixed; z-index: 40; min-width: 220px; padding: 6px; display: grid; gap: 1px;
+  background: var(--superficie); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--sombra-alta); animation: pop .15s ease both;
+}
+.menu-posponer[hidden] { display: none; }
+.menu-posponer p { font-size: .72rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--tenue); padding: 6px 10px 4px; }
+.menu-posponer button {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px; width: 100%; padding: 9px 10px;
+  border: 0; border-radius: 8px; background: none; font: 500 .9rem/1.2 inherit; font-family: inherit; color: var(--ink); text-align: left; cursor: pointer;
+}
+.menu-posponer button small { color: var(--tenue); font-size: .8rem; font-weight: 400; }
+.menu-posponer button:hover, .menu-posponer button:focus-visible { background: var(--soft); color: var(--primary); outline: none; }
+
 .ver-hechas { margin-top: 18px; border: 0; background: none; font: 500 .86rem/1 inherit; font-family: inherit; color: var(--muted); cursor: pointer; padding: 6px 0; }
 .ver-hechas:hover { color: var(--primary); }
 .hechas { margin-top: 8px; }

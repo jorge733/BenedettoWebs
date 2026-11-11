@@ -161,6 +161,7 @@ function filaTarea(t, grupo) {
   return `<li class="tarea${t.hecha ? " lista" : ""}${t.importante ? " importante" : ""}" data-id="${t.id}">
     <button class="check" type="button" data-check aria-label="${t.hecha ? "Marcar como pendiente" : "Completar"}: ${html(t.titulo)}"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button>
     <div class="doc-info"><strong>${t.importante ? '<span class="estrella" title="Importante">★</span> ' : ""}${html(t.titulo)}</strong>${meta ? `<span class="metas">${meta}</span>` : ""}</div>
+    ${t.hecha ? "" : `<button class="btn-icono posponer" type="button" data-posponer aria-haspopup="menu" aria-label="Posponer: ${html(t.titulo)}" title="Posponer"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></button>`}
   </li>`;
 }
 
@@ -175,7 +176,8 @@ function pintarTareas() {
   $("grupos").innerHTML = GRUPOS.map(([id, titulo, cumple]) => {
     const lista = pendientes.filter((t) => cumple(t, hoy));
     if (!lista.length) return "";
-    return `<h3 class="sub-panel grupo-${id}">${titulo} <b>${lista.length}</b></h3>
+    const todasHoy = id === "atrasadas" ? `<button class="btn btn-ghost btn-sm mover-hoy" type="button" data-todas-hoy>Pasar todas a hoy</button>` : "";
+    return `<h3 class="sub-panel grupo-${id}">${titulo} <b>${lista.length}</b>${todasHoy}</h3>
       <ul class="docs tareas">${lista.map((t) => filaTarea(t, id)).join("")}</ul>`;
   }).join("");
   $("sinTareas").hidden = pendientes.length > 0;
@@ -205,10 +207,16 @@ $("filtroCategorias").addEventListener("click", (e) => {
 for (const lista of [$("grupos"), $("hechas"), $("semana")]) {
   lista.addEventListener("click", async (e) => {
     if (e.target.closest("a")) return;
+    if (e.target.closest("[data-todas-hoy]")) {
+      const hoy = hoyISO();
+      const atrasadas = tareas.filter((t) => !t.hecha && t.fecha && t.fecha < hoy && (filtro === "Todas" || t.categoria === filtro));
+      return posponer(atrasadas, hoy);
+    }
     const fila = e.target.closest("[data-id]");
     if (!fila) return;
     const t = tareas.find((x) => x.id === fila.dataset.id);
     if (!t) return;
+    if (e.target.closest("[data-posponer]")) return abrirPosponer(t, e.target.closest("[data-posponer]"));
     if (!e.target.closest("[data-check]")) return abrirTarea(t);
     fila.classList.add(t.hecha ? "volviendo" : "completando");
     await new Promise((r) => setTimeout(r, t.hecha ? 150 : 380));
@@ -242,6 +250,94 @@ async function moverRepetida(t, cambios) {
   } catch (err) {
     aviso("No se pudo guardar: " + err.message, null, true);
   }
+}
+
+// ===== Posponer rápido =====
+// Menú junto al botón del reloj: mueve la tarea sin abrirla. Mantiene la hora (y reprograma su recordatorio).
+const menuPosponer = document.body.appendChild(Object.assign(document.createElement("div"), { className: "menu-posponer", role: "menu", hidden: true }));
+let posponiendo = null;
+
+function opcionesPosponer(t) {
+  const hoy = hoyISO();
+  const diaSemana = new Date(hoy + "T12:00:00").getDay();
+  const lunes = sumar(hoy, ((8 - diaSemana) % 7) || 7);
+  const base = t.fecha && t.fecha > hoy ? t.fecha : hoy;
+  const opciones = [
+    ["Hoy", hoy],
+    ["Mañana", sumar(hoy, 1)],
+    ["Próximo lunes", lunes],
+    [t.fecha && t.fecha > hoy ? "Una semana después" : "En una semana", sumar(base, 7)]
+  ];
+  if (!t.repetir) opciones.push(["Sin fecha", ""]);
+  // Sin repetidas ni la fecha que ya tiene
+  const vistas = new Set([t.fecha || ""]);
+  return opciones.filter(([, f]) => !vistas.has(f) && vistas.add(f));
+}
+
+function abrirPosponer(t, boton) {
+  if (posponiendo?.t === t && !menuPosponer.hidden) return cerrarPosponer();
+  posponiendo = { t, boton };
+  menuPosponer.innerHTML = `<p>Mover a…</p>` + opcionesPosponer(t).map(([texto, f]) =>
+    `<button type="button" role="menuitem" data-fecha="${f}"><span>${texto}</span><small>${f ? fecha(f) : ""}</small></button>`).join("");
+  menuPosponer.hidden = false;
+  boton.setAttribute("aria-expanded", "true");
+  const r = boton.getBoundingClientRect();
+  const ancho = menuPosponer.offsetWidth, alto = menuPosponer.offsetHeight;
+  menuPosponer.style.left = Math.max(8, Math.min(r.right - ancho, innerWidth - ancho - 8)) + "px";
+  menuPosponer.style.top = (r.bottom + 6 + alto > innerHeight ? r.top - alto - 6 : r.bottom + 6) + "px";
+  menuPosponer.querySelector("button").focus();
+}
+function cerrarPosponer(devolverFoco = false) {
+  if (menuPosponer.hidden) return;
+  menuPosponer.hidden = true;
+  posponiendo?.boton.setAttribute("aria-expanded", "false");
+  if (devolverFoco && posponiendo?.boton.isConnected) posponiendo.boton.focus();
+  posponiendo = null;
+}
+menuPosponer.addEventListener("click", (e) => {
+  const opcion = e.target.closest("[data-fecha]");
+  if (!opcion || !posponiendo) return;
+  const t = posponiendo.t;
+  cerrarPosponer();
+  posponer([t], opcion.dataset.fecha);
+});
+menuPosponer.addEventListener("keydown", (e) => {
+  const botones = [...menuPosponer.querySelectorAll("button")];
+  const i = botones.indexOf(document.activeElement);
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    botones[(i + (e.key === "ArrowDown" ? 1 : -1) + botones.length) % botones.length].focus();
+  } else if (e.key === "Escape" || e.key === "Tab") {
+    e.preventDefault();
+    cerrarPosponer(true);
+  }
+});
+document.addEventListener("click", (e) => {
+  if (!menuPosponer.contains(e.target) && !e.target.closest("[data-posponer]")) cerrarPosponer();
+});
+addEventListener("scroll", () => cerrarPosponer(), { passive: true });
+addEventListener("resize", () => cerrarPosponer());
+
+// Mueve una o varias tareas a "nueva" (o las deja sin fecha), con Deshacer
+async function posponer(lista, nueva) {
+  if (!lista.length) return;
+  const antes = lista.map((t) => [t, { fecha: t.fecha || "", hora: t.hora || "" }]);
+  const aplicar = async (cambiosDe) => {
+    for (const [t] of antes) Object.assign(t, cambiosDe(t));
+    pintarTodo();
+    try {
+      await Promise.all(antes.map(([t]) => updateDoc(doc(db, "tareas", t.id), { ...cambiosDe(t), actualizado: serverTimestamp() })));
+      await Promise.all(antes.filter(([t]) => t.recordatorio || (t.fecha && t.hora)).map(([t]) => sincronizar(t)));
+    } catch (err) {
+      aviso("No se pudo guardar: " + err.message, null, true);
+    }
+  };
+  // Sin fecha no puede tener hora (ni recordatorio)
+  const original = new Map(antes);
+  await aplicar((t) => nueva ? { fecha: nueva } : { fecha: "", hora: "" });
+  const destino = nueva ? cuandoEs(nueva).toLowerCase() : "sin fecha";
+  aviso(lista.length === 1 ? `Movida a ${destino}: ${lista[0].titulo}` : `${lista.length} tareas movidas a ${destino}`,
+    () => aplicar((t) => original.get(t)));
 }
 
 // "Deshacer" del aviso al completar una tarea
