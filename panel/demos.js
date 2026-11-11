@@ -9,6 +9,23 @@ const SITIO = "https://www.benedettowebs.cl";
 // whatsapp: número sin "+" ni espacios (vacío si no lo tenemos todavía)
 const DEMOS = [
   {
+    id: "taller-de-la-kleta",
+    negocio: "Taller de la Kleta",
+    rubro: "Taller de bicicletas",
+    direccion: "La Cañada 7147-A, La Reina",
+    caso: "Sin web (solo Instagram)",
+    whatsapp: "56973956563",
+    creada: "2026-11-11",
+    mensaje: `Hola José, ¿cómo estás? Soy Santiago Benedetto, vecino de La Reina, y hago páginas web para negocios del barrio con BenedettoWebs.
+
+Te escribo porque vi la ficha del taller en Google: un 4,9 con 76 reseñas, y varios cuentan que les arreglaste la bici cuando nadie más había dado con la falla. Pero el "sitio web" de la ficha lleva a Instagram, y quien no tiene cuenta choca con la pantalla que pide iniciar sesión.
+
+Así que te armé una propuesta con la información del taller: una bici donde el cliente toca la parte que falla (frenos, cambios, cadena, suspensión...) y ve qué servicio necesita; agendar eligiendo servicio, tipo de bici, taller o domicilio, día y hora (el mensaje te llega listo por WhatsApp); el horario de cada día con "abierto ahora" en vivo; tus reseñas y la ubicación.
+
+En la demo hay un botón abajo que dice "Comparar". Ahí puedes ver lo que hay hoy y la página nueva lado a lado, en celular y en computador.`,
+    seguimiento: "Hola de nuevo, José. ¿Alcanzaste a ver la propuesta? Si quieres, paso por el taller y te la muestro en 5 minutos. Las páginas parten en $30.000, pago único, y el dominio tallerdelakleta.cl está disponible para dejarla funcionando ahí."
+  },
+  {
     id: "clinica-dental-blanco",
     negocio: "Clínica Dental Blanco",
     rubro: "Clínica dental",
