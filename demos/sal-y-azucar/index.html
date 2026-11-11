@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Sal y Azúcar · Pastelería en La Reina (demo)</title>
+  <meta name="description" content="Propuesta de nuevo sitio web para Pastelería Sal y Azúcar, La Reina. Demo hecha por BenedettoWebs.">
+  <link rel="canonical" href="https://www.benedettowebs.cl/demos/sal-y-azucar/">
+
+  <!-- Vista previa al compartir (WhatsApp, Facebook, Instagram, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BenedettoWebs">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://www.benedettowebs.cl/demos/sal-y-azucar/">
+  <meta property="og:title" content="Sal y Azúcar: así se vería su nueva página web">
+  <meta property="og:description" content="Propuesta de BenedettoWebs: la torta de zanahoria al centro, pedidos por WhatsApp, horario y mapa.">
+  <meta property="og:image" content="https://www.benedettowebs.cl/demos/sal-y-azucar/og.png">
+  <meta property="og:image:secure_url" content="https://www.benedettowebs.cl/demos/sal-y-azucar/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Demo de página web para Pastelería Sal y Azúcar, con una torta de zanahoria por capas.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sal y Azúcar: así se vería su nueva página web">
+  <meta name="twitter:description" content="Propuesta de BenedettoWebs para la pastelería Sal y Azúcar de La Reina.">
+  <meta name="twitter:image" content="https://www.benedettowebs.cl/demos/sal-y-azucar/og.png">
+  <meta name="theme-color" content="#2e1d14">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23fbf4ea'/%3E%3Cpath d='M12 30h40v18H12z' fill='%23b9733a'/%3E%3Cpath d='M12 36h40v4H12z' fill='%23f6ead6'/%3E%3Cellipse cx='32' cy='30' rx='20' ry='6' fill='%23f6ead6'/%3E%3Cpath d='M32 14l3 10h-6z' fill='%23e2762b'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --crema: #fbf4ea;
+      --crema-2: #f1e4d1;
+      --crema-3: #e7d5bb;
+      --choco: #2e1d14;
+      --cafe: #6b4630;
+      --texto: #33241a;
+      --suave: #7a6556;
+      --naranja: #e2762b;
+      --naranja-osc: #c45f1b;
+      --verde: #6f8a4e;
+      --radio: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Outfit", system-ui, sans-serif; color: var(--texto); background: var(--crema); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: "DM Serif Display", Georgia, serif; font-weight: 400; line-height: 1.05; letter-spacing: -.01em; }
+    h1 em, h2 em { color: var(--naranja); }
+    .contenedor { width: min(1160px, 100% - 32px); margin-inline: auto; }
+    section { padding: 100px 0; }
+    body.modal-abierto { overflow: hidden; }
+
+    .aviso-demo { background: var(--choco); color: #fff; font-size: .85rem; text-align: center; padding: 8px 16px; }
+    .aviso-demo a, .aviso-demo button { color: #ffb37a; font-weight: 700; text-decoration: underline; background: none; border: 0; font: inherit; cursor: pointer; }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 50; background: rgba(251, 244, 234, .9); backdrop-filter: blur(10px); border-bottom: 1px solid var(--crema-3); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 11px; color: var(--choco); }
+    .logo-texto { font-family: "DM Serif Display", serif; font-size: 1.65rem; line-height: .95; }
+    .logo-texto i { color: var(--naranja); font-style: italic; }
+    .logo-texto small { display: block; font-family: "Outfit", sans-serif; font-weight: 600; font-size: .6rem; letter-spacing: .38em; color: var(--suave); margin-top: 4px; text-transform: uppercase; }
+    .menu { display: flex; gap: 28px; font-weight: 500; font-size: .96rem; }
+    .menu a { color: var(--suave); transition: color .2s; }
+    .menu a:hover { color: var(--choco); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font: 600 .98rem "Outfit", sans-serif; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, color .2s, border-color .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-naranja { background: var(--naranja); color: #fff; box-shadow: 0 12px 28px rgba(226, 118, 43, .35); }
+    .btn-naranja:hover { background: var(--naranja-osc); }
+    .btn-borde { border-color: var(--crema-3); color: var(--choco); background: rgba(255,255,255,.5); }
+    .btn-borde:hover { border-color: var(--choco); }
+    .btn-choco { background: var(--choco); color: #fff; }
+    .btn-choco:hover { background: #4a3122; }
+    .hamburguesa { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+    .hamburguesa span { display: block; width: 24px; height: 2px; background: var(--choco); border-radius: 2px; margin: 6px 0; }
+    .progreso { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: linear-gradient(90deg, var(--naranja), #f2a65a); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+    /* Estado abierto/cerrado */
+    .estado { display: inline-flex; align-items: center; gap: 9px; font-size: .86rem; font-weight: 600; color: var(--cafe); background: #fff; border: 1px solid var(--crema-3); padding: 7px 14px 7px 12px; border-radius: 999px; }
+    .estado i { width: 9px; height: 9px; border-radius: 50%; background: #b9a999; }
+    .estado.abierto i { background: #3aa864; animation: latir 1.8s infinite; }
+    @keyframes latir { 0% { box-shadow: 0 0 0 0 rgba(58, 168, 100, .55); } 70%, 100% { box-shadow: 0 0 0 9px rgba(58, 168, 100, 0); } }
+
+    /* Hero */
+    .hero { --mx: .5; --my: .5; --sc: 0; position: relative; overflow: hidden; padding: 0; background: radial-gradient(900px 600px at 78% 40%, #f7e3c9, transparent 70%), var(--crema); }
+    .hero::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(107, 70, 48, .07) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; min-height: calc(100svh - 110px); padding: 50px 0 80px; }
+    .captura .hero-grid { min-height: calc(100svh - 74px); }
+    .hero-grid > * { min-width: 0; }
+    .hero .hero-texto.aparece.visto { transform: translateY(calc(var(--sc) * -70px)); opacity: calc(1 - var(--sc) * 1.5); }
+    .hero h1 { font-size: clamp(3rem, min(6.2vw, 9.4vh), 5.6rem); margin: 22px 0 20px; color: var(--choco); }
+    .hero h1 em { display: block; }
+    .hero p.lead { color: var(--suave); font-size: 1.17rem; max-width: 520px; margin-bottom: 30px; }
+    .hero-botones { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-datos { display: flex; gap: 34px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--crema-3); flex-wrap: wrap; }
+    .hero-datos strong { display: block; font-family: "DM Serif Display", serif; font-weight: 400; font-size: 2.3rem; line-height: 1; color: var(--choco); }
+    .hero-datos strong b { color: var(--naranja); font-weight: 400; font-size: .8em; }
+    .hero-datos > div > span { color: var(--suave); font-size: .86rem; }
+
+    .escena { position: relative; height: min(600px, 74vh); }
+    .escena-mov { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(calc(var(--sc) * 90px)) scale(calc(1 - var(--sc) * .12)); }
+    .torta-hero { width: min(560px, 100%); transform: perspective(900px) rotateX(calc((var(--my) - .5) * -8deg)) rotateY(calc((var(--mx) - .5) * 10deg)); transition: transform .3s ease-out; }
+    .torta-hero svg { overflow: visible; animation: posar 1.4s cubic-bezier(.2, .8, .2, 1) both; }
+    @keyframes posar { from { transform: translateY(-40px); opacity: 0; } }
+    .ingrediente { position: absolute; transform: translate(calc((var(--mx) - .5) * var(--prof) * 1px), calc((var(--my) - .5) * var(--prof) * 1px + var(--sc) * var(--prof) * -3px)); transition: transform .3s ease-out; z-index: 2; }
+    .ingrediente svg { animation: flotar 7s ease-in-out infinite; filter: drop-shadow(0 12px 16px rgba(46, 29, 20, .22)); }
+    .ingrediente.zanahoria { --prof: 50; top: 4%; right: 2%; width: 130px; }
+    .ingrediente.nuez { --prof: -40; top: 20%; left: 2%; width: 70px; }
+    .ingrediente.nuez svg { animation-delay: -2s; }
+    .ingrediente.canela { --prof: 34; bottom: 14%; right: -2%; width: 120px; }
+    .ingrediente.canela svg { animation-delay: -4s; }
+    @keyframes flotar { 50% { transform: translateY(-14px) rotate(6deg); } }
+    .ficha { position: absolute; z-index: 3; background: rgba(255, 255, 255, .88); backdrop-filter: blur(8px); border: 1px solid var(--crema-3); border-radius: 16px; padding: 13px 16px; font-size: .86rem; color: var(--suave); box-shadow: 0 18px 40px rgba(46, 29, 20, .14); animation: flotar-ficha 6s ease-in-out infinite; }
+    .ficha strong { display: block; color: var(--choco); font-size: 1rem; }
+    .ficha .precio { display: block; font-family: "DM Serif Display", serif; color: var(--naranja); font-size: 1.5rem; line-height: 1.15; }
+    .ficha .estrellas { color: var(--naranja); letter-spacing: 2px; }
+    .ficha.f1 { top: 30%; left: -2%; }
+    .ficha.f2 { bottom: 6%; left: 6%; animation-delay: -3s; }
+    @keyframes flotar-ficha { 50% { transform: translateY(-9px); } }
+    .scroll-abajo { position: absolute; left: 50%; bottom: 18px; z-index: 2; transform: translateX(-50%); color: var(--suave); font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; display: grid; justify-items: center; gap: 4px; opacity: calc(1 - var(--sc) * 4); }
+    .scroll-abajo::after { content: ""; width: 1.5px; height: 28px; background: linear-gradient(var(--naranja), transparent); animation: bajar 1.6s ease-in-out infinite; }
+    @keyframes bajar { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    /* Cinta */
+    .cinta { background: var(--choco); color: #f7e3c9; overflow: hidden; padding: 16px 0; }
+    .cinta-pista { display: flex; width: max-content; animation: correr 34s linear infinite; }
+    .cinta span { font-family: "DM Serif Display", serif; font-size: 1.4rem; padding: 0 20px; white-space: nowrap; display: inline-flex; align-items: center; gap: 40px; }
+    .cinta span::after { content: "✿"; color: var(--naranja); font-size: 1rem; }
+    @keyframes correr { to { transform: translateX(-50%); } }
+
+    /* Títulos */
+    .sobre { display: inline-flex; align-items: center; gap: 10px; color: var(--naranja-osc); font-weight: 700; font-size: .8rem; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 14px; }
+    .sobre::before { content: ""; width: 26px; height: 1.5px; background: currentColor; }
+    .titulo-seccion { max-width: 680px; margin-bottom: 46px; }
+    .titulo-seccion h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 14px; color: var(--choco); }
+    .titulo-seccion p { color: var(--suave); font-size: 1.08rem; }
+    .oscuro { background: var(--choco); color: #fff; }
+    .oscuro .titulo-seccion h2 { color: #fff; }
+    .oscuro .titulo-seccion p { color: #cdb9a7; }
+    .oscuro .sobre { color: #f2a65a; }
+
+    /* Anatomía de la torta */
+    .anatomia-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; }
+    .anatomia-grid > * { min-width: 0; }
+    .anatomia-visual { position: sticky; top: 100px; height: min(560px, 76vh); display: grid; place-items: center; }
+    .torta-anatomia { width: min(560px, 100%); padding-top: 120px; }
+    .torta-anatomia svg { overflow: visible; }
+    .torta-anatomia .capa { transition: filter .4s ease; }
+    .anatomia-grid[data-foco="bizcocho"] .capa:not(.bizcocho), .anatomia-grid[data-foco="crema"] .capa:not(.crema) { filter: brightness(.42) saturate(.7); }
+    .anatomia-pasos { list-style: none; }
+    .anatomia-pasos li { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid rgba(255,255,255,.12); padding-left: 32px; opacity: .3; transition: opacity .45s, border-color .45s; }
+    .anatomia-pasos li.activo { opacity: 1; border-color: var(--naranja); }
+    .anatomia-pasos .num { font-family: "DM Serif Display", serif; font-style: italic; color: #f2a65a; font-size: 1.2rem; margin-bottom: 8px; }
+    .anatomia-pasos h3 { font-size: clamp(2rem, 3.4vw, 2.8rem); margin-bottom: 12px; }
+    .anatomia-pasos p { color: #cdb9a7; font-size: 1.07rem; max-width: 440px; }
+    .anatomia-pasos .chips-ing { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .anatomia-pasos .chips-ing span { font-size: .85rem; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.08); color: #f7e3c9; }
+
+    /* Favoritos */
+    .favoritos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .producto { background: #fff; border-radius: var(--radio); padding: 22px; display: flex; flex-direction: column; border: 1px solid transparent; transition: border-color .2s, box-shadow .2s, transform .2s; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)); }
+    .producto:hover { border-color: var(--naranja); --ty: -4px; box-shadow: 0 22px 40px rgba(46, 29, 20, .1); }
+    .producto .foto { aspect-ratio: 4 / 3; border-radius: 14px; background: radial-gradient(circle at 50% 60%, #fff 0, var(--crema-2) 75%); display: grid; place-items: center; margin-bottom: 18px; overflow: hidden; }
+    .producto .foto svg { width: 86%; overflow: visible; transition: transform .4s ease; }
+    .producto:hover .foto svg { transform: scale(1.06) rotate(-2deg); }
+    .producto h3 { font-size: 1.5rem; color: var(--choco); margin-bottom: 6px; }
+    .producto p { color: var(--suave); font-size: .93rem; flex: 1; }
+    .producto .desde { margin: 14px 0 4px; font-size: .82rem; color: var(--suave); }
+    .producto .desde strong { display: block; font-family: "DM Serif Display", serif; font-weight: 400; font-size: 1.7rem; color: var(--choco); line-height: 1.1; }
+    .etiq { display: inline-block; font-size: .76rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: #fdecdc; color: var(--naranja-osc); margin-bottom: 12px; align-self: flex-start; }
+    .etiq.verde { background: #e9f1e1; color: #4d6b31; }
+    .pedir { margin-top: 12px; border: 0; background: none; font: 700 .95rem "Outfit", sans-serif; color: var(--naranja-osc); cursor: pointer; display: inline-flex; gap: 6px; align-items: center; padding: 4px 0; align-self: flex-start; }
+    .pedir::after { content: "→"; transition: transform .2s; }
+    .pedir:hover::after { transform: translateX(4px); }
+
+    /* Vitrina */
+    .vitrina { margin-top: 70px; background: #fff; border-radius: 26px; padding: 40px; }
+    .vitrina-cabeza { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; }
+    .vitrina-cabeza h3 { font-size: 2.1rem; color: var(--choco); }
+    .vitrina-cabeza p { color: var(--suave); }
+    .pestanas-vitrina { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+    .pestanas-vitrina button { border: 1.5px solid var(--crema-3); background: var(--crema); color: var(--texto); font: 600 .92rem "Outfit", sans-serif; padding: 9px 16px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .pestanas-vitrina button[aria-pressed="true"] { background: var(--choco); border-color: var(--choco); color: #fff; }
+    .vitrina-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+    .vitrina-item { border: 1px dashed var(--crema-3); border-radius: 14px; padding: 16px 18px; animation: entrar .4s ease backwards; }
+    .vitrina-item b { display: block; color: var(--choco); font-size: 1.02rem; }
+    .vitrina-item span { color: var(--suave); font-size: .88rem; }
+    @keyframes entrar { from { opacity: 0; transform: translateY(12px); } }
+    .nota-vitrina { margin-top: 16px; color: var(--suave); font-size: .88rem; }
+
+    /* Pedido */
+    .pedido-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; align-items: start; }
+    .pedido-grid > * { min-width: 0; }
+    .modos { display: grid; gap: 14px; }
+    .modo { text-align: left; border: 1.5px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: #fff; border-radius: 18px; padding: 20px 22px; cursor: pointer; font: inherit; transition: border-color .2s, background .2s; }
+    .modo b { display: block; font-family: "DM Serif Display", serif; font-weight: 400; font-size: 1.5rem; margin-bottom: 4px; }
+    .modo span { color: #cdb9a7; font-size: .95rem; }
+    .modo[aria-pressed="true"] { border-color: var(--naranja); background: rgba(226, 118, 43, .12); }
+    .form-pedido { background: #3a271c; border: 1px solid rgba(255,255,255,.08); border-radius: 24px; padding: 30px; }
+    .form-pedido label { display: block; font-weight: 600; font-size: .95rem; color: #f7e3c9; margin-bottom: 18px; }
+    .form-pedido input, .form-pedido select { display: block; width: 100%; margin-top: 8px; background: var(--choco); color: #fff; border: 1.5px solid rgba(255,255,255,.14); border-radius: 12px; padding: 13px 14px; font: 500 1rem "Outfit", sans-serif; color-scheme: dark; }
+    .form-pedido input:focus, .form-pedido select:focus { outline: none; border-color: var(--naranja); }
+    .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fila > * { min-width: 0; }
+    .segmento { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+    .segmento button { flex: 1; border: 1.5px solid rgba(255,255,255,.14); background: var(--choco); color: #f7e3c9; border-radius: 12px; padding: 12px; font: 600 .95rem "Outfit", sans-serif; cursor: pointer; }
+    .segmento button[aria-pressed="true"] { background: var(--naranja); border-color: var(--naranja); color: #fff; }
+    .fecha-hoy { display: block; margin-top: 8px; padding: 13px 14px; border-radius: 12px; background: rgba(255,255,255,.06); color: #fff; font-weight: 500; }
+    .resumen { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.1); padding-top: 20px; margin-top: 6px; }
+    .resumen .total { color: #cdb9a7; font-size: .9rem; }
+    .resumen .total strong { display: block; color: #fff; font-family: "DM Serif Display", serif; font-weight: 400; font-size: 1.8rem; line-height: 1.1; }
+    .ayuda { font-size: .85rem; color: #cdb9a7; margin-top: 6px; font-weight: 400; }
+
+    /* Nosotros */
+    .nosotros-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .nosotros-grid > * { min-width: 0; }
+    .nosotros-grid > div > p { color: var(--suave); font-size: 1.07rem; margin-bottom: 14px; }
+    .valores { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .valor { background: #fff; border-radius: var(--radio); padding: 24px 22px; }
+    .valor .ico { width: 46px; height: 46px; border-radius: 14px; background: #fdecdc; display: grid; place-items: center; margin-bottom: 14px; }
+    .valor b { display: block; font-size: 1.04rem; color: var(--choco); margin-bottom: 4px; }
+    .valor > span { color: var(--suave); font-size: .92rem; }
+    .valor strong { font-family: "DM Serif Display", serif; font-weight: 400; font-size: 2.2rem; color: var(--naranja); line-height: 1; display: block; margin-bottom: 6px; }
+    .resenas { margin-top: 70px; background: var(--choco); color: #fff; border-radius: 26px; padding: 44px; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; }
+    .nota { text-align: center; }
+    .nota strong { font-family: "DM Serif Display", serif; font-weight: 400; font-size: 4.6rem; line-height: 1; display: block; }
+    .nota .estrellas { color: var(--naranja); letter-spacing: 4px; font-size: 1.1rem; }
+    .nota span { color: #cdb9a7; font-size: .88rem; }
+    .resenas h3 { font-size: 2rem; margin-bottom: 8px; }
+    .resenas p { color: #cdb9a7; }
+    .resenas p b { color: #f7e3c9; }
+
+    /* Ubicación */
+    .ubicacion-grid { display: grid; grid-template-columns: .9fr 1.1fr; border-radius: 26px; overflow: hidden; background: #fff; }
+    .ubicacion-grid > * { min-width: 0; }
+    .ubicacion-texto { padding: 44px 40px; }
+    .ubicacion-texto h2 { font-size: clamp(2.2rem, 4.4vw, 3.2rem); margin-bottom: 22px; color: var(--choco); }
+    .linea { display: flex; gap: 14px; margin-bottom: 18px; }
+    .linea .ico { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--crema); display: grid; place-items: center; }
+    .linea b { display: block; color: var(--choco); }
+    .linea span, .linea a { color: var(--suave); }
+    .linea a:hover { color: var(--choco); text-decoration: underline; }
+    .horario { width: 100%; border-collapse: collapse; font-size: .93rem; margin-top: 4px; }
+    .horario td { padding: 5px 0; border-bottom: 1px solid var(--crema-2); color: var(--suave); vertical-align: top; }
+    .horario td:last-child { text-align: right; color: var(--choco); font-weight: 600; }
+    .horario tr.hoy td { color: var(--naranja-osc); }
+    .ubicacion-grid iframe { width: 100%; height: 100%; min-height: 460px; border: 0; filter: sepia(.25) saturate(.9); }
+
+    /* FAQ */
+    .faq { max-width: 820px; margin-inline: auto; display: grid; gap: 12px; }
+    .faq details { background: #fff; border-radius: 16px; padding: 20px 24px; }
+    .faq summary { cursor: pointer; font-weight: 600; font-size: 1.05rem; color: var(--choco); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--naranja); transition: transform .2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin-top: 12px; color: var(--suave); }
+
+    footer { background: var(--choco); color: #b9a493; padding: 60px 0 30px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    footer .logo { color: #fff; }
+    footer .logo-texto small { color: #b9a493; }
+    footer h4 { color: #fff; margin-bottom: 10px; font-size: .95rem; }
+    footer ul { list-style: none; display: grid; gap: 6px; font-size: .92rem; }
+    footer a:hover { color: #fff; }
+    .creditos { padding-top: 22px; font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .creditos a { color: #f2a65a; font-weight: 700; }
+
+    .wsp-flotante { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 10px 25px rgba(37, 211, 102, .45); z-index: 60; transition: transform .2s; }
+    .wsp-flotante:hover { transform: scale(1.08); }
+
+    /* ===== Comparar ===== */
+    .btn-comparar { position: fixed; left: 50%; translate: -50% 0; bottom: 20px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--choco); border: 0; border-radius: 999px; padding: 12px 18px 12px 12px; font: 700 .92rem "Outfit", sans-serif; cursor: pointer; box-shadow: 0 12px 28px rgba(46, 29, 20, .28); transition: transform .2s; }
+    .btn-comparar:hover { transform: translateY(-3px); }
+    .btn-comparar .ico { width: 34px; height: 34px; border-radius: 50%; background: var(--naranja); display: grid; place-items: center; }
+    .btn-comparar .pulso { position: absolute; inset: 0; border-radius: 999px; animation: pulso 2.4s infinite; pointer-events: none; }
+    @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(226, 118, 43, .6); } 70%, 100% { box-shadow: 0 0 0 14px rgba(226, 118, 43, 0); } }
+    .modal { position: fixed; inset: 0; z-index: 100; background: rgba(30, 19, 13, .86); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal.abierto { display: flex; animation: aparecer .25s ease; }
+    @keyframes aparecer { from { opacity: 0; } }
+    .modal-caja { background: #fff; border-radius: 22px; width: min(1100px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: 26px; position: relative; }
+    .modal-cabeza { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; padding-right: 44px; }
+    .modal-cabeza h2 { font-size: 2rem; color: var(--choco); }
+    .cerrar { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--crema); cursor: pointer; display: grid; place-items: center; }
+    .pestanas { display: inline-flex; background: var(--crema); border-radius: 999px; padding: 4px; }
+    .pestanas button { border: 0; background: transparent; font: 700 .9rem "Outfit", sans-serif; color: var(--texto); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+    .pestanas button[aria-selected="true"] { background: var(--choco); color: #fff; }
+    .leyenda { display: flex; justify-content: space-between; margin: 0 auto 10px; font: 700 .78rem "Outfit", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    .leyenda span { padding: 6px 12px; border-radius: 999px; }
+    .leyenda .l-antes { background: var(--crema); color: var(--texto); }
+    .leyenda .l-ahora { background: var(--naranja); color: #fff; }
+    .comparador { position: relative; margin-inline: auto; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); user-select: none; touch-action: none; background: #ddd; }
+    .comparador.escritorio { width: 100%; aspect-ratio: 1366 / 850; }
+    .comparador.movil { width: min(340px, 100%, calc((100vh - 260px) * .462)); min-width: 220px; aspect-ratio: 390 / 844; border-radius: 30px; border: 8px solid var(--choco); }
+    .comparador img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; }
+    .comparador .antes { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+    .divisor { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,.4); pointer-events: none; }
+    .divisor span { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+    .comparador input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .comparador:focus-within .divisor span { outline: 3px solid var(--naranja); }
+    .ayuda-comparar { text-align: center; color: var(--suave); font-size: .88rem; margin: 12px 0 20px; }
+    .mejoras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .mejora { border: 1px solid var(--crema-2); border-radius: 14px; padding: 16px; font-size: .9rem; }
+    .mejora b { display: block; font-size: .98rem; margin-bottom: 4px; color: var(--choco); }
+    .mejora .antes-txt { color: #a5384a; display: block; font-size: .85rem; }
+    .mejora .ahora-txt { color: #23784a; display: block; font-size: .85rem; font-weight: 700; }
+
+    .toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 200%); opacity: 0; background: var(--choco); color: #fff; padding: 14px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.3); font-size: .92rem; z-index: 120; transition: transform .35s ease, opacity .35s; max-width: calc(100% - 32px); text-align: center; pointer-events: none; }
+    .toast.visible { transform: translate(-50%, 0); opacity: 1; }
+
+    .aparece { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .aparece.visto { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .aparece { opacity: 1; transform: none; transition: none; }
+      .ingrediente svg, .ficha, .cinta-pista, .pulso, .estado i, .torta-hero svg, .scroll-abajo::after, .vitrina-item { animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+    .captura .aviso-demo, .captura .btn-comparar { display: none; }
+    .captura .ingrediente svg, .captura .ficha, .captura .cinta-pista, .captura .torta-hero svg { animation: none; }
+
+    @media (max-width: 1000px) {
+      .hero-grid, .anatomia-grid, .pedido-grid, .nosotros-grid, .ubicacion-grid { grid-template-columns: 1fr; }
+      .hero-grid { min-height: 0; padding: 46px 0 40px; gap: 0; }
+      .escena { height: 440px; }
+      .scroll-abajo { display: none; }
+      .favoritos { grid-template-columns: 1fr 1fr; }
+      .anatomia-grid { gap: 0; }
+      .anatomia-visual { top: 74px; height: 290px; z-index: 2; background: linear-gradient(var(--choco) 86%, transparent); margin-inline: -16px; }
+      .torta-anatomia { width: 300px; padding-top: 60px; }
+      .anatomia-pasos li { min-height: 46vh; padding-left: 22px; }
+      .nosotros-grid { gap: 36px; }
+      .mejoras { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 820px) {
+      .menu, .nav > .btn { display: none; }
+      .hamburguesa { display: block; }
+      .menu.abierto { display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; right: 0; background: var(--crema); padding: 20px 16px 26px; gap: 18px; border-bottom: 1px solid var(--crema-3); }
+      .resenas { grid-template-columns: 1fr; text-align: center; padding: 34px 24px; gap: 18px; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .hero h1 { font-size: clamp(2.8rem, 13vw, 3.8rem); margin: 18px 0; }
+      .hero-botones .btn { flex: 1 1 100%; }
+      .hero-datos { gap: 18px; flex-wrap: nowrap; justify-content: space-between; }
+      .hero-datos strong { font-size: 1.9rem; }
+      .hero-datos > div > span { font-size: .78rem; }
+      .escena { height: 360px; margin-top: 20px; }
+      .ingrediente.zanahoria { width: 90px; }
+      .ingrediente.nuez { width: 50px; top: 12%; }
+      .ingrediente.canela { width: 84px; bottom: 10%; }
+      .ficha { padding: 10px 12px; font-size: .78rem; }
+      .ficha strong { font-size: .9rem; }
+      .ficha .precio { font-size: 1.2rem; }
+      .ficha.f1 { top: 22%; left: 0; }
+      .ficha.f2 { bottom: 2%; left: 0; }
+      .favoritos, .valores, .mejoras, .fila { grid-template-columns: 1fr; }
+      .vitrina { padding: 26px 18px; }
+      .form-pedido { padding: 22px 18px; }
+      .ubicacion-texto { padding: 32px 22px; }
+      .ubicacion-grid iframe { min-height: 300px; }
+      .btn-comparar { left: 16px; translate: none; bottom: 16px; padding-right: 14px; }
+      .btn-comparar .txt-largo { display: none; }
+      .wsp-flotante { right: 16px; bottom: 16px; }
+      .modal { padding: 0; }
+      .modal-caja { border-radius: 0; max-height: 100vh; height: 100%; padding: 20px 16px; }
+      .comparador.movil { width: min(300px, 100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aviso-demo">Propuesta de diseño hecha por <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a>. Productos y precios de su web anterior. <button type="button" data-abrir-comparar>Comparar con la web actual</button></div>
+
+  <header>
+    <div class="contenedor nav">
+      <a href="#inicio" class="logo" aria-label="Sal y Azúcar, inicio">
+        <svg width="38" height="38" viewBox="0 0 64 64" aria-hidden="true"><ellipse cx="32" cy="48" rx="26" ry="7" fill="#e7d5bb"/><path d="M10 30h44v16c0 4-10 7-22 7s-22-3-22-7z" fill="#b9733a"/><path d="M10 36h44v4H10z" fill="#f6ead6"/><ellipse cx="32" cy="30" rx="22" ry="7" fill="#f6ead6"/><path d="M32 10l3.5 12h-7z" fill="#e2762b"/><path d="M32 10l-3-5M32 10v-6M32 10l3-5" stroke="#6f8a4e" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="logo-texto">Sal <i>y</i> Azúcar<small>Pastelería · La Reina</small></span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="#torta">La favorita</a>
+        <a href="#productos">Productos</a>
+        <a href="#pedir">Pedir</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <a href="#pedir" class="btn btn-naranja">Hacer un pedido</a>
+      <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="progreso" id="progreso"></div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div class="hero-texto aparece">
+          <span class="estado" id="estado"><i></i><span>Abierto todos los días</span></span>
+          <h1>La torta de zanahoria <em>que todos recomiendan.</em></h1>
+          <p class="lead">Pastelería casera en el corazón de La Reina, con la antigua receta alemana. Ingredientes naturales, sin premezclas y todo hecho el mismo día.</p>
+          <div class="hero-botones">
+            <a href="#pedir" class="btn btn-naranja">Pedir por WhatsApp</a>
+            <a href="#productos" class="btn btn-borde">Ver los favoritos</a>
+          </div>
+          <div class="hero-datos">
+            <div><strong><span data-contar="4.7" data-dec="1">4,7</span><b>★</b></strong><span>en Google</span></div>
+            <div><strong data-contar="225">225</strong><span>reseñas</span></div>
+            <div><strong><span data-contar="30">30</span>+</strong><span>cafeterías</span></div>
+          </div>
+        </div>
+        <div class="escena aparece" aria-hidden="true">
+          <div class="escena-mov"><div class="torta-hero" id="torta-hero"></div></div>
+          <span class="ingrediente zanahoria"><svg viewBox="0 0 140 140"><defs><linearGradient id="g-zan" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c4561a"/><stop offset=".45" stop-color="#f29a48"/><stop offset="1" stop-color="#c25217"/></linearGradient></defs><g transform="rotate(35 70 70)"><path d="M58 30 C58 24 82 24 82 30 L74 128 C73 134 67 134 66 128 Z" fill="url(#g-zan)"/><path d="M61 48 h9 M68 62 h10 M62 78 h8 M69 94 h7 M64 108 h6" stroke="#b44a12" stroke-width="2" stroke-linecap="round" opacity=".6"/><path d="M70 28 C62 14 52 10 46 6 C56 8 66 14 70 24 C70 12 72 6 76 0 C76 10 74 18 72 26 C80 14 90 10 98 10 C88 14 80 20 74 30 Z" fill="#6f8a4e"/><path d="M70 28 C64 16 56 12 50 8" stroke="#4d6b31" stroke-width="1.5" fill="none"/></g></svg></span>
+          <span class="ingrediente nuez"><svg viewBox="0 0 80 70"><defs><radialGradient id="g-nuez" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#c58b55"/><stop offset="1" stop-color="#7a4a24"/></radialGradient></defs><path d="M8 35 C8 14 26 6 40 12 C54 6 72 14 72 35 C72 56 54 64 40 58 C26 64 8 56 8 35 Z" fill="url(#g-nuez)"/><path d="M40 12 V58 M24 20 C30 28 30 42 22 50 M56 20 C50 28 50 42 58 50 M14 32 C20 34 24 30 26 26 M66 32 C60 34 56 30 54 26 M16 44 C22 42 26 46 26 50 M64 44 C58 42 54 46 54 50" stroke="#5a3418" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/></svg></span>
+          <span class="ingrediente canela"><svg viewBox="0 0 140 70"><defs><linearGradient id="g-can" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b06a3a"/><stop offset=".5" stop-color="#8a4b24"/><stop offset="1" stop-color="#5e3016"/></linearGradient></defs><g transform="rotate(-14 70 35)"><rect x="8" y="16" width="120" height="16" rx="8" fill="url(#g-can)"/><rect x="14" y="36" width="116" height="15" rx="7.5" fill="url(#g-can)"/><path d="M14 22 h110 M20 42 h104" stroke="#d29a6a" stroke-width="1.5" opacity=".5"/><ellipse cx="12" cy="24" rx="5" ry="8" fill="#6e3a1b"/><path d="M12 19 a4 5 0 1 1 -1 9" stroke="#c58b55" stroke-width="1.4" fill="none"/></g></svg></span>
+          <div class="ficha f1"><strong>Torta de Zanahoria</strong><span class="precio">desde $10.500</span>la favorita de todos</div>
+          <div class="ficha f2"><span class="estrellas">★★★★★</span><strong>4,7 en Google</strong>225 reseñas</div>
+        </div>
+      </div>
+      <span class="scroll-abajo" aria-hidden="true">Baja</span>
+    </section>
+
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta-pista">
+        <span>Torta de zanahoria</span><span>Kuchen</span><span>Cheesecake</span><span>Torta Amor</span><span>Con o sin azúcar</span><span>Receta alemana</span>
+        <span>Torta de zanahoria</span><span>Kuchen</span><span>Cheesecake</span><span>Torta Amor</span><span>Con o sin azúcar</span><span>Receta alemana</span>
+      </div>
+    </div>
+
+    <section class="oscuro" id="torta">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">La favorita</span>
+          <h2>Así está hecha <em>nuestra torta de zanahoria</em></h2>
+          <p>Aparece en 37 de sus reseñas en Google. Baja y mírala capa por capa.</p>
+        </div>
+        <div class="anatomia-grid" id="anatomia" data-foco="bizcocho">
+          <div class="anatomia-visual" aria-hidden="true"><div class="torta-anatomia" id="torta-anatomia"></div></div>
+          <ol class="anatomia-pasos">
+            <li class="activo">
+              <span class="num">Capa por capa</span>
+              <h3>Bizcocho de zanahoria, nueces y canela</h3>
+              <p>Tres capas húmedas, con zanahoria rallada, nueces y canela. La receta casera de siempre, sin premezclas.</p>
+              <div class="chips-ing"><span>Zanahoria</span><span>Nueces</span><span>Canela</span></div>
+            </li>
+            <li>
+              <span class="num">Entre capas</span>
+              <h3>Frosting de queso crema</h3>
+              <p>Entre cada capa y por encima, el frosting que la hizo famosa en el barrio.</p>
+              <div class="chips-ing"><span>Queso crema</span><span>Hecho en casa</span></div>
+            </li>
+            <li>
+              <span class="num">Lista para tu mesa</span>
+              <h3>Hecha el mismo día</h3>
+              <p>Todos nuestros productos se preparan el mismo día, con ingredientes frescos y frutas naturales. Nada envasado ni congelado.</p>
+              <a href="#pedir" class="btn btn-naranja" data-elegir="zanahoria" style="margin-top:20px;align-self:flex-start">Pedir la torta de zanahoria</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="productos">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">Los favoritos</span>
+          <h2>Lo que más <em>nos piden</em></h2>
+          <p>El precio depende de las porciones o el tamaño. Te confirmamos el valor exacto por WhatsApp.</p>
+        </div>
+        <div class="favoritos" id="favoritos"></div>
+
+        <div class="vitrina aparece">
+          <div class="vitrina-cabeza">
+            <div><span class="sobre">En la vitrina</span><h3>Y mucho más para la once</h3></div>
+            <p>Lo que más mencionan en sus reseñas.</p>
+          </div>
+          <div class="pestanas-vitrina" id="pestanas-vitrina" role="group" aria-label="Categorías">
+            <button type="button" data-cat="tortas" aria-pressed="true">Tortas</button>
+            <button type="button" data-cat="kuchen" aria-pressed="false">Kuchen y pies</button>
+            <button type="button" data-cat="cheesecake" aria-pressed="false">Cheesecake</button>
+            <button type="button" data-cat="queques" aria-pressed="false">Queques y panes</button>
+            <button type="button" data-cat="solito" aria-pressed="false">Para disfrutar solito</button>
+          </div>
+          <div class="vitrina-items" id="vitrina-items"></div>
+          <p class="nota-vitrina">En la versión final, cada producto lleva su foto y su precio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="oscuro" id="pedir">
+      <div class="contenedor pedido-grid">
+        <div class="aparece">
+          <div class="titulo-seccion" style="margin-bottom:28px">
+            <span class="sobre">Pedidos</span>
+            <h2>Dos formas <em>de comprar</em></h2>
+            <p>Elige cómo lo quieres y te llega el pedido armado por WhatsApp.</p>
+          </div>
+          <div class="modos" id="modos">
+            <button type="button" class="modo" data-modo="hoy" aria-pressed="true"><b>Pide para hoy</b><span>Del stock del emporio. Lo pides y lo retiras hoy, o coordinamos el despacho.</span></button>
+            <button type="button" class="modo" data-modo="encargo" aria-pressed="false"><b>Encarga para tu fecha</b><span>Con 48 horas de anticipación, para cumpleaños y fechas especiales.</span></button>
+          </div>
+        </div>
+        <form class="form-pedido aparece" id="form-pedido" novalidate>
+          <label>Producto
+            <select name="producto" id="sel-producto"></select>
+          </label>
+          <div class="fila">
+            <label>Porciones o tamaño<input name="tamano" placeholder="Ej: 12 porciones"></label>
+            <label id="campo-azucar">Azúcar
+              <span class="segmento" id="seg-azucar"><button type="button" data-v="con" aria-pressed="true">Con</button><button type="button" data-v="sin" aria-pressed="false">Sin</button></span>
+            </label>
+          </div>
+          <div class="fila">
+            <label>Fecha
+              <span class="fecha-hoy" id="fecha-hoy">Hoy</span>
+              <input type="date" name="fecha" id="fecha" hidden>
+              <span class="ayuda" id="ayuda-fecha"></span>
+            </label>
+            <label>Entrega
+              <span class="segmento" id="seg-entrega"><button type="button" data-v="retiro" aria-pressed="true">Retiro</button><button type="button" data-v="despacho" aria-pressed="false">Despacho</button></span>
+            </label>
+          </div>
+          <label>Tu nombre<input name="nombre" placeholder="Ej: Carolina" autocomplete="given-name"></label>
+          <div class="resumen">
+            <div class="total">Precio<strong id="precio">desde $10.500</strong><span id="detalle-precio">según porciones</span></div>
+            <button type="submit" class="btn btn-naranja">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+              Enviar pedido
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="contenedor">
+        <div class="nosotros-grid">
+          <div class="aparece">
+            <span class="sobre">Nosotros</span>
+            <div class="titulo-seccion" style="margin-bottom:20px"><h2>Pastelería casera <em>desde el corazón de La Reina</em></h2></div>
+            <p>Preparamos tortas, kuchenes, cheesecakes, brownies y lo que se te antoje, con la antigua receta alemana. Sabor casero, ingredientes frescos, frutas naturales y todo el cariño que le podemos agregar.</p>
+            <p>Desde aquí también llevamos nuestros productos del horno a tu mesa: para el desayuno, la once o simplemente para darte un gusto.</p>
+          </div>
+          <div class="valores aparece">
+            <div class="valor"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c45f1b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 1 8-1.4 5.2-5 10-9 10z"/><path d="M2 21c0-3 1.9-5.4 5-6"/></svg></span><b>Ingredientes naturales</b><span>No usamos premezclas, envasados ni congelados.</span></div>
+            <div class="valor"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c45f1b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span><b>Receta alemana</b><span>Creaciones propias y clásicos de la pastelería alemana.</span></div>
+            <div class="valor"><strong><span data-contar="30">30</span>+</strong><b>Cafeterías</b><span>de Santiago tienen nuestros productos.</span></div>
+            <div class="valor"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c45f1b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M9 18h6"/></svg></span><b>Liderada por una mujer</b><span>Un emprendimiento familiar del barrio.</span></div>
+          </div>
+        </div>
+        <div class="resenas aparece">
+          <div class="nota"><strong data-contar="4.7" data-dec="1">4,7</strong><div class="estrellas" aria-hidden="true">★★★★★</div><span>225 reseñas en Google</span></div>
+          <div>
+            <h3>Aquí van sus reseñas reales de Google</h3>
+            <p>En la versión final mostramos las opiniones verdaderas de sus clientes, con nombre y fecha. <b>La torta de zanahoria aparece en 37 de ellas.</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ubicacion" style="padding-top:0">
+      <div class="contenedor">
+        <div class="ubicacion-grid aparece">
+          <div class="ubicacion-texto">
+            <span class="sobre">Ubicación</span>
+            <h2>Ven a buscar <em>tu favorita</em></h2>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e1d14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><b>Dirección</b><a href="https://www.google.com/maps/search/?api=1&query=Pasteler%C3%ADa+Sal+y+Az%C3%BAcar+La+Reina" target="_blank" rel="noopener">Av. Simón Bolívar 6941, La Reina</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e1d14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><b>WhatsApp</b><a href="tel:+56989044159">+56 9 8904 4159</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e1d14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span><div><b>Correo</b><a href="mailto:contacto@salyazucar.cl">contacto@salyazucar.cl</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2e1d14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div style="flex:1"><b>Horario</b>
+              <table class="horario" id="tabla-horario">
+                <tr data-dias="1"><td>Lunes</td><td>11:00–14:00 · 14:30–19:00</td></tr>
+                <tr data-dias="2,3,4"><td>Martes a jueves</td><td>10:00–14:00 · 14:30–19:00</td></tr>
+                <tr data-dias="5"><td>Viernes</td><td>10:00–19:00</td></tr>
+                <tr data-dias="6"><td>Sábado</td><td>10:00–14:30 · 16:30–19:00</td></tr>
+                <tr data-dias="0"><td>Domingo</td><td>10:30–16:30</td></tr>
+              </table>
+            </div></div>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Pasteler%C3%ADa+Sal+y+Az%C3%BAcar+La+Reina" target="_blank" rel="noopener" class="btn btn-choco" style="margin-top:6px">Cómo llegar</a>
+          </div>
+          <iframe title="Mapa de Pastelería Sal y Azúcar" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Pasteler%C3%ADa+Sal+y+Az%C3%BAcar,+Av.+Sim%C3%B3n+Bol%C3%ADvar+6941,+La+Reina&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece" style="text-align:center;margin-inline:auto">
+          <span class="sobre">Preguntas frecuentes</span>
+          <h2>Antes de <em>pedir</em></h2>
+        </div>
+        <div class="faq aparece">
+          <details><summary>¿Con cuánta anticipación tengo que encargar?</summary><p>Para encargos te pedimos 48 horas de anticipación. Si lo necesitas para hoy, revisa lo que tenemos en stock en el emporio y lo retiras el mismo día.</p></details>
+          <details><summary>¿Tienen tortas sin azúcar?</summary><p>Sí. La Torta Amor, por ejemplo, la puedes pedir con o sin azúcar. Pregúntanos por WhatsApp qué otras opciones tenemos esa semana.</p></details>
+          <details><summary>¿Hacen despacho?</summary><p>Sí. Puedes retirar en el local o coordinar el despacho cuando hagas tu pedido.</p></details>
+          <details><summary>¿Cuántas porciones tiene la torta de zanahoria?</summary><p>La hacemos en distintos tamaños, desde la Mini Zanahoria hasta tortas grandes para celebraciones. El precio va de $10.500 a $66.000 según las porciones.</p></details>
+          <details><summary>¿Dónde más encuentro sus productos?</summary><p>Estamos en más de 30 cafeterías de Santiago. También puedes venir a buscar tu favorito al local o pedirlo para disfrutarlo en casa.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <div class="footer-grid">
+        <a href="#inicio" class="logo"><span class="logo-texto">Sal <i>y</i> Azúcar<small>Pastelería · La Reina</small></span></a>
+        <div><h4>Visítanos</h4><ul><li>Av. Simón Bolívar 6941</li><li>La Reina, Santiago</li></ul></div>
+        <div><h4>Horario</h4><ul><li>Lun a sáb desde las 10:00</li><li>Domingo 10:30 – 16:30</li></ul></div>
+        <div><h4>Contacto</h4><ul><li><a href="tel:+56989044159">+56 9 8904 4159</a></li><li><a href="mailto:contacto@salyazucar.cl">contacto@salyazucar.cl</a></li></ul></div>
+      </div>
+      <div class="creditos">
+        <span>© <span id="anio"></span> Sal y Azúcar Pastelería</span>
+        <span>Diseño y desarrollo: <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="btn-comparar" data-abrir-comparar aria-haspopup="dialog">
+    <span class="pulso"></span>
+    <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></svg></span>
+    <span>Comparar<span class="txt-largo"> con la web actual</span></span>
+  </button>
+
+  <a href="#pedir" class="wsp-flotante" aria-label="Pedir por WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+  </a>
+
+  <div class="modal" id="modal-comparar" role="dialog" aria-modal="true" aria-labelledby="titulo-comparar">
+    <div class="modal-caja">
+      <button type="button" class="cerrar" id="cerrar-comparar" aria-label="Cerrar comparación"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e1d14" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <div class="modal-cabeza">
+        <div><span class="sobre">Antes y ahora</span><h2 id="titulo-comparar">Web actual vs. propuesta</h2></div>
+        <div class="pestanas" role="tablist" aria-label="Dispositivo">
+          <button type="button" role="tab" aria-selected="true" data-vista="movil">Celular</button>
+          <button type="button" role="tab" aria-selected="false" data-vista="escritorio">Computador</button>
+        </div>
+      </div>
+      <div class="leyenda" id="leyenda"><span class="l-antes">◀ Web actual</span><span class="l-ahora">Propuesta ▶</span></div>
+      <div class="comparador movil" id="comparador">
+        <img class="ahora" id="img-ahora" src="comparar/ahora-movil.png" alt="Portada de la propuesta nueva">
+        <img class="antes" id="img-antes" src="comparar/antes-movil.png" alt="Lo que aparece hoy al abrir salyazucar.cl: un error de que no se puede acceder al sitio">
+        <div class="divisor"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e2762b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <input type="range" min="0" max="100" value="50" id="deslizador" aria-label="Deslizar para comparar la web actual con la propuesta">
+      </div>
+      <p class="ayuda-comparar">Arrastra la barra. A la izquierda, lo que ve hoy quien toca "Sitio web" en su ficha de Google.</p>
+      <div class="mejoras">
+        <div class="mejora"><b>Una web que abre</b><span class="antes-txt">Antes: salyazucar.cl muestra "No se puede acceder a este sitio"</span><span class="ahora-txt">Ahora: carga en segundos, en el celular y en el computador</span></div>
+        <div class="mejora"><b>Un número para pedir</b><span class="antes-txt">Antes: su ficha de Google no tiene teléfono</span><span class="ahora-txt">Ahora: WhatsApp en cada sección y botón flotante</span></div>
+        <div class="mejora"><b>La favorita al centro</b><span class="antes-txt">Antes: la torta de zanahoria, la estrella de sus reseñas, no se luce</span><span class="ahora-txt">Ahora: se presenta capa por capa al bajar</span></div>
+        <div class="mejora"><b>Pedidos claros</b><span class="antes-txt">Antes: hay que preguntar cómo encargar</span><span class="ahora-txt">Ahora: "para hoy" o "encargo con 48 h", con fecha y entrega</span></div>
+        <div class="mejora"><b>Horario sin dudas</b><span class="antes-txt">Antes: el horario con colación solo está en Google</span><span class="ahora-txt">Ahora: dice si están abiertos o en colación en ese momento</span></div>
+        <div class="mejora"><b>Su historia</b><span class="antes-txt">Antes: la receta alemana y las 30 cafeterías no se cuentan</span><span class="ahora-txt">Ahora: son parte de la portada y de Nosotros</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const captura = new URLSearchParams(location.search).has("captura");
+    if (captura) document.documentElement.classList.add("captura");
+    document.getElementById("anio").textContent = new Date().getFullYear();
+    const sinMovimiento = captura || matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Menú del celular
+    const hamb = document.getElementById("hamburguesa");
+    const menu = document.getElementById("menu");
+    hamb.addEventListener("click", () => hamb.setAttribute("aria-expanded", menu.classList.toggle("abierto")));
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("abierto"); hamb.setAttribute("aria-expanded", "false"); }));
+
+    const toast = document.getElementById("toast");
+    let tToast;
+    function mostrarToast(texto) {
+      toast.textContent = texto;
+      toast.classList.add("visible");
+      clearTimeout(tToast);
+      tToast = setTimeout(() => toast.classList.remove("visible"), 5500);
+    }
+    const pesos = n => "$" + n.toLocaleString("es-CL");
+
+    // ===== Torta de zanahoria dibujada por capas =====
+    // Cada capa es un cilindro: cara de arriba (elipse) + costado. Al separarlas se ve el interior.
+    function torta(p, { plato = true } = {}) {
+      const cx = 260, rx = 180, ry = 50, y0 = 150;
+      const CAPAS = [
+        { tipo: "frosting", h: 18 }, { tipo: "bizcocho", h: 40 }, { tipo: "relleno", h: 14 },
+        { tipo: "bizcocho", h: 40 }, { tipo: "relleno", h: 14 }, { tipo: "bizcocho", h: 34 }
+      ];
+      // Semilla fija para que las migas queden siempre iguales
+      let semilla = 7;
+      const azar = () => (semilla = (semilla * 16807) % 2147483647) / 2147483647;
+      let migas = "";
+      for (let i = 0; i < 70; i++) {
+        const x = (azar() * 90).toFixed(1), y = (azar() * 60).toFixed(1);
+        const t = azar();
+        if (t < .45) migas += `<path d="M${x} ${y} l${(azar() * 5 + 2).toFixed(1)} ${(azar() * 2 - 1).toFixed(1)}" stroke="#ea8f3c" stroke-width="1.6" stroke-linecap="round"/>`;
+        else if (t < .75) migas += `<circle cx="${x}" cy="${y}" r="${(azar() * 1.6 + .8).toFixed(1)}" fill="#5c3517"/>`;
+        else migas += `<circle cx="${x}" cy="${y}" r="${(azar() * 1.2 + .5).toFixed(1)}" fill="#d9a066" opacity=".8"/>`;
+      }
+      const costado = (a, b) => `M${cx - rx} ${a} A${rx} ${ry} 0 0 0 ${cx + rx} ${a} L${cx + rx} ${b} A${rx} ${ry} 0 0 1 ${cx - rx} ${b} Z`;
+      // Borde con chorreado del frosting
+      const chorreado = (a, b) => {
+        let d = `M${cx - rx} ${a} A${rx} ${ry} 0 0 0 ${cx + rx} ${a} L${cx + rx} ${b}`;
+        const gotas = [[.12, 16], [.24, 9], [.36, 22], [.5, 12], [.6, 26], [.72, 10], [.84, 18], [.93, 8]];
+        for (let k = 0; k <= 60; k++) {
+          const u = k / 60, ang = u * Math.PI;
+          let extra = 0;
+          gotas.forEach(([c, l]) => { extra += l * Math.exp(-Math.pow((u - c) / .028, 2)); });
+          d += ` L${(cx + rx * Math.cos(ang)).toFixed(1)} ${(b + ry * Math.sin(ang) + extra).toFixed(1)}`;
+        }
+        return d + " Z";
+      };
+      let y = y0, capasSvg = [];
+      const total = CAPAS.length;
+      CAPAS.forEach((c, i) => {
+        const a = y, b = y + c.h; y = b;
+        const sube = (total - 1 - i) * 30;
+        const esBizcocho = c.tipo === "bizcocho";
+        const relleno = esBizcocho ? `url(#${p}-miga)` : `url(#${p}-crema)`;
+        const cara = esBizcocho ? `url(#${p}-miga)` : `url(#${p}-crema-top)`;
+        let extra = "";
+        if (c.tipo === "frosting") {
+          // Rosetas con nueces y zanahorias de decoración
+          let decos = [];
+          for (let k = 0; k < 10; k++) {
+            const ang = k / 10 * Math.PI * 2 + .3;
+            decos.push({ x: cx + rx * .78 * Math.cos(ang), y: a + ry * .74 * Math.sin(ang), k });
+          }
+          decos.sort((m, n) => m.y - n.y);
+          extra = decos.map(dc => {
+            const top = dc.k % 2 === 0
+              ? `<path transform="translate(${dc.x.toFixed(1)} ${(dc.y - 12).toFixed(1)}) rotate(${dc.k * 23})" d="M-7 0 C-7 -5 -3 -6 0 -4 C3 -6 7 -5 7 0 C7 4 3 6 0 4 C-3 6 -7 4 -7 0 Z" fill="url(#${p}-nuez)" stroke="#5a3418" stroke-width=".8"/>`
+              : `<g transform="translate(${dc.x.toFixed(1)} ${(dc.y - 14).toFixed(1)}) rotate(${dc.k * 9 - 20})"><path d="M0 -8 L3.4 6 Q0 9 -3.4 6 Z" fill="#ea8a35"/><path d="M0 -8 l-3 -5 M0 -8 v-6 M0 -8 l3 -5" stroke="#6f8a4e" stroke-width="1.6" stroke-linecap="round"/></g>`;
+            return `<g><ellipse cx="${dc.x.toFixed(1)}" cy="${(dc.y + 2).toFixed(1)}" rx="15" ry="6" fill="#000" opacity=".08"/><circle cx="${dc.x.toFixed(1)}" cy="${(dc.y - 4).toFixed(1)}" r="12" fill="url(#${p}-roseta)"/><path d="M${(dc.x - 7).toFixed(1)} ${(dc.y - 4).toFixed(1)} a7 6 0 1 1 7 6 a4 4 0 1 1 -3 -5" fill="none" stroke="#e6d3b5" stroke-width="1.3"/>${top}</g>`;
+          }).join("");
+          extra += `<g fill="#7a4a24">${[[-40, 4], [-12, -10], [18, 6], [44, -6], [0, 14], [-60, -6], [64, 8]].map(([dx, dy], k) => `<path transform="translate(${cx + dx} ${a + dy}) rotate(${k * 47})" d="M-3 -2 L2 -3 L4 1 L0 3 L-4 1 Z"/>`).join("")}</g>`;
+        }
+        const costadoD = c.tipo === "frosting" ? chorreado(a, b) : costado(a, b);
+        const clase = esBizcocho ? "bizcocho" : "crema";
+        capasSvg.push(`<g class="capa ${clase}" style="transform: translateY(calc(var(--sep, 0) * -${sube}px))">
+          <path d="${costadoD}" fill="${relleno}"/>
+          <path d="${costadoD}" fill="url(#${p}-sombra)"/>
+          ${esBizcocho ? `<path d="M${cx - rx} ${b - 3} A${rx} ${ry} 0 0 0 ${cx + rx} ${b - 3}" stroke="#7d4319" stroke-width="3" fill="none" opacity=".35"/>` : ""}
+          <ellipse cx="${cx}" cy="${a}" rx="${rx}" ry="${ry}" fill="${cara}"/>
+          ${esBizcocho ? `<ellipse cx="${cx}" cy="${a}" rx="${rx}" ry="${ry}" fill="url(#${p}-brillo)"/>` : ""}
+          ${extra}
+        </g>`);
+      });
+      // Se dibujan de abajo hacia arriba para que las de arriba tapen a las de abajo
+      const capas = capasSvg.reverse().join("");
+      const base = y;
+      const platoSvg = plato ? `
+        <ellipse cx="${cx}" cy="${base + 108}" rx="150" ry="18" fill="#2e1d14" opacity=".18" filter="url(#${p}-difuso)"/>
+        <path d="M${cx - 34} ${base + 30} L${cx - 22} ${base + 88} L${cx + 22} ${base + 88} L${cx + 34} ${base + 30} Z" fill="url(#${p}-porcelana-v)"/>
+        <ellipse cx="${cx}" cy="${base + 92}" rx="92" ry="20" fill="url(#${p}-porcelana)"/>
+        <ellipse cx="${cx}" cy="${base + 88}" rx="92" ry="18" fill="#fff"/>
+        <ellipse cx="${cx}" cy="${base + 18}" rx="${rx + 46}" ry="${ry + 16}" fill="url(#${p}-porcelana)"/>
+        <ellipse cx="${cx}" cy="${base + 10}" rx="${rx + 46}" ry="${ry + 14}" fill="#fffdf9"/>
+        <ellipse cx="${cx}" cy="${base + 10}" rx="${rx + 30}" ry="${ry + 8}" fill="none" stroke="#efe4d3" stroke-width="2"/>
+        <ellipse cx="${cx}" cy="${base + 6}" rx="${rx + 6}" ry="${ry + 4}" fill="#000" opacity=".12" filter="url(#${p}-difuso)"/>` : "";
+      return `<svg viewBox="0 0 520 520" aria-hidden="true">
+        <defs>
+          <pattern id="${p}-miga" width="90" height="60" patternUnits="userSpaceOnUse"><rect width="90" height="60" fill="#b8723a"/><rect width="90" height="60" fill="#c98446" opacity=".35"/>${migas}</pattern>
+          <linearGradient id="${p}-crema" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf3e6"/><stop offset="1" stop-color="#ead9bd"/></linearGradient>
+          <radialGradient id="${p}-crema-top" cx=".42" cy=".4" r=".7"><stop offset="0" stop-color="#fffaf1"/><stop offset="1" stop-color="#f1e2c9"/></radialGradient>
+          <radialGradient id="${p}-roseta" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#fffdf8"/><stop offset="1" stop-color="#e8d6b8"/></radialGradient>
+          <radialGradient id="${p}-nuez" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#c58b55"/><stop offset="1" stop-color="#7a4a24"/></radialGradient>
+          <linearGradient id="${p}-sombra" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2e1d14" stop-opacity=".38"/><stop offset=".28" stop-color="#2e1d14" stop-opacity="0"/><stop offset=".42" stop-color="#fff" stop-opacity=".14"/><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#2e1d14" stop-opacity=".42"/></linearGradient>
+          <radialGradient id="${p}-brillo" cx=".5" cy=".5" r=".55"><stop offset="0" stop-color="#e6a565" stop-opacity=".35"/><stop offset="1" stop-color="#7d4319" stop-opacity=".25"/></radialGradient>
+          <linearGradient id="${p}-porcelana" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf7f1"/><stop offset="1" stop-color="#d9cdbb"/></linearGradient>
+          <linearGradient id="${p}-porcelana-v" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#d9cdbb"/><stop offset=".45" stop-color="#fffdf9"/><stop offset="1" stop-color="#cbbca6"/></linearGradient>
+          <filter id="${p}-difuso" x="-30%" y="-100%" width="160%" height="300%"><feGaussianBlur stdDeviation="8"/></filter>
+        </defs>
+        ${platoSvg}
+        ${capas}
+      </svg>`;
+    }
+    document.getElementById("torta-hero").innerHTML = torta("h");
+    document.getElementById("torta-anatomia").innerHTML = torta("a");
+
+    // ===== Favoritos (precios de su web anterior) =====
+    const FAVORITOS = [
+      { id: "zanahoria", nombre: "Torta de Zanahoria", desc: "Bizcocho de zanahoria, nueces y canela, con frosting de queso crema. La favorita de todos.", min: 10500, max: 66000, etiq: "La favorita", detalle: "según porciones" },
+      { id: "snickers", nombre: "Cheesecake Snickers", desc: "Base de brownie de chocolate, centro de cheesecake de mantequilla de maní y cubierta de caluga casera de maní.", min: 8000, max: 25000, detalle: "según porciones" },
+      { id: "amor", nombre: "Torta Amor", desc: "Masa hojaldrada rellena con pastelera casera, manjar blanco, coulis de frambuesa y crema batida.", min: 22000, max: 74000, etiq: "Con o sin azúcar", verde: true, azucar: true, detalle: "según tamaño y azúcar" },
+      { id: "mini", nombre: "Mini Zanahoria", desc: "Mini torta de bizcocho de zanahoria con nueces y frosting de queso crema. La especialidad de la casa, en chico.", min: 10500, detalle: "precio fijo" }
+    ];
+    const porId = Object.fromEntries(FAVORITOS.map(f => [f.id, f]));
+    // Ilustraciones simples de cada producto (la versión final usa sus fotos)
+    const FOTOS = {
+      zanahoria: `<svg viewBox="0 0 200 150"><ellipse cx="100" cy="128" rx="80" ry="12" fill="#e7d5bb"/><path d="M34 70 v40 a66 18 0 0 0 132 0 v-40" fill="#b8723a"/><path d="M34 84 a66 18 0 0 0 132 0 v6 a66 18 0 0 1 -132 0z M34 100 a66 18 0 0 0 132 0 v6 a66 18 0 0 1 -132 0z" fill="#f4e6cf"/><ellipse cx="100" cy="70" rx="66" ry="18" fill="#fbf3e6"/><path d="M34 70 a66 18 0 0 0 132 0 v6 c-8 6 -12 2 -18 8 c-6 -6 -14 0 -22 -2 c-8 6 -14 0 -24 2 c-10 -4 -16 4 -24 -2 c-8 4 -14 -2 -22 2 c-6 -4 -12 0 -22 -8z" fill="#fbf3e6"/><g fill="#7a4a24"><circle cx="70" cy="66" r="4"/><circle cx="100" cy="62" r="4"/><circle cx="130" cy="66" r="4"/><circle cx="86" cy="76" r="4"/><circle cx="116" cy="76" r="4"/></g><path d="M100 56 l3 -12 l3 12z" fill="#ea8a35"/></svg>`,
+      snickers: `<svg viewBox="0 0 200 150"><ellipse cx="100" cy="128" rx="80" ry="12" fill="#e7d5bb"/><path d="M36 74 v36 a64 17 0 0 0 128 0 v-36" fill="#f0dcb8"/><path d="M36 100 a64 17 0 0 0 128 0 v10 a64 17 0 0 1 -128 0z" fill="#4a2b18"/><ellipse cx="100" cy="74" rx="64" ry="17" fill="#b9792f"/><path d="M36 74 a64 17 0 0 0 128 0 v4 a64 17 0 0 1 -128 0z" fill="#9a5f22"/><g fill="#e9c88f"><circle cx="76" cy="70" r="3.5"/><circle cx="96" cy="76" r="3.5"/><circle cx="118" cy="69" r="3.5"/><circle cx="136" cy="76" r="3.5"/><circle cx="64" cy="78" r="3.5"/></g><path d="M60 68 q20 -8 40 0 t40 0" stroke="#5c3517" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>`,
+      amor: `<svg viewBox="0 0 200 150"><ellipse cx="100" cy="128" rx="80" ry="12" fill="#e7d5bb"/><path d="M34 72 v38 a66 18 0 0 0 132 0 v-38" fill="#f6e9d3"/><path d="M34 82 a66 18 0 0 0 132 0 v4 a66 18 0 0 1 -132 0z M34 98 a66 18 0 0 0 132 0 v4 a66 18 0 0 1 -132 0z" fill="#d9a35a"/><path d="M34 90 a66 18 0 0 0 132 0 v4 a66 18 0 0 1 -132 0z" fill="#c2384a"/><ellipse cx="100" cy="72" rx="66" ry="18" fill="#fffaf2"/><g fill="#d23b4f"><circle cx="72" cy="68" r="5"/><circle cx="100" cy="64" r="5"/><circle cx="128" cy="68" r="5"/><circle cx="88" cy="78" r="5"/><circle cx="114" cy="78" r="5"/></g><path d="M92 54 c0 -6 8 -6 8 0 c0 -6 8 -6 8 0 c0 6 -8 10 -8 12 c0 -2 -8 -6 -8 -12z" fill="#e2762b"/></svg>`,
+      mini: `<svg viewBox="0 0 200 150"><ellipse cx="100" cy="128" rx="56" ry="10" fill="#e7d5bb"/><path d="M62 78 v34 a38 11 0 0 0 76 0 v-34" fill="#b8723a"/><path d="M62 92 a38 11 0 0 0 76 0 v6 a38 11 0 0 1 -76 0z" fill="#f4e6cf"/><ellipse cx="100" cy="78" rx="38" ry="11" fill="#fbf3e6"/><path d="M62 78 a38 11 0 0 0 76 0 v5 c-6 5 -10 0 -16 5 c-6 -4 -12 2 -20 0 c-8 4 -14 -2 -20 2 c-6 -3 -10 0 -20 -7z" fill="#fbf3e6"/><circle cx="100" cy="74" r="4" fill="#7a4a24"/><path d="M100 64 l3 -12 l3 12z" fill="#ea8a35"/></svg>`
+    };
+    document.getElementById("favoritos").innerHTML = FAVORITOS.map(f => `
+      <article class="producto aparece">
+        <div class="foto">${FOTOS[f.id]}</div>
+        ${f.etiq ? `<span class="etiq${f.verde ? " verde" : ""}">${f.etiq}</span>` : ""}
+        <h3>${f.nombre}</h3>
+        <p>${f.desc}</p>
+        <div class="desde">${f.max ? "Desde" : "Precio"}<strong>${pesos(f.min)}${f.max ? ` <small style="font-size:.6em;color:var(--suave)">a ${pesos(f.max)}</small>` : ""}</strong></div>
+        <button type="button" class="pedir" data-elegir="${f.id}">Pedir este</button>
+      </article>`).join("");
+
+    // Vitrina: productos que aparecen en sus reseñas
+    const VITRINA = {
+      tortas: [["Torta de zanahoria", "La más pedida, en varios tamaños"], ["Torta Amor", "Hojaldre, pastelera, manjar y frambuesa"], ["Torta de lúcuma", "Un clásico chileno"], ["Tortita de nuez y lúcuma", "Ideal para compartir de a pocos"]],
+      kuchen: [["Kuchen de frambuesa", "Receta alemana, con fruta natural"], ["Kuchen de arándano", "Receta alemana, con fruta natural"], ["Pie de naranja", "Fresco y suave"], ["Tartaleta de frambuesa y almendras", "Para la once"]],
+      cheesecake: [["Cheesecake Snickers", "Brownie, maní y caluga casera"], ["Cheesecake clásico", "Pregunta por los sabores de la semana"]],
+      queques: [["Queque de zanahoria y nuez", "El sabor de la torta, para el desayuno"], ["Queques de la casa", "Pregunta por los del día"]],
+      solito: [["Mini Zanahoria", "La especialidad, en chico"], ["Bombones de chocolate y nuez", "Para darte un gusto"], ["Hojarascas con manjar", "Un clásico de la once"], ["Brownies", "De chocolate, caseros"]]
+    };
+    const vitrina = document.getElementById("vitrina-items");
+    const pintarVitrina = cat => { vitrina.innerHTML = VITRINA[cat].map(([n, d], i) => `<div class="vitrina-item" style="animation-delay:${sinMovimiento ? 0 : i * 50}ms"><b>${n}</b><span>${d}</span></div>`).join(""); };
+    document.querySelectorAll("#pestanas-vitrina button").forEach(b => b.addEventListener("click", () => {
+      document.querySelectorAll("#pestanas-vitrina button").forEach(x => x.setAttribute("aria-pressed", x === b));
+      pintarVitrina(b.dataset.cat);
+    }));
+    pintarVitrina("tortas");
+
+    // Aparición al hacer scroll (después de crear los favoritos)
+    const elementos = document.querySelectorAll(".aparece");
+    if (captura || !("IntersectionObserver" in window)) {
+      elementos.forEach(el => el.classList.add("visto"));
+    } else {
+      const obs = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visto"); obs.unobserve(e.target); } }), { threshold: 0.12 });
+      elementos.forEach(el => obs.observe(el));
+    }
+
+    // Tarjetas que se inclinan siguiendo el mouse
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      const fav = document.getElementById("favoritos");
+      fav.addEventListener("pointermove", e => {
+        const it = e.target.closest(".producto"); if (!it) return;
+        const r = it.getBoundingClientRect();
+        it.style.setProperty("--rx", ((.5 - (e.clientY - r.top) / r.height) * 8).toFixed(2) + "deg");
+        it.style.setProperty("--ry", (((e.clientX - r.left) / r.width - .5) * 8).toFixed(2) + "deg");
+      });
+      fav.addEventListener("pointerout", e => {
+        const it = e.target.closest(".producto");
+        if (it && !it.contains(e.relatedTarget)) { it.style.removeProperty("--rx"); it.style.removeProperty("--ry"); }
+      });
+    }
+
+    // ===== Contadores que suben =====
+    const formatear = (v, dec) => dec ? v.toFixed(dec).replace(".", ",") : String(Math.round(v));
+    const contar = el => {
+      const fin = parseFloat(el.dataset.contar), dec = Number(el.dataset.dec || 0);
+      const inicio = performance.now(), dura = 1500;
+      const paso = ahora => {
+        const t = Math.min((ahora - inicio) / dura, 1);
+        el.textContent = formatear(fin * (1 - Math.pow(1 - t, 3)), dec);
+        if (t < 1) requestAnimationFrame(paso);
+      };
+      requestAnimationFrame(paso);
+    };
+    if ("IntersectionObserver" in window && !sinMovimiento) {
+      const obsNum = new IntersectionObserver(entradas => entradas.forEach(e => {
+        if (e.isIntersecting) { contar(e.target); obsNum.unobserve(e.target); }
+      }), { threshold: .6 });
+      document.querySelectorAll("[data-contar]").forEach(n => { n.textContent = formatear(0, Number(n.dataset.dec || 0)); obsNum.observe(n); });
+    }
+
+    // ===== Horario con colación y estado "abierto ahora" (hora de Chile) =====
+    const H = (h, m = 0) => h * 60 + m;
+    const HORARIO = {
+      0: [[H(10, 30), H(16, 30)]],
+      1: [[H(11), H(14)], [H(14, 30), H(19)]],
+      2: [[H(10), H(14)], [H(14, 30), H(19)]],
+      3: [[H(10), H(14)], [H(14, 30), H(19)]],
+      4: [[H(10), H(14)], [H(14, 30), H(19)]],
+      5: [[H(10), H(19)]],
+      6: [[H(10), H(14, 30)], [H(16, 30), H(19)]]
+    };
+    const hhmm = m => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+    function ahoraEnChile() {
+      const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/Santiago", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(new Date()).map(x => [x.type, x.value]));
+      return new Date(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute);
+    }
+    function pintarEstado() {
+      const ahora = ahoraEnChile(), dia = ahora.getDay(), min = ahora.getHours() * 60 + ahora.getMinutes();
+      const tramos = HORARIO[dia];
+      const estado = document.getElementById("estado"), texto = estado.lastElementChild;
+      const abierto = tramos.find(([a, b]) => min >= a && min < b);
+      estado.classList.toggle("abierto", !!abierto);
+      if (abierto) texto.textContent = `Abierto ahora · hasta las ${hhmm(abierto[1])}`;
+      else {
+        const siguiente = tramos.find(([a]) => a > min);
+        if (siguiente && min > tramos[0][0]) texto.textContent = `En colación · volvemos a las ${hhmm(siguiente[0])}`;
+        else if (siguiente) texto.textContent = `Cerrado · abrimos hoy a las ${hhmm(siguiente[0])}`;
+        else texto.textContent = `Cerrado · mañana abrimos a las ${hhmm(HORARIO[(dia + 1) % 7][0][0])}`;
+      }
+      document.querySelectorAll("#tabla-horario tr").forEach(tr => tr.classList.toggle("hoy", tr.dataset.dias.split(",").includes(String(dia))));
+    }
+    pintarEstado();
+    setInterval(pintarEstado, 60000);
+
+    // ===== Pedido: para hoy o encargo con 48 horas =====
+    const form = document.getElementById("form-pedido");
+    const selProducto = document.getElementById("sel-producto");
+    selProducto.innerHTML = FAVORITOS.map(f => `<option value="${f.id}">${f.nombre}</option>`).join("") + `<option value="otro">Otro producto de la vitrina</option>`;
+    let modo = "hoy", azucar = "con", entrega = "retiro";
+    const inputFecha = document.getElementById("fecha");
+    const fechaHoy = document.getElementById("fecha-hoy");
+    const ayudaFecha = document.getElementById("ayuda-fecha");
+    const isoLocal = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    const minimoEncargo = () => { const d = ahoraEnChile(); d.setDate(d.getDate() + 2); return d; };
+    function pintarModo() {
+      document.querySelectorAll(".modo").forEach(b => b.setAttribute("aria-pressed", b.dataset.modo === modo));
+      const esHoy = modo === "hoy";
+      fechaHoy.hidden = !esHoy;
+      inputFecha.hidden = esHoy;
+      if (esHoy) {
+        fechaHoy.textContent = "Hoy, " + ahoraEnChile().toLocaleDateString("es-CL", { weekday: "long", day: "numeric", month: "long" });
+        ayudaFecha.textContent = "Según el stock del emporio.";
+      } else {
+        const min = isoLocal(minimoEncargo());
+        inputFecha.min = min;
+        if (!inputFecha.value || inputFecha.value < min) inputFecha.value = min;
+        ayudaFecha.textContent = "Mínimo 48 horas de anticipación.";
+      }
+    }
+    function pintarPrecio() {
+      const f = porId[selProducto.value];
+      document.getElementById("campo-azucar").hidden = !(f && f.azucar);
+      document.getElementById("precio").textContent = f ? (f.max ? `desde ${pesos(f.min)}` : pesos(f.min)) : "A confirmar";
+      document.getElementById("detalle-precio").textContent = f ? f.detalle : "te lo confirmamos por WhatsApp";
+    }
+    document.getElementById("modos").addEventListener("click", e => { const b = e.target.closest(".modo"); if (b) { modo = b.dataset.modo; pintarModo(); } });
+    const segmento = (id, fijar) => document.getElementById(id).addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      document.querySelectorAll(`#${id} button`).forEach(x => x.setAttribute("aria-pressed", x === b));
+      fijar(b.dataset.v);
+    });
+    segmento("seg-azucar", v => azucar = v);
+    segmento("seg-entrega", v => entrega = v);
+    selProducto.addEventListener("change", pintarPrecio);
+    inputFecha.addEventListener("change", () => {
+      const min = isoLocal(minimoEncargo());
+      if (inputFecha.value < min) { inputFecha.value = min; mostrarToast("Los encargos se hacen con 48 horas de anticipación 🎂"); }
+    });
+    pintarModo(); pintarPrecio();
+
+    document.addEventListener("click", e => {
+      const b = e.target.closest("[data-elegir]"); if (!b) return;
+      e.preventDefault();
+      selProducto.value = b.dataset.elegir;
+      pintarPrecio();
+      document.getElementById("pedir").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" });
+      mostrarToast(`Listo: dejamos "${porId[b.dataset.elegir].nombre}" en tu pedido 🥕`);
+    });
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const nombre = form.nombre.value.trim();
+      if (!nombre) { mostrarToast("Escribe tu nombre para el pedido 🎂"); form.nombre.focus(); return; }
+      const f = porId[selProducto.value];
+      const producto = f ? f.nombre : "un producto de la vitrina";
+      const tamano = form.tamano.value.trim() ? ` (${form.tamano.value.trim()})` : "";
+      const sinAzucar = f && f.azucar && azucar === "sin" ? ", sin azúcar" : "";
+      let cuando;
+      if (modo === "hoy") cuando = "para hoy";
+      else {
+        const [a, m, d] = inputFecha.value.split("-").map(Number);
+        cuando = "para el " + new Date(a, m - 1, d).toLocaleDateString("es-CL", { weekday: "long", day: "numeric", month: "long" });
+      }
+      const como = entrega === "retiro" ? "Lo retiro en el local" : "Me gustaría coordinar el despacho";
+      const mensaje = `Hola Sal y Azúcar, soy ${nombre}. Quiero pedir ${producto}${tamano}${sinAzucar} ${cuando}. ${como}. ¡Gracias!`;
+      // Versión final: window.open("https://wa.me/56989044159?text=" + encodeURIComponent(mensaje));
+      mostrarToast("Demo: se abriría WhatsApp con este mensaje → " + mensaje);
+    });
+
+    // ===== Movimiento con el mouse en la portada =====
+    const hero = document.getElementById("inicio");
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      hero.addEventListener("pointermove", e => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty("--mx", ((e.clientX - r.left) / r.width).toFixed(3));
+        hero.style.setProperty("--my", ((e.clientY - r.top) / r.height).toFixed(3));
+      });
+      hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", .5); hero.style.setProperty("--my", .5); });
+    }
+
+    // ===== Scroll: barra de avance, portada que se aleja y torta por capas =====
+    const progreso = document.getElementById("progreso");
+    const anatomia = document.getElementById("anatomia");
+    const listaPasos = anatomia.querySelector(".anatomia-pasos");
+    const pasos = listaPasos.querySelectorAll("li");
+    const tortaCapas = document.getElementById("torta-anatomia");
+    const FOCOS = ["bizcocho", "crema", "todo"];
+    let pendiente = false, pasoActual = -1;
+    function alHacerScroll() {
+      pendiente = false;
+      const total = document.documentElement.scrollHeight - innerHeight;
+      progreso.style.setProperty("--p", total > 0 ? (scrollY / total).toFixed(4) : 0);
+      if (!sinMovimiento) hero.style.setProperty("--sc", Math.min(scrollY / hero.offsetHeight, 1).toFixed(3));
+      const r = listaPasos.getBoundingClientRect();
+      const avance = captura ? .5 : Math.max(0, Math.min(1, (innerHeight * .55 - r.top) / r.height));
+      // Las capas se separan hacia la mitad del recorrido y vuelven a juntarse al final
+      const sep = Math.sin(Math.min(1, avance / .8) * Math.PI);
+      tortaCapas.style.setProperty("--sep", Math.max(0, sep).toFixed(3));
+      const i = Math.min(pasos.length - 1, Math.floor(avance * pasos.length));
+      if (i !== pasoActual) {
+        pasoActual = i;
+        pasos.forEach((p, k) => p.classList.toggle("activo", k === i));
+        anatomia.dataset.foco = FOCOS[i];
+      }
+    }
+    addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(alHacerScroll); } }, { passive: true });
+    addEventListener("resize", alHacerScroll);
+    alHacerScroll();
+
+    // ===== Comparador antes / después =====
+    const modal = document.getElementById("modal-comparar");
+    const comparador = document.getElementById("comparador");
+    const deslizador = document.getElementById("deslizador");
+    const imgAntes = document.getElementById("img-antes");
+    const imgAhora = document.getElementById("img-ahora");
+    const btnCerrar = document.getElementById("cerrar-comparar");
+    const leyenda = document.getElementById("leyenda");
+    let ultimoFoco = null;
+
+    const ajustarLeyenda = () => { leyenda.style.width = comparador.offsetWidth + "px"; };
+    window.addEventListener("resize", ajustarLeyenda);
+    const moverDivisor = valor => comparador.style.setProperty("--pos", valor + "%");
+    deslizador.addEventListener("input", () => moverDivisor(deslizador.value));
+
+    function abrirComparar(e) {
+      ultimoFoco = e?.currentTarget || document.activeElement;
+      modal.classList.add("abierto");
+      document.body.classList.add("modal-abierto");
+      ajustarLeyenda();
+      // Mueve la barra un poco al abrir para que se entienda que se puede arrastrar
+      const pasosDiv = [50, 30, 70, 50];
+      let i = 0;
+      const animados = comparador.querySelectorAll("img, .divisor");
+      animados.forEach(el => el.style.transition = "clip-path .35s ease, left .35s ease");
+      const intervalo = setInterval(() => {
+        if (i >= pasosDiv.length) { clearInterval(intervalo); animados.forEach(el => el.style.transition = ""); return; }
+        deslizador.value = pasosDiv[i]; moverDivisor(pasosDiv[i]); i++;
+      }, 380);
+      btnCerrar.focus();
+    }
+    function cerrarComparar() {
+      modal.classList.remove("abierto");
+      document.body.classList.remove("modal-abierto");
+      if (ultimoFoco) ultimoFoco.focus();
+    }
+    document.querySelectorAll("[data-abrir-comparar]").forEach(b => b.addEventListener("click", abrirComparar));
+    btnCerrar.addEventListener("click", cerrarComparar);
+    modal.addEventListener("click", e => { if (e.target === modal) cerrarComparar(); });
+    document.addEventListener("keydown", e => {
+      if (!modal.classList.contains("abierto")) return;
+      if (e.key === "Escape") cerrarComparar();
+      if (e.key === "Tab") {
+        const focos = modal.querySelectorAll("button, input");
+        const primero = focos[0], ultimo = focos[focos.length - 1];
+        if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+        else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+      }
+    });
+    document.querySelectorAll("[data-vista]").forEach(tab => tab.addEventListener("click", () => {
+      const vista = tab.dataset.vista;
+      document.querySelectorAll("[data-vista]").forEach(t => t.setAttribute("aria-selected", t === tab));
+      comparador.className = "comparador " + vista;
+      imgAntes.src = `comparar/antes-${vista}.png`;
+      imgAhora.src = `comparar/ahora-${vista}.png`;
+      ajustarLeyenda();
+    }));
+  </script>
+</body>
+</html>

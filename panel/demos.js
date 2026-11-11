@@ -9,6 +9,23 @@ const SITIO = "https://www.benedettowebs.cl";
 // whatsapp: número sin "+" ni espacios (vacío si no lo tenemos todavía)
 const DEMOS = [
   {
+    id: "sal-y-azucar",
+    negocio: "Pastelería Sal y Azúcar",
+    rubro: "Pastelería",
+    direccion: "Av. Simón Bolívar 6941, La Reina",
+    caso: "Web caída y sin teléfono en Google",
+    whatsapp: "56989044159",
+    creada: "2026-11-11",
+    mensaje: `Hola, ¿cómo están? Soy Santiago Benedetto, vecino de La Reina, y hago páginas web para negocios del barrio con BenedettoWebs.
+
+Les escribo porque en su ficha de Google aparece salyazucar.cl, pero hoy esa página no abre: sale "No se puede acceder a este sitio". Y la ficha tampoco tiene teléfono, así que quien los encuentra no tiene cómo hacerles un pedido.
+
+Con un 4,7 y 225 reseñas (la torta de zanahoria aparece en 37), les armé una propuesta con su información: la torta presentada capa por capa, los favoritos con precios, el horario con colación y los pedidos "para hoy" o "encargo con 48 horas", que llegan armados por WhatsApp.
+
+En la demo hay un botón abajo que dice "Comparar". Ahí pueden ver lo que aparece hoy y la página nueva lado a lado, en celular y en computador.`,
+    seguimiento: "Hola de nuevo. ¿Alcanzaron a ver la propuesta? Si quieren, paso por la pastelería y se la muestro en 5 minutos. Las páginas parten en $30.000, pago único, y la dejamos funcionando en su mismo dominio salyazucar.cl."
+  },
+  {
     id: "black-barber-studio",
     negocio: "Black Barber Studio",
     rubro: "Barbería",
