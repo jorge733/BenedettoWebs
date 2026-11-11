@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Demos · Panel BenedettoWebs</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../documentos/doc.css">
+<link rel="stylesheet" href="panel.css">
+</head>
+<body class="panel">
+<div class="app" id="app" hidden>
+<nav class="menu" id="menu"></nav>
+<main class="panel-wrap">
+  <header class="panel-head">
+    <div class="titulos">
+      <h1>Demos</h1>
+      <p class="bajada">Propuestas para negocios que todavía no son clientes: a quién se la mandaste y en qué quedó.</p>
+    </div>
+  </header>
+
+  <div class="cifras" id="cifras"></div>
+
+  <div class="filtros" id="chips"></div>
+
+  <div class="demos" id="lista"></div>
+  <p class="vacio" id="vacio" hidden></p>
+  <p class="nota">Cada demo vive en <code>demos/&lt;nombre&gt;/</code> del sitio y se agrega a la lista en <code>panel/demos.js</code>. El estado, la fecha de envío y las notas se guardan en el panel.</p>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="module" src="demos.js"></script>
+</body>
+</html>
