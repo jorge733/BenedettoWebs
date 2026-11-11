@@ -99,7 +99,7 @@
     .hero-datos { display: flex; gap: 34px; margin-top: 38px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.1); flex-wrap: wrap; }
     .hero-datos strong { display: block; font-family: "Anton", sans-serif; font-weight: 400; font-size: 2.1rem; line-height: 1; color: #fff; }
     .hero-datos strong b { color: var(--oro); font-weight: 400; }
-    .hero-datos span { color: var(--gris); font-size: .85rem; }
+    .hero-datos > div > span { color: var(--gris); font-size: .85rem; }
 
     /* Poste de barbería */
     .escena { position: relative; height: min(560px, 68vh); display: grid; place-items: center; }
@@ -121,6 +121,44 @@
     .ficha.f3 { bottom: 9%; left: 4%; animation-delay: -4s; }
     .ficha .estrellas { color: var(--oro); letter-spacing: 2px; }
     @keyframes flotar { 50% { transform: translateY(-10px); } }
+
+    /* Inmersivo: barra de avance, parallax y herramientas */
+    .progreso { position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, var(--oro), var(--oro-claro)); transform-origin: left; transform: scaleX(var(--p, 0)); }
+    .hero .hero-texto.aparece.visto { transform: translateY(calc(var(--sc, 0) * -80px)); opacity: calc(1 - var(--sc, 0) * 1.6); }
+    .escena-mov { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(calc(var(--sc, 0) * 90px)) scale(calc(1 - var(--sc, 0) * .15)); }
+    .herramienta { position: absolute; z-index: 1; transform: translate(calc((var(--mx) - .5) * var(--prof) * 1px), calc((var(--my) - .5) * var(--prof) * 1px + var(--sc, 0) * var(--prof) * -3px)); transition: transform .25s ease-out; }
+    .herramienta svg { animation: girar-suave 9s ease-in-out infinite; filter: drop-shadow(0 14px 22px rgba(0,0,0,.55)); }
+    .herramienta.tijera { --prof: 46; top: 0; right: 6%; width: 118px; }
+    .herramienta.navaja { --prof: -34; top: 44%; left: 0; width: 150px; }
+    .herramienta.navaja svg { animation-delay: -4.5s; }
+    @keyframes girar-suave { 50% { transform: translateY(-12px) rotate(7deg); } }
+    .scroll-abajo { position: absolute; left: 50%; bottom: 18px; z-index: 2; transform: translateX(-50%); color: var(--gris); font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; display: grid; justify-items: center; gap: 4px; opacity: calc(1 - var(--sc, 0) * 4); }
+    .scroll-abajo::after { content: ""; width: 1.5px; height: 28px; background: linear-gradient(var(--oro), transparent); animation: bajar 1.6s ease-in-out infinite; }
+    @keyframes bajar { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    /* Buscador de servicio */
+    .buscador { background: #fff; }
+    .buscador-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 50px; align-items: center; }
+    .buscador-grid > * { min-width: 0; }
+    .buscador .titulo-seccion { margin-bottom: 0; }
+    .buscador-caja { background: var(--crema); border-radius: 24px; padding: 32px; min-height: 320px; }
+    .preg { font-weight: 700; font-size: 1.15rem; margin-bottom: 14px; }
+    .opciones { display: flex; flex-wrap: wrap; gap: 10px; }
+    .opcion { border: 1.5px solid var(--crema-2); background: #fff; color: var(--texto); border-radius: 14px; padding: 14px 18px; font: 700 .97rem "DM Sans", sans-serif; cursor: pointer; transition: transform .15s, border-color .2s, background .2s, color .2s; }
+    .opcion:hover { border-color: var(--texto); transform: translateY(-2px); }
+    .opcion[aria-pressed="true"] { background: var(--negro); border-color: var(--negro); color: #fff; }
+    .pregunta + .pregunta, .resultado { margin-top: 26px; }
+    .pregunta:not([hidden]), .resultado:not([hidden]) { animation: entrar .45s ease backwards; }
+    .resultado { background: var(--negro); color: #fff; border-radius: 18px; padding: 26px; }
+    .resultado .sobre { color: var(--oro); margin-bottom: 8px; }
+    .resultado h3 { font-size: 2rem; margin-bottom: 10px; }
+    .res-datos { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 10px; }
+    .res-datos strong { font-family: "Anton", sans-serif; font-weight: 400; font-size: 2rem; line-height: 1; color: var(--oro); }
+    .res-datos span { color: #bdb8b0; }
+    .res-datos .etiq { color: #1f7a45; }
+    .resultado p { color: #bdb8b0; margin-bottom: 18px; }
+    .res-botones { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+    .btn-texto { background: none; border: 0; color: #d9d4cb; font: 700 .92rem "DM Sans", sans-serif; text-decoration: underline; cursor: pointer; }
 
     /* Cinta */
     .cinta { background: var(--oro); color: var(--negro); overflow: hidden; padding: 16px 0; border-block: 1px solid #000; }
@@ -147,8 +185,8 @@
     .filtros button:hover { border-color: var(--texto); }
     .filtros button[aria-pressed="true"] { background: var(--negro); border-color: var(--negro); color: #fff; }
     .carta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .item { background: #fff; border-radius: var(--radio); padding: 24px 24px 20px; display: grid; grid-template-columns: 1fr auto; gap: 6px 18px; border: 1px solid transparent; transition: border-color .2s, transform .2s, box-shadow .2s; animation: entrar .45s ease both; }
-    .item:hover { border-color: var(--oro); transform: translateY(-3px); box-shadow: 0 18px 36px rgba(27, 26, 25, .08); }
+    .item { background: #fff; border-radius: var(--radio); padding: 24px 24px 20px; display: grid; grid-template-columns: 1fr auto; gap: 6px 18px; border: 1px solid transparent; transition: border-color .2s, transform .2s, box-shadow .2s; animation: entrar .45s ease backwards; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)); }
+    .item:hover { border-color: var(--oro); --ty: -3px; box-shadow: 0 18px 36px rgba(27, 26, 25, .08); }
     @keyframes entrar { from { opacity: 0; transform: translateY(14px); } }
     .item h3 { font-family: "DM Sans", sans-serif; font-weight: 700; text-transform: none; font-size: 1.15rem; letter-spacing: 0; line-height: 1.3; }
     .item .precio { font-family: "Anton", sans-serif; font-size: 1.55rem; line-height: 1; text-align: right; }
@@ -162,6 +200,34 @@
     .agregar:hover::after { transform: translateX(4px); }
 
     /* Ritual */
+    .ritual-historia { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+    .ritual-historia > * { min-width: 0; }
+    .ritual-visual { position: sticky; top: 110px; height: min(470px, 72vh); display: grid; place-items: center; }
+    .dial { position: relative; width: min(430px, 100%); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #1e1e22 0, #131315 61%, transparent 62%); display: grid; place-items: center; }
+    .dial::before { content: ""; position: absolute; inset: 14%; border-radius: 50%; background: radial-gradient(circle, rgba(201, 164, 107, .14), transparent 70%); }
+    .anillo { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+    .anillo circle { fill: none; stroke-width: 3; }
+    .anillo-fondo { stroke: rgba(255,255,255,.08); }
+    .anillo-lleno { stroke: var(--oro); stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: calc(100 - var(--avance, 0) * 100); }
+    .esc { position: absolute; inset: 20%; opacity: 0; transform: scale(.82) rotate(-8deg); transition: opacity .5s ease, transform .7s cubic-bezier(.2, .8, .2, 1); }
+    .esc.activa { opacity: 1; transform: none; }
+    .esc svg { width: 100%; height: 100%; overflow: visible; }
+    .trazo { fill: none; stroke: var(--oro); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+    .humo { stroke-dasharray: 70 260; animation: humo 2.6s linear infinite; }
+    @keyframes humo { from { stroke-dashoffset: 80; opacity: 0; } 20% { opacity: 1; } to { stroke-dashoffset: -200; opacity: 0; } }
+    .gota { fill: rgba(201, 164, 107, .25); animation: gota 2.2s ease-in infinite; }
+    @keyframes gota { 0% { transform: translateY(-10px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(26px); opacity: 0; } }
+    .hoja { fill: rgba(232, 204, 152, .14); transform-box: view-box; transform-origin: 132px 124px; }
+    .esc.activa .hoja { animation: abrir 1s cubic-bezier(.2, .8, .2, 1) both; }
+    @keyframes abrir { from { transform: rotate(70deg); } }
+    .dial-num { position: absolute; bottom: 8%; font-family: "Anton", sans-serif; color: var(--oro); letter-spacing: .14em; font-size: 1rem; }
+    .ritual-pasos { list-style: none; }
+    .ritual-pasos .paso { min-height: 50vh; display: flex; flex-direction: column; justify-content: center; background: none; border: 0; border-left: 1px solid rgba(255,255,255,.1); border-radius: 0; padding: 0 0 0 34px; opacity: .28; transition: opacity .45s, border-color .45s; overflow: visible; }
+    .ritual-pasos .paso::before { content: none; }
+    .ritual-pasos .paso.activo { opacity: 1; border-color: var(--oro); }
+    .ritual-pasos .num { font-family: "Anton", sans-serif; font-size: 3.6rem; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(201, 164, 107, .75); margin-bottom: 14px; }
+    .ritual-pasos .paso h3 { font-size: 2.3rem; margin-bottom: 10px; }
+    .ritual-pasos .paso p { font-size: 1.06rem; max-width: 420px; }
     .ritual-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: paso; }
     .paso { position: relative; background: var(--carbon); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radio); padding: 30px 24px 26px; overflow: hidden; }
     .paso::before { counter-increment: paso; content: "0" counter(paso); font-family: "Anton", sans-serif; font-size: 3.4rem; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(201, 164, 107, .6); display: block; margin-bottom: 18px; }
@@ -298,14 +364,20 @@
     .aparece.visto { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       .aparece { opacity: 1; transform: none; transition: none; }
-      .tubo, .halo, .ficha, .cinta-pista, .vapor i, .pulso, .estado i, .item { animation: none !important; }
+      .tubo, .halo, .ficha, .cinta-pista, .vapor i, .pulso, .estado i, .item, .herramienta svg, .humo, .gota, .hoja, .scroll-abajo::after { animation: none !important; }
       html { scroll-behavior: auto; }
     }
     .captura .aviso-demo, .captura .btn-comparar { display: none; }
-    .captura .tubo, .captura .halo, .captura .ficha, .captura .cinta-pista, .captura .item { animation: none; }
+    .captura .tubo, .captura .halo, .captura .ficha, .captura .cinta-pista, .captura .item, .captura .herramienta svg { animation: none; }
 
     @media (max-width: 1000px) {
-      .hero-grid, .sello-grid, .reservar-grid, .ubicacion-grid { grid-template-columns: 1fr; }
+      .hero-grid, .sello-grid, .reservar-grid, .ubicacion-grid, .buscador-grid, .ritual-historia { grid-template-columns: 1fr; }
+      .buscador-grid { gap: 30px; }
+      .scroll-abajo { display: none; }
+      .ritual-historia { gap: 0; }
+      .ritual-visual { top: 74px; height: 250px; z-index: 2; background: linear-gradient(var(--negro) 85%, transparent); margin-inline: -16px; }
+      .dial { width: 230px; }
+      .ritual-pasos .paso { min-height: 44vh; padding-left: 24px; }
       .hero-grid { min-height: 0; padding: 50px 0 40px; gap: 10px; }
       .escena { height: 380px; }
       .ritual-grid { grid-template-columns: 1fr 1fr; }
@@ -325,7 +397,7 @@
       .hero-botones .btn { flex: 1 1 100%; }
       .hero-datos { gap: 22px; flex-wrap: nowrap; justify-content: space-between; }
       .hero-datos strong { font-size: 1.7rem; }
-      .hero-datos span { font-size: .78rem; }
+      .hero-datos > div > span { font-size: .78rem; }
       .escena { height: 320px; margin-top: 34px; }
       .poste { width: 80px; }
       .tapa { width: 80px; height: 36px; }
@@ -335,6 +407,12 @@
       .ficha .precio { font-size: 1.2rem; }
       .ficha.f2 { right: 0; }
       .ritual-grid, .valores, .mejoras { grid-template-columns: 1fr; }
+      .buscador-caja { padding: 24px 18px; }
+      .opcion { flex: 1 1 100%; text-align: left; }
+      .herramienta.tijera { width: 82px; right: 2%; }
+      .herramienta.navaja { width: 110px; top: 42%; left: 0; }
+      .ritual-pasos .paso h3 { font-size: 1.9rem; }
+      .ritual-pasos .num { font-size: 2.8rem; }
       .item { padding: 20px 18px 16px; }
       .reserva { padding: 22px 18px; }
       .ubicacion-texto { padding: 32px 22px; }
@@ -368,12 +446,13 @@
       <a href="#reservar" class="btn btn-oro">Reservar hora</a>
       <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
     </div>
+    <div class="progreso" id="progreso"></div>
   </header>
 
   <main>
     <section class="hero" id="inicio">
       <div class="contenedor hero-grid">
-        <div class="aparece">
+        <div class="hero-texto aparece">
           <span class="estado" id="estado"><i></i><span>Lun a sáb 11:00 – 20:00</span></span>
           <h1>Barbería en La Reina<em class="fino">sales distinto, te sientes distinto.</em></h1>
           <p class="lead">Fade, barba con navaja y toallas calientes en Av. Fernando Castillo Velasco. Cada corte incluye lavado y cortesía.</p>
@@ -382,19 +461,25 @@
             <a href="#servicios" class="btn btn-borde">Ver precios</a>
           </div>
           <div class="hero-datos">
-            <div><strong>4,9<b>★</b></strong><span>en Google</span></div>
-            <div><strong>128</strong><span>reseñas</span></div>
-            <div><strong>7</strong><span>días abiertos</span></div>
+            <div><strong><span data-contar="4.9" data-dec="1">4,9</span><b>★</b></strong><span>en Google</span></div>
+            <div><strong data-contar="128">128</strong><span>reseñas</span></div>
+            <div><strong data-contar="7">7</strong><span>días abiertos</span></div>
           </div>
         </div>
         <div class="escena aparece" aria-hidden="true">
-          <div class="halo"></div>
-          <div class="poste"><div class="tapa arriba"></div><div class="tubo"></div><div class="tapa abajo"></div></div>
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="g-acero" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfbfc"/><stop offset=".45" stop-color="#b6bbc3"/><stop offset=".55" stop-color="#eef0f3"/><stop offset="1" stop-color="#767c85"/></linearGradient><linearGradient id="g-oro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6e2b8"/><stop offset=".5" stop-color="#c9a46b"/><stop offset="1" stop-color="#77592a"/></linearGradient></defs></svg>
+          <div class="escena-mov">
+            <div class="halo"></div>
+            <div class="poste"><div class="tapa arriba"></div><div class="tubo"></div><div class="tapa abajo"></div></div>
+          </div>
+          <span class="herramienta tijera"><svg viewBox="0 0 120 120"><path d="M57 63 L107 5 L114 9 L66 67 Z" fill="url(#g-acero)"/><path d="M57 63 L115 33 L118 40 L63 69 Z" fill="url(#g-acero)"/><path d="M107 5 L66 67" stroke="#5f646c" stroke-width="1"/><path d="M60 62 L38 76" stroke="url(#g-oro)" stroke-width="7" stroke-linecap="round"/><path d="M62 66 L52 88" stroke="url(#g-oro)" stroke-width="7" stroke-linecap="round"/><circle cx="28" cy="83" r="13" fill="none" stroke="url(#g-oro)" stroke-width="6"/><circle cx="47" cy="101" r="13" fill="none" stroke="url(#g-oro)" stroke-width="6"/><circle cx="61" cy="64" r="5" fill="#2a2a2e" stroke="url(#g-oro)" stroke-width="2"/></svg></span>
+          <span class="herramienta navaja"><svg viewBox="0 0 170 70"><path d="M98 34 C112 20 140 13 166 14 L166 27 C146 29 122 35 104 44 Z" fill="url(#g-acero)"/><path d="M98 34 C112 20 140 13 166 14" fill="none" stroke="#5f646c" stroke-width="2"/><rect x="6" y="34" width="98" height="16" rx="8" fill="#17171a" stroke="url(#g-oro)" stroke-width="2"/><path d="M14 38 H96" stroke="#fff" stroke-opacity=".12" stroke-width="2" stroke-linecap="round"/><circle cx="18" cy="42" r="3" fill="url(#g-oro)"/><circle cx="94" cy="42" r="4" fill="url(#g-oro)"/></svg></span>
           <div class="ficha f1"><strong>Corte Fade Premium</strong><span class="precio">$16.990</span>45 min · lavado incluido</div>
           <div class="ficha f2"><span class="estrellas">★★★★★</span><strong>4,9 en Google</strong>128 reseñas</div>
           <div class="ficha f3"><strong>Toallas calientes</strong>y afeitado con navaja</div>
         </div>
       </div>
+      <span class="scroll-abajo" aria-hidden="true">Baja</span>
     </section>
 
     <div class="cinta" aria-hidden="true">
@@ -424,6 +509,34 @@
       </div>
     </section>
 
+    <section class="buscador" id="tu-servicio">
+      <div class="contenedor buscador-grid">
+        <div class="aparece">
+          <div class="titulo-seccion">
+            <span class="sobre">¿No sabes qué pedir?</span>
+            <h2>Encuentra tu <em class="fino">servicio</em></h2>
+            <p>Dos preguntas y te decimos cuál es, cuánto dura y cuánto cuesta.</p>
+          </div>
+        </div>
+        <div class="buscador-caja aparece" aria-live="polite">
+          <div class="pregunta">
+            <p class="preg">1. ¿Qué te quieres hacer?</p>
+            <div class="opciones" id="opciones1">
+              <button type="button" class="opcion" data-v="corte" aria-pressed="false">Corte de pelo</button>
+              <button type="button" class="opcion" data-v="barba" aria-pressed="false">Solo barba</button>
+              <button type="button" class="opcion" data-v="ambos" aria-pressed="false">Corte y barba</button>
+              <button type="button" class="opcion" data-v="facial" aria-pressed="false">Corte y limpieza facial</button>
+            </div>
+          </div>
+          <div class="pregunta" id="pregunta2" hidden>
+            <p class="preg" id="preg2"></p>
+            <div class="opciones" id="opciones2"></div>
+          </div>
+          <div class="resultado" id="resultado" hidden></div>
+        </div>
+      </div>
+    </section>
+
     <section class="oscuro" id="ritual">
       <div class="contenedor">
         <div class="titulo-seccion aparece">
@@ -431,11 +544,23 @@
           <h2>El ritual <em class="fino">de la navaja</em></h2>
           <p>Treinta minutos para ti. Así es el afeitado clásico que hacemos en el estudio.</p>
         </div>
-        <div class="ritual-grid">
-          <article class="paso aparece"><span class="vapor" aria-hidden="true"><i></i><i></i><i></i></span><h3>Vapor</h3><p>Abrimos los poros con vapor para que la barba se ablande.</p></article>
-          <article class="paso aparece"><h3>Toallas calientes</h3><p>Relajan la piel y preparan cada pelo para la navaja.</p></article>
-          <article class="paso aparece"><h3>Navaja clásica</h3><p>Afeitado completo y al ras, con el método de siempre.</p></article>
-          <article class="paso aparece"><h3>Loción y masaje</h3><p>Cerramos con productos que calman la piel y un masaje.</p></article>
+        <div class="ritual-historia" id="ritual-historia">
+          <div class="ritual-visual" aria-hidden="true">
+            <div class="dial">
+              <svg class="anillo" viewBox="0 0 300 300"><circle cx="150" cy="150" r="146" class="anillo-fondo"/><circle cx="150" cy="150" r="146" class="anillo-lleno" pathLength="100"/></svg>
+              <div class="esc activa"><svg viewBox="0 0 200 200"><g class="trazo"><path d="M40 118 H160 C160 150 134 168 100 168 C66 168 40 150 40 118 Z"/><path d="M28 118 H172"/><path class="humo" d="M78 104 C66 88 90 78 78 60 C70 48 82 38 78 26"/><path class="humo" d="M100 104 C88 86 112 76 100 56 C92 44 104 34 100 20" style="animation-delay:-.85s"/><path class="humo" d="M122 104 C110 88 134 78 122 60 C114 48 126 38 122 26" style="animation-delay:-1.7s"/></g></svg></div>
+              <div class="esc"><svg viewBox="0 0 200 200"><g class="trazo"><g transform="translate(70 140)"><circle r="27"/><circle r="16"/><path d="M-6 0 A6 6 0 1 1 0 6"/><path d="M0 27 H34"/></g><g transform="translate(130 140)"><circle r="27"/><circle r="16"/><path d="M-6 0 A6 6 0 1 1 0 6"/><path d="M0 27 H34"/></g><g transform="translate(100 92)"><circle r="27"/><circle r="16"/><path d="M-6 0 A6 6 0 1 1 0 6"/></g><path class="humo" d="M88 58 C80 46 96 40 88 26" style="animation-delay:-.4s"/><path class="humo" d="M112 58 C104 46 120 40 112 26" style="animation-delay:-1.5s"/></g></svg></div>
+              <div class="esc"><svg viewBox="0 0 200 200"><g class="trazo"><rect x="18" y="114" width="116" height="22" rx="11"/><circle cx="32" cy="125" r="3"/><circle cx="122" cy="125" r="4"/><g class="hoja"><path d="M126 118 C138 92 160 72 188 66 L188 84 C168 90 150 106 138 128 Z"/><path d="M134 110 C146 92 164 78 188 72" opacity=".5"/></g></g></svg></div>
+              <div class="esc"><svg viewBox="0 0 200 200"><g class="trazo"><path d="M84 62 H116 V78 L126 90 V164 A8 8 0 0 1 118 172 H82 A8 8 0 0 1 74 164 V90 L84 78 Z"/><path d="M90 62 V48 H110 V62"/><path d="M74 120 H126"/><path d="M86 134 H114" opacity=".5"/><path class="gota" d="M152 84 C152 84 142 96 142 102 A10 10 0 0 0 162 102 C162 96 152 84 152 84 Z"/><path class="gota" d="M162 124 C162 124 155 132 155 136 A7 7 0 0 0 169 136 C169 132 162 124 162 124 Z" style="animation-delay:-1.1s"/></g></svg></div>
+              <span class="dial-num" id="dial-num">01 / 04</span>
+            </div>
+          </div>
+          <ol class="ritual-pasos">
+            <li class="paso activo"><span class="num">01</span><h3>Vapor</h3><p>Abrimos los poros con vapor para que la barba se ablande y la navaja corra suave.</p></li>
+            <li class="paso"><span class="num">02</span><h3>Toallas calientes</h3><p>Relajan la piel y preparan cada pelo. Es el momento para desconectarse.</p></li>
+            <li class="paso"><span class="num">03</span><h3>Navaja clásica</h3><p>Afeitado completo y al ras, con el método de siempre y el pulso de quien sabe.</p></li>
+            <li class="paso"><span class="num">04</span><h3>Loción y masaje</h3><p>Cerramos con productos que calman la piel y un masaje. Sales nuevo.</p></li>
+          </ol>
         </div>
         <div class="ritual-pie aparece">
           <p><strong>Afeitado al ras Premium · $17.990.</strong> Con corte incluido, el Corte + Afeitado inglés queda en $28.990.</p>
@@ -461,7 +586,7 @@
           </div>
         </div>
         <div class="resenas aparece">
-          <div class="nota"><strong>4,9</strong><div class="estrellas" aria-hidden="true">★★★★★</div><span>128 reseñas en Google</span></div>
+          <div class="nota"><strong data-contar="4.9" data-dec="1">4,9</strong><div class="estrellas" aria-hidden="true">★★★★★</div><span>128 reseñas en Google</span></div>
           <div>
             <h3>Aquí van sus reseñas reales de Google</h3>
             <p>En la versión final mostramos las opiniones verdaderas de sus clientes, con nombre y fecha. Un 4,9 con 128 reseñas convence más que cualquier texto.</p>
@@ -678,6 +803,82 @@
     }));
     pintarCarta("todos");
 
+    // Tarjetas que se inclinan siguiendo el mouse
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      carta.addEventListener("pointermove", e => {
+        const it = e.target.closest(".item"); if (!it) return;
+        const r = it.getBoundingClientRect();
+        it.style.setProperty("--rx", ((.5 - (e.clientY - r.top) / r.height) * 7).toFixed(2) + "deg");
+        it.style.setProperty("--ry", (((e.clientX - r.left) / r.width - .5) * 7).toFixed(2) + "deg");
+      });
+      carta.addEventListener("pointerout", e => {
+        const it = e.target.closest(".item");
+        if (it && !it.contains(e.relatedTarget)) { it.style.removeProperty("--rx"); it.style.removeProperty("--ry"); }
+      });
+    }
+
+    // ===== Contadores que suben (4,9 · 128 · 7) =====
+    const formatear = (v, dec) => dec ? v.toFixed(dec).replace(".", ",") : String(Math.round(v));
+    const contar = el => {
+      const fin = parseFloat(el.dataset.contar), dec = Number(el.dataset.dec || 0);
+      if (sinMovimiento) { el.textContent = formatear(fin, dec); return; }
+      const inicio = performance.now(), dura = 1500;
+      const paso = ahora => {
+        const t = Math.min((ahora - inicio) / dura, 1);
+        el.textContent = formatear(fin * (1 - Math.pow(1 - t, 3)), dec);
+        if (t < 1) requestAnimationFrame(paso);
+      };
+      requestAnimationFrame(paso);
+    };
+    const numeros = document.querySelectorAll("[data-contar]");
+    if ("IntersectionObserver" in window && !sinMovimiento) {
+      const obsNum = new IntersectionObserver(entradas => entradas.forEach(e => {
+        if (e.isIntersecting) { contar(e.target); obsNum.unobserve(e.target); }
+      }), { threshold: .6 });
+      numeros.forEach(n => { n.textContent = formatear(0, Number(n.dataset.dec || 0)); obsNum.observe(n); });
+    }
+
+    // ===== Encuentra tu servicio =====
+    const ARBOL = {
+      corte: { pregunta: "2. ¿Para quién es?", opciones: [["Adulto, con degradado o clásico", "fade"], ["Niño de hasta 10 años", "classic"], ["Adulto mayor", "classic"]] },
+      barba: { pregunta: "2. ¿Cómo la quieres?", opciones: [["Rápida, solo con máquina", "barba"], ["Perfilada con navaja", "perfilado"], ["Afeitado al ras, con ritual", "afeitado"]] },
+      ambos: { pregunta: "2. ¿Y la barba?", opciones: [["Con máquina", "corte-barba"], ["Perfilada con navaja", "corte-perfilado"], ["Al ras, el ritual completo", "corte-ingles"], ["Soy adulto mayor", "mayor"]] },
+      facial: { pregunta: "2. ¿Qué limpieza buscas?", opciones: [["Superficial, para puntos negros", "facial"], ["Profunda, con exfoliación", "facial-pro"]] }
+    };
+    const opciones1 = document.getElementById("opciones1");
+    const pregunta2 = document.getElementById("pregunta2");
+    const opciones2 = document.getElementById("opciones2");
+    const resultado = document.getElementById("resultado");
+    const marcar = (caja, boton) => caja.querySelectorAll(".opcion").forEach(b => b.setAttribute("aria-pressed", b === boton));
+    opciones1.addEventListener("click", e => {
+      const b = e.target.closest(".opcion"); if (!b) return;
+      marcar(opciones1, b);
+      const rama = ARBOL[b.dataset.v];
+      document.getElementById("preg2").textContent = rama.pregunta;
+      opciones2.innerHTML = rama.opciones.map(([texto, id]) => `<button type="button" class="opcion" data-id="${id}" aria-pressed="false">${texto}</button>`).join("");
+      resultado.hidden = true;
+      pregunta2.hidden = false;
+    });
+    opciones2.addEventListener("click", e => {
+      const b = e.target.closest(".opcion"); if (!b) return;
+      marcar(opciones2, b);
+      const s = porId[b.dataset.id];
+      resultado.innerHTML = `
+        <span class="sobre">Tu servicio</span>
+        <h3>${s.nombre}</h3>
+        <div class="res-datos"><strong>${pesos(s.precio)}</strong><span>${duracion(s.min)}</span>${s.separado ? `<span class="etiq ahorro">Ahorras ${pesos(s.separado - s.precio)}</span>` : ""}</div>
+        <p>${s.desc}</p>
+        <div class="res-botones"><button type="button" class="btn btn-oro" data-elegir="${s.id}">Reservar este servicio</button><button type="button" class="btn-texto" id="reiniciar">Empezar de nuevo</button></div>`;
+      resultado.hidden = false;
+      resultado.style.animation = "none"; void resultado.offsetWidth; resultado.style.animation = "";
+    });
+    resultado.addEventListener("click", e => {
+      if (e.target.id !== "reiniciar") return;
+      marcar(opciones1, null);
+      pregunta2.hidden = true; resultado.hidden = true;
+      opciones1.querySelector(".opcion").focus();
+    });
+
     // ===== Horario y estado "abierto ahora" (hora de Chile) =====
     const HORARIO = { 0: [12, 18], 1: [11, 20], 2: [11, 20], 3: [11, 20], 4: [11, 20], 5: [11, 20], 6: [11, 20] };
     const DIAS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
@@ -795,6 +996,35 @@
       });
       hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", .5); hero.style.setProperty("--my", .5); });
     }
+
+    // ===== Scroll: barra de avance, portada que se aleja y ritual =====
+    const progreso = document.getElementById("progreso");
+    const historia = document.getElementById("ritual-historia");
+    const listaRitual = historia.querySelector(".ritual-pasos");
+    const pasosRitual = listaRitual.querySelectorAll(".paso");
+    const escenas = historia.querySelectorAll(".esc");
+    const dialNum = document.getElementById("dial-num");
+    let pendiente = false, pasoActual = -1;
+    function alHacerScroll() {
+      pendiente = false;
+      const total = document.documentElement.scrollHeight - innerHeight;
+      progreso.style.setProperty("--p", total > 0 ? (scrollY / total).toFixed(4) : 0);
+      if (!sinMovimiento) hero.style.setProperty("--sc", Math.min(scrollY / hero.offsetHeight, 1).toFixed(3));
+      // El ritual avanza según cuánto de la lista de pasos ya pasó por el centro de la pantalla
+      const r = listaRitual.getBoundingClientRect();
+      const avance = captura ? 0 : Math.max(0, Math.min(1, (innerHeight * .55 - r.top) / r.height));
+      historia.style.setProperty("--avance", avance.toFixed(3));
+      const i = Math.min(pasosRitual.length - 1, Math.floor(avance * pasosRitual.length));
+      if (i !== pasoActual) {
+        pasoActual = i;
+        pasosRitual.forEach((p, k) => p.classList.toggle("activo", k === i));
+        escenas.forEach((esc, k) => esc.classList.toggle("activa", k === i));
+        dialNum.textContent = `0${i + 1} / 0${pasosRitual.length}`;
+      }
+    }
+    addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(alHacerScroll); } }, { passive: true });
+    addEventListener("resize", alHacerScroll);
+    alHacerScroll();
 
     // ===== Comparador antes / después =====
     const modal = document.getElementById("modal-comparar");
