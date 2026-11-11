@@ -212,7 +212,9 @@ $("lista").addEventListener("click", async (e) => {
 
 $("lista").addEventListener("change", async (e) => {
   const campo = e.target.dataset.campo;
-  if (!campo) return;
+  // La fecha se guarda al salir del campo: el navegador avisa "change" con cada número
+  // del año (0002, 0020...) y volver a dibujar la tarjeta cortaba lo que estabas escribiendo
+  if (!campo || campo === "enviada") return;
   const id = e.target.closest("[data-id]").dataset.id;
   const cambios = { [campo]: e.target.value };
   // Al marcarla como enviada sin fecha, se pone la de hoy
@@ -224,6 +226,18 @@ $("lista").addEventListener("change", async (e) => {
     const abierta = $("lista").querySelector(`[data-id="${id}"] details`);
     if (abierta) abierta.open = true;
   }
+});
+
+$("lista").addEventListener("focusout", async (e) => {
+  if (e.target.dataset.campo !== "enviada") return;
+  const id = e.target.closest("[data-id]").dataset.id;
+  const valor = e.target.value;
+  if (valor === (datos[id]?.enviada || "")) return;
+  if (valor && Number(valor.slice(0, 4)) < 2020) return aviso("Revisa el año de la fecha de envío.", true);
+  await guardar(id, { enviada: valor });
+  pintar();
+  const abierta = $("lista").querySelector(`[data-id="${id}"] details`);
+  if (abierta) abierta.open = true;
 });
 
 cargar();
