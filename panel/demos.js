@@ -9,6 +9,23 @@ const SITIO = "https://www.benedettowebs.cl";
 // whatsapp: número sin "+" ni espacios (vacío si no lo tenemos todavía)
 const DEMOS = [
   {
+    id: "black-barber-studio",
+    negocio: "Black Barber Studio",
+    rubro: "Barbería",
+    direccion: "Av. Alcalde Fernando Castillo Velasco 8751, La Reina",
+    caso: "Web caída (el link de Google da error)",
+    whatsapp: "56996600689",
+    creada: "2026-11-11",
+    mensaje: `Hola, ¿cómo están? Soy Santiago Benedetto, vecino de La Reina, y hago páginas web para negocios del barrio con BenedettoWebs.
+
+Les escribo porque en su ficha de Google aparece blackbarberstudio.cl, pero hoy esa página no abre: sale "No se puede acceder a este sitio". Con un 4,9 y 128 reseñas, es una lástima que quien los busca llegue a un error.
+
+Así que les armé una propuesta con su información: la carta con los precios de TUU, el horario, si están abiertos en ese momento y una reserva en 3 pasos que llega por WhatsApp.
+
+En la demo hay un botón abajo que dice "Comparar". Ahí pueden ver lo que aparece hoy y la página nueva lado a lado, en celular y en computador.`,
+    seguimiento: "Hola de nuevo. ¿Alcanzaron a ver la propuesta? Si quieren, paso por el estudio y se la muestro en 5 minutos. Las páginas parten en $30.000, pago único, y la dejamos funcionando en su mismo dominio blackbarberstudio.cl."
+  },
+  {
     id: "maxcar",
     negocio: "MaxCar",
     rubro: "Taller mecánico",

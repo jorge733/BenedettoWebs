@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Black Barber Studio · Barbería en La Reina (demo)</title>
+  <meta name="description" content="Propuesta de nuevo sitio web para Black Barber Studio, barbería en La Reina. Demo hecha por BenedettoWebs.">
+  <link rel="canonical" href="https://www.benedettowebs.cl/demos/black-barber-studio/">
+
+  <!-- Vista previa al compartir (WhatsApp, Facebook, Instagram, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BenedettoWebs">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://www.benedettowebs.cl/demos/black-barber-studio/">
+  <meta property="og:title" content="Black Barber Studio: así se vería su nueva página web">
+  <meta property="og:description" content="Propuesta de BenedettoWebs: carta de servicios con precios, reserva en tres pasos, horario y mapa.">
+  <meta property="og:image" content="https://www.benedettowebs.cl/demos/black-barber-studio/og.png">
+  <meta property="og:image:secure_url" content="https://www.benedettowebs.cl/demos/black-barber-studio/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Demo de página web para Black Barber Studio, con un poste de barbería girando.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Black Barber Studio: así se vería su nueva página web">
+  <meta name="twitter:description" content="Propuesta de BenedettoWebs para la barbería Black Barber Studio de La Reina.">
+  <meta name="twitter:image" content="https://www.benedettowebs.cl/demos/black-barber-studio/og.png">
+  <meta name="theme-color" content="#0d0d0e">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230d0d0e'/%3E%3Cpath d='M20 14h24M20 50h24' stroke='%23c9a46b' stroke-width='6' stroke-linecap='round'/%3E%3Crect x='24' y='18' width='16' height='28' rx='4' fill='%23fff'/%3E%3Cpath d='M24 26l16-6M24 36l16-6M24 46l16-6' stroke='%23c3262e' stroke-width='4'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Playfair+Display:ital,wght@1,500;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --negro: #0d0d0e;
+      --carbon: #17171a;
+      --carbon-2: #222226;
+      --oro: #c9a46b;
+      --oro-claro: #e8cc98;
+      --crema: #f5f0e7;
+      --crema-2: #ebe3d4;
+      --gris: #8c8a86;
+      --texto: #1b1a19;
+      --rojo: #c3262e;
+      --azul: #1f4fa3;
+      --radio: 18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "DM Sans", system-ui, sans-serif; color: var(--texto); background: var(--crema); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: "Anton", Impact, sans-serif; font-weight: 400; line-height: 1; text-transform: uppercase; letter-spacing: .01em; }
+    em.fino { font-family: "Playfair Display", Georgia, serif; font-style: italic; text-transform: none; font-weight: 500; color: var(--oro); letter-spacing: 0; }
+    .contenedor { width: min(1160px, 100% - 32px); margin-inline: auto; }
+    section { padding: 100px 0; }
+    body.modal-abierto { overflow: hidden; }
+
+    .aviso-demo { background: #000; color: #fff; font-size: .85rem; text-align: center; padding: 8px 16px; }
+    .aviso-demo a, .aviso-demo button { color: var(--oro-claro); font-weight: 700; text-decoration: underline; background: none; border: 0; font: inherit; cursor: pointer; }
+
+    /* Header */
+    header { position: sticky; top: 0; z-index: 50; background: rgba(13, 13, 14, .94); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,.07); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 12px; color: #fff; }
+    .logo-texto { font-family: "Anton", sans-serif; font-size: 1.7rem; letter-spacing: .08em; line-height: .9; }
+    .logo-texto small { display: block; font-family: "DM Sans", sans-serif; font-weight: 700; font-size: .6rem; letter-spacing: .42em; color: var(--oro); margin-top: 5px; }
+    .menu { display: flex; gap: 30px; font-weight: 500; font-size: .95rem; }
+    .menu a { color: #bdb8b0; transition: color .2s; }
+    .menu a:hover { color: #fff; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font: 700 .97rem "DM Sans", sans-serif; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, color .2s, border-color .2s, box-shadow .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-oro { background: var(--oro); color: var(--negro); box-shadow: 0 12px 30px rgba(201, 164, 107, .3); }
+    .btn-oro:hover { background: var(--oro-claro); }
+    .btn-borde { border-color: rgba(255,255,255,.3); color: #fff; }
+    .btn-borde:hover { border-color: #fff; background: rgba(255,255,255,.06); }
+    .btn-negro { background: var(--negro); color: #fff; }
+    .btn-negro:hover { background: var(--carbon-2); }
+    .hamburguesa { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+    .hamburguesa span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; margin: 6px 0; }
+
+    /* Estado abierto/cerrado */
+    .estado { display: inline-flex; align-items: center; gap: 9px; font-size: .85rem; font-weight: 700; color: #d9d4cb; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); padding: 7px 14px 7px 12px; border-radius: 999px; }
+    .estado i { width: 9px; height: 9px; border-radius: 50%; background: #7a7772; }
+    .estado.abierto i { background: #3ccf7a; box-shadow: 0 0 0 0 rgba(60, 207, 122, .6); animation: latir 1.8s infinite; }
+    @keyframes latir { 70%, 100% { box-shadow: 0 0 0 9px rgba(60, 207, 122, 0); } }
+
+    /* Hero */
+    .hero { --mx: .5; --my: .5; background: var(--negro); color: #fff; position: relative; overflow: hidden; padding: 0; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px 460px at calc(var(--mx) * 100%) calc(var(--my) * 100%), rgba(201, 164, 107, .16), transparent 70%); transition: background .1s; pointer-events: none; }
+    .hero::after { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(transparent, #000 30%, #000 70%, transparent); pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; min-height: calc(100svh - 110px); padding: 60px 0 70px; }
+    .captura .hero-grid { min-height: calc(100svh - 74px); }
+    .hero h1 { font-size: clamp(3.2rem, min(7.4vw, 11vh), 6.4rem); line-height: .92; margin: 22px 0 22px; }
+    .hero h1 em.fino { display: block; font-size: .78em; line-height: 1.05; margin-top: 6px; }
+    .hero p.lead { color: #b9b3a9; font-size: 1.15rem; max-width: 520px; margin-bottom: 32px; }
+    .hero-botones { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-datos { display: flex; gap: 34px; margin-top: 38px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.1); flex-wrap: wrap; }
+    .hero-datos strong { display: block; font-family: "Anton", sans-serif; font-weight: 400; font-size: 2.1rem; line-height: 1; color: #fff; }
+    .hero-datos strong b { color: var(--oro); font-weight: 400; }
+    .hero-datos span { color: var(--gris); font-size: .85rem; }
+
+    /* Poste de barbería */
+    .escena { position: relative; height: min(560px, 68vh); display: grid; place-items: center; }
+    .halo { position: absolute; width: 380px; height: 380px; border-radius: 50%; background: radial-gradient(circle, rgba(195, 38, 46, .35), rgba(31, 79, 163, .18) 45%, transparent 70%); filter: blur(10px); animation: respirar 5s ease-in-out infinite; }
+    @keyframes respirar { 50% { transform: scale(1.12); opacity: .75; } }
+    .poste { position: relative; width: 104px; height: 100%; display: flex; flex-direction: column; align-items: center; transform: translate(calc((var(--mx) - .5) * 18px), calc((var(--my) - .5) * 12px)); transition: transform .2s ease-out; }
+    .tapa { width: 104px; height: 44px; border-radius: 14px; background: linear-gradient(90deg, #6e5530, #e8cc98 35%, #fff4dc 45%, #b48c4f 70%, #5d4626); box-shadow: inset 0 -4px 0 rgba(0,0,0,.25); flex: none; position: relative; }
+    .tapa::after { content: ""; position: absolute; left: 50%; width: 34px; height: 22px; translate: -50% 0; border-radius: 50% 50% 8px 8px; background: inherit; }
+    .tapa.arriba::after { top: -18px; }
+    .tapa.abajo::after { bottom: -18px; border-radius: 8px 8px 50% 50%; }
+    .tubo { flex: 1; width: 78px; border-radius: 6px; position: relative; overflow: hidden; background: repeating-linear-gradient(-45deg, var(--rojo) 0 20px, #f7f3ec 20px 40px, var(--azul) 40px 60px, #f7f3ec 60px 80px); background-size: 100% 113.14px; animation: girar 1.6s linear infinite; box-shadow: 0 0 60px rgba(195, 38, 46, .35); }
+    .tubo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,.45), rgba(255,255,255,.0) 25%, rgba(255,255,255,.55) 38%, rgba(255,255,255,0) 52%, rgba(0,0,0,.5)); }
+    @keyframes girar { to { background-position: 0 -113.14px; } }
+    .ficha { position: absolute; background: rgba(23, 23, 26, .82); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.1); border-radius: 16px; padding: 14px 16px; font-size: .85rem; color: #d9d4cb; box-shadow: 0 18px 40px rgba(0,0,0,.4); animation: flotar 6s ease-in-out infinite; }
+    .ficha strong { display: block; color: #fff; font-size: 1rem; }
+    .ficha .precio { display: block; font-family: "Anton", sans-serif; color: var(--oro); font-size: 1.5rem; line-height: 1.15; }
+    .ficha.f1 { top: 10%; left: 0; }
+    .ficha.f2 { top: 44%; right: -6px; animation-delay: -2s; }
+    .ficha.f3 { bottom: 9%; left: 4%; animation-delay: -4s; }
+    .ficha .estrellas { color: var(--oro); letter-spacing: 2px; }
+    @keyframes flotar { 50% { transform: translateY(-10px); } }
+
+    /* Cinta */
+    .cinta { background: var(--oro); color: var(--negro); overflow: hidden; padding: 16px 0; border-block: 1px solid #000; }
+    .cinta-pista { display: flex; width: max-content; animation: correr 32s linear infinite; }
+    .cinta span { font-family: "Anton", sans-serif; font-size: 1.35rem; text-transform: uppercase; letter-spacing: .04em; padding: 0 22px; white-space: nowrap; display: inline-flex; align-items: center; gap: 44px; }
+    .cinta span::after { content: "✦"; font-size: .9rem; }
+    @keyframes correr { to { transform: translateX(-50%); } }
+
+    /* Títulos */
+    .sobre { display: inline-flex; align-items: center; gap: 10px; color: #9a7a44; font-weight: 700; font-size: .8rem; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 14px; }
+    .sobre::before { content: ""; width: 26px; height: 1.5px; background: currentColor; }
+    .oscuro .sobre { color: var(--oro); }
+    .titulo-seccion { max-width: 700px; margin-bottom: 46px; }
+    .titulo-seccion h2 { font-size: clamp(2.4rem, 5vw, 3.9rem); margin-bottom: 14px; }
+    .titulo-seccion p { color: #6b675f; font-size: 1.08rem; }
+    .oscuro { background: var(--negro); color: #fff; }
+    .oscuro .titulo-seccion p { color: #a9a39a; }
+
+    /* Carta de servicios */
+    .carta-cabeza { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 30px; }
+    .carta-cabeza .titulo-seccion { margin-bottom: 0; }
+    .filtros { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filtros button { border: 1.5px solid var(--crema-2); background: #fff; color: var(--texto); font: 700 .9rem "DM Sans", sans-serif; padding: 10px 18px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .filtros button:hover { border-color: var(--texto); }
+    .filtros button[aria-pressed="true"] { background: var(--negro); border-color: var(--negro); color: #fff; }
+    .carta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .item { background: #fff; border-radius: var(--radio); padding: 24px 24px 20px; display: grid; grid-template-columns: 1fr auto; gap: 6px 18px; border: 1px solid transparent; transition: border-color .2s, transform .2s, box-shadow .2s; animation: entrar .45s ease both; }
+    .item:hover { border-color: var(--oro); transform: translateY(-3px); box-shadow: 0 18px 36px rgba(27, 26, 25, .08); }
+    @keyframes entrar { from { opacity: 0; transform: translateY(14px); } }
+    .item h3 { font-family: "DM Sans", sans-serif; font-weight: 700; text-transform: none; font-size: 1.15rem; letter-spacing: 0; line-height: 1.3; }
+    .item .precio { font-family: "Anton", sans-serif; font-size: 1.55rem; line-height: 1; text-align: right; }
+    .item p { grid-column: 1 / -1; color: #6b675f; font-size: .93rem; }
+    .item .pie { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; padding-top: 14px; border-top: 1px dashed var(--crema-2); flex-wrap: wrap; }
+    .etiquetas { display: flex; gap: 6px; flex-wrap: wrap; }
+    .etiq { font-size: .78rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--crema); color: #5b574f; }
+    .etiq.ahorro { background: #e9f6ee; color: #1f7a45; }
+    .agregar { border: 0; background: none; font: 700 .9rem "DM Sans", sans-serif; color: var(--texto); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; padding: 6px 2px; }
+    .agregar::after { content: "→"; transition: transform .2s; }
+    .agregar:hover::after { transform: translateX(4px); }
+
+    /* Ritual */
+    .ritual-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: paso; }
+    .paso { position: relative; background: var(--carbon); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radio); padding: 30px 24px 26px; overflow: hidden; }
+    .paso::before { counter-increment: paso; content: "0" counter(paso); font-family: "Anton", sans-serif; font-size: 3.4rem; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(201, 164, 107, .6); display: block; margin-bottom: 18px; }
+    .paso h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .paso p { color: #a9a39a; font-size: .95rem; }
+    .paso .vapor { position: absolute; right: 22px; top: 26px; display: flex; gap: 6px; }
+    .paso .vapor i { width: 4px; height: 26px; border-radius: 4px; background: linear-gradient(transparent, rgba(255,255,255,.4)); animation: vapor 2.4s ease-in-out infinite; }
+    .paso .vapor i:nth-child(2) { animation-delay: -.8s; }
+    .paso .vapor i:nth-child(3) { animation-delay: -1.6s; }
+    @keyframes vapor { 0% { transform: translateY(10px) scaleY(.6); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-14px) scaleY(1.1); opacity: 0; } }
+    .ritual-pie { margin-top: 34px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding: 24px 28px; border-radius: var(--radio); border: 1px solid rgba(201, 164, 107, .35); background: linear-gradient(90deg, rgba(201, 164, 107, .12), transparent); }
+    .ritual-pie p { color: #d9d4cb; }
+    .ritual-pie strong { color: #fff; }
+
+    /* Sello */
+    .sello-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .sello-grid h2 { font-size: clamp(2.4rem, 5vw, 3.9rem); margin-bottom: 18px; }
+    .sello-grid > div > p { color: #6b675f; font-size: 1.06rem; margin-bottom: 14px; }
+    .valores { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .valor { background: #fff; border-radius: var(--radio); padding: 24px 22px; }
+    .valor .ico { width: 46px; height: 46px; border-radius: 14px; background: var(--negro); display: grid; place-items: center; margin-bottom: 14px; }
+    .valor b { display: block; font-size: 1.04rem; margin-bottom: 4px; }
+    .valor span { color: #6b675f; font-size: .92rem; }
+    .resenas { margin-top: 70px; background: var(--negro); color: #fff; border-radius: 24px; padding: 44px; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; }
+    .nota { text-align: center; }
+    .nota strong { font-family: "Anton", sans-serif; font-weight: 400; font-size: 4.6rem; line-height: 1; display: block; }
+    .nota .estrellas { color: var(--oro); letter-spacing: 4px; font-size: 1.1rem; }
+    .nota span { color: var(--gris); font-size: .88rem; }
+    .resenas h3 { font-size: 1.9rem; margin-bottom: 8px; }
+    .resenas p { color: #a9a39a; }
+
+    /* Reservar */
+    .reservar-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 50px; align-items: start; }
+    .hero-grid > *, .reservar-grid > *, .sello-grid > *, .ubicacion-grid > *, .carta > * { min-width: 0; }
+    .reserva { background: var(--carbon); border: 1px solid rgba(255,255,255,.08); border-radius: 24px; padding: 30px; }
+    .reserva fieldset { border: 0; margin-bottom: 26px; min-width: 0; }
+    .reserva legend { display: flex; align-items: center; gap: 10px; font-weight: 700; margin-bottom: 12px; color: #fff; }
+    .reserva legend b { width: 26px; height: 26px; border-radius: 50%; background: var(--oro); color: var(--negro); display: grid; place-items: center; font-size: .85rem; }
+    .reserva select, .reserva input[type=text] { width: 100%; background: var(--negro); color: #fff; border: 1.5px solid rgba(255,255,255,.12); border-radius: 12px; padding: 14px 14px; font: 500 1rem "DM Sans", sans-serif; }
+    .reserva select:focus, .reserva input:focus { outline: none; border-color: var(--oro); }
+    .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+    .chip { flex: none; border: 1.5px solid rgba(255,255,255,.12); background: var(--negro); color: #d9d4cb; border-radius: 14px; padding: 10px 14px; font: 700 .9rem "DM Sans", sans-serif; cursor: pointer; text-align: center; line-height: 1.25; transition: border-color .2s, background .2s, color .2s; }
+    .chip small { display: block; font-weight: 500; font-size: .75rem; color: var(--gris); }
+    .chip:hover { border-color: rgba(201, 164, 107, .7); }
+    .chip[aria-pressed="true"] { background: var(--oro); border-color: var(--oro); color: var(--negro); }
+    .chip[aria-pressed="true"] small { color: #4a3a20; }
+    .horas { display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 8px; }
+    .horas .chip { padding: 10px 6px; }
+    .sin-horas { color: var(--gris); font-size: .92rem; }
+    .resumen { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.1); padding-top: 22px; }
+    .resumen .total { color: var(--gris); font-size: .9rem; }
+    .resumen .total strong { display: block; color: #fff; font-family: "Anton", sans-serif; font-weight: 400; font-size: 1.9rem; line-height: 1.1; }
+    .horario { margin-top: 30px; background: var(--carbon); border-radius: var(--radio); padding: 24px; border: 1px solid rgba(255,255,255,.07); }
+    .horario h3 { font-size: 1.3rem; margin-bottom: 12px; }
+    .horario table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+    .horario td { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.07); color: #d9d4cb; }
+    .horario td:last-child { text-align: right; font-weight: 700; color: #fff; }
+    .horario tr.hoy td { color: var(--oro-claro); }
+    .horario tr.hoy td:last-child { color: var(--oro); }
+    .tuu { margin-top: 16px; font-size: .88rem; color: var(--gris); }
+
+    /* Ubicación */
+    .ubicacion-grid { display: grid; grid-template-columns: .85fr 1.15fr; border-radius: 24px; overflow: hidden; background: #fff; }
+    .ubicacion-texto { padding: 46px 40px; }
+    .ubicacion-texto h2 { font-size: clamp(2.2rem, 4.4vw, 3.2rem); margin-bottom: 22px; }
+    .linea { display: flex; gap: 14px; margin-bottom: 18px; }
+    .linea .ico { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--crema); display: grid; place-items: center; }
+    .linea b { display: block; }
+    .linea span, .linea a { color: #6b675f; }
+    .linea a:hover { color: var(--texto); text-decoration: underline; }
+    .ubicacion-grid iframe { width: 100%; height: 100%; min-height: 420px; border: 0; filter: grayscale(.85) contrast(1.05); }
+
+    /* FAQ */
+    .faq { max-width: 820px; margin-inline: auto; display: grid; gap: 12px; }
+    .faq details { background: #fff; border-radius: 16px; padding: 20px 24px; }
+    .faq summary { cursor: pointer; font-weight: 700; font-size: 1.04rem; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: #9a7a44; transition: transform .2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin-top: 12px; color: #6b675f; }
+
+    /* Footer */
+    footer { background: var(--negro); color: #8c8a86; padding: 60px 0 30px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    footer h4 { color: #fff; margin-bottom: 10px; font-size: .95rem; }
+    footer ul { list-style: none; display: grid; gap: 6px; font-size: .92rem; }
+    footer a:hover { color: #fff; }
+    .creditos { padding-top: 22px; font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .creditos a { color: var(--oro); font-weight: 700; }
+
+    .wsp-flotante { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 10px 25px rgba(37, 211, 102, .45); z-index: 60; transition: transform .2s; }
+    .wsp-flotante:hover { transform: scale(1.08); }
+
+    /* ===== Comparar ===== */
+    .btn-comparar { position: fixed; left: 50%; translate: -50% 0; bottom: 20px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--negro); border: 0; border-radius: 999px; padding: 12px 18px 12px 12px; font: 700 .92rem "DM Sans", sans-serif; cursor: pointer; box-shadow: 0 12px 28px rgba(0, 0, 0, .28); transition: transform .2s; }
+    .btn-comparar:hover { transform: translateY(-3px); }
+    .btn-comparar .ico { width: 34px; height: 34px; border-radius: 50%; background: var(--negro); display: grid; place-items: center; }
+    .btn-comparar .pulso { position: absolute; inset: 0; border-radius: 999px; animation: pulso 2.4s infinite; pointer-events: none; }
+    @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(201, 164, 107, .7); } 70%, 100% { box-shadow: 0 0 0 14px rgba(201, 164, 107, 0); } }
+    .modal { position: fixed; inset: 0; z-index: 100; background: rgba(8, 8, 9, .86); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal.abierto { display: flex; animation: aparecer .25s ease; }
+    @keyframes aparecer { from { opacity: 0; } }
+    .modal-caja { background: #fff; border-radius: 22px; width: min(1100px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: 26px; position: relative; }
+    .modal-cabeza { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; padding-right: 44px; }
+    .modal-cabeza h2 { font-size: 2rem; }
+    .cerrar { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--crema); cursor: pointer; display: grid; place-items: center; }
+    .pestanas { display: inline-flex; background: var(--crema); border-radius: 999px; padding: 4px; }
+    .pestanas button { border: 0; background: transparent; font: 700 .9rem "DM Sans", sans-serif; color: var(--texto); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+    .pestanas button[aria-selected="true"] { background: var(--negro); color: #fff; }
+    .leyenda { display: flex; justify-content: space-between; margin: 0 auto 10px; font: 700 .78rem "DM Sans", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    .leyenda span { padding: 6px 12px; border-radius: 999px; }
+    .leyenda .l-antes { background: var(--crema); color: var(--texto); }
+    .leyenda .l-ahora { background: var(--negro); color: var(--oro-claro); }
+    .comparador { position: relative; margin-inline: auto; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); user-select: none; touch-action: none; background: #ddd; }
+    .comparador.escritorio { width: 100%; aspect-ratio: 1366 / 850; }
+    .comparador.movil { width: min(340px, 100%, calc((100vh - 260px) * .462)); min-width: 220px; aspect-ratio: 390 / 844; border-radius: 30px; border: 8px solid var(--negro); }
+    .comparador img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; }
+    .comparador .antes { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+    .divisor { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,.4); pointer-events: none; }
+    .divisor span { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+    .comparador input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .comparador:focus-within .divisor span { outline: 3px solid var(--oro); }
+    .ayuda-comparar { text-align: center; color: #6b675f; font-size: .88rem; margin: 12px 0 20px; }
+    .mejoras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .mejora { border: 1px solid var(--crema-2); border-radius: 14px; padding: 16px; font-size: .9rem; }
+    .mejora b { display: block; font-size: .98rem; margin-bottom: 4px; }
+    .mejora .antes-txt { color: #a5384a; display: block; font-size: .85rem; }
+    .mejora .ahora-txt { color: #23784a; display: block; font-size: .85rem; font-weight: 700; }
+
+    .toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 200%); opacity: 0; background: var(--negro); color: #fff; padding: 14px 20px; border-radius: 12px; border: 1px solid rgba(201, 164, 107, .4); box-shadow: 0 10px 30px rgba(0,0,0,.3); font-size: .92rem; z-index: 120; transition: transform .35s ease, opacity .35s; max-width: calc(100% - 32px); text-align: center; pointer-events: none; }
+    .toast.visible { transform: translate(-50%, 0); opacity: 1; }
+
+    .aparece { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .aparece.visto { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .aparece { opacity: 1; transform: none; transition: none; }
+      .tubo, .halo, .ficha, .cinta-pista, .vapor i, .pulso, .estado i, .item { animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+    .captura .aviso-demo, .captura .btn-comparar { display: none; }
+    .captura .tubo, .captura .halo, .captura .ficha, .captura .cinta-pista, .captura .item { animation: none; }
+
+    @media (max-width: 1000px) {
+      .hero-grid, .sello-grid, .reservar-grid, .ubicacion-grid { grid-template-columns: 1fr; }
+      .hero-grid { min-height: 0; padding: 50px 0 40px; gap: 10px; }
+      .escena { height: 380px; }
+      .ritual-grid { grid-template-columns: 1fr 1fr; }
+      .mejoras { grid-template-columns: 1fr 1fr; }
+      .sello-grid { gap: 36px; }
+    }
+    @media (max-width: 820px) {
+      .menu, .nav > .btn { display: none; }
+      .hamburguesa { display: block; }
+      .menu.abierto { display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; right: 0; background: var(--negro); padding: 20px 16px 26px; gap: 18px; border-bottom: 1px solid rgba(255,255,255,.08); }
+      .carta { grid-template-columns: 1fr; }
+      .resenas { grid-template-columns: 1fr; text-align: center; padding: 34px 24px; gap: 18px; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .hero h1 { font-size: clamp(2.9rem, 14vw, 4rem); margin: 18px 0; }
+      .hero-botones .btn { flex: 1 1 100%; }
+      .hero-datos { gap: 22px; flex-wrap: nowrap; justify-content: space-between; }
+      .hero-datos strong { font-size: 1.7rem; }
+      .hero-datos span { font-size: .78rem; }
+      .escena { height: 320px; margin-top: 34px; }
+      .poste { width: 80px; }
+      .tapa { width: 80px; height: 36px; }
+      .tubo { width: 60px; }
+      .ficha { padding: 10px 12px; font-size: .78rem; }
+      .ficha strong { font-size: .9rem; }
+      .ficha .precio { font-size: 1.2rem; }
+      .ficha.f2 { right: 0; }
+      .ritual-grid, .valores, .mejoras { grid-template-columns: 1fr; }
+      .item { padding: 20px 18px 16px; }
+      .reserva { padding: 22px 18px; }
+      .ubicacion-texto { padding: 32px 22px; }
+      .ubicacion-grid iframe { min-height: 300px; }
+      .btn-comparar { left: 16px; translate: none; bottom: 16px; padding-right: 14px; }
+      .btn-comparar .txt-largo { display: none; }
+      .wsp-flotante { right: 16px; bottom: 16px; }
+      .modal { padding: 0; }
+      .modal-caja { border-radius: 0; max-height: 100vh; height: 100%; padding: 20px 16px; }
+      .comparador.movil { width: min(300px, 100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aviso-demo">Propuesta de diseño hecha por <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a>. Precios tomados de su página de reservas. <button type="button" data-abrir-comparar>Comparar con la web actual</button></div>
+
+  <header>
+    <div class="contenedor nav">
+      <a href="#inicio" class="logo" aria-label="Black Barber Studio, inicio">
+        <svg width="34" height="40" viewBox="0 0 34 40" aria-hidden="true"><rect x="2" y="0" width="30" height="6" rx="3" fill="#c9a46b"/><rect x="2" y="34" width="30" height="6" rx="3" fill="#c9a46b"/><rect x="7" y="6" width="20" height="28" fill="#f7f3ec"/><path d="M7 14 27 8M7 23l20-6M7 32l20-6" stroke="#c3262e" stroke-width="3.4"/><path d="M7 18.5 27 12.5M7 27.5l20-6" stroke="#1f4fa3" stroke-width="3"/></svg>
+        <span class="logo-texto">BLACK<small>BARBER STUDIO</small></span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="#servicios">Servicios</a>
+        <a href="#ritual">Ritual</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#reservar">Reservar</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <a href="#reservar" class="btn btn-oro">Reservar hora</a>
+      <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div class="aparece">
+          <span class="estado" id="estado"><i></i><span>Lun a sáb 11:00 – 20:00</span></span>
+          <h1>Barbería en La Reina<em class="fino">sales distinto, te sientes distinto.</em></h1>
+          <p class="lead">Fade, barba con navaja y toallas calientes en Av. Fernando Castillo Velasco. Cada corte incluye lavado y cortesía.</p>
+          <div class="hero-botones">
+            <a href="#reservar" class="btn btn-oro">Reservar mi hora</a>
+            <a href="#servicios" class="btn btn-borde">Ver precios</a>
+          </div>
+          <div class="hero-datos">
+            <div><strong>4,9<b>★</b></strong><span>en Google</span></div>
+            <div><strong>128</strong><span>reseñas</span></div>
+            <div><strong>7</strong><span>días abiertos</span></div>
+          </div>
+        </div>
+        <div class="escena aparece" aria-hidden="true">
+          <div class="halo"></div>
+          <div class="poste"><div class="tapa arriba"></div><div class="tubo"></div><div class="tapa abajo"></div></div>
+          <div class="ficha f1"><strong>Corte Fade Premium</strong><span class="precio">$16.990</span>45 min · lavado incluido</div>
+          <div class="ficha f2"><span class="estrellas">★★★★★</span><strong>4,9 en Google</strong>128 reseñas</div>
+          <div class="ficha f3"><strong>Toallas calientes</strong>y afeitado con navaja</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta-pista">
+        <span>Fade premium</span><span>Barba con navaja</span><span>Toallas calientes</span><span>Limpieza facial</span><span>Niños y adulto mayor</span><span>Abierto los domingos</span>
+        <span>Fade premium</span><span>Barba con navaja</span><span>Toallas calientes</span><span>Limpieza facial</span><span>Niños y adulto mayor</span><span>Abierto los domingos</span>
+      </div>
+    </div>
+
+    <section id="servicios">
+      <div class="contenedor">
+        <div class="carta-cabeza aparece">
+          <div class="titulo-seccion">
+            <span class="sobre">Servicios y precios</span>
+            <h2>La carta <em class="fino">completa</em></h2>
+            <p>Sin sorpresas al pagar: cada servicio con su duración y su precio. Elige uno y lo dejamos listo para reservar.</p>
+          </div>
+          <div class="filtros" id="filtros" role="group" aria-label="Filtrar servicios">
+            <button type="button" data-cat="todos" aria-pressed="true">Todos</button>
+            <button type="button" data-cat="cortes" aria-pressed="false">Cortes</button>
+            <button type="button" data-cat="barbas" aria-pressed="false">Barbas</button>
+            <button type="button" data-cat="promos" aria-pressed="false">Promociones</button>
+            <button type="button" data-cat="facial" aria-pressed="false">Limpieza facial</button>
+          </div>
+        </div>
+        <div class="carta" id="carta"></div>
+      </div>
+    </section>
+
+    <section class="oscuro" id="ritual">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">Afeitado al ras Premium</span>
+          <h2>El ritual <em class="fino">de la navaja</em></h2>
+          <p>Treinta minutos para ti. Así es el afeitado clásico que hacemos en el estudio.</p>
+        </div>
+        <div class="ritual-grid">
+          <article class="paso aparece"><span class="vapor" aria-hidden="true"><i></i><i></i><i></i></span><h3>Vapor</h3><p>Abrimos los poros con vapor para que la barba se ablande.</p></article>
+          <article class="paso aparece"><h3>Toallas calientes</h3><p>Relajan la piel y preparan cada pelo para la navaja.</p></article>
+          <article class="paso aparece"><h3>Navaja clásica</h3><p>Afeitado completo y al ras, con el método de siempre.</p></article>
+          <article class="paso aparece"><h3>Loción y masaje</h3><p>Cerramos con productos que calman la piel y un masaje.</p></article>
+        </div>
+        <div class="ritual-pie aparece">
+          <p><strong>Afeitado al ras Premium · $17.990.</strong> Con corte incluido, el Corte + Afeitado inglés queda en $28.990.</p>
+          <button type="button" class="btn btn-oro" data-elegir="afeitado">Reservar el ritual</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="nosotros">
+      <div class="contenedor">
+        <div class="sello-grid">
+          <div class="aparece">
+            <span class="sobre">Nosotros</span>
+            <h2>Un estudio <em class="fino">con sello propio</em></h2>
+            <p>Black Barber Studio es una barbería moderna de La Reina, liderada por una mujer. Nuestro equipo de barberos y barberas se toma el tiempo de escucharte antes de tomar la máquina.</p>
+            <p>Te recibimos con buena música, un lavado y una cortesía, para que salgas luciendo y sintiéndote bien.</p>
+          </div>
+          <div class="valores aparece">
+            <div class="valor"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a46b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="5"/><path d="M12 13v8M9 18h6"/></svg></span><b>Liderada por una mujer</b><span>Una barbería con otra mirada.</span></div>
+            <div class="valor"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a46b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.6 1-1.1a5.5 5.5 0 0 0 0-7.7z"/></svg></span><b>Un espacio para todos</b><span>Amigable con la comunidad LGBTQ+.</span></div>
+            <div class="valor"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a46b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="10" r="2"/><path d="M3 21v-2a5 5 0 0 1 10 0v2M14 21v-1.5a3.5 3.5 0 0 1 7 0V21"/></svg></span><b>Niños y adulto mayor</b><span>Corte Classic a $13.990 y promo exclusiva.</span></div>
+            <div class="valor"><span class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a46b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg></span><b>Abierto los 7 días</b><span>Domingos de 12:00 a 18:00.</span></div>
+          </div>
+        </div>
+        <div class="resenas aparece">
+          <div class="nota"><strong>4,9</strong><div class="estrellas" aria-hidden="true">★★★★★</div><span>128 reseñas en Google</span></div>
+          <div>
+            <h3>Aquí van sus reseñas reales de Google</h3>
+            <p>En la versión final mostramos las opiniones verdaderas de sus clientes, con nombre y fecha. Un 4,9 con 128 reseñas convence más que cualquier texto.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="oscuro" id="reservar">
+      <div class="contenedor reservar-grid">
+        <div class="aparece">
+          <div class="titulo-seccion" style="margin-bottom:10px">
+            <span class="sobre">Reserva</span>
+            <h2>Tu hora <em class="fino">en 3 pasos</em></h2>
+            <p>Eliges el servicio, el día y la hora. Te llega la confirmación por WhatsApp.</p>
+          </div>
+          <div class="horario">
+            <h3>Horario</h3>
+            <table id="tabla-horario">
+              <tr data-dias="1,2,3,4,5"><td>Lunes a viernes</td><td>11:00 – 20:00</td></tr>
+              <tr data-dias="6"><td>Sábado</td><td>11:00 – 20:00</td></tr>
+              <tr data-dias="0"><td>Domingo</td><td>12:00 – 18:00</td></tr>
+            </table>
+          </div>
+        </div>
+        <form class="reserva aparece" id="form-reserva" novalidate>
+          <fieldset>
+            <legend><b>1</b> Servicio</legend>
+            <select name="servicio" id="sel-servicio" aria-label="Servicio"></select>
+          </fieldset>
+          <fieldset>
+            <legend><b>2</b> Día</legend>
+            <div class="chips" id="dias" role="group" aria-label="Día"></div>
+          </fieldset>
+          <fieldset>
+            <legend><b>3</b> Hora</legend>
+            <div class="horas" id="horas" role="group" aria-label="Hora"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Tu nombre</legend>
+            <input type="text" name="nombre" placeholder="Ej: Matías" autocomplete="given-name">
+          </fieldset>
+          <div class="resumen">
+            <div class="total">Total a pagar en el local<strong id="total">$16.990</strong><span id="duracion">45 min</span></div>
+            <button type="submit" class="btn btn-oro">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+              Pedir esta hora
+            </button>
+          </div>
+          <p class="tuu">¿Prefieres pagar en línea? También puedes reservar en su página de TUU.</p>
+        </form>
+      </div>
+    </section>
+
+    <section id="ubicacion">
+      <div class="contenedor">
+        <div class="ubicacion-grid aparece">
+          <div class="ubicacion-texto">
+            <span class="sobre">Ubicación</span>
+            <h2>Te esperamos <em class="fino">en La Reina</em></h2>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b1a19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><b>Dirección</b><a href="https://www.google.com/maps/search/?api=1&query=Av.+Alcalde+Fernando+Castillo+Velasco+8751,+La+Reina" target="_blank" rel="noopener">Av. Alcalde Fernando Castillo Velasco 8751, La Reina</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b1a19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><b>Teléfono y WhatsApp</b><a href="tel:+56996600689">+56 9 9660 0689</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b1a19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#1b1a19"/></svg></span><div><b>Instagram</b><a href="https://www.instagram.com/blackbarberstudio.cl/" target="_blank" rel="noopener">@blackbarberstudio.cl</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1b1a19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Horario</b><span>Lun a sáb 11:00 – 20:00 · Dom 12:00 – 18:00</span></div></div>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Alcalde+Fernando+Castillo+Velasco+8751,+La+Reina" target="_blank" rel="noopener" class="btn btn-negro" style="margin-top:10px">Cómo llegar</a>
+          </div>
+          <iframe title="Mapa de Black Barber Studio" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.+Alcalde+Fernando+Castillo+Velasco+8751,+La+Reina,+Chile&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece" style="text-align:center;margin-inline:auto">
+          <span class="sobre">Preguntas frecuentes</span>
+          <h2>Antes de <em class="fino">venir</em></h2>
+        </div>
+        <div class="faq aparece">
+          <details><summary>¿Tengo que reservar?</summary><p>Te recomendamos reservar para asegurar tu hora, sobre todo los fines de semana. Puedes hacerlo aquí mismo en tres pasos o por WhatsApp.</p></details>
+          <details><summary>¿Qué incluye el Corte Fade Premium?</summary><p>Corte clásico o degradado con tijera y máquina, perfilado de cejas, lavado capilar y una cortesía. Dura cerca de 45 minutos.</p></details>
+          <details><summary>¿Cortan a niños?</summary><p>Sí. El Corte Classic es para niños de hasta 10 años y adultos mayores: corte tradicional con máquina y tijera, sin degradado, a $13.990.</p></details>
+          <details><summary>¿Atienden los domingos?</summary><p>Sí, los domingos atendemos de 12:00 a 18:00. De lunes a sábado, de 11:00 a 20:00.</p></details>
+          <details><summary>¿Conviene más la promoción que los servicios por separado?</summary><p>Sí. Cada promoción de corte y barba te ahorra $5.990 frente a pedir el Fade Premium y la barba por separado.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <div class="footer-grid">
+        <a href="#inicio" class="logo"><span class="logo-texto">BLACK<small>BARBER STUDIO</small></span></a>
+        <div><h4>Visítanos</h4><ul><li>Av. Alcalde Fernando Castillo Velasco 8751</li><li>La Reina, Santiago</li></ul></div>
+        <div><h4>Horario</h4><ul><li>Lun a sáb 11:00 – 20:00</li><li>Domingo 12:00 – 18:00</li></ul></div>
+        <div><h4>Contacto</h4><ul><li><a href="tel:+56996600689">+56 9 9660 0689</a></li><li><a href="https://www.instagram.com/blackbarberstudio.cl/" target="_blank" rel="noopener">Instagram</a></li></ul></div>
+      </div>
+      <div class="creditos">
+        <span>© <span id="anio"></span> Black Barber Studio</span>
+        <span>Diseño y desarrollo: <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="btn-comparar" data-abrir-comparar aria-haspopup="dialog">
+    <span class="pulso"></span>
+    <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8cc98" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></svg></span>
+    <span>Comparar<span class="txt-largo"> con la web actual</span></span>
+  </button>
+
+  <a href="#reservar" class="wsp-flotante" aria-label="Reservar por WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+  </a>
+
+  <div class="modal" id="modal-comparar" role="dialog" aria-modal="true" aria-labelledby="titulo-comparar">
+    <div class="modal-caja">
+      <button type="button" class="cerrar" id="cerrar-comparar" aria-label="Cerrar comparación"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <div class="modal-cabeza">
+        <div><span class="sobre">Antes y ahora</span><h2 id="titulo-comparar">Web actual vs. propuesta</h2></div>
+        <div class="pestanas" role="tablist" aria-label="Dispositivo">
+          <button type="button" role="tab" aria-selected="true" data-vista="movil">Celular</button>
+          <button type="button" role="tab" aria-selected="false" data-vista="escritorio">Computador</button>
+        </div>
+      </div>
+      <div class="leyenda" id="leyenda"><span class="l-antes">◀ Web actual</span><span class="l-ahora">Propuesta ▶</span></div>
+      <div class="comparador movil" id="comparador">
+        <img class="ahora" id="img-ahora" src="comparar/ahora-movil.png" alt="Portada de la propuesta nueva">
+        <img class="antes" id="img-antes" src="comparar/antes-movil.png" alt="Lo que aparece hoy al abrir blackbarberstudio.cl: un error de que no se puede acceder al sitio">
+        <div class="divisor"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0d0d0e" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <input type="range" min="0" max="100" value="50" id="deslizador" aria-label="Deslizar para comparar la web actual con la propuesta">
+      </div>
+      <p class="ayuda-comparar">Arrastra la barra. A la izquierda, lo que ve hoy quien toca "Sitio web" en su ficha de Google.</p>
+      <div class="mejoras">
+        <div class="mejora"><b>Una web que abre</b><span class="antes-txt">Antes: blackbarberstudio.cl muestra "No se puede acceder a este sitio"</span><span class="ahora-txt">Ahora: carga en segundos, en el celular y en el computador</span></div>
+        <div class="mejora"><b>Precios a la vista</b><span class="antes-txt">Antes: para ver precios hay que entrar a la página de TUU</span><span class="ahora-txt">Ahora: carta completa con duración, precio y filtros</span></div>
+        <div class="mejora"><b>Reservar en 3 pasos</b><span class="antes-txt">Antes: página de reservas genérica, fuera de su marca</span><span class="ahora-txt">Ahora: servicio, día y hora, y llega por WhatsApp</span></div>
+        <div class="mejora"><b>Abierto ahora</b><span class="antes-txt">Antes: el horario solo está en Google Maps</span><span class="ahora-txt">Ahora: la portada dice si está abierto en este momento</span></div>
+        <div class="mejora"><b>Promos que convencen</b><span class="antes-txt">Antes: las promociones no dicen cuánto se ahorra</span><span class="ahora-txt">Ahora: cada combo muestra el ahorro de $5.990</span></div>
+        <div class="mejora"><b>Su sello</b><span class="antes-txt">Antes: Google dice que es liderada por una mujer, pero no se cuenta en ningún lado</span><span class="ahora-txt">Ahora: es parte de su historia en la web</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const captura = new URLSearchParams(location.search).has("captura");
+    if (captura) document.documentElement.classList.add("captura");
+    document.getElementById("anio").textContent = new Date().getFullYear();
+    const sinMovimiento = captura || matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Menú del celular
+    const hamb = document.getElementById("hamburguesa");
+    const menu = document.getElementById("menu");
+    hamb.addEventListener("click", () => hamb.setAttribute("aria-expanded", menu.classList.toggle("abierto")));
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("abierto"); hamb.setAttribute("aria-expanded", "false"); }));
+
+    // Aparición al hacer scroll
+    const elementos = document.querySelectorAll(".aparece");
+    if (captura || !("IntersectionObserver" in window)) {
+      elementos.forEach(el => el.classList.add("visto"));
+    } else {
+      const obs = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visto"); obs.unobserve(e.target); } }), { threshold: 0.12 });
+      elementos.forEach(el => obs.observe(el));
+    }
+
+    const toast = document.getElementById("toast");
+    let tToast;
+    function mostrarToast(texto) {
+      toast.textContent = texto;
+      toast.classList.add("visible");
+      clearTimeout(tToast);
+      tToast = setTimeout(() => toast.classList.remove("visible"), 5500);
+    }
+    const pesos = n => "$" + n.toLocaleString("es-CL");
+    const duracion = m => m < 60 ? `${m} min` : `${Math.floor(m / 60)} h${m % 60 ? " " + (m % 60) + " min" : ""}`;
+
+    // ===== Servicios (precios de su página de reservas) =====
+    const SERVICIOS = [
+      { id: "fade", cat: "cortes", nombre: "Corte Fade Premium", min: 45, precio: 16990, desc: "Clásico o degradado con tijera y máquina. Incluye perfilado de cejas, lavado capilar y cortesía.", tags: ["Más pedido"] },
+      { id: "classic", cat: "cortes", nombre: "Corte Classic", min: 30, precio: 13990, desc: "Corte tradicional con máquina y tijera, sin degradado. Para niños de hasta 10 años y adulto mayor.", tags: ["Niños", "Adulto mayor"] },
+      { id: "barba", cat: "barbas", nombre: "Barba simple", min: 30, precio: 13990, desc: "Hecha solo con máquina. Incluye lavado de barba.", tags: [] },
+      { id: "perfilado", cat: "barbas", nombre: "Perfilado de barba Premium", min: 30, precio: 15990, desc: "Afeitado con navaja y ritual de toallas calientes. Incluye lavado, productos y masaje.", tags: ["Navaja"] },
+      { id: "afeitado", cat: "barbas", nombre: "Afeitado al ras Premium", min: 30, precio: 17990, desc: "Vapor y toallas calientes para abrir los poros, loción y afeitado clásico con navaja.", tags: ["Ritual"] },
+      { id: "corte-barba", cat: "promos", nombre: "Corte + Barba simple", min: 60, precio: 24990, separado: 16990 + 13990, desc: "Corte clásico o fade y barba con máquina. Incluye lavado capilar.", tags: [] },
+      { id: "corte-perfilado", cat: "promos", nombre: "Corte + Perfilado de barba", min: 60, precio: 26990, separado: 16990 + 15990, desc: "Corte clásico o fade, toallas calientes, perfilado con navaja y máquina, lavado de barba y cabello.", tags: [] },
+      { id: "corte-ingles", cat: "promos", nombre: "Corte + Afeitado inglés", min: 60, precio: 28990, separado: 16990 + 17990, desc: "Corte clásico o fade, lavado y afeitado completo al ras con toalla caliente, productos, masaje y cortesía.", tags: ["Completo"] },
+      { id: "mayor", cat: "promos", nombre: "Corte Classic + Barba simple", min: 60, precio: 21990, separado: 13990 + 13990, desc: "Corte tradicional sin degradado y barba con máquina. Exclusivo para adulto mayor.", tags: ["Adulto mayor"] },
+      { id: "facial", cat: "facial", nombre: "Corte + Limpieza facial", min: 90, precio: 23990, desc: "Corte, limpieza facial superficial, vaporizador, mascarilla dorada para puntos negros y crema hidratante.", tags: ["Nuevo"] },
+      { id: "facial-pro", cat: "facial", nombre: "Corte + Limpieza facial profunda", min: 90, precio: 26990, desc: "Corte, limpieza facial profunda, vaporizador, exfoliación con mascarilla de arcilla y crema humectante.", tags: ["Nuevo"] }
+    ];
+    const porId = Object.fromEntries(SERVICIOS.map(s => [s.id, s]));
+
+    const carta = document.getElementById("carta");
+    function pintarCarta(cat) {
+      const lista = cat === "todos" ? SERVICIOS : SERVICIOS.filter(s => s.cat === cat);
+      carta.innerHTML = lista.map((s, i) => `
+        <article class="item" style="animation-delay:${sinMovimiento ? 0 : i * 45}ms">
+          <h3>${s.nombre}</h3>
+          <span class="precio">${pesos(s.precio)}</span>
+          <p>${s.desc}</p>
+          <div class="pie">
+            <div class="etiquetas">
+              <span class="etiq">${duracion(s.min)}</span>
+              ${s.separado ? `<span class="etiq ahorro">Ahorras ${pesos(s.separado - s.precio)}</span>` : ""}
+              ${s.tags.map(t => `<span class="etiq">${t}</span>`).join("")}
+            </div>
+            <button type="button" class="agregar" data-elegir="${s.id}">Reservar</button>
+          </div>
+        </article>`).join("");
+    }
+    document.querySelectorAll("#filtros button").forEach(b => b.addEventListener("click", () => {
+      document.querySelectorAll("#filtros button").forEach(x => x.setAttribute("aria-pressed", x === b));
+      pintarCarta(b.dataset.cat);
+    }));
+    pintarCarta("todos");
+
+    // ===== Horario y estado "abierto ahora" (hora de Chile) =====
+    const HORARIO = { 0: [12, 18], 1: [11, 20], 2: [11, 20], 3: [11, 20], 4: [11, 20], 5: [11, 20], 6: [11, 20] };
+    const DIAS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+    function ahoraEnChile() {
+      const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/Santiago", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(new Date()).map(x => [x.type, x.value]));
+      return new Date(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute);
+    }
+    const hhmm = m => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+    function pintarEstado() {
+      const ahora = ahoraEnChile();
+      const [abre, cierra] = HORARIO[ahora.getDay()];
+      const min = ahora.getHours() * 60 + ahora.getMinutes();
+      const estado = document.getElementById("estado");
+      const abierto = min >= abre * 60 && min < cierra * 60;
+      estado.classList.toggle("abierto", abierto);
+      if (abierto) estado.lastElementChild.textContent = `Abierto ahora · cierra a las ${hhmm(cierra * 60)}`;
+      else if (min < abre * 60) estado.lastElementChild.textContent = `Cerrado · abre hoy a las ${hhmm(abre * 60)}`;
+      else {
+        const manana = (ahora.getDay() + 1) % 7;
+        estado.lastElementChild.textContent = `Cerrado · abre mañana a las ${hhmm(HORARIO[manana][0] * 60)}`;
+      }
+      document.querySelectorAll("#tabla-horario tr").forEach(tr => tr.classList.toggle("hoy", tr.dataset.dias.split(",").includes(String(ahora.getDay()))));
+    }
+    pintarEstado();
+    setInterval(pintarEstado, 60000);
+
+    // ===== Reserva en 3 pasos =====
+    const form = document.getElementById("form-reserva");
+    const selServicio = document.getElementById("sel-servicio");
+    const cajaDias = document.getElementById("dias");
+    const cajaHoras = document.getElementById("horas");
+    const grupos = [["cortes", "Cortes"], ["barbas", "Barbas"], ["promos", "Promociones"], ["facial", "Limpieza facial"]];
+    selServicio.innerHTML = grupos.map(([cat, titulo]) => `<optgroup label="${titulo}">${SERVICIOS.filter(s => s.cat === cat).map(s => `<option value="${s.id}">${s.nombre} · ${pesos(s.precio)}</option>`).join("")}</optgroup>`).join("");
+    let diaElegido = null, horaElegida = null;
+
+    function proximosDias() {
+      const hoy = ahoraEnChile();
+      return Array.from({ length: 7 }, (_, i) => { const d = new Date(hoy); d.setDate(hoy.getDate() + i); d.setHours(0, 0, 0, 0); return { fecha: d, i }; });
+    }
+    function pintarDias() {
+      cajaDias.innerHTML = proximosDias().map(({ fecha, i }) => {
+        const nombre = i === 0 ? "Hoy" : i === 1 ? "Mañana" : DIAS[fecha.getDay()].slice(0, 3);
+        return `<button type="button" class="chip" data-dia="${i}" aria-pressed="false">${nombre}<small>${fecha.getDate()}/${fecha.getMonth() + 1}</small></button>`;
+      }).join("");
+    }
+    function horasDisponibles(i) {
+      const { fecha } = proximosDias()[i];
+      const [abre, cierra] = HORARIO[fecha.getDay()];
+      const dura = porId[selServicio.value].min;
+      const ahora = ahoraEnChile();
+      const minimo = i === 0 ? ahora.getHours() * 60 + ahora.getMinutes() + 30 : 0;
+      const lista = [];
+      for (let m = abre * 60; m + dura <= cierra * 60; m += 30) if (m >= minimo) lista.push(m);
+      return lista;
+    }
+    function pintarHoras() {
+      if (diaElegido === null) { cajaHoras.innerHTML = `<p class="sin-horas">Primero elige un día.</p>`; return; }
+      const lista = horasDisponibles(diaElegido);
+      if (!lista.length) { cajaHoras.innerHTML = `<p class="sin-horas">Ya no quedan horas para hoy con este servicio. Prueba mañana.</p>`; horaElegida = null; return; }
+      if (!lista.includes(horaElegida)) horaElegida = null;
+      cajaHoras.innerHTML = lista.map(m => `<button type="button" class="chip" data-hora="${m}" aria-pressed="${m === horaElegida}">${hhmm(m)}</button>`).join("");
+    }
+    function pintarResumen() {
+      const s = porId[selServicio.value];
+      document.getElementById("total").textContent = pesos(s.precio);
+      document.getElementById("duracion").textContent = duracion(s.min);
+    }
+    function elegirDia(i) {
+      diaElegido = i;
+      cajaDias.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", Number(c.dataset.dia) === i));
+      pintarHoras();
+    }
+    cajaDias.addEventListener("click", e => { const c = e.target.closest(".chip"); if (c) elegirDia(Number(c.dataset.dia)); });
+    cajaHoras.addEventListener("click", e => {
+      const c = e.target.closest(".chip"); if (!c) return;
+      horaElegida = Number(c.dataset.hora);
+      cajaHoras.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === c));
+    });
+    selServicio.addEventListener("change", () => { pintarResumen(); pintarHoras(); });
+    pintarDias();
+    // Parte en el primer día que todavía tenga horas
+    elegirDia(horasDisponibles(0).length ? 0 : 1);
+    pintarResumen();
+
+    // Botones "Reservar" de la carta y del ritual
+    document.addEventListener("click", e => {
+      const b = e.target.closest("[data-elegir]"); if (!b) return;
+      const s = porId[b.dataset.elegir];
+      selServicio.value = s.id;
+      pintarResumen(); pintarHoras();
+      document.getElementById("reservar").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" });
+      mostrarToast(`Listo: dejamos "${s.nombre}" elegido. Ahora elige el día y la hora ✂️`);
+    });
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      const s = porId[selServicio.value];
+      const nombre = form.nombre.value.trim();
+      if (horaElegida === null) { mostrarToast("Elige una hora para tu reserva ✂️"); cajaHoras.querySelector(".chip")?.focus(); return; }
+      if (!nombre) { mostrarToast("Escribe tu nombre para la reserva ✂️"); form.nombre.focus(); return; }
+      const { fecha, i } = proximosDias()[diaElegido];
+      const dia = i === 0 ? "hoy" : i === 1 ? "mañana" : `el ${DIAS[fecha.getDay()].toLowerCase()} ${fecha.getDate()}/${fecha.getMonth() + 1}`;
+      const mensaje = `Hola, soy ${nombre}. Quiero reservar ${s.nombre} (${pesos(s.precio)}) ${dia} a las ${hhmm(horaElegida)}. ¿Está disponible?`;
+      // Versión final: window.open("https://wa.me/56996600689?text=" + encodeURIComponent(mensaje));
+      mostrarToast("Demo: se abriría WhatsApp con este mensaje → " + mensaje);
+    });
+
+    // ===== Luz que sigue al mouse en la portada =====
+    const hero = document.getElementById("inicio");
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      hero.addEventListener("pointermove", e => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty("--mx", ((e.clientX - r.left) / r.width).toFixed(3));
+        hero.style.setProperty("--my", ((e.clientY - r.top) / r.height).toFixed(3));
+      });
+      hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", .5); hero.style.setProperty("--my", .5); });
+    }
+
+    // ===== Comparador antes / después =====
+    const modal = document.getElementById("modal-comparar");
+    const comparador = document.getElementById("comparador");
+    const deslizador = document.getElementById("deslizador");
+    const imgAntes = document.getElementById("img-antes");
+    const imgAhora = document.getElementById("img-ahora");
+    const btnCerrar = document.getElementById("cerrar-comparar");
+    const leyenda = document.getElementById("leyenda");
+    let ultimoFoco = null;
+
+    const ajustarLeyenda = () => { leyenda.style.width = comparador.offsetWidth + "px"; };
+    window.addEventListener("resize", ajustarLeyenda);
+    const moverDivisor = valor => comparador.style.setProperty("--pos", valor + "%");
+    deslizador.addEventListener("input", () => moverDivisor(deslizador.value));
+
+    function abrirComparar(e) {
+      ultimoFoco = e?.currentTarget || document.activeElement;
+      modal.classList.add("abierto");
+      document.body.classList.add("modal-abierto");
+      ajustarLeyenda();
+      // Mueve la barra un poco al abrir para que se entienda que se puede arrastrar
+      const pasos = [50, 30, 70, 50];
+      let i = 0;
+      const animados = comparador.querySelectorAll("img, .divisor");
+      animados.forEach(el => el.style.transition = "clip-path .35s ease, left .35s ease");
+      const intervalo = setInterval(() => {
+        if (i >= pasos.length) { clearInterval(intervalo); animados.forEach(el => el.style.transition = ""); return; }
+        deslizador.value = pasos[i]; moverDivisor(pasos[i]); i++;
+      }, 380);
+      btnCerrar.focus();
+    }
+    function cerrarComparar() {
+      modal.classList.remove("abierto");
+      document.body.classList.remove("modal-abierto");
+      if (ultimoFoco) ultimoFoco.focus();
+    }
+    document.querySelectorAll("[data-abrir-comparar]").forEach(b => b.addEventListener("click", abrirComparar));
+    btnCerrar.addEventListener("click", cerrarComparar);
+    modal.addEventListener("click", e => { if (e.target === modal) cerrarComparar(); });
+    document.addEventListener("keydown", e => {
+      if (!modal.classList.contains("abierto")) return;
+      if (e.key === "Escape") cerrarComparar();
+      if (e.key === "Tab") {
+        const focos = modal.querySelectorAll("button, input");
+        const primero = focos[0], ultimo = focos[focos.length - 1];
+        if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+        else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+      }
+    });
+    document.querySelectorAll("[data-vista]").forEach(tab => tab.addEventListener("click", () => {
+      const vista = tab.dataset.vista;
+      document.querySelectorAll("[data-vista]").forEach(t => t.setAttribute("aria-selected", t === tab));
+      comparador.className = "comparador " + vista;
+      imgAntes.src = `comparar/antes-${vista}.png`;
+      imgAhora.src = `comparar/ahora-${vista}.png`;
+      ajustarLeyenda();
+    }));
+  </script>
+</body>
+</html>
