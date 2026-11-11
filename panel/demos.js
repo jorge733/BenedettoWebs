@@ -9,6 +9,21 @@ const SITIO = "https://www.benedettowebs.cl";
 // whatsapp: número sin "+" ni espacios (vacío si no lo tenemos todavía)
 const DEMOS = [
   {
+    id: "maxcar",
+    negocio: "MaxCar",
+    rubro: "Taller mecánico",
+    direccion: "Av. Larraín 6062, La Reina",
+    caso: "Web de plantilla (2024)",
+    whatsapp: "56994335006",
+    creada: "2026-11-11",
+    mensaje: `Hola, ¿cómo están? Soy Santiago Benedetto, vecino de La Reina, y hago páginas web para negocios del barrio con BenedettoWebs.
+
+Vi su página y les armé una propuesta para que les lleguen más cotizaciones desde el celular: el horario y el WhatsApp a la vista desde el inicio, un formulario para cotizar con la patente y el modelo del auto, y una sección para quienes vienen por un rechazo en la revisión técnica.
+
+En la demo hay un botón abajo que dice "Comparar". Ahí pueden ver su página actual y la nueva lado a lado, en celular y en computador.`,
+    seguimiento: "Hola de nuevo. ¿Alcanzaron a ver la propuesta? Si quieren, paso por el taller y se la muestro en 5 minutos. Las páginas parten en $30.000, pago único, y mantienen su dominio maxcar.cl."
+  },
+  {
     id: "lapetluqueria",
     negocio: "La PetLuquería",
     rubro: "Peluquería canina",

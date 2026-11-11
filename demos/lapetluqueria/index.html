@@ -247,7 +247,7 @@
     .mejora .antes-txt { color: #a5384a; display: block; font-size: .84rem; }
     .mejora .ahora-txt { color: #23784a; display: block; font-size: .84rem; font-weight: 700; }
 
-    .toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 200%); opacity: 0; background: var(--tinta); color: #fff; padding: 14px 20px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.25); font-size: .92rem; z-index: 120; transition: transform .35s ease, opacity .35s; max-width: calc(100% - 32px); text-align: center; }
+    .toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 200%); opacity: 0; background: var(--tinta); color: #fff; padding: 14px 20px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.25); font-size: .92rem; z-index: 120; transition: transform .35s ease, opacity .35s; max-width: calc(100% - 32px); text-align: center; pointer-events: none; }
     .toast.visible { transform: translate(-50%, 0); opacity: 1; }
 
     .aparece { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
@@ -589,7 +589,7 @@
   <button type="button" class="btn-comparar" data-abrir-comparar aria-haspopup="dialog">
     <span class="pulso"></span>
     <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#251a35" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></svg></span>
-    Comparar<span class="txt-largo">&nbsp;con la web actual</span>
+    <span>Comparar<span class="txt-largo"> con la web actual</span></span>
   </button>
 
   <a href="#reserva" class="wsp-flotante" aria-label="Reservar por WhatsApp">
