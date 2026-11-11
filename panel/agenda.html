@@ -46,7 +46,7 @@
     </section>
 
     <aside class="caja-panel semana-caja">
-      <div class="caja-titulo"><h2>Próximos 7 días</h2></div>
+      <div class="caja-titulo"><h2>Próximos 7 días</h2><small>Arrastra una tarea a un día</small></div>
       <ol class="semana" id="semana"></ol>
     </aside>
   </div>
@@ -88,6 +88,12 @@
       <select name="antes"><option value="0">A la hora exacta</option><option value="5">5 minutos antes</option><option value="15">15 minutos antes</option><option value="30">30 minutos antes</option><option value="60">1 hora antes</option></select>
     </label>
     <label class="interruptor"><input type="checkbox" name="alertas"><span><strong>Alertas de clientes</strong><small>Al momento, cuando un cliente hace clic en un correo tuyo o cuando un correo no le llega.</small></span></label>
+    <label class="interruptor"><input type="checkbox" name="tareasAuto"><span><strong>Tareas automáticas</strong><small>La agenda crea sola “Hacer seguimiento a X” 3 días después de que un cliente pasa a Cotizando, “Llamar a X” para hoy cuando hace clic en tu correo y “Cobrar renovación del dominio a X” un mes antes de que venza.</small></span></label>
+    <div class="calendario-sus">
+      <strong>Calendario del celular</strong>
+      <small>Suscríbete a este enlace para ver tus tareas, entregas y vencimientos de dominio en Google Calendar o en el calendario del iPhone. Las tareas con hora traen su alarma. Es privado: no lo compartas.</small>
+      <div id="calendarioEnlace"></div>
+    </div>
     <div class="acciones">
       <span class="mensaje" id="msgAvisos"></span>
       <button class="btn btn-ghost btn-sm" type="button" id="verBrief" style="margin-left:auto">Ver el brief de hoy</button>

@@ -40,7 +40,7 @@ try {
   clientes = snapClientes.docs.map((d) => ({ id: d.id, ...d.data() }));
   tareas = snapTareas.docs.map((d) => ({ id: d.id, ...d.data() }));
   correos = snapCorreos.docs.map((d) => ({ id: d.id, ...d.data() }));
-  ajustes = { brief: true, briefDias: "habiles", recordatorios: true, antes: 15, alertas: true, ...(snapAjustes.data() || {}) };
+  ajustes = { brief: true, briefDias: "habiles", recordatorios: true, antes: 15, alertas: true, tareasAuto: true, ...(snapAjustes.data() || {}) };
 } catch (err) {
   $("briefResumen").textContent = "No se pudo cargar la agenda: " + err.message;
   throw err;
@@ -143,6 +143,8 @@ const GRUPOS = [
   ["despues", "Más adelante", (t, h) => t.fecha > sumar(h, 6)],
   ["sinfecha", "Sin fecha", (t) => !t.fecha]
 ];
+// Tareas que crea sola la agenda (campo "auto"): cliente.js, api/resend-webhook.js y api/brief-diario.js
+const AUTO = { cotizando: "el cliente pasó a Cotizando", clic: "el cliente hizo clic en tu correo", dominio: "falta un mes para que venza el dominio" };
 const ordenar = (a, b) => (a.fecha || "9").localeCompare(b.fecha || "9") || Number(!!b.importante) - Number(!!a.importante) ||
   (a.hora || "99").localeCompare(b.hora || "99") || ms(a.creado) - ms(b.creado);
 
@@ -155,10 +157,11 @@ function filaTarea(t, grupo) {
     t.repetir && !t.hecha ? `<span class="pill" title="Al completarla vuelve a aparecer">🔁 ${html(textoRepetir(t))}</span>` : "",
     t.categoria ? `<span class="pill">${CATEGORIAS[t.categoria] || ""} ${html(t.categoria)}</span>` : "",
     c ? `<a class="pill pill-cliente" href="cliente.html?id=${c.id}">${html(nombre(c))}</a>` : "",
+    t.auto ? `<span class="pill" title="Creada sola por la agenda (${html(AUTO[t.auto] || t.auto)})">⚡ auto</span>` : "",
     aviso ? `<span class="pill" title="Te llega un correo a las ${new Date(t.recordatorio.fecha).toTimeString().slice(0, 5)}">🔔 aviso</span>` : "",
     t.notas ? `<span class="pill" title="${html(t.notas)}">📝</span>` : ""
   ].filter(Boolean).join("");
-  return `<li class="tarea${t.hecha ? " lista" : ""}${t.importante ? " importante" : ""}" data-id="${t.id}">
+  return `<li class="tarea${t.hecha ? " lista" : ""}${t.importante ? " importante" : ""}" data-id="${t.id}"${t.hecha ? "" : ` draggable="true"`}>
     <button class="check" type="button" data-check aria-label="${t.hecha ? "Marcar como pendiente" : "Completar"}: ${html(t.titulo)}"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></button>
     <div class="doc-info"><strong>${t.importante ? '<span class="estrella" title="Importante">★</span> ' : ""}${html(t.titulo)}</strong>${meta ? `<span class="metas">${meta}</span>` : ""}</div>
     ${t.hecha ? "" : `<button class="btn-icono posponer" type="button" data-posponer aria-haspopup="menu" aria-label="Posponer: ${html(t.titulo)}" title="Posponer"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></button>`}
@@ -462,43 +465,134 @@ function pintarSemana() {
         .map((c) => `<li class="evento entrega"><a href="cliente.html?id=${c.id}">📦 Entrega · ${html(nombre(c))}</a></li>`),
       ...clientes.filter((c) => c.vence === dia).map((c) => `<li class="evento"><a href="cliente.html?id=${c.id}">🌐 Vence dominio · ${html(nombre(c))}</a></li>`),
       ...tareas.filter((t) => !t.hecha && ocurre(t, dia)).sort((a, b) => (a.hora || "99").localeCompare(b.hora || "99"))
-        .map((t) => `<li class="evento${t.importante ? " importante" : ""}${t.fecha !== dia ? " repetida" : ""}" data-id="${t.id}">${t.hora ? `<b>${t.hora}</b> ` : ""}${html(t.titulo)}${t.repetir ? " 🔁" : ""}</li>`)
+        // Solo se arrastra la fecha real de la tarea, no sus próximas repeticiones
+        .map((t) => `<li class="evento${t.importante ? " importante" : ""}${t.fecha !== dia ? " repetida" : ""}" data-id="${t.id}"${t.fecha === dia ? ` draggable="true"` : ""}>${t.hora ? `<b>${t.hora}</b> ` : ""}${html(t.titulo)}${t.repetir ? " 🔁" : ""}</li>`)
     ];
     const etiqueta = i === 0 ? "Hoy" : i === 1 ? "Mañana" : fecha(dia, { weekday: "long" });
-    return `<li class="dia${i === 0 ? " es-hoy" : ""}${cosas.length ? "" : " libre"}">
+    return `<li class="dia${i === 0 ? " es-hoy" : ""}${cosas.length ? "" : " libre"}" data-dia="${dia}">
       <div class="dia-cab"><span>${etiqueta}</span><small>${fecha(dia, { day: "numeric", month: "short" })}</small></div>
       ${cosas.length ? `<ul>${cosas.join("")}</ul>` : `<p>Libre</p>`}
     </li>`;
   }).join("");
 }
 
+// ===== Arrastrar una tarea (de la lista o de la semana) a un día de "Próximos 7 días" =====
+let arrastrando = null;
+document.addEventListener("dragstart", (e) => {
+  const fila = e.target.closest?.("[data-id][draggable='true']");
+  arrastrando = fila && tareas.find((t) => t.id === fila.dataset.id);
+  if (!arrastrando) return;
+  e.dataTransfer.effectAllowed = "move";
+  e.dataTransfer.setData("text/plain", arrastrando.titulo);
+  cerrarPosponer();
+  requestAnimationFrame(() => {
+    fila.classList.add("arrastrando");
+    document.body.classList.add("con-arrastre");
+  });
+});
+document.addEventListener("dragend", () => {
+  arrastrando = null;
+  document.body.classList.remove("con-arrastre");
+  for (const el of document.querySelectorAll(".arrastrando, .dia.encima")) el.classList.remove("arrastrando", "encima");
+});
+$("semana").addEventListener("dragover", (e) => {
+  const dia = e.target.closest(".dia");
+  if (!dia || !arrastrando) return;
+  e.preventDefault();
+  e.dataTransfer.dropEffect = "move";
+  for (const d of $("semana").querySelectorAll(".dia.encima")) if (d !== dia) d.classList.remove("encima");
+  dia.classList.add("encima");
+});
+$("semana").addEventListener("dragleave", (e) => {
+  const dia = e.target.closest(".dia");
+  if (dia && !dia.contains(e.relatedTarget)) dia.classList.remove("encima");
+});
+$("semana").addEventListener("drop", (e) => {
+  const dia = e.target.closest(".dia");
+  if (!dia || !arrastrando) return;
+  e.preventDefault();
+  const t = arrastrando;
+  dia.classList.remove("encima");
+  if (t.fecha !== dia.dataset.dia) posponer([t], dia.dataset.dia);
+});
+
 // ===== Avisos por correo =====
 const formAvisos = $("formAvisos");
 $("abrirAvisos").addEventListener("click", () => {
-  for (const campo of ["brief", "recordatorios", "alertas"]) formAvisos.elements[campo].checked = ajustes[campo] !== false;
+  for (const campo of ["brief", "recordatorios", "alertas", "tareasAuto"]) formAvisos.elements[campo].checked = ajustes[campo] !== false;
   formAvisos.elements.briefDias.value = ajustes.briefDias;
   formAvisos.elements.antes.value = String(ajustes.antes);
   $("msgAvisos").textContent = "";
   dependientes();
+  pintarCalendario();
   $("modalAvisos").showModal();
 });
 function dependientes() {
   formAvisos.elements.briefDias.disabled = !formAvisos.elements.brief.checked;
   formAvisos.elements.antes.disabled = !formAvisos.elements.recordatorios.checked;
 }
-formAvisos.addEventListener("change", async () => {
+formAvisos.addEventListener("change", async (e) => {
+  if (!e.target.name) return;
   dependientes();
   ajustes = {
     ...ajustes,
     brief: formAvisos.elements.brief.checked, briefDias: formAvisos.elements.briefDias.value,
     recordatorios: formAvisos.elements.recordatorios.checked, antes: Number(formAvisos.elements.antes.value),
-    alertas: formAvisos.elements.alertas.checked
+    alertas: formAvisos.elements.alertas.checked, tareasAuto: formAvisos.elements.tareasAuto.checked
   };
   const msg = $("msgAvisos");
   try {
     await setDoc(ajustesRef, ajustes, { merge: true });
     msg.className = "mensaje ok";
     msg.textContent = "Guardado ✓";
+  } catch (err) {
+    msg.className = "mensaje error";
+    msg.textContent = "No se pudo guardar: " + err.message;
+  }
+});
+
+// ===== Calendario del celular (api/calendario.js) =====
+// El enlace lleva un token secreto guardado en ajustes/agenda; al cambiarlo, el anterior deja de funcionar.
+const enlaceCalendario = () => `${location.origin}/api/calendario?t=${ajustes.calendarioToken}`;
+function pintarCalendario() {
+  const caja = $("calendarioEnlace");
+  if (!ajustes.calendarioToken) {
+    caja.innerHTML = `<button class="btn btn-ghost btn-sm" type="button" data-cal="crear">Crear enlace</button>`;
+    return;
+  }
+  const https = enlaceCalendario();
+  const webcal = https.replace(/^https?:/, "webcal:");
+  caja.innerHTML = `
+    <div class="copiar"><input readonly value="${html(https)}" aria-label="Enlace del calendario"><button class="btn btn-sm" type="button" data-cal="copiar">Copiar</button></div>
+    <div class="cal-acciones">
+      <a class="btn btn-ghost btn-sm" href="https://calendar.google.com/calendar/render?cid=${encodeURIComponent(webcal)}" target="_blank" rel="noopener">Agregar a Google Calendar</a>
+      <a class="btn btn-ghost btn-sm" href="${html(webcal)}">Abrir en iPhone / Mac</a>
+      <button class="btn btn-peligro btn-sm" type="button" data-cal="cambiar">Cambiar enlace</button>
+    </div>
+    <small>Google Calendar lo actualiza cada algunas horas; el iPhone, cada hora.</small>`;
+}
+$("calendarioEnlace").addEventListener("click", async (e) => {
+  const accion = e.target.closest("[data-cal]")?.dataset.cal;
+  if (!accion) return;
+  const msg = $("msgAvisos");
+  if (accion === "copiar") {
+    try {
+      await navigator.clipboard.writeText(enlaceCalendario());
+      msg.className = "mensaje ok";
+      msg.textContent = "Enlace copiado ✓";
+    } catch {
+      $("calendarioEnlace").querySelector("input").select();
+    }
+    return;
+  }
+  if (accion === "cambiar" && !confirm("El enlace actual dejará de funcionar y tendrás que suscribirte de nuevo con el nuevo. ¿Continuar?")) return;
+  const token = (crypto.randomUUID() + crypto.randomUUID()).replace(/-/g, "");
+  try {
+    await setDoc(ajustesRef, { calendarioToken: token }, { merge: true });
+    ajustes.calendarioToken = token;
+    pintarCalendario();
+    msg.className = "mensaje ok";
+    msg.textContent = accion === "crear" ? "Enlace creado ✓" : "Enlace nuevo ✓";
   } catch (err) {
     msg.className = "mensaje error";
     msg.textContent = "No se pudo guardar: " + err.message;

@@ -360,6 +360,27 @@ progress::-moz-progress-bar { background: var(--gradient); }
 .menu-posponer button small { color: var(--tenue); font-size: .8rem; font-weight: 400; }
 .menu-posponer button:hover, .menu-posponer button:focus-visible { background: var(--soft); color: var(--primary); outline: none; }
 
+/* Calendario del celular (en Avisos por correo) */
+.calendario-sus { display: grid; gap: 8px; padding: 14px 0 12px; border-top: 1px solid var(--line); }
+.calendario-sus > small, .calendario-sus #calendarioEnlace small { color: var(--muted); font-size: .84rem; }
+#calendarioEnlace { display: grid; gap: 8px; justify-items: start; }
+.calendario-sus .copiar { display: flex; gap: 8px; width: 100%; }
+.calendario-sus .copiar input {
+  flex: 1; min-width: 0; font: 400 .82rem/1.3 ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--muted);
+  padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--fondo);
+}
+.cal-acciones { display: flex; flex-wrap: wrap; gap: 8px; }
+.cal-acciones a { text-decoration: none; }
+
+/* Arrastrar tareas a un día */
+.tarea[draggable="true"], .evento[draggable="true"] { -webkit-user-drag: element; }
+.arrastrando { opacity: .45; }
+.con-arrastre .dia { outline: 1.5px dashed transparent; outline-offset: -1.5px; transition: background-color .15s, outline-color .15s; }
+.con-arrastre .dia { outline-color: var(--line); }
+.con-arrastre .dia.encima { outline-color: var(--primary); background: var(--soft); }
+.semana-caja .caja-titulo small { color: var(--tenue); font-size: .78rem; }
+@media (hover: none) { .semana-caja .caja-titulo small { display: none; } }
+
 .ver-hechas { margin-top: 18px; border: 0; background: none; font: 500 .86rem/1 inherit; font-family: inherit; color: var(--muted); cursor: pointer; padding: 6px 0; }
 .ver-hechas:hover { color: var(--primary); }
 .hechas { margin-top: 8px; }

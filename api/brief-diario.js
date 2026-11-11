@@ -1,11 +1,12 @@
 // Función de Vercel que corre sola cada mañana (vercel.json → crons, 11:00 UTC = 8:00 en Chile con horario de verano).
 // 1. Te envía el brief del día: tareas, entregas, seguimientos, dominios y clientes que abrieron tus correos.
 //    Si no hay nada que contar, o es fin de semana y elegiste "solo días hábiles", no se envía.
-// 2. Programa en Resend los recordatorios de tareas con hora que todavía no estaban (Resend acepta hasta 30 días antes).
+// 2. Crea las tareas "Cobrar renovación del dominio" de los dominios que vencen en 30 días o menos (si están activadas).
+// 3. Programa en Resend los recordatorios de tareas con hora que todavía no estaban (Resend acepta hasta 30 días antes).
 // Con ?prueba=1 solo responde lo que haría, sin enviar ni programar nada.
 // Variables de entorno en Vercel: CRON_SECRET, FIREBASE_SERVICE_ACCOUNT, RESEND_API_KEY.
 const { db } = require("./_firestore");
-const { leerAjustes, hoyChile, diaSemana, datosBrief, programarPendientes, armarBrief, avisarme } = require("./_agenda");
+const { leerAjustes, hoyChile, diaSemana, datosBrief, programarPendientes, armarBrief, avisarme, tareasDominio } = require("./_agenda");
 
 module.exports = async (req, res) => {
   if (!process.env.CRON_SECRET || req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
@@ -14,7 +15,18 @@ module.exports = async (req, res) => {
   const prueba = String(req.query?.prueba || "") === "1";
   const base = db();
   const hoy = hoyChile();
-  const [ajustes, datos] = await Promise.all([leerAjustes(base), datosBrief(base, hoy)]);
+  const ajustes = await leerAjustes(base);
+  // Primero las tareas automáticas de dominios, para que salgan en el brief de hoy
+  let tareasNuevas = [];
+  if (ajustes.tareasAuto && !prueba) {
+    try {
+      const clientes = await base.collection("clientes").get();
+      tareasNuevas = await tareasDominio(base, clientes.docs.map((d) => ({ id: d.id, ...d.data() })), hoy);
+    } catch (err) {
+      console.error("No se pudieron crear las tareas de dominios", err);
+    }
+  }
+  const datos = await datosBrief(base, hoy);
 
   const findeSemana = [0, 6].includes(diaSemana(hoy));
   const brief = armarBrief(datos);
@@ -34,7 +46,7 @@ module.exports = async (req, res) => {
   }
 
   const recordatorios = prueba ? "prueba: no se programan" : await programarPendientes(datos, ajustes);
-  const resultado = { hoy, prueba, brief: estado, asunto: brief.asunto, recordatorios };
+  const resultado = { hoy, prueba, brief: estado, asunto: brief.asunto, recordatorios, tareasNuevas };
   console.log(JSON.stringify(resultado));
   res.status(200).json({ ok: !String(estado).startsWith("error"), ...resultado });
 };

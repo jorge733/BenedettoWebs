@@ -2,6 +2,7 @@
 // Lo usan api/agenda.js (desde el panel), api/brief-diario.js (todos los días) y api/resend-webhook.js (alertas).
 const { layout, boton, etiqueta, escapar, COLOR, FUENTE, SITIO } = require("./_correos");
 const { resend, REMITENTE, COPIA } = require("./_resend");
+const { FieldValue } = require("./_firestore");
 
 const ZONA = "America/Santiago";
 const DIA = 24 * 60 * 60 * 1000;
@@ -9,7 +10,7 @@ const PANEL = `${SITIO}/panel`;
 const CATEGORIAS = { Clientes: "👤", Marketing: "📣", Administración: "🧾", Personal: "🌱" };
 
 // Lo que se puede cambiar en Agenda → Avisos por correo (documento ajustes/agenda)
-const AJUSTES = { brief: true, briefDias: "habiles", recordatorios: true, antes: 15, alertas: true };
+const AJUSTES = { brief: true, briefDias: "habiles", recordatorios: true, antes: 15, alertas: true, tareasAuto: true };
 async function leerAjustes(base) {
   const snap = await base.collection("ajustes").doc("agenda").get();
   return { ...AJUSTES, ...(snap.data() || {}) };
@@ -251,6 +252,36 @@ function armarAlerta(estado, correo, clienteId, cliente) {
   return { asunto: `${malo ? "⚠️" : "🔥"} ${plano}`, html: layout({ preheader: correo.asunto, contenido, pie: pieAvisos }) };
 }
 
+// ===== Tareas automáticas (Agenda → Avisos por correo → Tareas automáticas) =====
+// Cada una tiene un id fijo, así que aunque el aviso llegue dos veces se crea una sola vez. Devuelve si la creó.
+async function crearTareaAuto(base, id, datos) {
+  try {
+    await base.collection("tareas").doc(id).create({
+      hora: "", notas: "", importante: false, repetir: "", categoria: "Clientes", ...datos,
+      hecha: false, creado: FieldValue.serverTimestamp(), actualizado: FieldValue.serverTimestamp()
+    });
+    return true;
+  } catch (err) {
+    if (err.code === 6) return false; // ALREADY_EXISTS
+    throw err;
+  }
+}
+
+// Un mes antes de que venza un dominio: "Cobrar renovación del dominio a X" (una vez por fecha de vencimiento)
+async function tareasDominio(base, clientes, hoy = hoyChile()) {
+  const creadas = [];
+  for (const c of clientes) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(c.vence || "") || c.vence < hoy || diasEntre(hoy, c.vence) > 30) continue;
+    const nombre = c.negocio || c.nombre || "cliente";
+    const nueva = await crearTareaAuto(base, `auto-dominio-${c.id}-${c.vence}`, {
+      titulo: `Cobrar renovación del dominio a ${nombre}`, fecha: hoy, categoria: "Administración", clienteId: c.id, auto: "dominio",
+      notas: `Vence el ${fechaTexto(c.vence, { day: "numeric", month: "long", year: "numeric" })}${c.sitio ? ` · ${c.sitio}` : ""}.`
+    });
+    if (nueva) creadas.push(nombre);
+  }
+  return creadas;
+}
+
 // ===== Lectura desde Firestore =====
 // Todo lo que necesita el brief de hoy. Los correos son los que tuvieron movimiento desde el brief anterior
 // (24 horas, o desde el viernes si es lunes).
@@ -287,5 +318,5 @@ async function programarPendientes(datos, ajustes) {
 
 module.exports = {
   AJUSTES, leerAjustes, hoyChile, sumarDias, diaSemana, instanteChile, datosBrief, programarPendientes,
-  avisarme, sincronizarRecordatorio, armarRecordatorio, ideaInstagram, armarBrief, armarAlerta
+  avisarme, sincronizarRecordatorio, armarRecordatorio, ideaInstagram, armarBrief, armarAlerta, crearTareaAuto, tareasDominio
 };

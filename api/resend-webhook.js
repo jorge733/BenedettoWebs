@@ -3,7 +3,7 @@
 // Variables de entorno en Vercel: RESEND_WEBHOOK_SECRET (el "Signing secret" del webhook en Resend), FIREBASE_SERVICE_ACCOUNT.
 const crypto = require("crypto");
 const { db, FieldValue } = require("./_firestore");
-const { leerAjustes, armarAlerta, avisarme } = require("./_agenda");
+const { leerAjustes, armarAlerta, avisarme, crearTareaAuto, hoyChile } = require("./_agenda");
 
 // Orden de avance: un "entregado" que llega tarde no pisa un "abierto"
 const NIVEL = { enviado: 0, entregado: 1, abierto: 2, clic: 3 };
@@ -70,13 +70,20 @@ module.exports = async (req, res) => {
   if (!fijo && (!(estado in NIVEL) || NIVEL[estado] > (NIVEL[actual.estado] ?? 0))) cambios.estado = estado;
   await ref.update(cambios);
 
-  // Alerta por correo la primera vez que el cliente hace clic o que el correo no llega (Agenda → Avisos por correo)
+  // Alerta por correo (y tarea "Llamar a X" si es un clic) la primera vez que el cliente hace clic o que el correo no llega (Agenda → Avisos por correo)
   if (cambios.estado && ALERTAS.includes(estado)) {
     try {
       const base = db();
       const [ajustes, cliente] = await Promise.all([
         leerAjustes(base), base.collection("clientes").doc(actual.clienteId).get().then((d) => d.data())
       ]);
+      // Tarea automática: "Llamar a X" para hoy, la primera vez que hace clic en este correo
+      if (estado === "clic" && ajustes.tareasAuto && cliente) {
+        await crearTareaAuto(base, `auto-clic-${snap.docs[0].id}`, {
+          titulo: `Llamar a ${cliente.negocio || cliente.nombre || "cliente"}`, fecha: hoyChile(), importante: true,
+          clienteId: actual.clienteId, auto: "clic", notas: `Hizo clic en “${actual.asunto || "tu correo"}”.`
+        }).catch((err) => console.error("No se pudo crear la tarea", err));
+      }
       if (ajustes.alertas && cliente) {
         const { asunto, html } = armarAlerta(estado, actual, actual.clienteId, cliente);
         await avisarme(asunto, html);

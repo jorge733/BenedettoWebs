@@ -54,6 +54,7 @@ form.addEventListener("submit", async (e) => {
   datos.monto = form.elements.monto.value = clp(numero(datos.monto));
   $("msgCliente").className = "mensaje";
   $("msgCliente").textContent = "Guardando…";
+  const estadoAntes = cliente.estado;
   try {
     if (id) {
       await updateDoc(doc(db, "clientes", id), { ...datos, actualizado: serverTimestamp() });
@@ -74,6 +75,12 @@ form.addEventListener("submit", async (e) => {
       } catch {
         extra = " · ojo: no se pudo cancelar el seguimiento";
       }
+    } else if (estadoAntes !== "Cotizando") {
+      try {
+        extra = await tareaSeguimiento();
+      } catch {
+        extra = " · ojo: no se pudo agendar el seguimiento";
+      }
     }
     $("msgCliente").className = "mensaje " + (extra.includes("ojo") ? "error" : "ok");
     $("msgCliente").textContent = "Guardado ✓" + extra;
@@ -82,6 +89,24 @@ form.addEventListener("submit", async (e) => {
     $("msgCliente").textContent = "No se pudo guardar: " + err.message;
   }
 });
+
+// Tarea automática: cuando el cliente pasa a "Cotizando", "Hacer seguimiento a X" en 3 días.
+// Se apaga en Agenda → Avisos por correo → Tareas automáticas. Si ya hay una pendiente, no crea otra.
+async function tareaSeguimiento() {
+  const ajustes = (await getDoc(doc(db, "ajustes", "agenda"))).data() || {};
+  if (ajustes.tareasAuto === false) return "";
+  const ref = doc(db, "tareas", `auto-cotizando-${id}`);
+  const actual = (await getDoc(ref)).data();
+  if (actual && !actual.hecha) return "";
+  const fecha = new Date(Date.now() + 3 * 864e5).toLocaleDateString("en-CA");
+  await setDoc(ref, {
+    titulo: `Hacer seguimiento a ${cliente.negocio || cliente.nombre || "cliente"}`, fecha, hora: "", clienteId: id,
+    categoria: "Clientes", notas: "¿Revisó la cotización? ¿Le quedó alguna duda?", importante: false, repetir: "", auto: "cotizando",
+    hecha: false, creado: serverTimestamp(), actualizado: serverTimestamp()
+  });
+  const cuando = new Date(fecha + "T12:00:00").toLocaleDateString("es-CL", { weekday: "long", day: "numeric", month: "short" });
+  return ` · seguimiento agendado para el ${cuando}`;
+}
 
 async function cargarDocumentos() {
   const snap = await getDocs(query(collection(db, "documentos"), where("clienteId", "==", id)));
