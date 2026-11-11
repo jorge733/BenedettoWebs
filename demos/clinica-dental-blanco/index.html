@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Clínica Blanco · Dentista en La Reina (demo)</title>
+  <meta name="description" content="Propuesta de sitio web para Clínica Dental Blanco, La Reina. Demo hecha por BenedettoWebs.">
+  <link rel="canonical" href="https://www.benedettowebs.cl/demos/clinica-dental-blanco/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BenedettoWebs">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://www.benedettowebs.cl/demos/clinica-dental-blanco/">
+  <meta property="og:title" content="Clínica Blanco: así se vería su página web">
+  <meta property="og:description" content="Propuesta de BenedettoWebs: horas por WhatsApp, mapa de la boca interactivo, horario y ubicación.">
+  <meta property="og:image" content="https://www.benedettowebs.cl/demos/clinica-dental-blanco/og.png">
+  <meta property="og:image:secure_url" content="https://www.benedettowebs.cl/demos/clinica-dental-blanco/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Demo de página web para Clínica Dental Blanco, con una muela dibujada.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Clínica Blanco: así se vería su página web">
+  <meta name="twitter:description" content="Propuesta de BenedettoWebs para Clínica Dental Blanco, La Reina.">
+  <meta name="twitter:image" content="https://www.benedettowebs.cl/demos/clinica-dental-blanco/og.png">
+  <meta name="theme-color" content="#c80d78">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='32' fill='%23c80d78'/%3E%3Cpath d='M32 50 18 33a9 9 0 0 1 14-11 9 9 0 0 1 14 11z' fill='none' stroke='%23fff' stroke-width='5' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blanco: #ffffff;
+      --nube: #fbf7f9;
+      --nube-2: #f4ecf1;
+      --linea: #eadde5;
+      --magenta: #c80d78;
+      --magenta-osc: #a10a60;
+      --rosa: #fbe3ef;
+      --ciruela: #2a0f22;
+      --ciruela-2: #3c1832;
+      --texto: #2b1c26;
+      --suave: #74606c;
+      --menta: #2fa58b;
+      --radio: 20px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Manrope", system-ui, sans-serif; color: var(--texto); background: var(--nube); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; line-height: 1.05; letter-spacing: -.02em; }
+    h1 em, h2 em { font-style: italic; font-weight: 400; color: var(--magenta); }
+    .contenedor { width: min(1160px, 100% - 32px); margin-inline: auto; }
+    section { padding: 100px 0; }
+    body.modal-abierto { overflow: hidden; }
+
+    .aviso-demo { background: var(--ciruela); color: #fff; font-size: .85rem; text-align: center; padding: 8px 16px; }
+    .aviso-demo a, .aviso-demo button { color: #ff9cd0; font-weight: 700; text-decoration: underline; background: none; border: 0; font: inherit; cursor: pointer; }
+
+    header { position: sticky; top: 0; z-index: 50; background: rgba(255, 255, 255, .88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linea); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 11px; color: var(--ciruela); }
+    .logo-texto { font-family: "Manrope", sans-serif; font-weight: 500; font-size: 1.05rem; letter-spacing: .02em; line-height: 1; }
+    .logo-texto b { font-weight: 800; letter-spacing: .12em; }
+    .logo-texto small { display: block; font-weight: 600; font-size: .62rem; letter-spacing: .3em; color: var(--suave); margin-top: 5px; text-transform: uppercase; }
+    .menu { display: flex; gap: 28px; font-weight: 600; font-size: .95rem; }
+    .menu a { color: var(--suave); transition: color .2s; }
+    .menu a:hover { color: var(--ciruela); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font: 700 .97rem "Manrope", sans-serif; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, color .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-magenta { background: var(--magenta); color: #fff; box-shadow: 0 12px 28px rgba(200, 13, 120, .3); }
+    .btn-magenta:hover { background: var(--magenta-osc); }
+    .btn-borde { border-color: var(--linea); color: var(--ciruela); background: #fff; }
+    .btn-borde:hover { border-color: var(--ciruela); }
+    .btn-ciruela { background: var(--ciruela); color: #fff; }
+    .hamburguesa { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+    .hamburguesa span { display: block; width: 24px; height: 2px; background: var(--ciruela); border-radius: 2px; margin: 6px 0; }
+    .progreso { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: linear-gradient(90deg, var(--magenta), #ff74b8); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+    .estado { display: inline-flex; align-items: center; gap: 9px; font-size: .86rem; font-weight: 700; color: var(--suave); background: #fff; border: 1px solid var(--linea); padding: 7px 14px 7px 12px; border-radius: 999px; }
+    .estado i { width: 9px; height: 9px; border-radius: 50%; background: #c2b1bb; }
+    .estado.abierto i { background: #2fa565; animation: latir 1.8s infinite; }
+    @keyframes latir { 0% { box-shadow: 0 0 0 0 rgba(47, 165, 101, .55); } 70%, 100% { box-shadow: 0 0 0 9px rgba(47, 165, 101, 0); } }
+
+    /* Hero */
+    .hero { --mx: .5; --my: .5; --sc: 0; position: relative; overflow: hidden; padding: 0; background: radial-gradient(800px 600px at 76% 42%, #fde6f1, transparent 70%), radial-gradient(500px 400px at 95% 90%, #e5f5f0, transparent 70%), #fff; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr .95fr; gap: 30px; align-items: center; min-height: calc(100svh - 110px); padding: 50px 0 80px; }
+    .captura .hero-grid { min-height: calc(100svh - 74px); }
+    .hero-grid > * { min-width: 0; }
+    .hero .hero-texto.aparece.visto { transform: translateY(calc(var(--sc) * -70px)); opacity: calc(1 - var(--sc) * 1.5); }
+    .hero h1 { font-size: clamp(3.1rem, min(6.4vw, 9.6vh), 5.8rem); margin: 22px 0 20px; color: var(--ciruela); }
+    .hero h1 em { display: block; }
+    .hero p.lead { color: var(--suave); font-size: 1.15rem; max-width: 520px; margin-bottom: 30px; }
+    .hero-botones { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-datos { display: flex; gap: 34px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--linea); flex-wrap: wrap; }
+    .hero-datos strong { display: block; font-family: "Fraunces", serif; font-weight: 600; font-size: 2.2rem; line-height: 1; color: var(--ciruela); }
+    .hero-datos strong b { color: var(--magenta); font-size: .75em; }
+    .hero-datos > div > span { color: var(--suave); font-size: .86rem; }
+
+    .escena { position: relative; height: min(600px, 74vh); }
+    .escena-mov { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(calc(var(--sc) * 90px)) scale(calc(1 - var(--sc) * .12)); }
+    .aura { position: absolute; width: 78%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, #fff 0 38%, rgba(255,255,255,0) 70%); }
+    .aura::before { content: ""; position: absolute; inset: 6%; border-radius: 50%; border: 1.5px dashed rgba(200, 13, 120, .22); animation: girar 60s linear infinite; }
+    @keyframes girar { to { transform: rotate(360deg); } }
+    .muela-hero { position: relative; width: min(330px, 70%); transform: perspective(900px) rotateX(calc((var(--my) - .5) * -14deg)) rotateY(calc((var(--mx) - .5) * 22deg)); transition: transform .3s ease-out; }
+    .muela-hero svg { overflow: visible; animation: entra-muela 1.3s cubic-bezier(.2, .8, .2, 1) both, flota-muela 7s 1.3s ease-in-out infinite; }
+    @keyframes entra-muela { from { transform: translateY(50px) scale(.9); opacity: 0; } }
+    @keyframes flota-muela { 50% { transform: translateY(-12px); } }
+    .objeto { position: absolute; transform: translate(calc((var(--mx) - .5) * var(--prof) * 1px), calc((var(--my) - .5) * var(--prof) * 1px + var(--sc) * var(--prof) * -3px)); transition: transform .3s ease-out; z-index: 2; }
+    .objeto svg { animation: flotar 7s ease-in-out infinite; filter: drop-shadow(0 14px 16px rgba(42, 15, 34, .18)); }
+    .objeto.cepillo { --prof: 46; top: 0; right: -4%; width: 190px; }
+    .objeto.espejo { --prof: -36; bottom: 10%; left: 0; width: 170px; }
+    .objeto.espejo svg { animation-delay: -3s; }
+    @keyframes flotar { 50% { transform: translateY(-14px) rotate(4deg); } }
+    .chispa { position: absolute; z-index: 2; width: 26px; color: var(--magenta); animation: titilar 2.6s ease-in-out infinite; }
+    .chispa.c1 { top: 22%; left: 26%; }
+    .chispa.c2 { top: 14%; left: 60%; width: 16px; animation-delay: -.9s; color: #2fa58b; }
+    .chispa.c3 { bottom: 26%; right: 18%; width: 20px; animation-delay: -1.6s; }
+    @keyframes titilar { 0%, 100% { transform: scale(.5) rotate(0); opacity: .3; } 50% { transform: scale(1) rotate(45deg); opacity: 1; } }
+    .ficha { position: absolute; z-index: 3; background: rgba(255, 255, 255, .9); backdrop-filter: blur(8px); border: 1px solid var(--linea); border-radius: 18px; padding: 14px 17px; font-size: .86rem; color: var(--suave); box-shadow: 0 18px 40px rgba(42, 15, 34, .12); animation: flotar-ficha 6s ease-in-out infinite; max-width: 250px; }
+    .ficha strong { display: block; color: var(--ciruela); font-size: 1rem; }
+    .ficha q { display: block; font-family: "Fraunces", serif; font-style: italic; color: var(--ciruela); font-size: 1.04rem; line-height: 1.35; margin-bottom: 6px; }
+    .ficha .estrellas { color: var(--magenta); letter-spacing: 2px; }
+    .ficha.f1 { top: 44%; left: -6%; }
+    .ficha.f2 { bottom: 4%; right: 2%; animation-delay: -3s; }
+    @keyframes flotar-ficha { 50% { transform: translateY(-9px); } }
+    .scroll-abajo { position: absolute; left: 50%; bottom: 18px; z-index: 2; transform: translateX(-50%); color: var(--suave); font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; display: grid; justify-items: center; gap: 4px; opacity: calc(1 - var(--sc) * 4); }
+    .scroll-abajo::after { content: ""; width: 1.5px; height: 28px; background: linear-gradient(var(--magenta), transparent); animation: bajar 1.6s ease-in-out infinite; }
+    @keyframes bajar { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    .cinta { background: var(--magenta); color: #fff; overflow: hidden; padding: 15px 0; }
+    .cinta-pista { display: flex; width: max-content; animation: correr 34s linear infinite; }
+    .cinta span { font-family: "Fraunces", serif; font-style: italic; font-size: 1.35rem; padding: 0 20px; white-space: nowrap; display: inline-flex; align-items: center; gap: 40px; }
+    .cinta span::after { content: "♡"; font-style: normal; font-size: 1.1rem; opacity: .7; }
+    @keyframes correr { to { transform: translateX(-50%); } }
+
+    .sobre { display: inline-flex; align-items: center; gap: 10px; color: var(--magenta); font-weight: 800; font-size: .78rem; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 14px; }
+    .sobre::before { content: ""; width: 26px; height: 1.5px; background: currentColor; }
+    .titulo-seccion { max-width: 680px; margin-bottom: 46px; }
+    .titulo-seccion h2 { font-size: clamp(2.3rem, 4.8vw, 3.6rem); margin-bottom: 14px; color: var(--ciruela); }
+    .titulo-seccion p { color: var(--suave); font-size: 1.07rem; }
+    .oscuro { background: var(--ciruela); color: #fff; }
+    .oscuro .titulo-seccion h2 { color: #fff; }
+    .oscuro .titulo-seccion p { color: #d4bfcb; }
+    .oscuro .sobre { color: #ff8cc6; }
+    .oscuro h2 em { color: #ff8cc6; }
+
+    /* Mapa de la boca */
+    .boca-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+    .boca-grid > * { min-width: 0; }
+    .boca { background: #fff; border-radius: 28px; padding: 26px; box-shadow: 0 30px 60px rgba(42, 15, 34, .06); position: relative; }
+    .boca svg { width: 100%; overflow: visible; }
+    .boca .pieza { cursor: pointer; outline: none; }
+    .boca .pieza .forma { transition: transform .25s ease, filter .25s; transform-box: fill-box; transform-origin: center; }
+    .boca .pieza:hover .forma, .boca .pieza:focus-visible .forma { transform: scale(1.12); filter: drop-shadow(0 4px 6px rgba(200, 13, 120, .35)); }
+    .boca .pieza.sel .forma { transform: scale(1.16); filter: drop-shadow(0 0 0 #000) drop-shadow(0 6px 10px rgba(200, 13, 120, .45)); }
+    .boca .pieza.sel .contorno { stroke: var(--magenta); stroke-width: 3; }
+    .boca .rotulo { font: 700 11px "Manrope", sans-serif; fill: #a8939f; letter-spacing: .12em; text-transform: uppercase; }
+    .boca .num { font: 700 10px "Manrope", sans-serif; fill: #b9a6b1; pointer-events: none; }
+    .boca .pieza.sel .num { fill: var(--magenta); }
+    .boca-ayuda { position: absolute; top: 50%; left: 50%; translate: -50% -50%; text-align: center; color: var(--suave); font-size: .92rem; pointer-events: none; transition: opacity .3s; width: 200px; }
+    .boca-ayuda b { display: block; font-family: "Fraunces", serif; font-size: 1.3rem; color: var(--ciruela); }
+    .boca.elegida .boca-ayuda { opacity: 0; }
+    .diag { background: #fff; border-radius: 28px; padding: 30px; border: 1px solid var(--linea); }
+    .diag .pieza-nombre { font-family: "Fraunces", serif; font-size: 1.7rem; color: var(--ciruela); line-height: 1.15; }
+    .diag .pieza-num { color: var(--suave); font-size: .9rem; margin: 4px 0 20px; }
+    .diag h3 { font-family: "Manrope", sans-serif; font-weight: 700; font-size: .95rem; color: var(--ciruela); margin-bottom: 10px; letter-spacing: 0; }
+    .sintomas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .sintomas button { border: 1.5px solid var(--linea); background: var(--nube); color: var(--texto); font: 600 .92rem "Manrope", sans-serif; padding: 9px 15px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .sintomas button:hover { border-color: var(--magenta); }
+    .sintomas button[aria-pressed="true"] { background: var(--magenta); border-color: var(--magenta); color: #fff; }
+    .respuesta { background: var(--rosa); border-radius: 18px; padding: 18px 20px; animation: entrar .35s ease backwards; }
+    .respuesta b { display: block; color: var(--magenta-osc); font-size: 1.05rem; margin-bottom: 4px; }
+    .respuesta p { color: var(--texto); font-size: .95rem; }
+    .respuesta .btn { margin-top: 14px; }
+    .diag-vacio { color: var(--suave); }
+    .diag-vacio .flecha { font-family: "Fraunces", serif; font-size: 1.5rem; color: var(--ciruela); display: block; margin-bottom: 6px; }
+    .nota-chica { font-size: .82rem; color: var(--suave); margin-top: 14px; }
+    @keyframes entrar { from { opacity: 0; transform: translateY(10px); } }
+
+    /* Tratamientos */
+    .tratamientos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .trat { background: #fff; border-radius: var(--radio); padding: 26px; border: 1px solid transparent; transition: border-color .2s, box-shadow .2s, transform .2s; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)); }
+    .trat:hover { border-color: var(--magenta); --ty: -4px; box-shadow: 0 22px 40px rgba(42, 15, 34, .08); }
+    .trat .ico { width: 54px; height: 54px; border-radius: 16px; background: var(--rosa); display: grid; place-items: center; margin-bottom: 18px; }
+    .trat h3 { font-size: 1.45rem; color: var(--ciruela); margin-bottom: 8px; }
+    .trat p { color: var(--suave); font-size: .95rem; }
+    .trat .pedir { margin-top: 14px; border: 0; background: none; font: 700 .93rem "Manrope", sans-serif; color: var(--magenta); cursor: pointer; display: inline-flex; gap: 6px; padding: 0; }
+    .trat .pedir::after { content: "→"; transition: transform .2s; }
+    .trat .pedir:hover::after { transform: translateX(4px); }
+
+    /* Primera visita */
+    .visita-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+    .visita-grid > * { min-width: 0; }
+    .visita-visual { position: sticky; top: 100px; height: min(560px, 76vh); display: grid; place-items: center; }
+    .dial { position: relative; width: min(440px, 100%); aspect-ratio: 1; display: grid; place-items: center; }
+    .dial > svg.anillo { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+    .anillo-fondo { stroke: rgba(255,255,255,.08); }
+    .anillo-lleno { stroke: #ff8cc6; stroke-dasharray: 100; stroke-dashoffset: calc(100 - var(--avance, 0) * 100); stroke-linecap: round; }
+    .muela-visita { width: 52%; }
+    .muela-visita svg { overflow: visible; }
+    .muela-visita .sarro { opacity: calc(1 - min(1, var(--avance, 0) * 1.6)); transition: opacity .2s; }
+    .muela-visita .limpia { opacity: clamp(0, calc(var(--avance, 0) * 2.2 - 1.1), 1); }
+    .dial .etapa { position: absolute; bottom: 4%; font-family: "Fraunces", serif; font-style: italic; color: #ff8cc6; font-size: 1.1rem; }
+    .visita-pasos { list-style: none; }
+    .visita-pasos li { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid rgba(255,255,255,.12); padding-left: 32px; opacity: .3; transition: opacity .45s, border-color .45s; }
+    .visita-pasos li.activo { opacity: 1; border-color: #ff8cc6; }
+    .visita-pasos .num { font-family: "Fraunces", serif; font-style: italic; color: #ff8cc6; font-size: 1.2rem; margin-bottom: 8px; }
+    .visita-pasos h3 { font-size: clamp(2rem, 3.4vw, 2.7rem); margin-bottom: 12px; }
+    .visita-pasos p { color: #d4bfcb; font-size: 1.07rem; max-width: 440px; }
+
+    /* Equipo y reseñas */
+    .equipo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .persona { background: #fff; border-radius: var(--radio); padding: 24px; }
+    .persona .foto { aspect-ratio: 4 / 3; border-radius: 16px; background: linear-gradient(160deg, var(--rosa), var(--nube-2)); display: grid; place-items: center; margin-bottom: 18px; color: var(--magenta); font-family: "Fraunces", serif; font-size: 4rem; position: relative; overflow: hidden; }
+    .persona .foto small { position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; font: 600 .76rem "Manrope", sans-serif; color: var(--suave); }
+    .persona h3 { font-size: 1.45rem; color: var(--ciruela); }
+    .persona .rol { color: var(--magenta); font-weight: 700; font-size: .88rem; margin-bottom: 10px; }
+    .persona q { color: var(--suave); font-size: .94rem; font-style: italic; }
+    .resenas { margin-top: 70px; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; background: var(--ciruela); color: #fff; border-radius: 28px; padding: 44px; }
+    .nota { text-align: center; }
+    .nota strong { font-family: "Fraunces", serif; font-weight: 600; font-size: 4.6rem; line-height: 1; display: block; }
+    .nota .estrellas { color: #ff8cc6; letter-spacing: 4px; font-size: 1.1rem; }
+    .nota span { color: #d4bfcb; font-size: .88rem; }
+    .citas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .cita { background: rgba(255,255,255,.06); border-radius: 18px; padding: 18px; font-size: .95rem; color: #f3e6ee; }
+    .cita q { font-family: "Fraunces", serif; font-style: italic; font-size: 1.08rem; line-height: 1.4; display: block; margin-bottom: 8px; }
+    .cita span { color: #b99fae; font-size: .82rem; }
+
+    /* Reserva */
+    .reserva-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; align-items: start; }
+    .reserva-grid > * { min-width: 0; }
+    .reserva { background: #fff; border-radius: 28px; padding: 32px; border: 1px solid var(--linea); box-shadow: 0 30px 60px rgba(42, 15, 34, .06); }
+    .reserva fieldset { border: 0; min-width: 0; margin-bottom: 22px; }
+    .reserva legend, .reserva label { display: block; font-weight: 700; font-size: .95rem; color: var(--ciruela); margin-bottom: 10px; }
+    .reserva select, .reserva input[type=text] { display: block; width: 100%; background: var(--nube); color: var(--texto); border: 1.5px solid var(--linea); border-radius: 14px; padding: 13px 14px; font: 600 1rem "Manrope", sans-serif; margin-top: 8px; }
+    .reserva select:focus, .reserva input:focus { outline: none; border-color: var(--magenta); }
+    .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+    .chips button { flex: none; border: 1.5px solid var(--linea); background: #fff; color: var(--texto); border-radius: 14px; padding: 10px 14px; font: 700 .9rem "Manrope", sans-serif; cursor: pointer; text-align: center; min-width: 70px; line-height: 1.25; }
+    .chips button small { display: block; font-weight: 600; font-size: .74rem; color: var(--suave); text-transform: capitalize; }
+    .chips button[aria-pressed="true"] { background: var(--magenta); border-color: var(--magenta); color: #fff; }
+    .chips button[aria-pressed="true"] small { color: #ffd6ea; }
+    .horas { display: grid; grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 8px; }
+    .horas button { border: 1.5px solid var(--linea); background: #fff; border-radius: 12px; padding: 10px 0; font: 700 .9rem "Manrope", sans-serif; color: var(--texto); cursor: pointer; animation: entrar .3s ease backwards; }
+    .horas button[aria-pressed="true"] { background: var(--ciruela); border-color: var(--ciruela); color: #fff; }
+    .sin-horas { color: var(--suave); font-size: .92rem; }
+    .segmento { display: flex; gap: 8px; }
+    .segmento button { flex: 1; border: 1.5px solid var(--linea); background: #fff; border-radius: 12px; padding: 12px; font: 700 .93rem "Manrope", sans-serif; color: var(--texto); cursor: pointer; }
+    .segmento button[aria-pressed="true"] { background: var(--rosa); border-color: var(--magenta); color: var(--magenta-osc); }
+    .resumen { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px solid var(--linea); padding-top: 20px; }
+    .resumen .tu-hora { color: var(--suave); font-size: .9rem; }
+    .resumen .tu-hora strong { display: block; color: var(--ciruela); font-family: "Fraunces", serif; font-size: 1.35rem; line-height: 1.2; }
+    .lista-check { list-style: none; display: grid; gap: 14px; margin-top: 10px; }
+    .lista-check li { display: flex; gap: 12px; color: var(--suave); }
+    .lista-check li::before { content: "✓"; flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--rosa); color: var(--magenta); display: grid; place-items: center; font-weight: 800; font-size: .85rem; }
+    .lista-check b { color: var(--ciruela); }
+
+    /* Ubicación */
+    .ubicacion-grid { display: grid; grid-template-columns: .9fr 1.1fr; border-radius: 28px; overflow: hidden; background: #fff; }
+    .ubicacion-grid > * { min-width: 0; }
+    .ubicacion-texto { padding: 44px 40px; }
+    .ubicacion-texto h2 { font-size: clamp(2.1rem, 4.2vw, 3rem); margin-bottom: 22px; color: var(--ciruela); }
+    .linea { display: flex; gap: 14px; margin-bottom: 18px; }
+    .linea .ico { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--rosa); display: grid; place-items: center; }
+    .linea b { display: block; color: var(--ciruela); }
+    .linea span, .linea a { color: var(--suave); }
+    .linea a:hover { color: var(--ciruela); text-decoration: underline; }
+    .horario { width: 100%; border-collapse: collapse; font-size: .93rem; margin-top: 4px; }
+    .horario td { padding: 5px 0; border-bottom: 1px solid var(--nube-2); color: var(--suave); }
+    .horario td:last-child { text-align: right; color: var(--ciruela); font-weight: 700; }
+    .horario tr.hoy td { color: var(--magenta); }
+    .ubicacion-grid iframe { width: 100%; height: 100%; min-height: 460px; border: 0; }
+
+    .faq { max-width: 820px; margin-inline: auto; display: grid; gap: 12px; }
+    .faq details { background: #fff; border-radius: 16px; padding: 20px 24px; }
+    .faq summary { cursor: pointer; font-weight: 700; font-size: 1.04rem; color: var(--ciruela); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--magenta); transition: transform .2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin-top: 12px; color: var(--suave); }
+
+    footer { background: var(--ciruela); color: #c7afbd; padding: 60px 0 30px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    footer .logo { color: #fff; }
+    footer .logo-texto small { color: #c7afbd; }
+    footer h4 { color: #fff; margin-bottom: 10px; font-size: .95rem; }
+    footer ul { list-style: none; display: grid; gap: 6px; font-size: .92rem; }
+    footer a:hover { color: #fff; }
+    .creditos { padding-top: 22px; font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .creditos a { color: #ff8cc6; font-weight: 700; }
+
+    .wsp-flotante { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 10px 25px rgba(37, 211, 102, .45); z-index: 60; transition: transform .2s; }
+    .wsp-flotante:hover { transform: scale(1.08); }
+
+    /* Comparar */
+    .btn-comparar { position: fixed; left: 50%; translate: -50% 0; bottom: 20px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--ciruela); border: 0; border-radius: 999px; padding: 12px 18px 12px 12px; font: 800 .92rem "Manrope", sans-serif; cursor: pointer; box-shadow: 0 12px 28px rgba(42, 15, 34, .25); transition: transform .2s; }
+    .btn-comparar:hover { transform: translateY(-3px); }
+    .btn-comparar .ico { width: 34px; height: 34px; border-radius: 50%; background: var(--magenta); display: grid; place-items: center; }
+    .btn-comparar .pulso { position: absolute; inset: 0; border-radius: 999px; animation: pulso 2.4s infinite; pointer-events: none; }
+    @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(200, 13, 120, .55); } 70%, 100% { box-shadow: 0 0 0 14px rgba(200, 13, 120, 0); } }
+    .modal { position: fixed; inset: 0; z-index: 100; background: rgba(28, 8, 22, .86); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal.abierto { display: flex; animation: aparecer .25s ease; }
+    @keyframes aparecer { from { opacity: 0; } }
+    .modal-caja { background: #fff; border-radius: 22px; width: min(1100px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: 26px; position: relative; }
+    .modal-cabeza { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; padding-right: 44px; }
+    .modal-cabeza h2 { font-size: 2rem; color: var(--ciruela); }
+    .cerrar { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--nube-2); cursor: pointer; display: grid; place-items: center; }
+    .pestanas { display: inline-flex; background: var(--nube-2); border-radius: 999px; padding: 4px; }
+    .pestanas button { border: 0; background: transparent; font: 800 .9rem "Manrope", sans-serif; color: var(--texto); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+    .pestanas button[aria-selected="true"] { background: var(--ciruela); color: #fff; }
+    .leyenda { display: flex; justify-content: space-between; margin: 0 auto 10px; font: 800 .78rem "Manrope", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    .leyenda span { padding: 6px 12px; border-radius: 999px; }
+    .leyenda .l-antes { background: var(--nube-2); color: var(--texto); }
+    .leyenda .l-ahora { background: var(--magenta); color: #fff; }
+    .comparador { position: relative; margin-inline: auto; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); user-select: none; touch-action: none; background: #ddd; }
+    .comparador.escritorio { width: 100%; aspect-ratio: 1366 / 850; }
+    .comparador.movil { width: min(340px, 100%, calc((100vh - 260px) * .462)); min-width: 220px; aspect-ratio: 390 / 844; border-radius: 30px; border: 8px solid var(--ciruela); }
+    .comparador img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; }
+    .comparador .antes { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+    .divisor { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,.4); pointer-events: none; }
+    .divisor span { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+    .comparador input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .comparador:focus-within .divisor span { outline: 3px solid var(--magenta); }
+    .ayuda-comparar { text-align: center; color: var(--suave); font-size: .88rem; margin: 12px 0 20px; }
+    .mejoras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .mejora { border: 1px solid var(--nube-2); border-radius: 14px; padding: 16px; font-size: .9rem; }
+    .mejora b { display: block; font-size: .98rem; margin-bottom: 4px; color: var(--ciruela); }
+    .mejora .antes-txt { color: #a5384a; display: block; font-size: .85rem; }
+    .mejora .ahora-txt { color: #1f7a52; display: block; font-size: .85rem; font-weight: 700; }
+
+    .toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 200%); opacity: 0; background: var(--ciruela); color: #fff; padding: 14px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.3); font-size: .92rem; z-index: 120; transition: transform .35s ease, opacity .35s; max-width: calc(100% - 32px); text-align: center; pointer-events: none; }
+    .toast.visible { transform: translate(-50%, 0); opacity: 1; }
+
+    .aparece { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .aparece.visto { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .aparece { opacity: 1; transform: none; transition: none; }
+      .objeto svg, .ficha, .cinta-pista, .pulso, .estado i, .muela-hero svg, .chispa, .aura::before, .scroll-abajo::after, .horas button, .respuesta { animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+    .captura .aviso-demo, .captura .btn-comparar { display: none; }
+    .captura .objeto svg, .captura .ficha, .captura .cinta-pista, .captura .muela-hero svg, .captura .chispa { animation: none; }
+    .captura .chispa { opacity: 1; }
+
+    @media (max-width: 1000px) {
+      .hero-grid, .boca-grid, .visita-grid, .reserva-grid, .ubicacion-grid { grid-template-columns: 1fr; }
+      .hero-grid { min-height: 0; padding: 46px 0 40px; gap: 0; }
+      .escena { height: 440px; }
+      .scroll-abajo { display: none; }
+      .tratamientos, .equipo { grid-template-columns: 1fr 1fr; }
+      .visita-grid { gap: 0; }
+      .visita-visual { top: 74px; height: 300px; z-index: 2; background: linear-gradient(var(--ciruela) 86%, transparent); margin-inline: -16px; }
+      .dial { width: 270px; }
+      .visita-pasos li { min-height: 46vh; padding-left: 22px; }
+      .resenas { grid-template-columns: 1fr; }
+      .mejoras { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 820px) {
+      .menu, .nav > .btn { display: none; }
+      .hamburguesa { display: block; }
+      .menu.abierto { display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; right: 0; background: #fff; padding: 20px 16px 26px; gap: 18px; border-bottom: 1px solid var(--linea); }
+      .citas { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .hero h1 { font-size: clamp(2.8rem, 13.5vw, 3.9rem); margin: 18px 0; }
+      .hero-botones .btn { flex: 1 1 100%; }
+      .hero-datos { gap: 14px; flex-wrap: nowrap; justify-content: space-between; }
+      .hero-datos strong { font-size: 1.8rem; }
+      .hero-datos > div > span { font-size: .78rem; }
+      .escena { height: 380px; margin-top: 16px; }
+      .muela-hero { width: 58%; }
+      .objeto.cepillo { width: 130px; top: 2%; }
+      .objeto.espejo { width: 110px; bottom: 4%; }
+      .ficha { padding: 10px 12px; font-size: .76rem; max-width: 190px; }
+      .ficha q { font-size: .88rem; }
+      .ficha strong { font-size: .9rem; }
+      .ficha.f1 { top: 30%; left: 0; }
+      .ficha.f2 { bottom: 0; right: 0; }
+      .boca { padding: 14px; border-radius: 22px; }
+      .diag { padding: 22px 18px; }
+      .tratamientos, .equipo, .mejoras { grid-template-columns: 1fr; }
+      .persona { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: center; }
+      .persona .foto { margin: 0; font-size: 2.6rem; }
+      .persona .foto small { display: none; }
+      .resenas { padding: 32px 20px; }
+      .reserva { padding: 22px 16px; }
+      .ubicacion-texto { padding: 32px 22px; }
+      .ubicacion-grid iframe { min-height: 300px; }
+      .btn-comparar { left: 16px; translate: none; bottom: 16px; padding-right: 14px; }
+      .btn-comparar .txt-largo { display: none; }
+      .wsp-flotante { right: 16px; bottom: 16px; }
+      .modal { padding: 0; }
+      .modal-caja { border-radius: 0; max-height: 100vh; height: 100%; padding: 20px 16px; }
+      .comparador.movil { width: min(300px, 100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aviso-demo">Propuesta de diseño hecha por <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a> con los datos de su ficha de Google. <button type="button" data-abrir-comparar>Comparar con lo que hay hoy</button></div>
+
+  <header>
+    <div class="contenedor nav">
+      <a href="#inicio" class="logo" aria-label="Clínica Blanco, inicio">
+        <svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="32" fill="#c80d78"/><path d="M22 18c-6 0-9 5-8 11 1 5 3 9 4 15 1 4 4 5 5 1l3-9c1-3 5-3 6 0l3 9c1 4 4 3 5-1 1-6 3-10 4-15 1-6-2-11-8-11-3 0-5 1-6 2-1-1-3-2-6-2z" fill="none" stroke="#fff" stroke-width="3.2" stroke-linejoin="round"/><path d="M24 26c3 0 6 2 8 6 2-4 5-6 8-6" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg>
+        <span class="logo-texto">Clínica <b>BLANCO</b><small>Dental · La Reina</small></span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="#que-te-pasa">¿Qué te pasa?</a>
+        <a href="#tratamientos">Tratamientos</a>
+        <a href="#primera-visita">Primera visita</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <a href="#reservar" class="btn btn-magenta">Pedir hora</a>
+      <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="progreso" id="progreso"></div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div class="hero-texto aparece">
+          <span class="estado" id="estado"><i></i><span>Lunes a viernes, 8:00 a 18:00</span></span>
+          <h1>Ir al dentista, <em>sin miedo.</em></h1>
+          <p class="lead">Clínica dental en La Reina, a pasos del metro Simón Bolívar. Un equipo que te explica cada paso y te atiende con calma, desde la primera visita.</p>
+          <div class="hero-botones">
+            <a href="#reservar" class="btn btn-magenta">Pedir hora por WhatsApp</a>
+            <a href="#que-te-pasa" class="btn btn-borde">Cuéntanos qué te pasa</a>
+          </div>
+          <div class="hero-datos">
+            <div><strong><span data-contar="5" data-dec="1">5,0</span><b>★</b></strong><span>en Google</span></div>
+            <div><strong data-contar="106">106</strong><span>reseñas</span></div>
+            <div><strong>L–V</strong><span>8:00 a 18:00</span></div>
+          </div>
+        </div>
+        <div class="escena aparece" aria-hidden="true">
+          <div class="escena-mov"><div class="aura"></div><div class="muela-hero" id="muela-hero"></div></div>
+          <span class="objeto cepillo"><svg viewBox="0 0 240 80"><defs><linearGradient id="g-mango" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff6fb4"/><stop offset=".5" stop-color="#c80d78"/><stop offset="1" stop-color="#8d0754"/></linearGradient><linearGradient id="g-cerda" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cfe9f3"/></linearGradient></defs><g transform="rotate(-18 120 40)"><path d="M20 46 C60 42 120 40 170 41 L182 42 C186 42 188 48 184 50 L170 52 C120 54 60 54 22 56 C14 56 12 47 20 46 Z" fill="url(#g-mango)"/><path d="M30 48 C80 45 130 44 170 44" stroke="#fff" stroke-opacity=".45" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="178" y="40" width="44" height="12" rx="5" fill="#a10a60"/><g fill="url(#g-cerda)"><rect x="180" y="18" width="5" height="23" rx="2"/><rect x="187" y="16" width="5" height="25" rx="2"/><rect x="194" y="15" width="5" height="26" rx="2"/><rect x="201" y="15" width="5" height="26" rx="2"/><rect x="208" y="16" width="5" height="25" rx="2"/><rect x="215" y="18" width="5" height="23" rx="2"/></g><path d="M180 26 h40" stroke="#9fd3e6" stroke-width="2" opacity=".6"/></g></svg></span>
+          <span class="objeto espejo"><svg viewBox="0 0 200 90"><defs><radialGradient id="g-espejo" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#cfd8e0"/><stop offset="1" stop-color="#7d8b98"/></radialGradient><linearGradient id="g-acero" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef2f5"/><stop offset=".5" stop-color="#9aa6b1"/><stop offset="1" stop-color="#5d6873"/></linearGradient></defs><g transform="rotate(14 100 45)"><rect x="10" y="40" width="130" height="9" rx="4.5" fill="url(#g-acero)"/><path d="M14 42 h120" stroke="#fff" stroke-opacity=".7" stroke-width="1.5"/><g fill="#8a96a1" opacity=".5"><rect x="30" y="40" width="2" height="9"/><rect x="36" y="40" width="2" height="9"/><rect x="42" y="40" width="2" height="9"/><rect x="48" y="40" width="2" height="9"/></g><path d="M138 44 L160 40" stroke="url(#g-acero)" stroke-width="5" stroke-linecap="round"/><circle cx="174" cy="37" r="17" fill="url(#g-acero)"/><circle cx="174" cy="37" r="14" fill="url(#g-espejo)"/><ellipse cx="169" cy="31" rx="6" ry="3.5" fill="#fff" opacity=".8" transform="rotate(-30 169 31)"/></g></svg></span>
+          <svg class="chispa c1" viewBox="0 0 24 24"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" fill="currentColor"/></svg>
+          <svg class="chispa c2" viewBox="0 0 24 24"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" fill="currentColor"/></svg>
+          <svg class="chispa c3" viewBox="0 0 24 24"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12z" fill="currentColor"/></svg>
+          <div class="ficha f1"><q>Me daba pánico ir al dentista hasta que las conocí.</q>Paciente, en Google</div>
+          <div class="ficha f2"><span class="estrellas">★★★★★</span><strong>5,0 en Google</strong>106 reseñas</div>
+        </div>
+      </div>
+      <span class="scroll-abajo" aria-hidden="true">Baja</span>
+    </section>
+
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta-pista">
+        <span>Te explicamos todo</span><span>Atención con calma</span><span>A pasos del metro Simón Bolívar</span><span>Lunes a viernes</span><span>Pide tu hora por WhatsApp</span>
+        <span>Te explicamos todo</span><span>Atención con calma</span><span>A pasos del metro Simón Bolívar</span><span>Lunes a viernes</span><span>Pide tu hora por WhatsApp</span>
+      </div>
+    </div>
+
+    <section id="que-te-pasa">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">¿Qué te pasa?</span>
+          <h2>Toca la pieza <em>que te molesta</em></h2>
+          <p>Elige el diente en el mapa, dinos qué sientes y te orientamos sobre el tratamiento. Después pides tu hora con todo ya explicado.</p>
+        </div>
+        <div class="boca-grid">
+          <div class="boca aparece" id="boca">
+            <svg id="boca-svg" viewBox="0 0 520 560" role="group" aria-label="Mapa de la boca: elige una pieza dental"></svg>
+            <div class="boca-ayuda"><b>Toca un diente</b>arriba o abajo</div>
+          </div>
+          <div class="diag aparece" id="diag" aria-live="polite">
+            <div class="diag-vacio"><span class="flecha">← Elige una pieza</span>Puede ser una muela que duele, un diente que se quebró o simplemente un control. Ves el número y el nombre de cada pieza, igual que en la ficha del dentista.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tratamientos" style="padding-top:0">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">Tratamientos</span>
+          <h2>Lo que hacemos <em>por tu sonrisa</em></h2>
+          <p>En la versión final van sus tratamientos reales, con precios o valores de referencia.</p>
+        </div>
+        <div class="tratamientos" id="lista-trat"></div>
+      </div>
+    </section>
+
+    <section class="oscuro" id="primera-visita">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">Primera visita</span>
+          <h2>Así es tu primera hora, <em>paso a paso</em></h2>
+          <p>Para que llegues sabiendo qué va a pasar. Baja y mira cómo queda tu diente.</p>
+        </div>
+        <div class="visita-grid" id="visita">
+          <div class="visita-visual" aria-hidden="true">
+            <div class="dial" id="dial">
+              <svg class="anillo" viewBox="0 0 100 100"><circle class="anillo-fondo" cx="50" cy="50" r="47" fill="none" stroke-width="1.6"/><circle class="anillo-lleno" cx="50" cy="50" r="47" fill="none" stroke-width="1.6" pathLength="100"/></svg>
+              <div class="muela-visita" id="muela-visita"></div>
+              <span class="etapa" id="etapa">Conversamos</span>
+            </div>
+          </div>
+          <ol class="visita-pasos">
+            <li class="activo"><span class="num">Paso 1</span><h3>Conversamos antes de empezar</h3><p>Nos cuentas qué te pasa y qué te preocupa. Si te da nervios, lo decimos de frente y vamos a tu ritmo.</p></li>
+            <li><span class="num">Paso 2</span><h3>Revisamos con calma</h3><p>Miramos cada pieza y, si hace falta, tomamos radiografías. Te mostramos lo que vemos, sin palabras raras.</p></li>
+            <li><span class="num">Paso 3</span><h3>Limpieza y cuidado</h3><p>Si corresponde, partimos por una limpieza. Te enseñamos cómo cuidar tus dientes en casa para que cada control sea mejor.</p></li>
+            <li><span class="num">Paso 4</span><h3>Te vas con un plan claro</h3><p>Sales sabiendo qué tratamiento necesitas, en cuántas sesiones y cuánto cuesta. Tú decides cuándo seguir.</p><a href="#reservar" class="btn btn-magenta" style="margin-top:20px;align-self:flex-start">Pedir mi primera hora</a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="equipo">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">Equipo</span>
+          <h2>Las caras <em>detrás de las 106 reseñas</em></h2>
+          <p>Sus pacientes las nombran una y otra vez. En la versión final, cada una con su foto, especialidad y formación.</p>
+        </div>
+        <div class="equipo">
+          <article class="persona aparece"><div class="foto">B<small>Foto en la versión final</small></div><div><h3>Dra. Blanco</h3><p class="rol">Odontóloga</p><q>Su atención siempre ha sido impecable y profesional.</q></div></article>
+          <article class="persona aparece"><div class="foto">M<small>Foto en la versión final</small></div><div><h3>Dra. Mariana</h3><p class="rol">Odontóloga</p><q>Qué placer ser atendido por alguien con tanta vocación.</q></div></article>
+          <article class="persona aparece"><div class="foto">V<small>Foto en la versión final</small></div><div><h3>Valentina</h3><p class="rol">Equipo clínico</p><q>Me daba pánico ir al dentista hasta que las conocí.</q></div></article>
+        </div>
+        <div class="resenas aparece">
+          <div class="nota"><strong data-contar="5" data-dec="1">5,0</strong><div class="estrellas" aria-hidden="true">★★★★★</div><span>106 reseñas en Google</span></div>
+          <div class="citas">
+            <div class="cita"><q>Te explican muy bien el tratamiento que te realizarán.</q><span>Paciente, en Google</span></div>
+            <div class="cita"><q>Gracias a como me ha educado como paciente, cada vez tengo mejor salud bucal.</q><span>Paciente hace 4 años</span></div>
+            <div class="cita"><q>Buenísima atención de todo el personal.</q><span>Paciente, en Google</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reservar" style="padding-top:0">
+      <div class="contenedor reserva-grid">
+        <div class="aparece">
+          <div class="titulo-seccion" style="margin-bottom:24px">
+            <span class="sobre">Pide tu hora</span>
+            <h2>Elige día y hora, <em>te confirmamos por WhatsApp</em></h2>
+            <p>Sin llamar y sin esperar a que contesten. Te llega el mensaje armado y nosotras confirmamos.</p>
+          </div>
+          <ul class="lista-check">
+            <li><span><b>Lunes a viernes</b>, de 8:00 a 18:00.</span></li>
+            <li><span><b>Primera vez:</b> cuéntanos si te da miedo, te esperamos con calma.</span></li>
+            <li><span><b>Av. Echeñique 5839, oficina 209</b>, a pasos del metro Simón Bolívar.</span></li>
+          </ul>
+        </div>
+        <form class="reserva aparece" id="form-reserva" novalidate>
+          <fieldset>
+            <label for="motivo">Motivo</label>
+            <select id="motivo"></select>
+          </fieldset>
+          <fieldset>
+            <legend>Día</legend>
+            <div class="chips" id="dias"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Hora</legend>
+            <div class="horas" id="horas"></div>
+          </fieldset>
+          <fieldset>
+            <legend>¿Es tu primera vez en la clínica?</legend>
+            <div class="segmento" id="primera"><button type="button" data-v="si" aria-pressed="true">Sí, primera vez</button><button type="button" data-v="no" aria-pressed="false">Ya soy paciente</button></div>
+          </fieldset>
+          <fieldset>
+            <label for="nombre">Tu nombre</label>
+            <input type="text" id="nombre" placeholder="Ej: Daniela" autocomplete="given-name">
+          </fieldset>
+          <div class="resumen">
+            <div class="tu-hora">Tu hora<strong id="tu-hora">Elige día y hora</strong></div>
+            <button type="submit" class="btn btn-magenta">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+              Pedir esta hora
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="ubicacion" style="padding-top:0">
+      <div class="contenedor">
+        <div class="ubicacion-grid aparece">
+          <div class="ubicacion-texto">
+            <span class="sobre">Ubicación</span>
+            <h2>A pasos del <em>metro Simón Bolívar</em></h2>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c80d78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><b>Dirección</b><a href="https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+Dental+Blanco+Av.+Eche%C3%B1ique+5839+La+Reina" target="_blank" rel="noopener">Av. Echeñique 5839, oficina 209, La Reina</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="#c80d78" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></span><div><b>WhatsApp</b><a href="#reservar">+56 9 4414 6271</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c80d78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><b>Teléfono</b><a href="tel:+56229932097">(2) 2993 2097</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c80d78" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div style="flex:1"><b>Horario</b>
+              <table class="horario" id="tabla-horario">
+                <tr data-dias="1,2,3,4,5"><td>Lunes a viernes</td><td>8:00 – 18:00</td></tr>
+                <tr data-dias="6"><td>Sábado</td><td>Cerrado</td></tr>
+                <tr data-dias="0"><td>Domingo</td><td>Cerrado</td></tr>
+              </table>
+            </div></div>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Cl%C3%ADnica+Dental+Blanco+Av.+Eche%C3%B1ique+5839+La+Reina" target="_blank" rel="noopener" class="btn btn-ciruela" style="margin-top:6px">Cómo llegar</a>
+          </div>
+          <iframe title="Mapa de Clínica Dental Blanco" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Cl%C3%ADnica+Dental+Blanco,+Av.+Eche%C3%B1ique+5839,+La+Reina&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece" style="text-align:center;margin-inline:auto">
+          <span class="sobre">Preguntas frecuentes</span>
+          <h2>Antes de <em>venir</em></h2>
+        </div>
+        <div class="faq aparece">
+          <details><summary>Me da mucho miedo el dentista, ¿qué hago?</summary><p>Cuéntanos al pedir tu hora. Partimos conversando, te explicamos cada paso antes de hacerlo y paramos cuando lo necesites. Muchos de nuestros pacientes llegaron igual.</p></details>
+          <details><summary>Tengo dolor, ¿me pueden ver pronto?</summary><p>Escríbenos por WhatsApp contándonos qué te pasa y te damos el primer horario disponible.</p></details>
+          <details><summary>¿Dónde queda exactamente?</summary><p>En Av. Echeñique 5839, oficina 209, La Reina, a pasos del metro Simón Bolívar.</p></details>
+          <details><summary>¿Qué días atienden?</summary><p>De lunes a viernes, de 8:00 a 18:00. Sábado y domingo está cerrado.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <div class="footer-grid">
+        <a href="#inicio" class="logo"><span class="logo-texto">Clínica <b>BLANCO</b><small>Dental · La Reina</small></span></a>
+        <div><h4>Visítanos</h4><ul><li>Av. Echeñique 5839, of. 209</li><li>La Reina, Santiago</li></ul></div>
+        <div><h4>Horario</h4><ul><li>Lunes a viernes</li><li>8:00 – 18:00</li></ul></div>
+        <div><h4>Contacto</h4><ul><li><a href="#reservar">WhatsApp +56 9 4414 6271</a></li><li><a href="tel:+56229932097">(2) 2993 2097</a></li></ul></div>
+      </div>
+      <div class="creditos">
+        <span>© <span id="anio"></span> Clínica Dental Blanco</span>
+        <span>Diseño y desarrollo: <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="btn-comparar" data-abrir-comparar aria-haspopup="dialog">
+    <span class="pulso"></span>
+    <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></svg></span>
+    <span>Comparar<span class="txt-largo"> con lo que hay hoy</span></span>
+  </button>
+
+  <a href="#reservar" class="wsp-flotante" aria-label="Pedir hora por WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+  </a>
+
+  <div class="modal" id="modal-comparar" role="dialog" aria-modal="true" aria-labelledby="titulo-comparar">
+    <div class="modal-caja">
+      <button type="button" class="cerrar" id="cerrar-comparar" aria-label="Cerrar comparación"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a0f22" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <div class="modal-cabeza">
+        <div><span class="sobre">Antes y ahora</span><h2 id="titulo-comparar">Lo que hay hoy vs. propuesta</h2></div>
+        <div class="pestanas" role="tablist" aria-label="Dispositivo">
+          <button type="button" role="tab" aria-selected="true" data-vista="movil">Celular</button>
+          <button type="button" role="tab" aria-selected="false" data-vista="escritorio">Computador</button>
+        </div>
+      </div>
+      <div class="leyenda" id="leyenda"><span class="l-antes">◀ Hoy</span><span class="l-ahora">Propuesta ▶</span></div>
+      <div class="comparador movil" id="comparador">
+        <img class="ahora" id="img-ahora" src="comparar/ahora-movil.png" alt="Portada de la propuesta nueva">
+        <img class="antes" id="img-antes" src="comparar/antes-movil.png" alt="Lo que aparece hoy al tocar el link de su ficha de Google: una página genérica de WhatsApp">
+        <div class="divisor"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c80d78" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <input type="range" min="0" max="100" value="50" id="deslizador" aria-label="Deslizar para comparar lo que hay hoy con la propuesta">
+      </div>
+      <p class="ayuda-comparar">Arrastra la barra. A la izquierda, lo único que encuentra hoy quien toca el link de su ficha de Google.</p>
+      <div class="mejoras">
+        <div class="mejora"><b>Una página propia</b><span class="antes-txt">Antes: Google dice "Agregar sitio web"; solo hay un link a WhatsApp</span><span class="ahora-txt">Ahora: clinicadentalblanco.cl, con todo en un lugar</span></div>
+        <div class="mejora"><b>Horas sin llamar</b><span class="antes-txt">Antes: hay que escribir y preguntar qué horas quedan</span><span class="ahora-txt">Ahora: eligen motivo, día y hora; el mensaje llega listo</span></div>
+        <div class="mejora"><b>Orientación antes de venir</b><span class="antes-txt">Antes: el paciente no sabe qué tratamiento pedir</span><span class="ahora-txt">Ahora: toca la pieza en el mapa de la boca y ve qué le corresponde</span></div>
+        <div class="mejora"><b>Sus 106 reseñas</b><span class="antes-txt">Antes: el 5,0 solo se ve si buscan en Maps</span><span class="ahora-txt">Ahora: lo que dicen sus pacientes está en la portada</span></div>
+        <div class="mejora"><b>El equipo</b><span class="antes-txt">Antes: los pacientes nombran a la Dra. Blanco y a Mariana, pero no hay dónde conocerlas</span><span class="ahora-txt">Ahora: cada una con su foto y su especialidad</span></div>
+        <div class="mejora"><b>Para quien tiene miedo</b><span class="antes-txt">Antes: nada explica cómo es la primera visita</span><span class="ahora-txt">Ahora: la primera hora contada paso a paso</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const captura = new URLSearchParams(location.search).has("captura");
+    if (captura) document.documentElement.classList.add("captura");
+    document.getElementById("anio").textContent = new Date().getFullYear();
+    const sinMovimiento = captura || matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const hamb = document.getElementById("hamburguesa");
+    const menu = document.getElementById("menu");
+    hamb.addEventListener("click", () => hamb.setAttribute("aria-expanded", menu.classList.toggle("abierto")));
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("abierto"); hamb.setAttribute("aria-expanded", "false"); }));
+
+    const toast = document.getElementById("toast");
+    let tToast;
+    function mostrarToast(texto) {
+      toast.textContent = texto;
+      toast.classList.add("visible");
+      clearTimeout(tToast);
+      tToast = setTimeout(() => toast.classList.remove("visible"), 5500);
+    }
+
+    // ===== Muela dibujada: esmalte con brillo, corona con cúspides y dos raíces =====
+    function muela(p, { sucia = false } = {}) {
+      const contorno = "M72 92 C66 54 92 34 118 40 C132 43 140 50 150 50 C160 50 168 43 182 40 C208 34 234 54 228 92 C224 124 218 152 210 176 C206 204 202 244 196 286 C192 318 172 326 166 296 C162 268 160 238 150 228 C140 238 138 268 134 296 C128 326 108 318 104 286 C98 244 94 204 90 176 C82 152 76 124 72 92 Z";
+      let sarro = "";
+      if (sucia) {
+        sarro = `<g class="sarro" filter="url(#${p}-mancha)">
+          <path d="M92 170 C110 180 130 174 150 182 C170 174 190 180 208 170 C206 186 204 196 202 204 C182 196 166 202 150 198 C134 202 118 196 98 204 C96 194 94 184 92 170 Z" fill="#d9b25c" opacity=".42"/>
+          <ellipse cx="118" cy="120" rx="10" ry="7" fill="#c9a25a" opacity=".45"/>
+          <ellipse cx="186" cy="132" rx="8" ry="11" fill="#b88d4a" opacity=".4"/>
+          <ellipse cx="160" cy="96" rx="6" ry="4" fill="#c9a25a" opacity=".35"/>
+          <circle cx="132" cy="150" r="4" fill="#a87d3c" opacity=".45"/>
+        </g>
+        <g class="limpia" fill="#fff">
+          <path transform="translate(212 58) scale(1.1)" d="M0 -12c1 7 4 10 12 12-8 2-11 5-12 12-1-7-4-10-12-12 8-2 11-5 12-12z"/>
+          <path transform="translate(86 140) scale(.7)" d="M0 -12c1 7 4 10 12 12-8 2-11 5-12 12-1-7-4-10-12-12 8-2 11-5 12-12z"/>
+          <path transform="translate(240 160) scale(.55)" d="M0 -12c1 7 4 10 12 12-8 2-11 5-12 12-1-7-4-10-12-12 8-2 11-5 12-12z"/>
+        </g>`;
+      }
+      return `<svg viewBox="40 20 220 330" aria-hidden="true">
+        <defs>
+          <linearGradient id="${p}-esmalte" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#c9d3df"/><stop offset=".16" stop-color="#eef2f7"/><stop offset=".42" stop-color="#ffffff"/><stop offset=".7" stop-color="#f3f5f9"/><stop offset=".9" stop-color="#d2dae5"/><stop offset="1" stop-color="#b6c1cf"/>
+          </linearGradient>
+          <linearGradient id="${p}-raiz" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".46" stop-color="#fff" stop-opacity="0"/><stop offset=".68" stop-color="#f4ead6" stop-opacity=".45"/><stop offset="1" stop-color="#e9d8b8" stop-opacity=".8"/>
+          </linearGradient>
+          <radialGradient id="${p}-brillo" cx=".36" cy=".2" r=".42">
+            <stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="${p}-borde" x1="1" y1="0" x2="0" y2="0">
+            <stop offset="0" stop-color="#ffd2e8" stop-opacity=".9"/><stop offset=".12" stop-color="#ffd2e8" stop-opacity="0"/>
+          </linearGradient>
+          <filter id="${p}-suave" filterUnits="userSpaceOnUse" x="0" y="0" width="300" height="380"><feGaussianBlur stdDeviation="6"/></filter>
+          <filter id="${p}-mancha" filterUnits="userSpaceOnUse" x="0" y="0" width="300" height="380"><feGaussianBlur stdDeviation="3"/></filter>
+          <filter id="${p}-sombra" filterUnits="userSpaceOnUse" x="0" y="280" width="300" height="100"><feGaussianBlur stdDeviation="10"/></filter>
+          <clipPath id="${p}-clip"><path d="${contorno}"/></clipPath>
+        </defs>
+        <ellipse cx="150" cy="338" rx="70" ry="9" fill="#2a0f22" opacity=".14" filter="url(#${p}-sombra)"/>
+        <path d="${contorno}" fill="url(#${p}-esmalte)"/>
+        <g clip-path="url(#${p}-clip)">
+          <path d="${contorno}" fill="url(#${p}-raiz)"/>
+          <path d="${contorno}" fill="url(#${p}-borde)"/>
+          <path d="M60 176 C100 190 200 190 240 176" stroke="#c7cfdb" stroke-width="10" fill="none" opacity=".35" filter="url(#${p}-suave)"/>
+          <path d="M150 228 C146 210 154 200 150 186" stroke="#b9c3d1" stroke-width="8" fill="none" opacity=".35" filter="url(#${p}-suave)"/>
+          <path d="M118 44 C126 66 132 74 150 78 C168 74 174 66 182 44" stroke="#b7c2d0" stroke-width="5" fill="none" opacity=".55" filter="url(#${p}-suave)"/>
+          <ellipse cx="122" cy="88" rx="34" ry="50" fill="url(#${p}-brillo)"/>
+          <path d="M98 70 C100 58 108 52 118 52" stroke="#fff" stroke-width="6" stroke-linecap="round" fill="none" opacity=".95"/>
+          <path d="M196 64 C206 70 210 84 208 100" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none" opacity=".7"/>
+          ${sarro}
+        </g>
+        <path d="${contorno}" fill="none" stroke="#a9b4c3" stroke-opacity=".5" stroke-width="1.2"/>
+      </svg>`;
+    }
+    document.getElementById("muela-hero").innerHTML = muela("h");
+    document.getElementById("muela-visita").innerHTML = muela("v", { sucia: true });
+
+    // ===== Mapa de la boca (numeración dental internacional, FDI) =====
+    const TIPOS = {
+      1: { nombre: "Incisivo central", ancho: 8.5, forma: "incisivo" },
+      2: { nombre: "Incisivo lateral", ancho: 6.6, forma: "incisivo" },
+      3: { nombre: "Canino", ancho: 7.6, forma: "canino" },
+      4: { nombre: "Primer premolar", ancho: 7, forma: "premolar" },
+      5: { nombre: "Segundo premolar", ancho: 6.8, forma: "premolar" },
+      6: { nombre: "Primera molar", ancho: 10.2, forma: "molar" },
+      7: { nombre: "Segunda molar", ancho: 9.4, forma: "molar" },
+      8: { nombre: "Muela del juicio", ancho: 8.8, forma: "molar" }
+    };
+    const CUADRANTES = { 1: "superior derecha", 2: "superior izquierda", 3: "inferior izquierda", 4: "inferior derecha" };
+    const svgBoca = document.getElementById("boca-svg");
+    const escala = 4.15;
+    function formaDiente(t, w) {
+      const d = t.forma === "incisivo" ? w * .52 : t.forma === "canino" ? w * .82 : t.forma === "premolar" ? w * 1.02 : w * .98;
+      let cuerpo, detalle = "";
+      if (t.forma === "incisivo") {
+        cuerpo = `<rect x="${-w / 2}" y="${-d / 2}" width="${w}" height="${d}" rx="${d * .45}"/>`;
+        detalle = `<path d="M${-w * .34} ${-d * .08} H${w * .34}" stroke="#c9d1dd" stroke-width="1.4" stroke-linecap="round"/>`;
+      } else if (t.forma === "canino") {
+        cuerpo = `<path d="M0 ${-d / 2} C${w * .5} ${-d * .42} ${w * .52} ${d * .3} 0 ${d / 2} C${-w * .52} ${d * .3} ${-w * .5} ${-d * .42} 0 ${-d / 2} Z"/>`;
+        detalle = `<circle cx="0" cy="${-d * .1}" r="1.8" fill="#c9d1dd"/>`;
+      } else if (t.forma === "premolar") {
+        cuerpo = `<ellipse cx="0" cy="0" rx="${w / 2}" ry="${d / 2}"/>`;
+        detalle = `<path d="M${-w * .28} 0 C${-w * .1} ${d * .1} ${w * .1} ${-d * .1} ${w * .28} 0" stroke="#c3ccd9" stroke-width="1.6" fill="none" stroke-linecap="round"/>`;
+      } else {
+        cuerpo = `<rect x="${-w / 2}" y="${-d / 2}" width="${w}" height="${d}" rx="${w * .34}"/>`;
+        detalle = `<path d="M${-w * .3} ${-d * .02} C${-w * .1} ${d * .1} ${w * .1} ${-d * .12} ${w * .3} ${d * .02} M${-w * .02} ${-d * .3} C${w * .08} ${-d * .1} ${-w * .08} ${d * .1} ${w * .02} ${d * .3}" stroke="#c3ccd9" stroke-width="1.6" fill="none" stroke-linecap="round"/>`;
+      }
+      return { cuerpo, detalle };
+    }
+    function arcada(superior) {
+      const cx = 260, cy = superior ? 248 : 312, a = 196, b = 200;
+      const mitad = [1, 2, 3, 4, 5, 6, 7, 8];
+      const anchos = mitad.map(n => TIPOS[n].ancho);
+      const total = anchos.reduce((s, x) => s + x, 0);
+      const rango = 88 * Math.PI / 180;
+      let html = "";
+      [-1, 1].forEach(lado => {
+        // lado -1 = izquierda de la pantalla (derecha del paciente)
+        const cuadrante = superior ? (lado < 0 ? 1 : 2) : (lado < 0 ? 4 : 3);
+        let acum = 0;
+        mitad.forEach((n, i) => {
+          const centro = (acum + anchos[i] / 2) / total; acum += anchos[i];
+          const fi = Math.PI / 2 - lado * centro * rango;
+          const x = cx + a * Math.cos(fi);
+          const y = superior ? cy - b * Math.sin(fi) : cy + b * Math.sin(fi);
+          const dx = -a * Math.sin(fi), dy = (superior ? -1 : 1) * b * Math.cos(fi);
+          const ang = Math.atan2(dy, dx) * 180 / Math.PI;
+          const t = TIPOS[n], w = t.ancho * escala;
+          const { cuerpo, detalle } = formaDiente(t, w);
+          const id = `${cuadrante}${n}`;
+          const nx = cx + (a - 46) * Math.cos(fi), ny = superior ? cy - (b - 46) * Math.sin(fi) : cy + (b - 46) * Math.sin(fi);
+          html += `<g class="pieza" tabindex="0" role="button" data-pieza="${id}" aria-label="Pieza ${id}: ${t.nombre} ${CUADRANTES[cuadrante]}">
+            <g transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${ang.toFixed(1)})"><g class="forma">
+              <g fill="url(#d-esmalte)" class="contorno" stroke="#b9c3d1" stroke-width="1.2">${cuerpo}</g>
+              <g fill="url(#d-brillo)" stroke="none">${cuerpo}</g>
+              ${detalle}
+            </g></g>
+            <text class="num" x="${nx.toFixed(1)}" y="${(ny + 3.5).toFixed(1)}" text-anchor="middle">${id}</text>
+          </g>`;
+        });
+      });
+      return html;
+    }
+    svgBoca.innerHTML = `<defs>
+        <radialGradient id="d-esmalte" cx=".4" cy=".35" r=".75"><stop offset="0" stop-color="#ffffff"/><stop offset=".6" stop-color="#eef2f7"/><stop offset="1" stop-color="#cfd8e3"/></radialGradient>
+        <radialGradient id="d-brillo" cx=".3" cy=".25" r=".35"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+        <linearGradient id="d-encia" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7c9d8"/><stop offset="1" stop-color="#eeaec3"/></linearGradient>
+      </defs>
+      <path d="M58 262 C50 120 140 38 260 38 C380 38 470 120 462 262 L420 262 C424 150 352 86 260 86 C168 86 96 150 100 262 Z" fill="url(#d-encia)" opacity=".55"/>
+      <path d="M58 298 C50 440 140 522 260 522 C380 522 470 440 462 298 L420 298 C424 410 352 474 260 474 C168 474 96 410 100 298 Z" fill="url(#d-encia)" opacity=".55"/>
+      <text class="rotulo" x="260" y="22" text-anchor="middle">Superior</text>
+      <text class="rotulo" x="260" y="548" text-anchor="middle">Inferior</text>
+      <text class="rotulo" x="12" y="284">Derecha</text>
+      <text class="rotulo" x="508" y="284" text-anchor="end">Izquierda</text>
+      ${arcada(true)}${arcada(false)}`;
+
+    const SINTOMAS = [
+      { id: "duele", txt: "Me duele", t: "Evaluación y radiografía", d: "Revisamos la pieza y vemos si es una caries, una inflamación del nervio o una encía irritada. Según eso puede ser una tapadura o una endodoncia. Si el dolor es fuerte, escríbenos y buscamos la primera hora." },
+      { id: "quebro", txt: "Se quebró o se despegó", t: "Restauración", d: "Reconstruimos la parte que falta con resina del color del diente, normalmente en una sola sesión. Si el daño es mayor, te explicamos las alternativas." },
+      { id: "sensible", txt: "Me da sensibilidad", t: "Evaluación de sensibilidad", d: "Puede ser desgaste del esmalte, encía retraída o una caries pequeña. Lo revisamos y te recomendamos cómo protegerlo." },
+      { id: "mancha", txt: "Está manchado", t: "Limpieza o blanqueamiento", d: "Muchas manchas salen con una limpieza profesional. Si quieres un tono más claro, conversamos sobre blanqueamiento." },
+      { id: "encia", txt: "Me sangra la encía", t: "Limpieza y control de encías", d: "Suele ser sarro o inflamación de la encía. Con una limpieza profunda y buenos hábitos en casa mejora bastante." },
+      { id: "control", txt: "Solo un control", t: "Control y limpieza", d: "Revisamos toda la boca, hacemos una limpieza y te decimos cómo vas. Lo ideal es venir cada seis meses." }
+    ];
+    const diag = document.getElementById("diag");
+    const boca = document.getElementById("boca");
+    let piezaSel = null, sintomaSel = null;
+    function pintarDiag() {
+      if (!piezaSel) return;
+      const n = +piezaSel[1], q = +piezaSel[0], t = TIPOS[n];
+      const s = SINTOMAS.find(x => x.id === sintomaSel);
+      const juicio = n === 8 ? `<p class="nota-chica">Las muelas del juicio a veces no terminan de salir. Si te molesta, evaluamos con radiografía si conviene sacarla.</p>` : "";
+      diag.innerHTML = `
+        <div class="pieza-nombre">${t.nombre} ${CUADRANTES[q]}</div>
+        <div class="pieza-num">Pieza ${piezaSel}</div>
+        <h3>¿Qué sientes?</h3>
+        <div class="sintomas">${SINTOMAS.map(x => `<button type="button" data-sintoma="${x.id}" aria-pressed="${x.id === sintomaSel}">${x.txt}</button>`).join("")}</div>
+        ${s ? `<div class="respuesta"><b>${s.t}</b><p>${s.d}</p><button type="button" class="btn btn-magenta" data-agendar>Pedir hora para la pieza ${piezaSel}</button></div>` : `<p class="diag-vacio">Elige una opción y te contamos qué tratamiento suele corresponder.</p>`}
+        ${juicio}
+        <p class="nota-chica">Es una orientación: el diagnóstico real lo hace la doctora en la consulta.</p>`;
+    }
+    function elegirPieza(id) {
+      piezaSel = id;
+      svgBoca.querySelectorAll(".pieza").forEach(g => g.classList.toggle("sel", g.dataset.pieza === id));
+      boca.classList.add("elegida");
+      pintarDiag();
+    }
+    svgBoca.addEventListener("click", e => { const g = e.target.closest(".pieza"); if (g) elegirPieza(g.dataset.pieza); });
+    svgBoca.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { const g = e.target.closest(".pieza"); if (g) { e.preventDefault(); elegirPieza(g.dataset.pieza); } } });
+    diag.addEventListener("click", e => {
+      const b = e.target.closest("[data-sintoma]");
+      if (b) { sintomaSel = b.dataset.sintoma; pintarDiag(); return; }
+      if (e.target.closest("[data-agendar]")) {
+        const s = SINTOMAS.find(x => x.id === sintomaSel);
+        motivoExtra = `${s.t} (pieza ${piezaSel}: ${SINTOMAS.find(x => x.id === sintomaSel).txt.toLowerCase()})`;
+        ponerMotivo(motivoExtra);
+        document.getElementById("reservar").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" });
+        mostrarToast(`Listo: dejamos la pieza ${piezaSel} en tu solicitud de hora 🦷`);
+      }
+    });
+    if (captura) { elegirPieza("16"); sintomaSel = "duele"; pintarDiag(); }
+
+    // ===== Tratamientos =====
+    const ico = d => `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c80d78" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+    const DIENTE = '<path d="M7 3c-3 0-4.5 2.5-4 5.5.4 2.5 1.4 4.5 1.9 7.5.4 2.5 2.1 3 2.6.6l1-4.1c.4-1.6 2.6-1.6 3 0l1 4.1c.5 2.4 2.2 1.9 2.6-.6.5-3 1.5-5 1.9-7.5.5-3-1-5.5-4-5.5-1.5 0-2.4.6-3 1-.6-.4-1.5-1-3-1z"/>';
+    const TRATAMIENTOS = [
+      { n: "Control y limpieza", d: "Revisión completa, limpieza profesional y consejos para cuidar tus dientes en casa.", i: ico(DIENTE + '<path d="M18 2l.8 1.7L20.5 4.5l-1.7.8L18 7l-.8-1.7-1.7-.8 1.7-.8z"/>') },
+      { n: "Tapaduras", d: "Restauraciones con resina del color de tu diente para caries o piezas quebradas.", i: ico(DIENTE + '<circle cx="12" cy="9" r="2"/>') },
+      { n: "Endodoncia", d: "Tratamiento de conducto cuando el nervio está inflamado, para salvar la pieza.", i: ico(DIENTE + '<path d="M9 9v6M15 9v6"/>') },
+      { n: "Blanqueamiento", d: "Un tono más claro, de forma segura y con control de la sensibilidad.", i: ico('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>') },
+      { n: "Encías", d: "Limpieza profunda y control cuando la encía sangra o está inflamada.", i: ico('<path d="M3 10c3 3 6 4 9 4s6-1 9-4"/><path d="M6 13v4M10 14v5M14 14v5M18 13v4"/>') },
+      { n: "Urgencias", d: "Si tienes dolor, escríbenos y te damos el primer horario disponible.", i: ico('<path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="5"/>') }
+    ];
+    document.getElementById("lista-trat").innerHTML = TRATAMIENTOS.map(t => `
+      <article class="trat aparece"><span class="ico">${t.i}</span><h3>${t.n}</h3><p>${t.d}</p><button type="button" class="pedir" data-motivo="${t.n}">Pedir hora</button></article>`).join("");
+    document.getElementById("lista-trat").addEventListener("click", e => {
+      const b = e.target.closest("[data-motivo]"); if (!b) return;
+      ponerMotivo(b.dataset.motivo);
+      document.getElementById("reservar").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" });
+    });
+
+    // Apariciones al hacer scroll
+    const elementos = document.querySelectorAll(".aparece");
+    if (captura || !("IntersectionObserver" in window)) elementos.forEach(el => el.classList.add("visto"));
+    else {
+      const obs = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visto"); obs.unobserve(e.target); } }), { threshold: 0.12 });
+      elementos.forEach(el => obs.observe(el));
+    }
+
+    // Tarjetas que se inclinan
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      const lista = document.getElementById("lista-trat");
+      lista.addEventListener("pointermove", e => {
+        const it = e.target.closest(".trat"); if (!it) return;
+        const r = it.getBoundingClientRect();
+        it.style.setProperty("--rx", ((.5 - (e.clientY - r.top) / r.height) * 8).toFixed(2) + "deg");
+        it.style.setProperty("--ry", (((e.clientX - r.left) / r.width - .5) * 8).toFixed(2) + "deg");
+      });
+      lista.addEventListener("pointerout", e => {
+        const it = e.target.closest(".trat");
+        if (it && !it.contains(e.relatedTarget)) { it.style.removeProperty("--rx"); it.style.removeProperty("--ry"); }
+      });
+    }
+
+    // Contadores
+    const formatear = (v, dec) => dec ? v.toFixed(dec).replace(".", ",") : String(Math.round(v));
+    const contar = el => {
+      const fin = parseFloat(el.dataset.contar), dec = Number(el.dataset.dec || 0);
+      const inicio = performance.now(), dura = 1500;
+      const paso = ahora => {
+        const t = Math.min((ahora - inicio) / dura, 1);
+        el.textContent = formatear(fin * (1 - Math.pow(1 - t, 3)), dec);
+        if (t < 1) requestAnimationFrame(paso);
+      };
+      requestAnimationFrame(paso);
+    };
+    if ("IntersectionObserver" in window && !sinMovimiento) {
+      const obsNum = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { contar(e.target); obsNum.unobserve(e.target); } }), { threshold: .6 });
+      document.querySelectorAll("[data-contar]").forEach(n => { n.textContent = formatear(0, Number(n.dataset.dec || 0)); obsNum.observe(n); });
+    }
+
+    // ===== Horario y estado (hora de Chile) =====
+    const APERTURA = 8 * 60, CIERRE = 18 * 60;
+    const abreDia = d => d >= 1 && d <= 5;
+    const hhmm = m => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
+    function ahoraEnChile() {
+      const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/Santiago", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(new Date()).map(x => [x.type, x.value]));
+      return new Date(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute);
+    }
+    function pintarEstado() {
+      const ahora = ahoraEnChile(), dia = ahora.getDay(), min = ahora.getHours() * 60 + ahora.getMinutes();
+      const estado = document.getElementById("estado"), texto = estado.lastElementChild;
+      const abierto = abreDia(dia) && min >= APERTURA && min < CIERRE;
+      estado.classList.toggle("abierto", abierto);
+      if (abierto) texto.textContent = `Abierto ahora · hasta las 18:00`;
+      else if (abreDia(dia) && min < APERTURA) texto.textContent = `Cerrado · abrimos hoy a las 8:00`;
+      else {
+        let d = (dia + 1) % 7, k = 1;
+        while (!abreDia(d)) { d = (d + 1) % 7; k++; }
+        const nombre = k === 1 ? "mañana" : "el " + ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"][d];
+        texto.textContent = `Cerrado · abrimos ${nombre} a las 8:00`;
+      }
+      document.querySelectorAll("#tabla-horario tr").forEach(tr => tr.classList.toggle("hoy", tr.dataset.dias.split(",").includes(String(dia))));
+    }
+    pintarEstado();
+    setInterval(pintarEstado, 60000);
+
+    // ===== Reserva =====
+    const selMotivo = document.getElementById("motivo");
+    let motivoExtra = null;
+    function opcionesMotivo() {
+      const base = ["Primera consulta / evaluación", ...TRATAMIENTOS.map(t => t.n)];
+      if (motivoExtra) base.unshift(motivoExtra);
+      selMotivo.innerHTML = base.map(m => `<option>${m}</option>`).join("");
+    }
+    function ponerMotivo(m) {
+      if (![...selMotivo.options].some(o => o.value === m)) { motivoExtra = m; opcionesMotivo(); }
+      selMotivo.value = m;
+    }
+    opcionesMotivo();
+
+    const contDias = document.getElementById("dias"), contHoras = document.getElementById("horas"), tuHora = document.getElementById("tu-hora");
+    let diaSel = null, horaSel = null, primera = "si";
+    const DIAS = [];
+    {
+      const base = ahoraEnChile(); base.setHours(0, 0, 0, 0);
+      for (let k = 0; DIAS.length < 6 && k < 14; k++) {
+        const d = new Date(base); d.setDate(base.getDate() + k);
+        if (abreDia(d.getDay())) DIAS.push({ fecha: d, hoy: k === 0 });
+      }
+    }
+    function horasDe(dia) {
+      const lista = [];
+      let desde = APERTURA;
+      if (dia.hoy) { const a = ahoraEnChile(); desde = Math.max(APERTURA, Math.ceil((a.getHours() * 60 + a.getMinutes() + 60) / 30) * 30); }
+      for (let m = desde; m <= CIERRE - 30; m += 30) lista.push(m);
+      return lista;
+    }
+    function pintarDias() {
+      contDias.innerHTML = DIAS.map((d, i) => `<button type="button" data-i="${i}" aria-pressed="${i === diaSel}"><small>${d.hoy ? "hoy" : d.fecha.toLocaleDateString("es-CL", { weekday: "short" }).replace(".", "")}</small>${d.fecha.getDate()} ${d.fecha.toLocaleDateString("es-CL", { month: "short" }).replace(".", "")}</button>`).join("");
+    }
+    function pintarHoras() {
+      if (diaSel === null) { contHoras.innerHTML = `<p class="sin-horas">Primero elige un día.</p>`; return; }
+      const hs = horasDe(DIAS[diaSel]);
+      contHoras.innerHTML = hs.length ? hs.map((m, i) => `<button type="button" data-m="${m}" aria-pressed="${m === horaSel}" style="animation-delay:${sinMovimiento ? 0 : i * 15}ms">${hhmm(m)}</button>`).join("") : `<p class="sin-horas">Hoy ya no quedan horas. Elige otro día.</p>`;
+    }
+    function pintarResumen() {
+      if (diaSel === null || horaSel === null) { tuHora.textContent = "Elige día y hora"; return; }
+      const d = DIAS[diaSel].fecha.toLocaleDateString("es-CL", { weekday: "long", day: "numeric", month: "long" });
+      tuHora.textContent = `${d[0].toUpperCase() + d.slice(1)}, ${hhmm(horaSel)}`;
+    }
+    contDias.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; diaSel = +b.dataset.i; horaSel = null; pintarDias(); pintarHoras(); pintarResumen(); });
+    contHoras.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; horaSel = +b.dataset.m; contHoras.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); pintarResumen(); });
+    document.getElementById("primera").addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      primera = b.dataset.v;
+      document.querySelectorAll("#primera button").forEach(x => x.setAttribute("aria-pressed", x === b));
+    });
+    // En la captura dejamos un día y una hora elegidos
+    diaSel = DIAS.findIndex(d => horasDe(d).length) ; if (!captura) diaSel = null;
+    if (captura) horaSel = horasDe(DIAS[diaSel])[2];
+    pintarDias(); pintarHoras(); pintarResumen();
+
+    document.getElementById("form-reserva").addEventListener("submit", e => {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value.trim();
+      if (diaSel === null || horaSel === null) { mostrarToast("Elige un día y una hora 🦷"); return; }
+      if (!nombre) { mostrarToast("Escribe tu nombre para la reserva"); document.getElementById("nombre").focus(); return; }
+      const d = DIAS[diaSel].fecha.toLocaleDateString("es-CL", { weekday: "long", day: "numeric", month: "long" });
+      const mensaje = `Hola Clínica Blanco, soy ${nombre}. Quiero pedir hora para: ${selMotivo.value}. ¿Tienen disponible el ${d} a las ${hhmm(horaSel)}? ${primera === "si" ? "Es mi primera vez en la clínica." : "Ya soy paciente."} ¡Gracias!`;
+      // Versión final: window.open("https://wa.me/56944146271?text=" + encodeURIComponent(mensaje));
+      mostrarToast("Demo: se abriría WhatsApp con este mensaje → " + mensaje);
+    });
+
+    // ===== Movimiento con el mouse en la portada =====
+    const hero = document.getElementById("inicio");
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      hero.addEventListener("pointermove", e => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty("--mx", ((e.clientX - r.left) / r.width).toFixed(3));
+        hero.style.setProperty("--my", ((e.clientY - r.top) / r.height).toFixed(3));
+      });
+      hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", .5); hero.style.setProperty("--my", .5); });
+    }
+
+    // ===== Scroll: barra, portada y primera visita =====
+    const progreso = document.getElementById("progreso");
+    const listaPasos = document.querySelector(".visita-pasos");
+    const pasos = listaPasos.querySelectorAll("li");
+    const dial = document.getElementById("dial");
+    const etapa = document.getElementById("etapa");
+    const ETAPAS = ["Conversamos", "Revisamos", "Limpieza", "Plan claro"];
+    let pendiente = false, pasoActual = -1;
+    function alHacerScroll() {
+      pendiente = false;
+      const total = document.documentElement.scrollHeight - innerHeight;
+      progreso.style.setProperty("--p", total > 0 ? (scrollY / total).toFixed(4) : 0);
+      if (!sinMovimiento) hero.style.setProperty("--sc", Math.min(scrollY / hero.offsetHeight, 1).toFixed(3));
+      const r = listaPasos.getBoundingClientRect();
+      const avance = captura ? .75 : Math.max(0, Math.min(1, (innerHeight * .55 - r.top) / r.height));
+      dial.style.setProperty("--avance", avance.toFixed(3));
+      const i = Math.min(pasos.length - 1, Math.floor(avance * pasos.length));
+      if (i !== pasoActual) {
+        pasoActual = i;
+        pasos.forEach((p, k) => p.classList.toggle("activo", k === i));
+        etapa.textContent = ETAPAS[i];
+      }
+    }
+    addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(alHacerScroll); } }, { passive: true });
+    addEventListener("resize", alHacerScroll);
+    alHacerScroll();
+
+    // ===== Comparador =====
+    const modal = document.getElementById("modal-comparar");
+    const comparador = document.getElementById("comparador");
+    const deslizador = document.getElementById("deslizador");
+    const imgAntes = document.getElementById("img-antes");
+    const imgAhora = document.getElementById("img-ahora");
+    const btnCerrar = document.getElementById("cerrar-comparar");
+    const leyenda = document.getElementById("leyenda");
+    let ultimoFoco = null;
+    const ajustarLeyenda = () => { leyenda.style.width = comparador.offsetWidth + "px"; };
+    window.addEventListener("resize", ajustarLeyenda);
+    const moverDivisor = valor => comparador.style.setProperty("--pos", valor + "%");
+    deslizador.addEventListener("input", () => moverDivisor(deslizador.value));
+    function abrirComparar(e) {
+      ultimoFoco = e?.currentTarget || document.activeElement;
+      modal.classList.add("abierto");
+      document.body.classList.add("modal-abierto");
+      ajustarLeyenda();
+      const pasosDiv = [50, 30, 70, 50];
+      let i = 0;
+      const animados = comparador.querySelectorAll("img, .divisor");
+      animados.forEach(el => el.style.transition = "clip-path .35s ease, left .35s ease");
+      const intervalo = setInterval(() => {
+        if (i >= pasosDiv.length) { clearInterval(intervalo); animados.forEach(el => el.style.transition = ""); return; }
+        deslizador.value = pasosDiv[i]; moverDivisor(pasosDiv[i]); i++;
+      }, 380);
+      btnCerrar.focus();
+    }
+    function cerrarComparar() {
+      modal.classList.remove("abierto");
+      document.body.classList.remove("modal-abierto");
+      if (ultimoFoco) ultimoFoco.focus();
+    }
+    document.querySelectorAll("[data-abrir-comparar]").forEach(b => b.addEventListener("click", abrirComparar));
+    btnCerrar.addEventListener("click", cerrarComparar);
+    modal.addEventListener("click", e => { if (e.target === modal) cerrarComparar(); });
+    document.addEventListener("keydown", e => {
+      if (!modal.classList.contains("abierto")) return;
+      if (e.key === "Escape") cerrarComparar();
+      if (e.key === "Tab") {
+        const focos = modal.querySelectorAll("button, input");
+        const primero = focos[0], ultimo = focos[focos.length - 1];
+        if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+        else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+      }
+    });
+    document.querySelectorAll("[data-vista]").forEach(tab => tab.addEventListener("click", () => {
+      const vista = tab.dataset.vista;
+      document.querySelectorAll("[data-vista]").forEach(t => t.setAttribute("aria-selected", t === tab));
+      comparador.className = "comparador " + vista;
+      imgAntes.src = `comparar/antes-${vista}.png`;
+      imgAhora.src = `comparar/ahora-${vista}.png`;
+      ajustarLeyenda();
+    }));
+  </script>
+</body>
+</html>

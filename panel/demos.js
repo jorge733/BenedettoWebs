@@ -9,6 +9,23 @@ const SITIO = "https://www.benedettowebs.cl";
 // whatsapp: número sin "+" ni espacios (vacío si no lo tenemos todavía)
 const DEMOS = [
   {
+    id: "clinica-dental-blanco",
+    negocio: "Clínica Dental Blanco",
+    rubro: "Clínica dental",
+    direccion: "Av. Echeñique 5839, oficina 209, La Reina",
+    caso: "Sin web (solo un link a WhatsApp)",
+    whatsapp: "56944146271",
+    creada: "2026-11-11",
+    mensaje: `Hola, ¿cómo están? Soy Santiago Benedetto, vecino de La Reina, y hago páginas web para negocios del barrio con BenedettoWebs.
+
+Les escribo porque vi su ficha de Google: un 5,0 con 106 reseñas, y varios pacientes cuentan que les daba miedo ir al dentista hasta que las conocieron. Pero la clínica no tiene página web: Google muestra "Agregar sitio web" y el único link lleva a una pantalla genérica de WhatsApp.
+
+Así que les armé una propuesta con su información: pedir hora eligiendo día y hora (el mensaje les llega listo por WhatsApp), un mapa de la boca donde el paciente toca la pieza que le molesta y ve qué tratamiento le corresponde, su primera visita paso a paso, el equipo y el horario.
+
+En la demo hay un botón abajo que dice "Comparar". Ahí pueden ver lo que hay hoy y la página nueva lado a lado, en celular y en computador.`,
+    seguimiento: "Hola de nuevo. ¿Alcanzaron a ver la propuesta? Si quieren, paso por la clínica y se la muestro en 5 minutos. Las páginas parten en $30.000, pago único, y el dominio clinicadentalblanco.cl está disponible para dejarla funcionando ahí."
+  },
+  {
     id: "sal-y-azucar",
     negocio: "Pastelería Sal y Azúcar",
     rubro: "Pastelería",
