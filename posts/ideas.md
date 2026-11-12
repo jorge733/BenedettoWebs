@@ -14,6 +14,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] ehda.cl (`ehda`, adelanto "próximamente")
 - [x] Service Planet (serviceplanet.cl) (`serviceplanet`)
 - [x] Es de Tela (esdetela.cl) + reseña de Macarena (`esdetela`)
+- [x] Taller de la Kleta (tallerdelakleta.cl) (`kleta`, sin reseña todavía)
 - [ ] Antes / después de algún cliente
 - [x] Reseña de Luciano (Pellegrini) (incluida en `pellegrini`)
 - [x] Negra Mora terminada + reseña de Daniela (`negramora-final`)
