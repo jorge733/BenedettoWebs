@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Café Isla Verde · Almuerzos y café en Ñuñoa (demo)</title>
+  <meta name="description" content="Propuesta de sitio web para Café Isla Verde, almuerzos y café en Dr. Johow, Ñuñoa. Demo hecha por BenedettoWebs.">
+  <link rel="canonical" href="https://www.benedettowebs.cl/demos/cafe-isla-verde/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BenedettoWebs">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://www.benedettowebs.cl/demos/cafe-isla-verde/">
+  <meta property="og:title" content="Café Isla Verde: así se vería su página web">
+  <meta property="og:description" content="Propuesta de BenedettoWebs: arma tu almuerzo, reserva de mesa por WhatsApp, reseñas, horario y ubicación.">
+  <meta property="og:image" content="https://www.benedettowebs.cl/demos/cafe-isla-verde/og.png">
+  <meta property="og:image:secure_url" content="https://www.benedettowebs.cl/demos/cafe-isla-verde/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Demo de página web para Café Isla Verde, con un plato de pasta servido en una mesa de madera.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Café Isla Verde: así se vería su página web">
+  <meta name="twitter:description" content="Propuesta de BenedettoWebs para Café Isla Verde, Ñuñoa.">
+  <meta name="twitter:image" content="https://www.benedettowebs.cl/demos/cafe-isla-verde/og.png">
+  <meta name="theme-color" content="#1d3a2c">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%232f5d46'/%3E%3Cpath d='M32 50C18 44 16 28 26 16c10 8 16 20 6 34z' fill='%238cc265'/%3E%3Cpath d='M32 50c10-8 16-18 14-30-10 4-16 16-14 30z' fill='%23f7f4ec'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --papel: #f7f4ec;
+      --crema: #efe8d8;
+      --crema-2: #e4dac4;
+      --linea: #ddd3bd;
+      --verde: #2f5d46;
+      --verde-osc: #1d3a2c;
+      --verde-claro: #dcebdf;
+      --hoja: #5f9a5c;
+      --tomate: #c8553d;
+      --madera: #8a5a3b;
+      --sol: #e5b04a;
+      --texto: #23271f;
+      --suave: #686b5d;
+      --radio: 20px;
+      --mano: "Caveat", cursive;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Manrope", system-ui, sans-serif; color: var(--texto); background: var(--papel); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img, svg, canvas { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 400; line-height: 1.04; letter-spacing: -.015em; font-variation-settings: "opsz" 120; }
+    h1 em, h2 em { font-style: italic; color: var(--hoja); }
+    .contenedor { width: min(1160px, 100% - 32px); margin-inline: auto; }
+    section { padding: 100px 0; }
+    main { overflow-x: clip; }
+    body.modal-abierto { overflow: hidden; }
+
+    .aviso-demo { background: var(--verde-osc); color: #fff; font-size: .85rem; text-align: center; padding: 8px 16px; }
+    .aviso-demo a, .aviso-demo button { color: var(--sol); font-weight: 700; text-decoration: underline; background: none; border: 0; font: inherit; cursor: pointer; }
+
+    header { position: sticky; top: 0; z-index: 50; background: rgba(247, 244, 236, .88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linea); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 12px; color: var(--verde-osc); }
+    .logo-texto { font-family: "Fraunces", serif; font-size: 1.42rem; line-height: 1; }
+    .logo-texto small { display: block; font: 700 .62rem "Manrope", sans-serif; letter-spacing: .28em; color: var(--suave); margin-top: 5px; text-transform: uppercase; }
+    .menu { display: flex; gap: 28px; font-weight: 600; font-size: .95rem; }
+    .menu a { color: var(--suave); transition: color .2s; }
+    .menu a:hover { color: var(--verde); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font: 700 .97rem "Manrope", sans-serif; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, color .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-verde { background: var(--verde); color: #fff; box-shadow: 0 12px 28px rgba(47, 93, 70, .28); }
+    .btn-verde:hover { background: var(--verde-osc); }
+    .btn-borde { border-color: var(--linea); color: var(--verde-osc); background: #fff; }
+    .btn-borde:hover { border-color: var(--verde); }
+    .btn-tomate { background: var(--tomate); color: #fff; }
+    .hamburguesa { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+    .hamburguesa span { display: block; width: 24px; height: 2px; background: var(--verde-osc); border-radius: 2px; margin: 6px 0; }
+    .progreso { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: linear-gradient(90deg, var(--hoja), var(--sol), var(--tomate)); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+    .estado { display: inline-flex; align-items: center; gap: 9px; font-size: .86rem; font-weight: 600; color: var(--suave); background: #fff; border: 1px solid var(--linea); padding: 7px 14px 7px 12px; border-radius: 999px; }
+    .estado i { width: 9px; height: 9px; border-radius: 50%; background: #c4b8a8; }
+    .estado.abierto i { background: #3aa66b; animation: latir 1.8s infinite; }
+    @keyframes latir { 0% { box-shadow: 0 0 0 0 rgba(58, 166, 107, .55); } 70%, 100% { box-shadow: 0 0 0 9px rgba(58, 166, 107, 0); } }
+    .estrellas-44 { background: linear-gradient(90deg, var(--sol) 88%, #d6ccb8 88%); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 2px; }
+
+    /* Portada */
+    .hero { --mx: .5; --my: .5; --sc: 0; position: relative; overflow: hidden; padding: 0; background: radial-gradient(720px 580px at 74% 50%, #e6ecd9, transparent 70%), var(--papel); }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .5; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .36 0 0 0 0 .28 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; min-height: calc(100svh - 110px); padding: 50px 0 80px; }
+    .captura .hero-grid { min-height: calc(100svh - 74px); }
+    .hero-grid > * { min-width: 0; }
+    .hero .hero-texto.aparece.visto { transform: translateY(calc(var(--sc) * -70px)); opacity: calc(1 - var(--sc) * 1.5); }
+    .hero h1 { font-size: clamp(3.1rem, min(6.2vw, 9.6vh), 5.6rem); margin: 22px 0 20px; color: var(--verde-osc); }
+    .hero h1 em { display: block; }
+    .hero p.lead { color: var(--suave); font-size: 1.14rem; max-width: 500px; margin-bottom: 30px; }
+    .hero-botones { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-datos { display: flex; gap: 34px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--linea); flex-wrap: wrap; }
+    .hero-datos strong { display: block; font-family: "Fraunces", serif; font-weight: 400; font-size: 2.4rem; line-height: 1; color: var(--verde-osc); }
+    .hero-datos strong b { color: var(--sol); font-size: .7em; }
+    .hero-datos > div > span { color: var(--suave); font-size: .86rem; }
+
+    .escena { position: relative; height: min(640px, 78vh); }
+    .mesa-mov { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(calc(var(--sc) * 50px)); }
+    .mesa-hero { position: relative; width: min(560px, 96%); transform: perspective(1200px) rotateX(calc((var(--my) - .5) * -12deg)) rotateY(calc((var(--mx) - .5) * 14deg)); transition: transform .35s ease-out; }
+    .mesa-hero svg { overflow: visible; animation: entra-mesa 1.2s cubic-bezier(.2, .8, .2, 1) both; }
+    @keyframes entra-mesa { from { transform: translateY(40px) rotate(-12deg) scale(.94); opacity: 0; } }
+    .mesa-hero .gira { transform-box: view-box; transform-origin: 350px 335px; transform: rotate(calc(var(--sc) * 40deg)); }
+    .vapor path { animation: vapor 4.5s ease-in-out infinite; transform-box: fill-box; }
+    .vapor path:nth-child(2) { animation-delay: -1.5s; }
+    .vapor path:nth-child(3) { animation-delay: -3s; }
+    @keyframes vapor { 0% { transform: translateY(20px); opacity: 0; } 30% { opacity: .85; } 100% { transform: translateY(-60px); opacity: 0; } }
+    .objeto { position: absolute; transform: translate(calc((var(--mx) - .5) * var(--prof) * 1px + var(--sc) * var(--dx, 0) * 1px), calc((var(--my) - .5) * var(--prof) * 1px + var(--sc) * var(--prof) * -3px)); transition: transform .3s ease-out; z-index: 2; pointer-events: none; }
+    .objeto svg { animation: mecer 8s ease-in-out infinite; filter: drop-shadow(0 18px 16px rgba(29, 58, 44, .25)); transform-origin: 50% 100%; }
+    .objeto.h1 { --prof: 44; --dx: -120; top: -4%; left: -8%; width: 210px; }
+    .objeto.h1 svg { rotate: 140deg; }
+    .objeto.h2 { --prof: -36; --dx: 120; bottom: -2%; right: -6%; width: 230px; }
+    .objeto.h2 svg { rotate: -30deg; animation-delay: -4s; }
+    .objeto.h3 { --prof: 60; --dx: 60; top: 8%; right: 4%; width: 74px; }
+    .objeto.h3 svg { animation-delay: -2s; }
+    @keyframes mecer { 50% { transform: translateY(-10px) rotate(4deg); } }
+    .ficha { position: absolute; z-index: 3; background: rgba(255, 255, 255, .93); backdrop-filter: blur(8px); border: 1px solid var(--linea); border-radius: 18px; padding: 14px 17px; font-size: .86rem; color: var(--suave); box-shadow: 0 18px 40px rgba(29, 58, 44, .14); animation: flotar-ficha 6s ease-in-out infinite; max-width: 250px; }
+    .ficha strong { display: block; color: var(--verde-osc); font-size: 1rem; }
+    .ficha q { display: block; font-family: "Fraunces", serif; font-style: italic; color: var(--verde-osc); font-size: 1.1rem; line-height: 1.3; margin-bottom: 6px; }
+    .ficha.f1 { top: 4%; left: 0; }
+    .ficha.f2 { bottom: 4%; right: 2%; animation-delay: -3s; }
+    @keyframes flotar-ficha { 50% { transform: translateY(-9px); } }
+    .scroll-abajo { position: absolute; left: 50%; bottom: 18px; z-index: 2; transform: translateX(-50%); color: var(--suave); font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; display: grid; justify-items: center; gap: 4px; opacity: calc(1 - var(--sc) * 4); }
+    .scroll-abajo::after { content: ""; width: 1.5px; height: 28px; background: linear-gradient(var(--verde), transparent); animation: bajar 1.6s ease-in-out infinite; }
+    @keyframes bajar { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    .cinta { background: var(--verde); color: #fff; overflow: hidden; padding: 14px 0; }
+    .cinta-pista { display: flex; width: max-content; animation: correr 36s linear infinite; }
+    .cinta span { font-family: "Fraunces", serif; font-style: italic; font-size: 1.3rem; padding: 0 20px; white-space: nowrap; display: inline-flex; align-items: center; gap: 40px; }
+    .cinta span::after { content: "❦"; font-style: normal; font-size: 1rem; color: var(--sol); }
+    @keyframes correr { to { transform: translateX(-50%); } }
+
+    .sobre { display: inline-flex; align-items: center; gap: 10px; color: var(--tomate); font-family: var(--mano); font-weight: 700; font-size: 1.5rem; line-height: 1; margin-bottom: 12px; }
+    .titulo-seccion { max-width: 680px; margin-bottom: 46px; }
+    .titulo-seccion h2 { font-size: clamp(2.4rem, 5vw, 3.7rem); margin-bottom: 14px; color: var(--verde-osc); }
+    .titulo-seccion p { color: var(--suave); font-size: 1.07rem; }
+    .oscuro { background: var(--verde-osc); color: #fff; }
+    .oscuro .titulo-seccion h2 { color: #fff; }
+    .oscuro .titulo-seccion p { color: #b9cfc2; }
+    .oscuro .sobre { color: var(--sol); }
+    .oscuro h2 em { color: #9fd08f; }
+
+    /* Arma tu almuerzo */
+    .arma-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 50px; align-items: center; }
+    .arma-grid > * { min-width: 0; }
+    .bandeja { position: relative; max-width: 560px; width: 100%; margin-inline: auto; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 50% 50%, #ead9bf 0 60%, #e0cba9 62%, transparent 70%); }
+    .bandeja::before { content: ""; position: absolute; inset: 4%; border-radius: 50%; background: repeating-linear-gradient(7deg, transparent 0 9px, rgba(90, 56, 32, .13) 9px 11px, transparent 11px 23px, rgba(214, 167, 120, .14) 23px 24px), radial-gradient(circle at 42% 38%, #bd8757, #97633a 65%, #6e4526); box-shadow: 0 30px 50px rgba(59, 38, 23, .28), inset 0 0 0 10px rgba(0,0,0,.08); }
+    .bandeja svg { position: relative; width: 100%; height: 100%; overflow: visible; }
+    .pz { transform-box: fill-box; transform-origin: center; }
+    .sirviendo .pz { animation: caer .55s cubic-bezier(.2, .9, .3, 1.2) both; animation-delay: calc(var(--i, 0) * 14ms); }
+    @keyframes caer { from { transform: translateY(-34px) scale(1.25); opacity: 0; } }
+    .taza-lado { transition: opacity .4s, transform .5s cubic-bezier(.2, .9, .3, 1.2); transform-box: fill-box; transform-origin: center; }
+    .taza-lado.fuera { opacity: 0; transform: translate(40px, -30px) scale(.8); }
+    .opciones h3 { font-family: "Manrope", sans-serif; font-weight: 700; font-size: 1rem; color: var(--verde-osc); margin-bottom: 12px; }
+    .platos-sel { display: grid; gap: 10px; margin-bottom: 24px; }
+    .platos-sel button { display: flex; align-items: center; gap: 14px; text-align: left; border: 1.5px solid var(--linea); background: #fff; color: var(--texto); font: 600 .95rem "Manrope", sans-serif; padding: 10px 16px 10px 10px; border-radius: 18px; cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
+    .platos-sel button:hover { border-color: var(--hoja); transform: translateX(4px); }
+    .platos-sel button[aria-pressed="true"] { background: var(--verde-claro); border-color: var(--verde); }
+    .platos-sel svg { width: 52px; height: 52px; flex: none; }
+    .platos-sel b { display: block; font-size: 1.04rem; color: var(--verde-osc); }
+    .platos-sel small { color: var(--suave); font-size: .84rem; font-weight: 500; }
+    .interruptor { display: flex; align-items: center; gap: 12px; font-weight: 600; cursor: pointer; margin-bottom: 26px; user-select: none; }
+    .interruptor input { position: absolute; opacity: 0; pointer-events: none; }
+    .interruptor .riel { width: 48px; height: 28px; border-radius: 999px; background: var(--crema-2); position: relative; transition: background .2s; flex: none; }
+    .interruptor .riel::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.2); transition: transform .2s; }
+    .interruptor input:checked + .riel { background: var(--verde); }
+    .interruptor input:checked + .riel::after { transform: translateX(20px); }
+    .interruptor input:focus-visible + .riel { outline: 3px solid var(--sol); outline-offset: 2px; }
+    .acciones { display: flex; gap: 12px; flex-wrap: wrap; }
+    .nota-chica { font-size: .84rem; color: var(--suave); margin-top: 18px; }
+
+    /* Lo que destacan */
+    .destacan { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .tarjeta { background: #fff; border-radius: var(--radio); padding: 26px; border: 1.5px solid transparent; transition: border-color .2s, box-shadow .2s, transform .2s; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(var(--ty, 0px)); }
+    .tarjeta:hover { border-color: var(--hoja); --ty: -4px; box-shadow: 0 22px 40px rgba(29, 58, 44, .08); }
+    .tarjeta .ilus { height: 120px; border-radius: 14px; background: var(--crema); display: grid; place-items: center; margin-bottom: 18px; overflow: hidden; }
+    .tarjeta .ilus svg { height: 104px; }
+    .tarjeta .etq { font-family: var(--mano); color: var(--tomate); font-size: 1.25rem; line-height: 1; }
+    .tarjeta h3 { font-size: 1.6rem; color: var(--verde-osc); margin: 4px 0 6px; }
+    .tarjeta p { color: var(--suave); font-size: .95rem; }
+    .tarjeta .ir { margin-top: 14px; border: 0; background: none; font: 700 .93rem "Manrope", sans-serif; color: var(--verde); cursor: pointer; display: inline-flex; gap: 6px; padding: 0; }
+    .tarjeta .ir::after { content: "→"; transition: transform .2s; }
+    .tarjeta .ir:hover::after { transform: translateX(4px); }
+
+    /* Un día en Isla Verde */
+    .dia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+    .dia-grid > * { min-width: 0; }
+    .dia-visual { position: sticky; top: 100px; height: min(580px, 78vh); display: grid; place-items: center; }
+    .ventana { width: min(420px, 100%); position: relative; }
+    .ventana svg { overflow: visible; }
+    .reloj { position: absolute; left: 50%; bottom: -6px; translate: -50% 0; display: flex; align-items: baseline; gap: 10px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); padding: 6px 18px; border-radius: 999px; white-space: nowrap; }
+    .reloj strong { font-family: "Fraunces", serif; font-weight: 400; font-size: 1.9rem; color: #fff; font-variant-numeric: tabular-nums; line-height: 1.1; }
+    .reloj span { font-family: var(--mano); font-size: 1.4rem; color: var(--sol); }
+    .dia-pasos { list-style: none; }
+    .dia-pasos li { min-height: 58vh; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid rgba(255,255,255,.12); padding-left: 32px; opacity: .3; transition: opacity .45s, border-color .45s; }
+    .dia-pasos li.activo { opacity: 1; border-color: var(--sol); }
+    .dia-pasos .num { font-family: var(--mano); color: var(--sol); font-size: 1.5rem; margin-bottom: 4px; }
+    .dia-pasos h3 { font-size: clamp(2.1rem, 3.6vw, 2.9rem); margin-bottom: 12px; }
+    .dia-pasos p { color: #b9cfc2; font-size: 1.07rem; max-width: 440px; }
+
+    /* Reseñas */
+    .resenas { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center; background: var(--crema); border-radius: 28px; padding: 44px; }
+    .resenas > * { min-width: 0; }
+    .nota strong { font-family: "Fraunces", serif; font-weight: 400; font-size: 4.6rem; line-height: 1; display: block; color: var(--verde-osc); }
+    .nota .estrellas-44 { font-size: 1.2rem; letter-spacing: 4px; }
+    .nota > span { color: var(--suave); font-size: .88rem; display: block; margin-bottom: 14px; }
+    .barras { display: grid; gap: 6px; }
+    .barra { display: grid; grid-template-columns: 14px 1fr 34px; gap: 10px; align-items: center; font-size: .82rem; color: var(--suave); font-weight: 700; }
+    .barra i { height: 8px; border-radius: 99px; background: #fff; overflow: hidden; display: block; }
+    .barra i::after { content: ""; display: block; height: 100%; width: 0; background: var(--sol); border-radius: 99px; transition: width 1.2s cubic-bezier(.2, .8, .2, 1); }
+    .visto .barra i::after { width: var(--w); }
+    .barra:nth-child(2) i::after { transition-delay: .1s; } .barra:nth-child(3) i::after { transition-delay: .2s; } .barra:nth-child(4) i::after { transition-delay: .3s; } .barra:nth-child(5) i::after { transition-delay: .4s; }
+    .palabras { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    .palabras span { background: #fff; border-radius: 999px; padding: 5px 12px; font-size: .8rem; font-weight: 700; color: var(--verde-osc); }
+    .palabras span b { color: var(--tomate); }
+    .citas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .cita { background: #fff; border-radius: 18px; padding: 22px; transform: rotate(var(--r, 0deg)); }
+    .cita:nth-child(1) { --r: -1deg; } .cita:nth-child(2) { --r: .8deg; } .cita:nth-child(3) { --r: -.6deg; }
+    .cita q { font-family: "Fraunces", serif; font-size: 1.18rem; line-height: 1.38; display: block; margin-bottom: 10px; color: var(--verde-osc); }
+    .cita span { color: var(--suave); font-size: .84rem; }
+
+    /* Reserva */
+    .reserva-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; align-items: start; }
+    .reserva-grid > * { min-width: 0; }
+    .reserva { background: #fff; border-radius: 28px; padding: 32px; border: 1px solid var(--linea); box-shadow: 0 30px 60px rgba(29, 58, 44, .06); }
+    .reserva fieldset { border: 0; min-width: 0; margin-bottom: 22px; }
+    .reserva legend, .reserva label.etq-campo { display: block; font-weight: 700; font-size: .95rem; color: var(--verde-osc); margin-bottom: 10px; }
+    .reserva input[type=text] { display: block; width: 100%; background: var(--papel); color: var(--texto); border: 1.5px solid var(--linea); border-radius: 14px; padding: 13px 14px; font: 600 1rem "Manrope", sans-serif; }
+    .reserva input[type=text]:focus { outline: none; border-color: var(--verde); }
+    .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+    .chips button { flex: none; border: 1.5px solid var(--linea); background: #fff; color: var(--texto); border-radius: 12px; padding: 10px 14px; font: 700 .9rem "Manrope", sans-serif; cursor: pointer; line-height: 1.25; }
+    .chips button small { display: block; font-weight: 600; font-size: .74rem; color: var(--suave); }
+    .chips button[aria-pressed="true"] { background: var(--verde); border-color: var(--verde); color: #fff; }
+    .chips button[aria-pressed="true"] small { color: #cfe3d6; }
+    .personas { display: flex; align-items: center; gap: 16px; }
+    .personas button { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--crema); color: var(--verde-osc); font: 800 1.2rem "Manrope", sans-serif; cursor: pointer; }
+    .personas button:hover { background: var(--crema-2); }
+    .personas output { font-family: "Fraunces", serif; font-size: 2rem; color: var(--verde-osc); min-width: 34px; text-align: center; }
+    .sillas { display: flex; gap: 4px; flex-wrap: wrap; }
+    .sillas i { width: 14px; height: 14px; border-radius: 4px 4px 2px 2px; background: var(--hoja); animation: silla .3s ease both; }
+    @keyframes silla { from { transform: scale(0); } }
+    .plato-elegido { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--verde-claro); border-radius: 14px; padding: 10px 14px; font-size: .92rem; color: var(--verde-osc); font-weight: 600; }
+    .plato-elegido button { border: 0; background: none; color: var(--verde); font: 700 .85rem "Manrope", sans-serif; cursor: pointer; text-decoration: underline; }
+    .sin-horas { color: var(--suave); font-size: .92rem; }
+    .resumen { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px dashed var(--linea); padding-top: 20px; }
+    .resumen .tu-reserva { color: var(--suave); font-size: .9rem; min-width: 0; flex: 1 1 200px; }
+    .resumen .tu-reserva strong { display: block; color: var(--verde-osc); font-family: "Fraunces", serif; font-weight: 400; font-size: 1.28rem; line-height: 1.25; }
+    .lista-check { list-style: none; display: grid; gap: 12px; margin: 18px 0 22px; }
+    .lista-check li { display: flex; gap: 12px; color: var(--suave); }
+    .lista-check li::before { content: "✓"; flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--verde-claro); color: var(--verde); display: grid; place-items: center; font-weight: 800; font-size: .85rem; }
+    .lista-check b { color: var(--verde-osc); }
+
+    /* Ubicación */
+    .ubicacion-grid { display: grid; grid-template-columns: .9fr 1.1fr; border-radius: 28px; overflow: hidden; background: #fff; border: 1px solid var(--linea); }
+    .ubicacion-grid > * { min-width: 0; }
+    .ubicacion-texto { padding: 44px 40px; }
+    .ubicacion-texto h2 { font-size: clamp(2.2rem, 4.2vw, 3rem); margin-bottom: 22px; color: var(--verde-osc); }
+    .linea { display: flex; gap: 14px; margin-bottom: 18px; }
+    .linea .ico { flex: none; width: 42px; height: 42px; border-radius: 12px; background: var(--verde-claro); display: grid; place-items: center; }
+    .linea b { display: block; color: var(--verde-osc); }
+    .linea span, .linea a { color: var(--suave); }
+    .linea a:hover { color: var(--verde); text-decoration: underline; }
+    .horario { width: 100%; border-collapse: collapse; font-size: .93rem; margin-top: 4px; }
+    .horario td { padding: 5px 0; border-bottom: 1px solid var(--crema); color: var(--suave); }
+    .horario td:last-child { text-align: right; color: var(--verde-osc); font-weight: 700; }
+    .horario tr.hoy td { color: var(--verde); font-weight: 800; }
+    .ubicacion-grid iframe { width: 100%; height: 100%; min-height: 460px; border: 0; }
+
+    .faq { max-width: 820px; margin-inline: auto; display: grid; gap: 12px; }
+    .faq details { background: #fff; border-radius: 16px; padding: 20px 24px; border: 1px solid var(--linea); }
+    .faq summary { cursor: pointer; font-weight: 700; font-size: 1.04rem; color: var(--verde-osc); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--verde); transition: transform .2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin-top: 12px; color: var(--suave); }
+
+    footer { background: var(--verde-osc); color: #b9cfc2; padding: 60px 0 30px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    footer .logo { color: #fff; }
+    footer .logo-texto small { color: #b9cfc2; }
+    footer h4 { color: #fff; margin-bottom: 10px; font-size: .95rem; }
+    footer ul { list-style: none; display: grid; gap: 6px; font-size: .92rem; }
+    footer a:hover { color: #fff; }
+    .creditos { padding-top: 22px; font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .creditos a { color: var(--sol); font-weight: 700; }
+
+    .wsp-flotante { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 10px 25px rgba(37, 211, 102, .45); z-index: 60; transition: transform .2s; }
+    .wsp-flotante:hover { transform: scale(1.08); }
+
+    /* Comparar */
+    .btn-comparar { position: fixed; left: 50%; translate: -50% 0; bottom: 20px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--verde-osc); border: 0; border-radius: 999px; padding: 12px 18px 12px 12px; font: 700 .92rem "Manrope", sans-serif; cursor: pointer; box-shadow: 0 12px 28px rgba(29, 58, 44, .25); transition: transform .2s; }
+    .btn-comparar:hover { transform: translateY(-3px); }
+    .btn-comparar .ico { width: 34px; height: 34px; border-radius: 50%; background: var(--verde); display: grid; place-items: center; }
+    .btn-comparar .pulso { position: absolute; inset: 0; border-radius: 999px; animation: pulso 2.4s infinite; pointer-events: none; }
+    @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(47, 93, 70, .55); } 70%, 100% { box-shadow: 0 0 0 14px rgba(47, 93, 70, 0); } }
+    .modal { position: fixed; inset: 0; z-index: 100; background: rgba(20, 30, 24, .86); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal.abierto { display: flex; animation: aparecer .25s ease; }
+    @keyframes aparecer { from { opacity: 0; } }
+    .modal-caja { background: #fff; border-radius: 22px; width: min(1100px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: 26px; position: relative; }
+    .modal-cabeza { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; padding-right: 44px; }
+    .modal-cabeza h2 { font-size: 2rem; color: var(--verde-osc); }
+    .cerrar { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--crema); cursor: pointer; display: grid; place-items: center; }
+    .pestanas { display: inline-flex; background: var(--crema); border-radius: 999px; padding: 4px; }
+    .pestanas button { border: 0; background: transparent; font: 700 .9rem "Manrope", sans-serif; color: var(--texto); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+    .pestanas button[aria-selected="true"] { background: var(--verde); color: #fff; }
+    .leyenda { display: flex; justify-content: space-between; margin: 0 auto 10px; font: 800 .78rem "Manrope", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    .leyenda span { padding: 6px 12px; border-radius: 999px; }
+    .leyenda .l-antes { background: var(--crema); color: var(--texto); }
+    .leyenda .l-ahora { background: var(--verde); color: #fff; }
+    .comparador { position: relative; margin-inline: auto; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); user-select: none; touch-action: none; background: #ddd; }
+    .comparador.escritorio { width: 100%; aspect-ratio: 1366 / 850; }
+    .comparador.movil { width: min(340px, 100%, calc((100vh - 260px) * .462)); min-width: 220px; aspect-ratio: 390 / 844; border-radius: 30px; border: 8px solid var(--verde-osc); }
+    .comparador img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; }
+    .comparador .antes { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+    .divisor { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,.4); pointer-events: none; }
+    .divisor span { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+    .comparador input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .comparador:focus-within .divisor span { outline: 3px solid var(--verde); }
+    .ayuda-comparar { text-align: center; color: var(--suave); font-size: .88rem; margin: 12px 0 20px; }
+    .mejoras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .mejora { border: 1px solid var(--crema); border-radius: 14px; padding: 16px; font-size: .9rem; }
+    .mejora b { display: block; font-size: .98rem; margin-bottom: 4px; color: var(--verde-osc); }
+    .mejora .antes-txt { color: #a5384a; display: block; font-size: .85rem; }
+    .mejora .ahora-txt { color: #1f7a52; display: block; font-size: .85rem; font-weight: 700; }
+
+    .toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 200%); opacity: 0; background: var(--verde-osc); color: #fff; padding: 14px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.3); font-size: .92rem; z-index: 120; transition: transform .35s ease, opacity .35s; max-width: calc(100% - 32px); text-align: center; pointer-events: none; }
+    .toast.visible { transform: translate(-50%, 0); opacity: 1; }
+
+    .aparece { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .aparece.visto { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .aparece { opacity: 1; transform: none; transition: none; }
+      .objeto svg, .ficha, .cinta-pista, .pulso, .estado i, .mesa-hero svg, .vapor path, .scroll-abajo::after, .sirviendo .pz, .sillas i { animation: none !important; }
+      .barra i::after { transition: none; }
+      html { scroll-behavior: auto; }
+    }
+    .captura .aviso-demo, .captura .btn-comparar { display: none; }
+    .captura .objeto svg, .captura .ficha, .captura .cinta-pista, .captura .mesa-hero svg, .captura .sirviendo .pz { animation: none; }
+    .captura .vapor path { animation: none; opacity: .6; }
+    .captura .barra i::after { transition: none; }
+
+    @media (max-width: 1000px) {
+      .hero-grid, .arma-grid, .dia-grid, .reserva-grid, .ubicacion-grid { grid-template-columns: 1fr; }
+      .hero-grid { min-height: 0; padding: 46px 0 40px; gap: 0; }
+      .escena { height: 480px; }
+      .scroll-abajo { display: none; }
+      .destacan { grid-template-columns: 1fr 1fr; }
+      .dia-grid { gap: 0; }
+      .dia-visual { top: 74px; height: 330px; z-index: 2; background: linear-gradient(var(--verde-osc) 88%, transparent); margin-inline: -16px; }
+      .ventana { width: 250px; }
+      .reloj strong { font-size: 1.4rem; }
+      .reloj span { font-size: 1.15rem; }
+      .dia-pasos li { min-height: 46vh; padding-left: 22px; }
+      .resenas { grid-template-columns: 1fr; }
+      .mejoras { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 820px) {
+      .menu, .nav > .btn { display: none; }
+      .hamburguesa { display: block; }
+      .menu.abierto { display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; right: 0; background: var(--papel); padding: 20px 16px 26px; gap: 18px; border-bottom: 1px solid var(--linea); }
+      .citas { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .hero h1 { font-size: clamp(2.8rem, 13.4vw, 3.8rem); margin: 18px 0; }
+      .hero-botones .btn { flex: 1 1 100%; }
+      .hero-datos { gap: 14px; flex-wrap: nowrap; justify-content: space-between; }
+      .hero-datos strong { font-size: 2rem; }
+      .hero-datos > div > span { font-size: .78rem; }
+      .escena { height: 380px; margin-top: 14px; }
+      .mesa-hero { width: 94%; }
+      .objeto.h1 { width: 130px; left: -12%; }
+      .objeto.h2 { width: 140px; right: -12%; }
+      .objeto.h3 { width: 50px; }
+      .ficha { padding: 10px 12px; font-size: .76rem; max-width: 178px; }
+      .ficha q { font-size: .92rem; }
+      .ficha strong { font-size: .9rem; }
+      .ficha.f1 { top: 0; left: 0; }
+      .ficha.f2 { bottom: 0; right: 0; }
+      .destacan, .mejoras { grid-template-columns: 1fr; }
+      .resenas { padding: 32px 18px; }
+      .reserva { padding: 22px 16px; }
+      .ubicacion-texto { padding: 32px 22px; }
+      .ubicacion-grid iframe { min-height: 300px; }
+      .btn-comparar { left: 16px; translate: none; bottom: 16px; padding-right: 14px; }
+      .btn-comparar .txt-largo { display: none; }
+      .wsp-flotante { right: 16px; bottom: 16px; }
+      .modal { padding: 0; }
+      .modal-caja { border-radius: 0; max-height: 100vh; height: 100%; padding: 20px 16px; }
+      .comparador.movil { width: min(300px, 100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aviso-demo">Propuesta de diseño hecha por <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a> con los datos de su ficha de Google. <button type="button" data-abrir-comparar>Comparar con lo que hay hoy</button></div>
+
+  <header>
+    <div class="contenedor nav">
+      <a href="#inicio" class="logo" aria-label="Café Isla Verde, inicio">
+        <svg width="46" height="46" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#2f5d46"/><path d="M8 44c8-4 16-4 24 0s16 4 24 0" stroke="#8cc265" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".6"/><path d="M32 46C19 41 17 27 26 15c9 7 15 18 6 31z" fill="#8cc265"/><path d="M32 46c9-7 15-17 13-28-9 4-15 15-13 28z" fill="#f7f4ec"/><path d="M32 46c-1-9-3-17-6-26" stroke="#2f5d46" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+        <span class="logo-texto">Café Isla Verde<small>Almuerzos y café · Ñuñoa</small></span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="#arma">Arma tu almuerzo</a>
+        <a href="#dia">Tu día</a>
+        <a href="#resenas">Reseñas</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <a href="#reserva" class="btn btn-verde">Reservar mesa</a>
+      <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="progreso" id="progreso"></div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div class="hero-texto aparece">
+          <span class="estado" id="estado"><i></i><span>Lunes a viernes</span></span>
+          <h1>Una isla verde <em>para almorzar con calma.</em></h1>
+          <p class="lead">Café y almuerzos en Dr. Johow, Ñuñoa. Pastas, opciones vegetarianas y un ambiente tranquilo para conversar, de lunes a viernes desde las 12:30.</p>
+          <div class="hero-botones">
+            <a href="#reserva" class="btn btn-verde">Reservar mesa</a>
+            <a href="#arma" class="btn btn-borde">Arma tu almuerzo</a>
+          </div>
+          <div class="hero-datos">
+            <div><strong><span data-contar="4.4" data-dec="1">4,4</span><b>★</b></strong><span>en Google</span></div>
+            <div><strong data-contar="223">223</strong><span>reseñas</span></div>
+            <div><strong>12:30</strong><span>abrimos L–V</span></div>
+          </div>
+        </div>
+        <div class="escena aparece" aria-hidden="true">
+          <span class="objeto h1" id="hoja-1"></span>
+          <div class="mesa-mov"><div class="mesa-hero" id="mesa-hero"></div></div>
+          <span class="objeto h2" id="hoja-2"></span>
+          <span class="objeto h3"><svg viewBox="0 0 60 70"><defs><linearGradient id="alb-o" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6db35a"/><stop offset="1" stop-color="#2f6d2f"/></linearGradient></defs><path d="M30 66C8 54 4 26 30 4c26 22 22 50 0 62z" fill="url(#alb-o)"/><path d="M30 64V10M30 26l-10-8M30 38l12-9M30 50l-12-8" stroke="#a7d690" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".8"/></svg></span>
+          <div class="ficha f1"><q>Agradable y calmado para disfrutar de una buena comida.</q>Clienta, en Google</div>
+          <div class="ficha f2"><span class="estrellas-44">★★★★★</span><strong>4,4 en Google</strong>223 reseñas</div>
+        </div>
+      </div>
+      <span class="scroll-abajo" aria-hidden="true">Baja</span>
+    </section>
+
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta-pista">
+        <span>Almuerzos</span><span>Pastas</span><span>Opciones vegetarianas</span><span>Un lugar para conversar</span><span>Dr. Johow 889-A, Ñuñoa</span>
+        <span>Almuerzos</span><span>Pastas</span><span>Opciones vegetarianas</span><span>Un lugar para conversar</span><span>Dr. Johow 889-A, Ñuñoa</span>
+      </div>
+    </div>
+
+    <section id="arma">
+      <div class="contenedor arma-grid">
+        <div class="bandeja aparece" id="bandeja"></div>
+        <div class="opciones aparece">
+          <div class="titulo-seccion" style="margin-bottom:28px">
+            <span class="sobre">¿Qué se te antoja hoy?</span>
+            <h2>Arma tu <em>almuerzo</em></h2>
+            <p>Elige el plato y míralo llegar a la mesa. Son los que más nombran sus clientes en Google. Si te convence, reserva con ese plato.</p>
+          </div>
+          <h3>El plato</h3>
+          <div class="platos-sel" id="platos-sel">
+            <button type="button" data-plato="pasta" aria-pressed="true"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="#fff" stroke="#e5dccb" stroke-width="2"/><g fill="none" stroke="#ecc873" stroke-width="3.4" stroke-linecap="round"><path d="M12 28a14 14 0 0 1 26-6"/><path d="M14 20a13 13 0 0 1 24 10"/><path d="M38 30a13 13 0 0 1-24 0"/><path d="M18 36a11 11 0 0 1 18-16"/></g><circle cx="26" cy="26" r="7" fill="#c8553d"/><path d="M24 22c3-3 6-2 7 0-3 1-5 1-7 0z" fill="#3f8a3c"/></svg><span><b>Pasta</b><small>Se nombra en 9 reseñas</small></span></button>
+            <button type="button" data-plato="pollo" aria-pressed="false"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="#fff" stroke="#e5dccb" stroke-width="2"/><ellipse cx="30" cy="29" rx="13" ry="9" transform="rotate(-20 30 29)" fill="#cf8d48"/><path d="M22 26l8 9M27 22l9 10" stroke="#6b3a17" stroke-width="2.2" stroke-linecap="round" opacity=".7"/><circle cx="15" cy="18" r="6" fill="#6fae4f"/><circle cx="20" cy="14" r="4" fill="#d9442f"/></svg><span><b>Pollo</b><small>"Un sabor exquisito", dice una clienta</small></span></button>
+            <button type="button" data-plato="vegetariano" aria-pressed="false"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="25" fill="#fff" stroke="#e5dccb" stroke-width="2"/><ellipse cx="20" cy="18" rx="8" ry="4" transform="rotate(-30 20 18)" fill="#9cc25b"/><circle cx="34" cy="20" r="5" fill="#d9442f"/><rect x="26" y="30" width="14" height="4" rx="2" fill="#e8843a" transform="rotate(20 33 32)"/><circle cx="18" cy="32" r="5" fill="#e7efc8" stroke="#3f7a35" stroke-width="2"/><circle cx="25" cy="38" r="3" fill="#dcbf7f"/></svg><span><b>Vegetariano</b><small>Se nombra en 5 reseñas</small></span></button>
+          </div>
+          <label class="interruptor"><input type="checkbox" id="con-cafe" checked><span class="riel"></span>Y un café para terminar</label>
+          <div class="acciones">
+            <button type="button" class="btn btn-verde" id="reservar-plato">Reservar con este almuerzo</button>
+          </div>
+          <p class="nota-chica">Los dibujos son ilustrativos. El menú, las fotos reales de cada plato y los precios van en la versión final.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="destacan" style="padding-top:0">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">De sus 223 reseñas</span>
+          <h2>Lo que más <em>destacan</em></h2>
+          <p>Las palabras que más se repiten en las reseñas de Google. La carta completa, con fotos y precios, va en la versión final.</p>
+        </div>
+        <div class="destacan" id="lista-destacan"></div>
+      </div>
+    </section>
+
+    <section class="oscuro" id="dia">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">De 12:30 a 19:30</span>
+          <h2>Un día en <em>Isla Verde</em></h2>
+          <p>Baja y mira pasar la tarde por la ventana.</p>
+        </div>
+        <div class="dia-grid">
+          <div class="dia-visual" aria-hidden="true">
+            <div class="ventana" id="ventana"></div>
+          </div>
+          <ol class="dia-pasos">
+            <li class="activo"><span class="num">12:30</span><h3>Abrimos</h3><p>Se prende la cocina y se abren las puertas, de lunes a viernes.</p></li>
+            <li><span class="num">13:30</span><h3>La hora del almuerzo</h3><p>El menú, las pastas y las opciones vegetarianas. Si vienen en grupo, mejor reservar la mesa.</p></li>
+            <li><span class="num">15:30</span><h3>Sobremesa</h3><p>Sin apuro. Sus clientes dicen que es un lugar agradable y calmado, bueno para conversar.</p></li>
+            <li><span class="num">17:30</span><h3>Un café de tarde</h3><p>Para cerrar el día o para una reunión tranquila. La carta de café y lo dulce, en la versión final.</p></li>
+            <li><span class="num">19:30</span><h3>Hasta mañana</h3><p>Cerramos a las 19:30. Mañana volvemos a abrir a las 12:30.</p><a href="#reserva" class="btn btn-verde" style="margin-top:22px;align-self:flex-start">Reservar mi mesa</a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="resenas">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">Reseñas</span>
+          <h2>Lo que dicen <em>quienes vienen</em></h2>
+        </div>
+        <div class="resenas aparece">
+          <div class="nota">
+            <strong data-contar="4.4" data-dec="1">4,4</strong>
+            <div class="estrellas-44" aria-hidden="true">★★★★★</div>
+            <span>223 reseñas en Google</span>
+            <div class="barras" aria-label="Distribución de estrellas">
+              <div class="barra"><span>5</span><i style="--w:69.5%"></i><span>155</span></div>
+              <div class="barra"><span>4</span><i style="--w:15.2%"></i><span>34</span></div>
+              <div class="barra"><span>3</span><i style="--w:4.5%"></i><span>10</span></div>
+              <div class="barra"><span>2</span><i style="--w:4.9%"></i><span>11</span></div>
+              <div class="barra"><span>1</span><i style="--w:5.8%"></i><span>13</span></div>
+            </div>
+            <div class="palabras"><span>ambiente <b>13</b></span><span>menú <b>10</b></span><span>pasta <b>9</b></span><span>vegetarianas <b>5</b></span><span>conversar <b>3</b></span></div>
+          </div>
+          <div class="citas">
+            <div class="cita"><q>Nos encantó el lugar desde que entramos; el ambiente es acogedor y la atención fue excelente.</q><span>Clienta que vino a almorzar con su hijo</span></div>
+            <div class="cita"><q>Un lugar al que volvería, agradable y calmado para disfrutar de una buena comida.</q><span>Clienta, en Google</span></div>
+            <div class="cita"><q>Una experiencia maravillosa de principio a fin.</q><span>Clienta, en Google</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserva" style="padding-top:0">
+      <div class="contenedor reserva-grid">
+        <div class="aparece">
+          <div class="titulo-seccion" style="margin-bottom:24px">
+            <span class="sobre">Tu mesa te espera</span>
+            <h2>Reserva <em>sin llamar</em></h2>
+            <p>Elige el día, la hora y cuántos vienen. Te llega el mensaje armado por WhatsApp y te confirmamos.</p>
+          </div>
+          <ul class="lista-check">
+            <li><span><b>Lunes a viernes</b>, de 12:30 a 19:30.</span></li>
+            <li><span><b>Sábado y domingo</b>, cerrado.</span></li>
+            <li><span><b>Dr. Johow 889-A</b>, Ñuñoa.</span></li>
+          </ul>
+        </div>
+        <form class="reserva aparece" id="form-reserva" novalidate>
+          <fieldset>
+            <legend>¿Qué día?</legend>
+            <div class="chips" id="dias"></div>
+          </fieldset>
+          <fieldset>
+            <legend>¿A qué hora?</legend>
+            <div class="chips" id="horas"></div>
+          </fieldset>
+          <fieldset>
+            <legend>¿Cuántos vienen?</legend>
+            <div class="personas">
+              <button type="button" id="menos" aria-label="Una persona menos">−</button>
+              <output id="cuantos" aria-live="polite">2</output>
+              <button type="button" id="mas" aria-label="Una persona más">+</button>
+              <div class="sillas" id="sillas" aria-hidden="true"></div>
+            </div>
+          </fieldset>
+          <fieldset id="campo-plato" hidden>
+            <legend>Se te antoja</legend>
+            <div class="plato-elegido"><span id="plato-texto"></span><button type="button" id="quitar-plato">Quitar</button></div>
+          </fieldset>
+          <fieldset>
+            <label class="etq-campo" for="nombre">Tu nombre</label>
+            <input type="text" id="nombre" placeholder="Ej: Fernanda" autocomplete="given-name">
+          </fieldset>
+          <div class="resumen">
+            <div class="tu-reserva">Tu reserva<strong id="tu-reserva">Elige día y hora</strong></div>
+            <button type="submit" class="btn btn-verde">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+              Enviar reserva
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="ubicacion" style="padding-top:0">
+      <div class="contenedor">
+        <div class="ubicacion-grid aparece">
+          <div class="ubicacion-texto">
+            <span class="sobre">Ven a vernos</span>
+            <h2>En <em>Dr. Johow</em>, Ñuñoa</h2>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2f5d46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><b>Dirección</b><a href="https://maps.app.goo.gl/WMqy6PAU1V6ZENQr6" target="_blank" rel="noopener">Dr. Johow 889-A, Ñuñoa</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="#2f5d46" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></span><div><b>WhatsApp y teléfono</b><a href="#reserva">+56 9 7707 6669</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2f5d46" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div style="flex:1"><b>Horario</b>
+              <table class="horario" id="tabla-horario">
+                <tr data-dias="1,2,3,4,5"><td>Lunes a viernes</td><td>12:30 – 19:30</td></tr>
+                <tr data-dias="6"><td>Sábado</td><td>Cerrado</td></tr>
+                <tr data-dias="0"><td>Domingo</td><td>Cerrado</td></tr>
+              </table>
+            </div></div>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Caf%C3%A9+Isla+Verde+Dr.+Johow+889-a+%C3%91u%C3%B1oa" target="_blank" rel="noopener" class="btn btn-tomate" style="margin-top:6px">Cómo llegar</a>
+          </div>
+          <iframe title="Mapa de Café Isla Verde" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Caf%C3%A9+Isla+Verde,+Dr.+Johow+889-a,+%C3%91u%C3%B1oa&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding-top:0">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece" style="text-align:center;margin-inline:auto">
+          <span class="sobre">Preguntas frecuentes</span>
+          <h2>Antes de <em>venir</em></h2>
+        </div>
+        <div class="faq aparece">
+          <details><summary>¿Tienen opciones vegetarianas?</summary><p>Sí. Es una de las cosas que destacan sus clientes en Google. El detalle de cada plato va en la versión final.</p></details>
+          <details><summary>¿Se puede reservar?</summary><p>Sí. Desde esta página eliges día, hora y cuántos vienen, y nos llega por WhatsApp. Para grupos, mejor reservar con tiempo.</p></details>
+          <details><summary>¿Abren los fines de semana?</summary><p>No. Atendemos de lunes a viernes, de 12:30 a 19:30.</p></details>
+          <details><summary>¿Dónde quedan?</summary><p>En Dr. Johow 889-A, Ñuñoa.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <div class="footer-grid">
+        <a href="#inicio" class="logo"><span class="logo-texto">Café Isla Verde<small>Almuerzos y café · Ñuñoa</small></span></a>
+        <div><h4>Visítanos</h4><ul><li>Dr. Johow 889-A</li><li>Ñuñoa, Santiago</li></ul></div>
+        <div><h4>Horario</h4><ul><li>Lunes a viernes 12:30 – 19:30</li><li>Sábado y domingo cerrado</li></ul></div>
+        <div><h4>Contacto</h4><ul><li><a href="#reserva">WhatsApp +56 9 7707 6669</a></li></ul></div>
+      </div>
+      <div class="creditos">
+        <span>© <span id="anio"></span> Café Isla Verde</span>
+        <span>Diseño y desarrollo: <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="btn-comparar" data-abrir-comparar aria-haspopup="dialog">
+    <span class="pulso"></span>
+    <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></svg></span>
+    <span>Comparar<span class="txt-largo"> con lo que hay hoy</span></span>
+  </button>
+
+  <a href="#reserva" class="wsp-flotante" aria-label="Reservar por WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+  </a>
+
+  <div class="modal" id="modal-comparar" role="dialog" aria-modal="true" aria-labelledby="titulo-comparar">
+    <div class="modal-caja">
+      <button type="button" class="cerrar" id="cerrar-comparar" aria-label="Cerrar comparación"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1d3a2c" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <div class="modal-cabeza">
+        <div><span class="sobre">Antes y ahora</span><h2 id="titulo-comparar">Lo que hay hoy vs. propuesta</h2></div>
+        <div class="pestanas" role="tablist" aria-label="Dispositivo">
+          <button type="button" role="tab" aria-selected="true" data-vista="movil">Celular</button>
+          <button type="button" role="tab" aria-selected="false" data-vista="escritorio">Computador</button>
+        </div>
+      </div>
+      <div class="leyenda" id="leyenda"><span class="l-antes">◀ Hoy</span><span class="l-ahora">Propuesta ▶</span></div>
+      <div class="comparador movil" id="comparador">
+        <img class="ahora" id="img-ahora" src="comparar/ahora-movil.png" alt="Portada de la propuesta nueva">
+        <img class="antes" id="img-antes" src="comparar/antes-movil.png" alt="Lo que aparece hoy al buscar el café: su ficha de Google Maps, que dice Añadir sitio web">
+        <div class="divisor"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f5d46" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <input type="range" min="0" max="100" value="50" id="deslizador" aria-label="Deslizar para comparar lo que hay hoy con la propuesta">
+      </div>
+      <p class="ayuda-comparar">Arrastra la barra. A la izquierda, lo único que encuentra hoy quien busca el café: la ficha de Google, sin sitio web.</p>
+      <div class="mejoras">
+        <div class="mejora"><b>Una página propia</b><span class="antes-txt">Antes: Google dice "Añadir sitio web"</span><span class="ahora-txt">Ahora: cafeislaverde.cl, con todo en un lugar</span></div>
+        <div class="mejora"><b>Reservas sin llamar</b><span class="antes-txt">Antes: hay que llamar y preguntar si hay mesa</span><span class="ahora-txt">Ahora: eligen día, hora y personas; el mensaje llega listo</span></div>
+        <div class="mejora"><b>El almuerzo a la vista</b><span class="antes-txt">Antes: no hay menú ni carta en ninguna parte</span><span class="ahora-txt">Ahora: los platos, con fotos y precios en la versión final</span></div>
+        <div class="mejora"><b>Algo para jugar</b><span class="antes-txt">Antes: nada que invite a venir</span><span class="ahora-txt">Ahora: "Arma tu almuerzo" y lo reservan con ese plato</span></div>
+        <div class="mejora"><b>Sus 223 reseñas</b><span class="antes-txt">Antes: el 4,4 solo se ve si buscan en Maps</span><span class="ahora-txt">Ahora: lo que dicen sus clientes está en la página</span></div>
+        <div class="mejora"><b>Abierto ahora</b><span class="antes-txt">Antes: el horario solo está en Google</span><span class="ahora-txt">Ahora: dice en vivo si está abierto y hasta qué hora</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const captura = new URLSearchParams(location.search).has("captura");
+    if (captura) document.documentElement.classList.add("captura");
+    document.getElementById("anio").textContent = new Date().getFullYear();
+    const sinMovimiento = captura || matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const hamb = document.getElementById("hamburguesa");
+    const menu = document.getElementById("menu");
+    hamb.addEventListener("click", () => hamb.setAttribute("aria-expanded", menu.classList.toggle("abierto")));
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("abierto"); hamb.setAttribute("aria-expanded", "false"); }));
+
+    const toast = document.getElementById("toast");
+    let tToast;
+    function mostrarToast(texto) {
+      toast.textContent = texto;
+      toast.classList.add("visible");
+      clearTimeout(tToast);
+      tToast = setTimeout(() => toast.classList.remove("visible"), 5200);
+    }
+
+    // ===== Utilidades de dibujo =====
+    const r1 = n => Math.round(n * 10) / 10;
+    const azar = s => () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    function mancha(cx, cy, r, irr, n, rnd, sx = 1, sy = 1) {
+      const pts = [];
+      for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2, rr = r * (1 + (rnd() - .5) * irr); pts.push([cx + Math.cos(a) * rr * sx, cy + Math.sin(a) * rr * sy]); }
+      let d = "";
+      for (let i = 0; i < n; i++) {
+        const p = pts[i], q = pts[(i + 1) % n], m = [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+        if (i === 0) { const pm = pts[n - 1]; d += `M${r1((pm[0] + p[0]) / 2)} ${r1((pm[1] + p[1]) / 2)}`; }
+        d += `Q${r1(p[0])} ${r1(p[1])} ${r1(m[0])} ${r1(m[1])}`;
+      }
+      return d + "Z";
+    }
+    const hojaD = (largo, ancho) => `M0 0C${r1(largo * .3)} ${r1(-ancho)} ${r1(largo * .75)} ${r1(-ancho * .9)} ${largo} 0C${r1(largo * .75)} ${r1(ancho * .9)} ${r1(largo * .3)} ${ancho} 0 0Z`;
+
+    function defsPlato(p) {
+      return `<radialGradient id="${p}-plato" cx=".44" cy=".4" r=".62"><stop offset="0" stop-color="#ffffff"/><stop offset=".74" stop-color="#f4f0e7"/><stop offset=".93" stop-color="#ddd5c4"/><stop offset="1" stop-color="#c8bea9"/></radialGradient>
+        <radialGradient id="${p}-sombra" cx=".5" cy=".5" r=".5"><stop offset=".62" stop-color="#2a1d10" stop-opacity=".38"/><stop offset="1" stop-color="#2a1d10" stop-opacity="0"/></radialGradient>
+        <radialGradient id="${p}-salsa" cx=".42" cy=".38" r=".7"><stop offset="0" stop-color="#ea7552"/><stop offset=".55" stop-color="#c4452c"/><stop offset="1" stop-color="#8f2c1a"/></radialGradient>
+        <linearGradient id="${p}-alb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5fae4c"/><stop offset="1" stop-color="#2b6a2c"/></linearGradient>
+        <radialGradient id="${p}-pollo" cx=".42" cy=".36" r=".72"><stop offset="0" stop-color="#f0c27d"/><stop offset=".55" stop-color="#d18f47"/><stop offset="1" stop-color="#9a5a26"/></radialGradient>
+        <radialGradient id="${p}-tomate" cx=".36" cy=".32" r=".75"><stop offset="0" stop-color="#ff7a5c"/><stop offset=".6" stop-color="#d9362a"/><stop offset="1" stop-color="#8f1d14"/></radialGradient>
+        <linearGradient id="${p}-palta" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9e48b"/><stop offset=".7" stop-color="#a9c55a"/><stop offset="1" stop-color="#4d7a2a"/></linearGradient>
+        <radialGradient id="${p}-garbanzo" cx=".38" cy=".34" r=".7"><stop offset="0" stop-color="#f3dfaa"/><stop offset="1" stop-color="#c49f5b"/></radialGradient>
+        <radialGradient id="${p}-cafe" cx=".5" cy=".55" r=".55"><stop offset="0" stop-color="#d49a62"/><stop offset=".55" stop-color="#a5662f"/><stop offset="1" stop-color="#5d3214"/></radialGradient>
+        <filter id="${p}-blur" filterUnits="userSpaceOnUse" x="-200" y="-200" width="1100" height="1100"><feGaussianBlur stdDeviation="10"/></filter>
+        <filter id="${p}-suave" filterUnits="userSpaceOnUse" x="-200" y="-200" width="1100" height="1100"><feGaussianBlur stdDeviation="1.6"/></filter>
+        <clipPath id="${p}-pechuga"><path d="M-95 -10C-90 -55 -20 -62 40 -48C95 -36 110 10 88 38C60 70 -40 66 -78 40C-98 26 -98 8 -95 -10Z"/></clipPath>`;
+    }
+    function platoVacio(p) {
+      return `<ellipse cx="312" cy="318" rx="262" ry="258" fill="url(#${p}-sombra)" filter="url(#${p}-blur)"/>
+        <circle cx="300" cy="300" r="250" fill="url(#${p}-plato)"/>
+        <circle cx="300" cy="300" r="246" fill="none" stroke="#fff" stroke-width="3" opacity=".85"/>
+        <circle cx="300" cy="300" r="176" fill="#faf8f3" stroke="#e3dac8" stroke-width="2.5"/>
+        <path d="M120 200A200 200 0 0 1 250 82" stroke="#fff" stroke-width="9" fill="none" stroke-linecap="round" opacity=".9"/>`;
+    }
+    function albahaca(p, x, y, a, l = 46, w = 16, i = 40) {
+      return `<g class="pz" style="--i:${i}" transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(a)})"><path d="${hojaD(l, w)}" fill="url(#${p}-alb)"/><path d="M4 0L${l - 6} 0" stroke="#a6d68d" stroke-width="1.6" opacity=".75"/><path d="M${r1(l * .15)} -${r1(w * .2)}C${r1(l * .3)} -${r1(w * .5)} ${r1(l * .5)} -${r1(w * .6)} ${r1(l * .62)} -${r1(w * .5)}" stroke="#fff" stroke-opacity=".28" stroke-width="2" fill="none"/></g>`;
+    }
+    function tomatito(p, x, y, r, i) {
+      return `<g class="pz" style="--i:${i}"><circle cx="${r1(x)}" cy="${r1(y)}" r="${r}" fill="url(#${p}-tomate)"/><ellipse cx="${r1(x - r * .35)}" cy="${r1(y - r * .38)}" rx="${r1(r * .3)}" ry="${r1(r * .18)}" fill="#fff" opacity=".55" transform="rotate(-35 ${r1(x - r * .35)} ${r1(y - r * .38)})"/><path d="M${r1(x)} ${r1(y - r * .2)}l${r1(r * .3)} -${r1(r * .3)}M${r1(x)} ${r1(y - r * .2)}l-${r1(r * .32)} -${r1(r * .2)}M${r1(x)} ${r1(y - r * .2)}l${r1(r * .05)} -${r1(r * .45)}" stroke="#3f7a35" stroke-width="2.4" stroke-linecap="round"/></g>`;
+    }
+    function hojaVerde(x, y, a, l, w, color, i) {
+      return `<g class="pz" style="--i:${i}" transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(a)})"><path d="${hojaD(l, w)}" fill="${color}"/><path d="M3 0L${r1(l - 4)} 0" stroke="#fff" stroke-opacity=".35" stroke-width="1.6"/><path d="M${r1(l * .4)} 0L${r1(l * .55)} -${r1(w * .55)}M${r1(l * .55)} 0L${r1(l * .7)} ${r1(w * .5)}" stroke="#fff" stroke-opacity=".2" stroke-width="1.2"/></g>`;
+    }
+
+    function pasta(p, rnd) {
+      let s = `<circle class="pz" cx="300" cy="306" r="130" fill="#b3843a" opacity=".3" filter="url(#${p}-blur)"/>`;
+      const tonos = ["#f4d991", "#eccb78", "#f8e6b0", "#e3bb64", "#f0d184"];
+      for (let i = 0; i < 64; i++) {
+        const r = 22 + Math.pow(rnd(), .8) * 100, a0 = rnd() * Math.PI * 2, sw = 1 + rnd() * 1.8;
+        const ox = 300 + (rnd() - .5) * 36, oy = 300 + (rnd() - .5) * 36;
+        const d = `M${r1(ox + Math.cos(a0) * r)} ${r1(oy + Math.sin(a0) * r)}A${r1(r)} ${r1(r * .94)} 0 0 1 ${r1(ox + Math.cos(a0 + sw) * r)} ${r1(oy + Math.sin(a0 + sw) * r)}`;
+        const w = r1(7 + rnd() * 3);
+        s += `<g class="pz" style="--i:${i % 30}"><path d="${d}" stroke="#a87a33" stroke-opacity=".5" stroke-width="${r1(w + 2.6)}" fill="none" stroke-linecap="round"/><path d="${d}" stroke="${tonos[i % 5]}" stroke-width="${w}" fill="none" stroke-linecap="round"/></g>`;
+      }
+      s += `<g class="pz" style="--i:32"><path d="${mancha(300, 296, 58, .38, 16, rnd)}" fill="url(#${p}-salsa)"/>`;
+      for (let i = 0; i < 16; i++) { const a = rnd() * Math.PI * 2, d = rnd() * 40; s += `<circle cx="${r1(300 + Math.cos(a) * d)}" cy="${r1(296 + Math.sin(a) * d)}" r="${r1(3 + rnd() * 5)}" fill="${rnd() > .5 ? "#ef8c66" : "#992f1c"}" opacity=".75"/>`; }
+      s += `<ellipse cx="282" cy="276" rx="20" ry="8" fill="#fff" opacity=".3" transform="rotate(-30 282 276)"/></g>`;
+      for (let i = 0; i < 14; i++) {
+        const a = rnd() * Math.PI * 2, d = 20 + rnd() * 60, x = 300 + Math.cos(a) * d, y = 300 + Math.sin(a) * d, k = 4 + rnd() * 5;
+        s += `<path class="pz" style="--i:${36 + (i % 6)}" d="M${r1(x)} ${r1(y)}l${r1(k)} ${r1(-k * .4)}l${r1(k * .3)} ${r1(k)}l${r1(-k * 1.1)} ${r1(k * .2)}Z" fill="#fbf1cf" stroke="#e2cf95" stroke-width="1"/>`;
+      }
+      s += albahaca(p, 290, 262, -40, 50, 17, 42) + albahaca(p, 300, 262, 20, 44, 15, 43) + albahaca(p, 296, 268, 105, 36, 12, 44);
+      for (let i = 0; i < 34; i++) { const a = rnd() * Math.PI * 2, d = rnd() * 95; s += `<circle cx="${r1(300 + Math.cos(a) * d)}" cy="${r1(300 + Math.sin(a) * d)}" r="${r1(.7 + rnd())}" fill="#2a1d10" opacity=".55"/>`; }
+      return s;
+    }
+    function pollo(p, rnd) {
+      let s = `<circle class="pz" cx="236" cy="236" r="96" fill="#2b5a22" opacity=".18" filter="url(#${p}-blur)"/>`;
+      const verdes = ["#6fae4f", "#4f8f3a", "#8cc265", "#3f7a35", "#a7d07a"];
+      for (let i = 0; i < 18; i++) {
+        const a = rnd() * Math.PI * 2, d = rnd() * 62;
+        s += hojaVerde(236 + Math.cos(a) * d - 20, 232 + Math.sin(a) * d, rnd() * 360, 40 + rnd() * 22, 15 + rnd() * 9, verdes[i % 5], i);
+      }
+      [[200, 196], [272, 262], [196, 278]].forEach(([x, y], k) => {
+        s += `<g class="pz" style="--i:${20 + k}"><circle cx="${x}" cy="${y}" r="17" fill="#3f7a35"/><circle cx="${x}" cy="${y}" r="13.5" fill="#dcefc4"/><circle cx="${x}" cy="${y}" r="7" fill="none" stroke="#b9d99a" stroke-width="3" stroke-dasharray="1.5 3"/></g>`;
+      });
+      s += tomatito(p, 262, 196, 15, 24) + tomatito(p, 228, 300, 14, 25) + tomatito(p, 170, 236, 13, 26);
+      s += `<g transform="translate(352 352) rotate(-24)"><g class="pz" style="--i:30"><path d="M-95 -10C-90 -55 -20 -62 40 -48C95 -36 110 10 88 38C60 70 -40 66 -78 40C-98 26 -98 8 -95 -10Z" fill="#6b3a17" opacity=".35" transform="translate(6 10)" filter="url(#${p}-suave)"/><path d="M-95 -10C-90 -55 -20 -62 40 -48C95 -36 110 10 88 38C60 70 -40 66 -78 40C-98 26 -98 8 -95 -10Z" fill="url(#${p}-pollo)"/><g clip-path="url(#${p}-pechuga)" filter="url(#${p}-suave)">`;
+      for (let k = -5; k <= 5; k++) s += `<path d="M${k * 26 - 40} -80L${k * 26 + 30} 80" stroke="#4a2810" stroke-width="9" opacity=".62"/>`;
+      s += `</g><ellipse cx="-14" cy="-30" rx="52" ry="9" fill="#fff" opacity=".22"/>`;
+      for (let i = 0; i < 22; i++) s += `<circle cx="${r1((rnd() - .5) * 150)}" cy="${r1((rnd() - .5) * 70)}" r="${r1(1 + rnd() * 1.4)}" fill="${rnd() > .5 ? "#3f7a35" : "#2a1d10"}" opacity=".7"/>`;
+      s += `</g></g>`;
+      s += `<g class="pz" style="--i:34" transform="translate(420 238) rotate(36)"><path d="M-36 0A36 36 0 0 1 36 0Z" fill="#f6dc5a" stroke="#e8bf2b" stroke-width="6" stroke-linejoin="round"/><path d="M0 -2L-24 -20M0 -2L0 -30M0 -2L24 -20" stroke="#fff3b8" stroke-width="2.2"/><path d="M-30 -2A30 30 0 0 1 30 -2" stroke="#fff" stroke-opacity=".5" stroke-width="2" fill="none"/></g>`;
+      return s;
+    }
+    function vegetariano(p, rnd) {
+      let s = `<circle class="pz" cx="300" cy="304" r="150" fill="#3d5a22" opacity=".16" filter="url(#${p}-blur)"/>`;
+      const verdes = ["#6fae4f", "#4f8f3a", "#8cc265", "#a7d07a", "#3f7a35"];
+      // cama de hojas verdes
+      for (let i = 0; i < 26; i++) { const a = rnd() * Math.PI * 2, d = Math.sqrt(rnd()) * 92; s += hojaVerde(282 + Math.cos(a) * d, 300 + Math.sin(a) * d, rnd() * 360, 46 + rnd() * 18, 17 + rnd() * 7, verdes[i % 5], i % 12); }
+      // palta en abanico (arriba)
+      for (let k = 0; k < 6; k++) s += `<g class="pz" style="--i:${14 + k}" transform="translate(${270 + k * 11} ${206 + k * 3}) rotate(${-40 + k * 15})"><ellipse rx="54" ry="17" fill="url(#${p}-palta)" stroke="#3f6a22" stroke-width="3"/><ellipse cx="-8" cy="-6" rx="28" ry="3.4" fill="#fff" opacity=".32"/></g>`;
+      // zapallo italiano (izquierda)
+      [[196, 280], [214, 248], [228, 314], [192, 318], [240, 282], [180, 248], [218, 214], [206, 350]].forEach(([x, y], k) => {
+        s += `<g class="pz" style="--i:${20 + k}"><circle cx="${x}" cy="${y}" r="22" fill="#e9f0c9" stroke="#3f7a35" stroke-width="5.5"/><circle cx="${x}" cy="${y}" r="9" fill="none" stroke="#c7dc9a" stroke-width="3" stroke-dasharray="2 3.4"/><path d="M${x - 12} ${y - 12}a17 17 0 0 1 12 -5" stroke="#fff" stroke-width="2.4" fill="none" opacity=".6"/></g>`;
+      });
+      // zanahoria (abajo a la derecha)
+      for (let k = 0; k < 9; k++) s += `<g class="pz" style="--i:${28 + k}" transform="translate(${352 + k * 7} ${336 + k * 9}) rotate(${-26 + k * 6})"><rect x="-40" y="-8" width="80" height="16" rx="8" fill="${k % 2 ? "#e8843a" : "#f0954a"}"/><path d="M-32 -3H28" stroke="#ffc287" stroke-width="2.6" stroke-linecap="round" opacity=".8"/></g>`;
+      // garbanzos (abajo)
+      for (let k = 0; k < 30; k++) { const a = rnd() * Math.PI * 2, d = Math.sqrt(rnd()) * 44, x = 270 + Math.cos(a) * d, y = 404 + Math.sin(a) * d * .6; s += `<g class="pz" style="--i:${36 + (k % 8)}"><circle cx="${r1(x)}" cy="${r1(y)}" r="11" fill="url(#${p}-garbanzo)"/><path d="M${r1(x - 4)} ${r1(y - 8)}q5 5 1 13" stroke="#b08a4a" stroke-width="1.6" fill="none"/></g>`; }
+      // tomates partidos (derecha)
+      [[378, 248], [414, 284], [356, 288], [396, 214]].forEach(([x, y], k) => {
+        s += `<g class="pz" style="--i:${44 + k}"><circle cx="${x}" cy="${y}" r="21" fill="#d9362a"/><circle cx="${x}" cy="${y}" r="16" fill="#f08a6d"/><path d="M${x} ${y - 12}V${y + 12}M${x - 12} ${y}H${x + 12}" stroke="#d9362a" stroke-width="3"/><circle cx="${x - 6}" cy="${y - 5}" r="2.2" fill="#f8e7a8"/><circle cx="${x + 6}" cy="${y + 5}" r="2.2" fill="#f8e7a8"/><circle cx="${x + 5}" cy="${y - 6}" r="2.2" fill="#f8e7a8"/><circle cx="${x - 5}" cy="${y + 6}" r="2.2" fill="#f8e7a8"/><ellipse cx="${x - 8}" cy="${y - 10}" rx="6" ry="3" fill="#fff" opacity=".35"/></g>`;
+      });
+      for (let i = 0; i < 50; i++) { const a = rnd() * Math.PI * 2, d = rnd() * 140; const x = 300 + Math.cos(a) * d, y = 300 + Math.sin(a) * d; s += `<ellipse cx="${r1(x)}" cy="${r1(y)}" rx="2.6" ry="1.3" transform="rotate(${r1(rnd() * 180)} ${r1(x)} ${r1(y)})" fill="#f6eed6" opacity=".95"/>`; }
+      return s;
+    }
+    const COMIDAS = { pasta, pollo, vegetariano };
+
+    function tacita(p, x, y, esc = 1) {
+      return `<g transform="translate(${x} ${y}) scale(${esc})">
+        <ellipse cx="6" cy="10" rx="66" ry="64" fill="url(#${p}-sombra)" filter="url(#${p}-blur)"/>
+        <circle r="62" fill="url(#${p}-plato)"/><circle r="44" fill="none" stroke="#e3dac8" stroke-width="2"/>
+        <path d="M40 -8h18a12 12 0 0 1 0 24H40" fill="none" stroke="#f1ece2" stroke-width="10" stroke-linecap="round"/>
+        <circle r="44" fill="#fbfaf6" stroke="#ddd4c2" stroke-width="2"/>
+        <circle r="35" fill="url(#${p}-cafe)"/>
+        <path d="M0 14C-14 6 -14 -6 -6 -8C-2 -9 0 -6 0 -4C0 -6 2 -9 6 -8C14 -6 14 6 0 14Z" fill="#f6ead6" opacity=".95"/>
+        <path d="M-30 -14A33 33 0 0 1 -10 -32" stroke="#fff" stroke-opacity=".5" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </g>`;
+    }
+
+    // ===== Portada: la mesa servida =====
+    function mesaHero() {
+      const p = "h", rnd = azar(5);
+      let vetas = "";
+      for (let i = 0; i < 46; i++) { const y = 20 + i * 14 + (rnd() - .5) * 8; vetas += `<path d="M20 ${r1(y)}C200 ${r1(y + (rnd() - .5) * 30)} 480 ${r1(y + (rnd() - .5) * 30)} 690 ${r1(y + (rnd() - .5) * 16)}" stroke="${rnd() > .3 ? "#5a3820" : "#c99a6c"}" stroke-width="${r1(.8 + rnd() * 2)}" opacity="${r1(.12 + rnd() * .2)}" fill="none"/>`; }
+      return `<svg viewBox="0 0 700 670" role="img" aria-label="Mesa de madera con un plato de pasta, un café y un vaso de agua">
+        <defs>${defsPlato(p)}
+          <radialGradient id="h-madera" cx=".42" cy=".38" r=".7"><stop offset="0" stop-color="#bd8757"/><stop offset=".65" stop-color="#97633a"/><stop offset="1" stop-color="#6e4526"/></radialGradient>
+          <clipPath id="h-tabla"><circle cx="350" cy="335" r="318"/></clipPath>
+          <linearGradient id="h-metal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5f7f8"/><stop offset=".5" stop-color="#9aa3aa"/><stop offset="1" stop-color="#e4e8eb"/></linearGradient>
+          <pattern id="h-lino" width="22" height="22" patternUnits="userSpaceOnUse"><rect width="22" height="22" fill="#2f5d46"/><path d="M0 4H22M0 18H22" stroke="#e9e2cf" stroke-width="2.4" opacity=".75"/><path d="M0 11H22" stroke="#244a37" stroke-width="1"/></pattern>
+          <radialGradient id="h-vaso" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#ffffff" stop-opacity=".75"/><stop offset=".7" stop-color="#dfeef0" stop-opacity=".45"/><stop offset="1" stop-color="#b9d3d6" stop-opacity=".7"/></radialGradient>
+        </defs>
+        <ellipse cx="364" cy="356" rx="330" ry="322" fill="#2a1d10" opacity=".35" filter="url(#h-blur)"/>
+        <g class="gira">
+          <circle cx="350" cy="335" r="318" fill="url(#h-madera)"/>
+          <g clip-path="url(#h-tabla)">${vetas}</g>
+          <circle cx="350" cy="335" r="312" fill="none" stroke="#d8a77a" stroke-width="3" opacity=".5"/>
+          <circle cx="350" cy="335" r="318" fill="none" stroke="#5a3820" stroke-width="5" opacity=".45"/>
+          <g transform="rotate(-14 120 360)"><rect x="54" y="232" width="118" height="250" rx="6" fill="url(#h-lino)"/><rect x="54" y="232" width="118" height="250" rx="6" fill="none" stroke="#244a37" stroke-width="2"/><path d="M60 236v242" stroke="#fff" stroke-opacity=".12" stroke-width="10"/></g>
+          <g transform="rotate(-14 120 360)"><rect x="104" y="300" width="12" height="160" rx="6" fill="url(#h-metal)"/><path d="M96 300V246M104 300V240M116 300V240M124 300V246" stroke="url(#h-metal)" stroke-width="5" stroke-linecap="round"/><path d="M95 302q15 18 30 0" stroke="url(#h-metal)" stroke-width="7" fill="none"/></g>
+          <g transform="rotate(8 590 360)"><path d="M584 230c14 0 18 30 16 90h-18z" fill="url(#h-metal)"/><rect x="582" y="320" width="18" height="150" rx="9" fill="url(#h-metal)"/></g>
+          <g transform="translate(350 345) scale(.86) translate(-300 -300)">${platoVacio(p)}${pasta(p, azar(21))}</g>
+          ${tacita(p, 168, 128, .95)}
+          <g transform="translate(560 140)"><ellipse cx="10" cy="12" rx="58" ry="56" fill="#2a1d10" opacity=".22" filter="url(#h-suave)"/><circle r="54" fill="url(#h-vaso)" stroke="#fff" stroke-width="3" stroke-opacity=".9"/><circle r="44" fill="#d9ecee" opacity=".35"/><g transform="translate(6 4) rotate(20)"><circle r="24" fill="#f7e27a" stroke="#e5c22c" stroke-width="4"/><path d="M0 0L0 -20M0 0L17 -10M0 0L17 10M0 0L0 20M0 0L-17 10M0 0L-17 -10" stroke="#fff7c4" stroke-width="2.2"/></g><path d="M-38 -18A42 42 0 0 1 -12 -42" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9"/></g>
+        </g>
+        <g class="vapor" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round" opacity=".65" filter="url(#h-suave)">
+          <path d="M310 300C290 260 330 240 310 200"/>
+          <path d="M360 290C340 240 385 220 360 170"/>
+          <path d="M410 305C390 265 430 245 410 205"/>
+        </g>
+      </svg>`;
+    }
+    document.getElementById("mesa-hero").innerHTML = mesaHero();
+
+    function monstera(id) {
+      return `<svg viewBox="0 0 220 250">
+        <defs><linearGradient id="${id}-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#78b86f"/><stop offset=".55" stop-color="#3f8047"/><stop offset="1" stop-color="#204b2b"/></linearGradient>
+        <mask id="${id}-m" maskUnits="userSpaceOnUse" x="0" y="0" width="220" height="250"><rect width="220" height="250" fill="#fff"/><g stroke="#000" stroke-width="9" stroke-linecap="round"><path d="M12 88L78 110M8 138L80 150M24 186L86 182M208 88L144 108M214 138L142 150M196 186L136 182"/></g><g fill="#000"><ellipse cx="88" cy="74" rx="6" ry="11" transform="rotate(-20 88 74)"/><ellipse cx="136" cy="76" rx="6" ry="11" transform="rotate(20 136 76)"/><ellipse cx="94" cy="214" rx="5" ry="9"/></g></mask></defs>
+        <path d="M112 236C30 206 4 134 18 84C32 32 80 8 112 16C150 8 198 34 208 88C218 144 188 208 112 236Z" fill="url(#${id}-g)" mask="url(#${id}-m)"/>
+        <path d="M112 236C114 168 114 84 113 22" stroke="#b4dca4" stroke-width="3.2" fill="none" opacity=".75"/>
+        <path d="M113 70C90 60 60 60 40 70M113 120C80 112 50 116 22 128M113 168C86 168 60 176 38 194M113 70C136 60 166 60 186 70M113 120C146 112 176 116 202 128M113 168C140 168 166 176 186 194" stroke="#b4dca4" stroke-width="1.6" fill="none" opacity=".45"/>
+        <path d="M112 236C114 242 118 246 124 250" stroke="#3f8047" stroke-width="6" stroke-linecap="round" fill="none"/>
+      </svg>`;
+    }
+    document.getElementById("hoja-1").innerHTML = monstera("m1");
+    document.getElementById("hoja-2").innerHTML = monstera("m2");
+
+    // ===== Arma tu almuerzo =====
+    const bandeja = document.getElementById("bandeja");
+    bandeja.innerHTML = `<svg viewBox="0 0 600 600" role="img" aria-label="Plato servido según lo que elijas"><defs>${defsPlato("b")}</defs>
+      <g transform="translate(286 316) scale(.82) translate(-300 -300)">${platoVacio("b")}<g id="comida"></g></g>
+      <g class="taza-lado" id="taza-lado">${tacita("b", 492, 118, .9)}</g>
+    </svg>`;
+    const comidaG = document.getElementById("comida");
+    const NOMBRE_PLATO = { pasta: "pasta", pollo: "pollo", vegetariano: "opción vegetariana" };
+    let platoSel = "pasta";
+    function servir(tipo) {
+      platoSel = tipo;
+      bandeja.classList.remove("sirviendo");
+      comidaG.innerHTML = COMIDAS[tipo]("b", azar(tipo.length * 31));
+      void bandeja.offsetWidth;
+      if (!sinMovimiento) bandeja.classList.add("sirviendo");
+      document.querySelectorAll("#platos-sel button").forEach(b => b.setAttribute("aria-pressed", b.dataset.plato === tipo));
+    }
+    servir("pasta");
+    bandeja.classList.remove("sirviendo");
+    document.getElementById("platos-sel").addEventListener("click", e => { const b = e.target.closest("button"); if (b) servir(b.dataset.plato); });
+    const conCafe = document.getElementById("con-cafe");
+    conCafe.addEventListener("change", () => document.getElementById("taza-lado").classList.toggle("fuera", !conCafe.checked));
+
+    // ===== Lo que destacan =====
+    const ilus = {
+      ambiente: `<svg viewBox="0 0 140 110"><path d="M20 100h100" stroke="#8a5a3b" stroke-width="6" stroke-linecap="round"/><path d="M70 6v20" stroke="#6b6b5d" stroke-width="2"/><path d="M54 40a16 14 0 0 1 32 0z" fill="#e5b04a"/><ellipse cx="70" cy="44" rx="20" ry="5" fill="#fff3c4" opacity=".7"/><path d="M40 100V80h60v20" fill="none" stroke="#2f5d46" stroke-width="5"/><path d="M28 98c-10-8-12-26-2-36 6 10 8 24 2 36zM28 98c6-12 16-18 26-18-2 10-12 18-26 18z" fill="#5f9a5c"/><rect x="18" y="92" width="22" height="10" rx="2" fill="#c8693f"/><path d="M106 70h20v30h-20z" fill="#efe8d8" stroke="#8a5a3b" stroke-width="3"/><path d="M112 76c4-4 8 4 10 0" stroke="#c8553d" stroke-width="2" fill="none"/></svg>`,
+      menu: `<svg viewBox="0 0 140 110"><path d="M40 106l14-30M100 106l-14-30" stroke="#8a5a3b" stroke-width="5" stroke-linecap="round"/><rect x="30" y="8" width="80" height="74" rx="4" fill="#2b3a33" stroke="#8a5a3b" stroke-width="6"/><text x="70" y="32" text-anchor="middle" font-family="Caveat, cursive" font-size="18" fill="#f7f4ec">Menú</text><path d="M44 44h40M44 54h30M44 64h36" stroke="#f7f4ec" stroke-width="2.4" stroke-linecap="round" opacity=".7"/><circle cx="92" cy="44" r="2" fill="#e5b04a"/><circle cx="82" cy="54" r="2" fill="#e5b04a"/><circle cx="88" cy="64" r="2" fill="#e5b04a"/></svg>`,
+      pasta: `<svg viewBox="0 0 140 110"><ellipse cx="70" cy="66" rx="58" ry="36" fill="#fff" stroke="#e3dac8" stroke-width="3"/><g fill="none" stroke-linecap="round" stroke-width="4.5"><path d="M36 66c6-20 50-24 66-6" stroke="#eccb78"/><path d="M40 74c10 12 50 12 62-4" stroke="#f4d991"/><path d="M44 58c16-10 42-8 54 6" stroke="#e3bb64"/><path d="M48 70c12 6 34 6 44-4" stroke="#f0d184"/></g><ellipse cx="70" cy="62" rx="16" ry="9" fill="#c4452c"/><path d="M64 56c6-6 12-4 14 0-6 2-10 2-14 0z" fill="#3f8a3c"/><path d="M62 30c-4-8 4-10 0-18M76 30c-4-8 4-10 0-18" stroke="#c9bfa9" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`,
+      vegetariano: `<svg viewBox="0 0 140 110"><ellipse cx="70" cy="66" rx="58" ry="36" fill="#fff" stroke="#e3dac8" stroke-width="3"/><ellipse cx="52" cy="58" rx="16" ry="6" transform="rotate(-20 52 58)" fill="#a9c55a" stroke="#4d7a2a" stroke-width="2"/><ellipse cx="60" cy="54" rx="16" ry="6" transform="rotate(-5 60 54)" fill="#c2d36f" stroke="#4d7a2a" stroke-width="2"/><circle cx="88" cy="58" r="8" fill="#d9362a"/><circle cx="96" cy="72" r="8" fill="#e9f0c9" stroke="#3f7a35" stroke-width="3"/><rect x="58" y="72" width="26" height="6" rx="3" fill="#e8843a" transform="rotate(12 71 75)"/><circle cx="46" cy="76" r="5" fill="#dcbf7f"/><circle cx="54" cy="80" r="5" fill="#dcbf7f"/></svg>`,
+      pollo: `<svg viewBox="0 0 140 110"><ellipse cx="70" cy="66" rx="58" ry="36" fill="#fff" stroke="#e3dac8" stroke-width="3"/><ellipse cx="78" cy="66" rx="30" ry="17" transform="rotate(-14 78 66)" fill="#d18f47"/><path d="M62 56l10 22M74 52l10 22M86 50l10 20" stroke="#5a3215" stroke-width="3.5" stroke-linecap="round" opacity=".6"/><circle cx="38" cy="58" r="10" fill="#6fae4f"/><circle cx="44" cy="70" r="8" fill="#8cc265"/><circle cx="34" cy="70" r="5" fill="#d9362a"/><path d="M98 42a10 10 0 0 1 16 6z" fill="#f6dc5a"/></svg>`,
+      conversar: `<svg viewBox="0 0 140 110"><path d="M14 102h112" stroke="#8a5a3b" stroke-width="6" stroke-linecap="round"/><path d="M30 64h28v22a8 8 0 0 1-8 8H38a8 8 0 0 1-8-8z" fill="#fff" stroke="#2f5d46" stroke-width="3"/><path d="M58 70h4a6 6 0 0 1 0 12h-4" fill="none" stroke="#2f5d46" stroke-width="3"/><path d="M82 64h28v22a8 8 0 0 1-8 8H90a8 8 0 0 1-8-8z" fill="#fff" stroke="#c8553d" stroke-width="3"/><path d="M82 70h-4a6 6 0 0 0 0 12h4" fill="none" stroke="#c8553d" stroke-width="3"/><rect x="18" y="12" width="44" height="30" rx="12" fill="#dcebdf"/><path d="M30 42l-4 10 12-10" fill="#dcebdf"/><circle cx="31" cy="27" r="3" fill="#2f5d46"/><circle cx="40" cy="27" r="3" fill="#2f5d46"/><circle cx="49" cy="27" r="3" fill="#2f5d46"/><rect x="78" y="18" width="44" height="28" rx="12" fill="#f6dccc"/><path d="M108 46l4 8-12-8" fill="#f6dccc"/><path d="M90 32h20" stroke="#c8553d" stroke-width="3" stroke-linecap="round"/></svg>`
+    };
+    const DESTACAN = [
+      { k: "ambiente", e: "En 13 reseñas", n: "El ambiente", d: "Acogedor, agradable y calmado. Es lo que más se repite en lo que escriben sus clientes.", accion: `<a class="ir" href="#reserva">Reservar mesa</a>` },
+      { k: "menu", e: "En 10 reseñas", n: "El menú", d: "Lo que se sirve cada día. El menú con fotos y precios va en la versión final.", accion: `<a class="ir" href="#ubicacion">Ver horario</a>` },
+      { k: "pasta", e: "En 9 reseñas", n: "Las pastas", d: "Uno de los platos que más nombran quienes vienen a almorzar.", accion: `<button type="button" class="ir" data-armar="pasta">Armar con pasta</button>` },
+      { k: "pollo", e: "\"Sabor exquisito\"", n: "El pollo", d: "\"Puedes reconocer el cuidado\", dice una clienta que piensa volver.", accion: `<button type="button" class="ir" data-armar="pollo">Armar con pollo</button>` },
+      { k: "vegetariano", e: "En 5 reseñas", n: "Opciones vegetarianas", d: "Para que nadie de la mesa se quede sin almorzar rico.", accion: `<button type="button" class="ir" data-armar="vegetariano">Armar vegetariano</button>` },
+      { k: "conversar", e: "En 3 reseñas", n: "Para conversar", d: "Un lugar tranquilo para una sobremesa larga o una reunión sin ruido.", accion: `<a class="ir" href="#reserva">Reservar mesa</a>` }
+    ];
+    document.getElementById("lista-destacan").innerHTML = DESTACAN.map((c, i) => `<article class="tarjeta aparece" style="transition-delay:${i * 60}ms"><div class="ilus">${ilus[c.k]}</div><span class="etq">${c.e}</span><h3>${c.n}</h3><p>${c.d}</p>${c.accion}</article>`).join("");
+    document.addEventListener("click", e => {
+      const b = e.target.closest("[data-armar]"); if (!b) return;
+      document.getElementById("arma").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" });
+      setTimeout(() => servir(b.dataset.armar), sinMovimiento ? 0 : 450);
+    });
+
+    // ===== La ventana de "Un día en Isla Verde" =====
+    (function () {
+      const rnd = azar(3);
+      let techos = "";
+      const xs = [40, 78, 112, 150, 196, 232, 268, 300, 334];
+      xs.forEach((x, i) => { const h = 22 + rnd() * 34, w = 30 + rnd() * 18; techos += `<rect x="${r1(x)}" y="${r1(318 - h)}" width="${r1(w)}" height="${r1(h + 30)}" fill="#46574d"/><rect x="${r1(x + 6)}" y="${r1(326 - h)}" width="6" height="7" class="luz" fill="#ffd98a"/><rect x="${r1(x + w - 14)}" y="${r1(326 - h)}" width="6" height="7" class="luz" fill="#ffd98a"/>`; });
+      let arboles = "";
+      [[70, 312, 22], [126, 318, 26], [210, 310, 30], [290, 316, 24], [350, 312, 20]].forEach(([x, y, r]) => { arboles += `<circle cx="${x}" cy="${y}" r="${r}" fill="#355e3f"/><circle cx="${x - r * .4}" cy="${y - r * .4}" r="${r * .55}" fill="#4a7a52" opacity=".8"/>`; });
+      document.getElementById("ventana").innerHTML = `<svg viewBox="0 0 400 470">
+        <defs>
+          <linearGradient id="v-dia" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fb2dc"/><stop offset="1" stop-color="#d8eef6"/></linearGradient>
+          <linearGradient id="v-tarde" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fb6d6"/><stop offset="1" stop-color="#f7dcae"/></linearGradient>
+          <linearGradient id="v-ocaso" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4e5a8f"/><stop offset=".55" stop-color="#d98a86"/><stop offset="1" stop-color="#f4b77a"/></linearGradient>
+          <linearGradient id="v-cerro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8e9cb8"/><stop offset="1" stop-color="#6b7a92"/></linearGradient>
+          <linearGradient id="v-marco" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e9e1cf"/><stop offset=".5" stop-color="#fbf7ee"/><stop offset="1" stop-color="#ddd3bd"/></linearGradient>
+          <linearGradient id="v-repisa" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b0804f"/><stop offset="1" stop-color="#7a4f2c"/></linearGradient>
+          <clipPath id="v-vidrio"><path d="M50 350V190A150 150 0 0 1 350 190V350Z"/></clipPath>
+          <filter id="v-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter>
+        </defs>
+        <ellipse cx="200" cy="230" rx="210" ry="200" fill="#ffe6a8" opacity=".08" id="v-halo"/>
+        <g clip-path="url(#v-vidrio)">
+          <rect x="40" y="30" width="320" height="330" fill="url(#v-dia)"/>
+          <rect x="40" y="30" width="320" height="330" fill="url(#v-tarde)" id="v-c-tarde" opacity="0"/>
+          <rect x="40" y="30" width="320" height="330" fill="url(#v-ocaso)" id="v-c-ocaso" opacity="0"/>
+          <g id="v-nubes" fill="#fff" opacity=".85"><ellipse cx="110" cy="120" rx="34" ry="10"/><ellipse cx="128" cy="112" rx="20" ry="10"/><ellipse cx="270" cy="96" rx="40" ry="9"/><ellipse cx="290" cy="88" rx="20" ry="9"/></g>
+          <path d="M40 300L84 236L112 258L160 196L196 232L236 178L280 238L316 212L360 262V330H40Z" fill="url(#v-cerro)"/>
+          <path d="M160 196L146 214L158 210L170 220L178 210ZM236 178L222 198L236 192L248 204L256 196ZM84 236L74 250L86 246L96 252ZM316 212L306 226L318 222L328 230Z" fill="#fff" id="v-nieve"/>
+          <path d="M160 196L146 214L158 210L170 220L178 210ZM236 178L222 198L236 192L248 204L256 196ZM84 236L74 250L86 246L96 252ZM316 212L306 226L318 222L328 230Z" fill="#f59a8a" id="v-arrebol" opacity="0"/>
+          <path d="M40 300L84 236L112 258L160 196L196 232L236 178L280 238L316 212L360 262V330H40Z" fill="#2c2f55" id="v-sombra-cerro" opacity="0"/>
+          ${techos}${arboles}
+          <rect x="40" y="30" width="320" height="330" fill="#1b2340" id="v-noche" opacity="0"/>
+        </g>
+        <path d="M50 350V190A150 150 0 0 1 350 190V350Z" fill="none" stroke="url(#v-marco)" stroke-width="16" stroke-linejoin="round"/>
+        <path d="M200 42V350M50 230H350" stroke="url(#v-marco)" stroke-width="9"/>
+        <path d="M64 342V196A136 136 0 0 1 120 86" stroke="#fff" stroke-opacity=".25" stroke-width="6" fill="none"/>
+        <rect x="18" y="348" width="364" height="24" rx="5" fill="url(#v-repisa)"/>
+        <rect x="18" y="348" width="364" height="5" rx="2" fill="#d4a374" opacity=".7"/>
+        <ellipse cx="300" cy="350" rx="40" ry="4" fill="#000" opacity=".25" id="v-sombra-taza"/>
+        <g transform="translate(78 270)">
+          <path d="M-26 78L-32 30H32L26 78Z" fill="#c8693f"/><path d="M-34 24H34V34H-34Z" fill="#b65a33"/>
+          <path d="M0 26C-30 10 -44 -26 -30 -56C-14 -40 -4 -14 0 26Z" fill="#4f8f4a"/><path d="M0 26C24 4 50 -6 66 -2C56 18 30 30 0 26Z" fill="#3f7a40"/><path d="M0 26C-8 -14 0 -50 22 -74C34 -46 22 -8 0 26Z" fill="#5fa55a"/><path d="M0 26C-24 18 -54 22 -66 34C-44 44 -20 40 0 26Z" fill="#6db466"/>
+          <path d="M0 26C-14 -6 -24 -30 -30 -56M0 26C6 -10 12 -44 22 -74" stroke="#a8d39a" stroke-width="1.6" fill="none" opacity=".6"/>
+        </g>
+        <g transform="translate(300 316)">
+          <ellipse cx="0" cy="32" rx="34" ry="5" fill="#f1ece2"/>
+          <path d="M-22 0H22L18 28Q17 32 13 32H-13Q-17 32 -18 28Z" fill="#fbfaf6"/><path d="M22 6h6a8 8 0 0 1 0 16h-8" fill="none" stroke="#fbfaf6" stroke-width="5"/>
+          <ellipse cx="0" cy="0" rx="22" ry="4" fill="#7a4520"/>
+          <g class="vapor" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".6"><path d="M-8 -6C-14 -18 -2 -24 -8 -36"/><path d="M6 -8C0 -20 12 -26 6 -40"/></g>
+        </g>
+      </svg>`;
+    })();
+
+    // ===== Apariciones al bajar =====
+    const elementos = document.querySelectorAll(".aparece");
+    if (captura || !("IntersectionObserver" in window)) elementos.forEach(el => el.classList.add("visto"));
+    else {
+      const obs = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visto"); obs.unobserve(e.target); } }), { threshold: 0.12 });
+      elementos.forEach(el => obs.observe(el));
+    }
+
+    // Tarjetas que se inclinan
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      const lista = document.getElementById("lista-destacan");
+      lista.addEventListener("pointermove", e => {
+        const it = e.target.closest(".tarjeta"); if (!it) return;
+        const r = it.getBoundingClientRect();
+        it.style.setProperty("--rx", ((.5 - (e.clientY - r.top) / r.height) * 8).toFixed(2) + "deg");
+        it.style.setProperty("--ry", (((e.clientX - r.left) / r.width - .5) * 8).toFixed(2) + "deg");
+      });
+      lista.addEventListener("pointerout", e => {
+        const it = e.target.closest(".tarjeta");
+        if (it && !it.contains(e.relatedTarget)) { it.style.removeProperty("--rx"); it.style.removeProperty("--ry"); }
+      });
+    }
+
+    // Contadores
+    const formatear = (v, dec) => dec ? v.toFixed(dec).replace(".", ",") : String(Math.round(v));
+    const contar = el => {
+      const fin = parseFloat(el.dataset.contar), dec = Number(el.dataset.dec || 0);
+      const inicio = performance.now(), dura = 1500;
+      const paso = ahora => {
+        const t = Math.min((ahora - inicio) / dura, 1);
+        el.textContent = formatear(fin * (1 - Math.pow(1 - t, 3)), dec);
+        if (t < 1) requestAnimationFrame(paso);
+      };
+      requestAnimationFrame(paso);
+    };
+    if ("IntersectionObserver" in window && !sinMovimiento) {
+      const obsNum = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { contar(e.target); obsNum.unobserve(e.target); } }), { threshold: .6 });
+      document.querySelectorAll("[data-contar]").forEach(n => { n.textContent = formatear(0, Number(n.dataset.dec || 0)); obsNum.observe(n); });
+    }
+
+    // ===== Horario y estado (hora de Chile) =====
+    const HORARIO = { 0: null, 1: [750, 1170], 2: [750, 1170], 3: [750, 1170], 4: [750, 1170], 5: [750, 1170], 6: null };
+    const NOMBRES = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+    const CORTOS = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+    const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+    const hhmm = m => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
+    function ahoraEnChile() {
+      const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/Santiago", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(new Date()).map(x => [x.type, x.value]));
+      return new Date(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute);
+    }
+    function pintarEstado() {
+      const ahora = ahoraEnChile(), dia = ahora.getDay(), min = ahora.getHours() * 60 + ahora.getMinutes();
+      const estado = document.getElementById("estado"), texto = estado.lastElementChild;
+      const h = HORARIO[dia];
+      const abierto = h && min >= h[0] && min < h[1];
+      estado.classList.toggle("abierto", !!abierto);
+      if (abierto) texto.textContent = `Abierto ahora · hasta las ${hhmm(h[1])}`;
+      else if (h && min < h[0]) texto.textContent = `Cerrado · abrimos hoy a las ${hhmm(h[0])}`;
+      else {
+        let d = (dia + 1) % 7, k = 1;
+        while (!HORARIO[d]) { d = (d + 1) % 7; k++; }
+        texto.textContent = `Cerrado · abrimos ${k === 1 ? "mañana" : "el " + NOMBRES[d]} a las ${hhmm(HORARIO[d][0])}`;
+      }
+      document.querySelectorAll("#tabla-horario tr").forEach(tr => tr.classList.toggle("hoy", tr.dataset.dias.split(",").includes(String(dia))));
+    }
+    pintarEstado();
+    setInterval(pintarEstado, 60000);
+
+    // ===== Reserva =====
+    const contDias = document.getElementById("dias"), contHoras = document.getElementById("horas");
+    const tuReserva = document.getElementById("tu-reserva"), cuantosOut = document.getElementById("cuantos"), sillas = document.getElementById("sillas");
+    let diaSel = null, horaSel = null, personas = 2, platoReserva = null;
+    function diasDisponibles() {
+      const hoy = ahoraEnChile(), lista = [];
+      for (let k = 0; lista.length < 6 && k < 14; k++) {
+        const d = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate() + k), h = HORARIO[d.getDay()];
+        if (!h) continue;
+        if (k === 0 && hoy.getHours() * 60 + hoy.getMinutes() > h[1] - 90) continue;
+        lista.push({ d, k });
+      }
+      return lista;
+    }
+    const DIAS = diasDisponibles();
+    const etiquetaDia = ({ d, k }) => k === 0 ? "hoy" : k === 1 ? "mañana" : `el ${NOMBRES[d.getDay()]} ${d.getDate()}`;
+    contDias.innerHTML = DIAS.map((x, i) => `<button type="button" data-i="${i}" aria-pressed="false">${x.k === 0 ? "Hoy" : x.k === 1 ? "Mañana" : CORTOS[x.d.getDay()]}<small>${x.d.getDate()} ${MESES[x.d.getMonth()]}</small></button>`).join("");
+    function horasDelDia(x) {
+      const h = HORARIO[x.d.getDay()], lista = [];
+      const ahora = ahoraEnChile(), min = ahora.getHours() * 60 + ahora.getMinutes();
+      for (let m = h[0]; m <= h[1] - 60; m += 30) if (x.k !== 0 || m >= min + 30) lista.push(m);
+      return lista;
+    }
+    function pintarHoras() {
+      if (diaSel === null) { contHoras.innerHTML = `<p class="sin-horas">Primero elige el día.</p>`; return; }
+      const hs = horasDelDia(DIAS[diaSel]);
+      if (!hs.includes(horaSel)) horaSel = null;
+      contHoras.innerHTML = hs.length ? hs.map(m => `<button type="button" data-m="${m}" aria-pressed="${m === horaSel}">${hhmm(m)}</button>`).join("") : `<p class="sin-horas">Hoy ya no quedan horas. Elige otro día.</p>`;
+    }
+    function pintarResumen() {
+      cuantosOut.textContent = personas;
+      sillas.innerHTML = "<i></i>".repeat(personas);
+      const campo = document.getElementById("campo-plato");
+      campo.hidden = !platoReserva;
+      if (platoReserva) document.getElementById("plato-texto").textContent = platoReserva;
+      if (diaSel === null) { tuReserva.textContent = "Elige día y hora"; return; }
+      const dia = etiquetaDia(DIAS[diaSel]);
+      tuReserva.textContent = `${personas} ${personas === 1 ? "persona" : "personas"}, ${dia}${horaSel !== null ? ` a las ${hhmm(horaSel)}` : ""}`;
+    }
+    contDias.addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      diaSel = +b.dataset.i;
+      contDias.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+      pintarHoras(); pintarResumen();
+    });
+    contHoras.addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      horaSel = +b.dataset.m;
+      contHoras.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+      pintarResumen();
+    });
+    document.getElementById("menos").addEventListener("click", () => { personas = Math.max(1, personas - 1); pintarResumen(); });
+    document.getElementById("mas").addEventListener("click", () => { personas = Math.min(12, personas + 1); if (personas === 12) mostrarToast("Para grupos más grandes, escríbenos directo por WhatsApp"); pintarResumen(); });
+    document.getElementById("quitar-plato").addEventListener("click", () => { platoReserva = null; pintarResumen(); });
+    document.getElementById("reservar-plato").addEventListener("click", () => {
+      platoReserva = `Almuerzo con ${NOMBRE_PLATO[platoSel]}${conCafe.checked ? " y un café" : ""}`;
+      pintarResumen();
+      document.getElementById("reserva").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" });
+      mostrarToast(`Anotamos: ${platoReserva.toLowerCase()} 🌿`);
+    });
+    if (captura && DIAS.length) { diaSel = DIAS.length > 1 ? 1 : 0; contDias.querySelector(`[data-i="${diaSel}"]`).setAttribute("aria-pressed", "true"); pintarHoras(); const b = contHoras.querySelector("button:nth-child(2)"); if (b) { horaSel = +b.dataset.m; b.setAttribute("aria-pressed", "true"); } }
+    pintarHoras(); pintarResumen();
+
+    document.getElementById("form-reserva").addEventListener("submit", e => {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value.trim();
+      if (diaSel === null) { mostrarToast("Elige el día de tu reserva"); return; }
+      if (horaSel === null) { mostrarToast("Elige la hora de tu reserva"); return; }
+      if (!nombre) { mostrarToast("Escribe tu nombre para la reserva"); document.getElementById("nombre").focus(); return; }
+      const mensaje = `Hola Café Isla Verde, soy ${nombre}. Quiero reservar una mesa para ${personas} ${personas === 1 ? "persona" : "personas"} ${etiquetaDia(DIAS[diaSel])} a las ${hhmm(horaSel)}.${platoReserva ? ` Se me antoja: ${platoReserva.toLowerCase()}.` : ""} ¡Gracias!`;
+      // Versión final: window.open("https://wa.me/56977076669?text=" + encodeURIComponent(mensaje));
+      mostrarToast("Demo: se abriría WhatsApp con este mensaje → " + mensaje);
+    });
+
+    // ===== Movimiento con el mouse en la portada =====
+    const hero = document.getElementById("inicio");
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      hero.addEventListener("pointermove", e => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty("--mx", ((e.clientX - r.left) / r.width).toFixed(3));
+        hero.style.setProperty("--my", ((e.clientY - r.top) / r.height).toFixed(3));
+      });
+      hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", .5); hero.style.setProperty("--my", .5); });
+    }
+
+    // ===== Scroll: barra, portada y "un día en Isla Verde" =====
+    const progreso = document.getElementById("progreso");
+    const listaPasos = document.querySelector(".dia-pasos");
+    const pasos = listaPasos.querySelectorAll("li");
+    const V = id => document.getElementById(id);
+    const vTarde = V("v-c-tarde"), vOcaso = V("v-c-ocaso"), vNoche = V("v-noche"), vArrebol = V("v-arrebol"), vSombraCerro = V("v-sombra-cerro"), vNubes = V("v-nubes"), vSombraTaza = V("v-sombra-taza"), vHalo = V("v-halo");
+    const luces = document.querySelectorAll("#ventana .luz");
+    const ventana = V("ventana");
+    const reloj = document.createElement("div");
+    reloj.className = "reloj";
+    reloj.innerHTML = `<strong id="hora-reloj">12:30</strong><span id="momento">abrimos</span>`;
+    ventana.appendChild(reloj);
+    const horaReloj = V("hora-reloj"), momento = V("momento");
+    const MOMENTOS = ["abrimos", "almuerzo", "sobremesa", "café de tarde", "hasta mañana"];
+    const rango = (a, x0, x1) => Math.max(0, Math.min(1, (a - x0) / (x1 - x0)));
+    function pintarVentana(a) {
+      vTarde.setAttribute("opacity", r1(rango(a, .25, .6) * 10) / 10);
+      vOcaso.setAttribute("opacity", (Math.round(rango(a, .6, .92) * 100) / 100));
+      vNoche.setAttribute("opacity", (Math.round(rango(a, .9, 1) * 35) / 100));
+      vArrebol.setAttribute("opacity", (Math.round(rango(a, .65, .9) * 100) / 100));
+      vSombraCerro.setAttribute("opacity", (Math.round(rango(a, .8, 1) * 40) / 100));
+      vNubes.setAttribute("transform", `translate(${r1(a * 60)} 0)`);
+      vSombraTaza.setAttribute("rx", r1(30 + a * 60));
+      vSombraTaza.setAttribute("cx", r1(300 - a * 40));
+      vHalo.setAttribute("opacity", (Math.round((.08 + rango(a, .7, 1) * .14) * 100) / 100));
+      luces.forEach((l, i) => l.setAttribute("opacity", rango(a, .72 + (i % 5) * .04, .8 + (i % 5) * .04) > .5 ? 1 : 0));
+      // Cada paso muestra su hora (12:30, 13:30, 15:30, 17:30, 19:30) y el reloj avanza entre ellas
+      const HORAS = [750, 810, 930, 1050, 1170], pos = Math.max(0, Math.min(4, a * 5 - .5)), k = Math.min(3, Math.floor(pos));
+      const min = HORAS[k] + (HORAS[k + 1] - HORAS[k]) * (pos - k);
+      horaReloj.textContent = hhmm(Math.round(min / 5) * 5);
+    }
+    let pendiente = false, pasoActual = -1;
+    function alHacerScroll() {
+      pendiente = false;
+      const total = document.documentElement.scrollHeight - innerHeight;
+      progreso.style.setProperty("--p", total > 0 ? (scrollY / total).toFixed(4) : 0);
+      if (!sinMovimiento) hero.style.setProperty("--sc", Math.min(scrollY / hero.offsetHeight, 1).toFixed(3));
+      const r = listaPasos.getBoundingClientRect();
+      const avance = captura ? .55 : Math.max(0, Math.min(1, (innerHeight * .55 - r.top) / (r.height - innerHeight * .3)));
+      pintarVentana(avance);
+      const i = Math.min(pasos.length - 1, Math.floor(avance * pasos.length));
+      if (i !== pasoActual) {
+        pasoActual = i;
+        pasos.forEach((p, k) => p.classList.toggle("activo", k === i));
+        momento.textContent = MOMENTOS[i];
+      }
+    }
+    addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(alHacerScroll); } }, { passive: true });
+    addEventListener("resize", alHacerScroll);
+    alHacerScroll();
+
+    // ===== Comparador =====
+    const modal = document.getElementById("modal-comparar");
+    const comparador = document.getElementById("comparador");
+    const deslizador = document.getElementById("deslizador");
+    const imgAntes = document.getElementById("img-antes");
+    const imgAhora = document.getElementById("img-ahora");
+    const btnCerrar = document.getElementById("cerrar-comparar");
+    const leyenda = document.getElementById("leyenda");
+    let ultimoFoco = null;
+    const ajustarLeyenda = () => { leyenda.style.width = comparador.offsetWidth + "px"; };
+    window.addEventListener("resize", ajustarLeyenda);
+    const moverDivisor = valor => comparador.style.setProperty("--pos", valor + "%");
+    deslizador.addEventListener("input", () => moverDivisor(deslizador.value));
+    function abrirComparar(e) {
+      ultimoFoco = e?.currentTarget || document.activeElement;
+      modal.classList.add("abierto");
+      document.body.classList.add("modal-abierto");
+      ajustarLeyenda();
+      const pasosDiv = [50, 30, 70, 50];
+      let i = 0;
+      const animados = comparador.querySelectorAll("img, .divisor");
+      animados.forEach(el => el.style.transition = "clip-path .35s ease, left .35s ease");
+      const intervalo = setInterval(() => {
+        if (i >= pasosDiv.length) { clearInterval(intervalo); animados.forEach(el => el.style.transition = ""); return; }
+        deslizador.value = pasosDiv[i]; moverDivisor(pasosDiv[i]); i++;
+      }, 380);
+      btnCerrar.focus();
+    }
+    function cerrarComparar() {
+      modal.classList.remove("abierto");
+      document.body.classList.remove("modal-abierto");
+      if (ultimoFoco) ultimoFoco.focus();
+    }
+    document.querySelectorAll("[data-abrir-comparar]").forEach(b => b.addEventListener("click", abrirComparar));
+    btnCerrar.addEventListener("click", cerrarComparar);
+    modal.addEventListener("click", e => { if (e.target === modal) cerrarComparar(); });
+    document.addEventListener("keydown", e => {
+      if (!modal.classList.contains("abierto")) return;
+      if (e.key === "Escape") cerrarComparar();
+      if (e.key === "Tab") {
+        const focos = modal.querySelectorAll("button, input");
+        const primero = focos[0], ultimo = focos[focos.length - 1];
+        if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+        else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+      }
+    });
+    document.querySelectorAll("[data-vista]").forEach(tab => tab.addEventListener("click", () => {
+      const vista = tab.dataset.vista;
+      document.querySelectorAll("[data-vista]").forEach(t => t.setAttribute("aria-selected", t === tab));
+      comparador.className = "comparador " + vista;
+      imgAntes.src = `comparar/antes-${vista}.png`;
+      imgAhora.src = `comparar/ahora-${vista}.png`;
+      ajustarLeyenda();
+    }));
+  </script>
+</body>
+</html>
