@@ -9,6 +9,25 @@ const SITIO = "https://www.benedettowebs.cl";
 // whatsapp: número sin "+" ni espacios (vacío si no lo tenemos todavía)
 const DEMOS = [
   {
+    id: "cafe-isla-verde",
+    negocio: "Café Isla Verde",
+    rubro: "Cafetería y almuerzos",
+    direccion: "Dr. Johow 889-A, Ñuñoa",
+    caso: "Sin web (solo ficha de Google)",
+    whatsapp: "56977076669",
+    creada: "2026-11-12",
+    mensaje: `Hola, ¿cómo están? Soy Santiago Benedetto, de La Reina, y hago páginas web para negocios de la zona con BenedettoWebs.
+
+Les escribo porque vi su ficha de Google: un 4,4 con 223 reseñas, y lo que más se repite es el ambiente, el menú, las pastas y las opciones vegetarianas. Pero el café no tiene página web: Google muestra "Añadir sitio web", y quien quiere ver qué hay para almorzar o reservar una mesa no tiene dónde hacerlo.
+
+Así que les armé una propuesta con su información: un "Arma tu almuerzo" donde la persona elige pasta, pollo o vegetariano y lo ve llegar al plato; reservar mesa eligiendo día, hora y cuántos vienen (el mensaje les llega listo por WhatsApp); el horario con "abierto ahora" en vivo, sus reseñas y la ubicación.
+
+https://www.benedettowebs.cl/demos/cafe-isla-verde/
+
+En la demo hay un botón abajo que dice "Comparar". Ahí pueden ver lo que hay hoy y la página nueva lado a lado, en celular y en computador.`,
+    seguimiento: "Hola de nuevo. ¿Alcanzaron a ver la propuesta? Si quieren, paso por el café y se la muestro en 5 minutos. Las páginas parten en $30.000, pago único, y el dominio cafeislaverde.cl está disponible para dejarla funcionando ahí."
+  },
+  {
     id: "love-flowers",
     negocio: "Florería Love Flowers",
     rubro: "Florería",
