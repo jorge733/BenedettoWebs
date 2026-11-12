@@ -309,6 +309,27 @@ const PLANTILLAS = {
       ${botonWhatsApp("Pedir ayuda por WhatsApp")}
       ${firma()}`;
     }
+  },
+
+  instagram: {
+    nombre: "11 · Seguir en Instagram",
+    campos: [],
+    asunto: () => `¿Nos seguimos en Instagram? · @${INSTAGRAM}`,
+    cuerpo: (d, e) => `
+      ${etiquetaColor("📸 Instagram", "#fdeaf3", "#c13584")}
+      ${titulo(`Hola, ${e.nombre} 👋`)}
+      ${parrafo(`Te escribo cortito: estoy compartiendo en Instagram lo que hago en BenedettoWebs y me encantaría que ${d.negocio ? `<strong>${e.negocio}</strong>` : "tú"} también estuviera por ahí.`)}
+      ${destacado("Encuéntrame como", `<a href="https://www.instagram.com/${INSTAGRAM}" style="color:#ffffff;text-decoration:none;">@${INSTAGRAM}</a>`)}
+      ${seccion("Lo que vas a encontrar")}
+      ${lista([
+        ["💡", "<strong>Consejos</strong> <span style=\"color:#5b6480;\">· para que tu negocio se vea mejor en internet y en Google</span>"],
+        ["🖥️", "<strong>Webs terminadas</strong> <span style=\"color:#5b6480;\">· los proyectos de negocios del barrio, con su antes y después</span>"],
+        ["🛠️", "<strong>Detrás de escena</strong> <span style=\"color:#5b6480;\">· cómo se arma una página paso a paso</span>"],
+        ["🎁", "<strong>Ofertas y cupos</strong> <span style=\"color:#5b6480;\">· los avisos llegan primero por ahí</span>"]
+      ])}
+      <div style="margin:0 0 22px;">${boton(`https://www.instagram.com/${INSTAGRAM}`, "Seguir a @" + INSTAGRAM, "#c13584")}</div>
+      ${nota("🙌 Si tu negocio también tiene Instagram, cuéntame cuál es y te sigo de vuelta. Y si te gusta algún post, compartirlo me ayuda un montón.", "#c13584")}
+      ${firma("¡Gracias y nos vemos por allá!")}`
   }
 };
 
