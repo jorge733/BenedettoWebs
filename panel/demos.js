@@ -9,6 +9,25 @@ const SITIO = "https://www.benedettowebs.cl";
 // whatsapp: número sin "+" ni espacios (vacío si no lo tenemos todavía)
 const DEMOS = [
   {
+    id: "love-flowers",
+    negocio: "Florería Love Flowers",
+    rubro: "Florería",
+    direccion: "Av. Echeñique 8486 (Plaza Carlos Ossandón), La Reina",
+    caso: "Sin web (ficha de Google sin sitio)",
+    whatsapp: "56965804634",
+    creada: "2026-11-12",
+    mensaje: `Hola, ¿cómo están? Soy Santiago Benedetto, vecino de La Reina, y hago páginas web para negocios del barrio con BenedettoWebs.
+
+Les escribo porque vi su ficha de Google: un 5,0 con 163 reseñas, y lo que más destacan sus clientes son los precios justos, los ramos y la buena atención. Pero la florería no tiene página web: Google muestra "Agregar sitio web", y el botón "Pedir en línea" abre un chat en blanco, sin catálogo.
+
+Así que les armé una propuesta con su información: un "Arma tu ramo" donde la persona elige flor, color, tamaño, follaje, papel y escribe la dedicatoria, y lo ve armarse en pantalla; ramos por ocasión (cumpleaños, aniversario, condolencias, nacimiento, porque sí) y globos; cómo funciona el delivery; y el pedido completo por WhatsApp, con retiro o delivery, comuna, día y para quién es. También está el horario de cada día con "abierto ahora" en vivo, sus reseñas y la ubicación.
+
+https://www.benedettowebs.cl/demos/love-flowers/
+
+En la demo hay un botón abajo que dice "Comparar". Ahí pueden ver lo que hay hoy y la página nueva lado a lado, en celular y en computador.`,
+    seguimiento: "Hola de nuevo. ¿Alcanzaron a ver la propuesta? Si quieren, paso por la plaza y se la muestro en 5 minutos. Las páginas parten en $30.000, pago único, y el dominio loveflowers.cl está disponible para dejarla funcionando ahí."
+  },
+  {
     id: "lienzo-y-latte",
     negocio: "Lienzo y Latte",
     rubro: "Cafetería y espacio creativo",

@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Florería Love Flowers · Ramos y delivery en La Reina (demo)</title>
+  <meta name="description" content="Propuesta de sitio web para Florería Love Flowers, en la Plaza Carlos Ossandón de La Reina. Demo hecha por BenedettoWebs.">
+  <link rel="canonical" href="https://www.benedettowebs.cl/demos/love-flowers/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BenedettoWebs">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://www.benedettowebs.cl/demos/love-flowers/">
+  <meta property="og:title" content="Florería Love Flowers: así se vería su página web">
+  <meta property="og:description" content="Propuesta de BenedettoWebs: arma tu ramo, ocasiones, delivery, pedidos por WhatsApp, horario y ubicación.">
+  <meta property="og:image" content="https://www.benedettowebs.cl/demos/love-flowers/og.png">
+  <meta property="og:image:secure_url" content="https://www.benedettowebs.cl/demos/love-flowers/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Demo de página web para Florería Love Flowers, con un ramo de rosas en papel kraft.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Florería Love Flowers: así se vería su página web">
+  <meta name="twitter:description" content="Propuesta de BenedettoWebs para Florería Love Flowers, La Reina.">
+  <meta name="twitter:image" content="https://www.benedettowebs.cl/demos/love-flowers/og.png">
+  <meta name="theme-color" content="#2f5d46">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23fdf0f2'/%3E%3Cpath d='M32 14c9 3 13 11 9 19-3 6-15 6-18 0-4-8 0-16 9-19z' fill='%23b0304a'/%3E%3Cpath d='M32 34v18' stroke='%232f5d46' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M32 46c-5-6-12-6-14-3 4 4 9 5 14 3z' fill='%232f5d46'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Outfit:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --papel: #fdf8f5;
+      --crema: #f8ede8;
+      --crema-2: #f1e0d8;
+      --linea: #ecdbd2;
+      --verde: #2f5d46;
+      --verde-osc: #1d3b2c;
+      --verde-claro: #dce9e0;
+      --baya: #b0304a;
+      --rosa: #e88fa3;
+      --oro: #e0ad55;
+      --tinta: #3a1d26;
+      --texto: #2b2124;
+      --suave: #7a6a6c;
+      --radio: 20px;
+      --mano: "Caveat", cursive;
+      --serif: "Fraunces", Georgia, serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Outfit", system-ui, sans-serif; color: var(--texto); background: var(--papel); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.04; letter-spacing: -.015em; font-optical-sizing: auto; }
+    h1 em, h2 em { font-style: italic; font-weight: 400; color: var(--baya); }
+    .contenedor { width: min(1160px, 100% - 32px); margin-inline: auto; }
+    section { padding: 100px 0; }
+    main { overflow-x: clip; }
+    body.modal-abierto { overflow: hidden; }
+
+    .aviso-demo { background: var(--verde-osc); color: #fff; font-size: .85rem; text-align: center; padding: 8px 16px; }
+    .aviso-demo a, .aviso-demo button { color: #f6c7d1; font-weight: 700; text-decoration: underline; background: none; border: 0; font: inherit; cursor: pointer; }
+
+    header { position: sticky; top: 0; z-index: 50; background: rgba(253, 248, 245, .88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--linea); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 12px; color: var(--tinta); }
+    .logo-texto { font-family: var(--serif); font-size: 1.42rem; font-weight: 600; line-height: 1; }
+    .logo-texto small { display: block; font: 700 .62rem "Outfit", sans-serif; letter-spacing: .3em; color: var(--suave); margin-top: 5px; text-transform: uppercase; }
+    .menu { display: flex; gap: 28px; font-weight: 600; font-size: .95rem; }
+    .menu a { color: var(--suave); transition: color .2s; }
+    .menu a:hover { color: var(--baya); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font: 700 .97rem "Outfit", sans-serif; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, color .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-baya { background: var(--baya); color: #fff; box-shadow: 0 12px 28px rgba(176, 48, 74, .28); }
+    .btn-baya:hover { background: #8f2239; }
+    .btn-verde { background: var(--verde); color: #fff; box-shadow: 0 12px 28px rgba(47, 93, 70, .26); }
+    .btn-verde:hover { background: var(--verde-osc); }
+    .btn-borde { border-color: var(--linea); color: var(--tinta); background: #fff; }
+    .btn-borde:hover { border-color: var(--baya); }
+    .hamburguesa { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+    .hamburguesa span { display: block; width: 24px; height: 2px; background: var(--tinta); border-radius: 2px; margin: 6px 0; }
+    .progreso { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: linear-gradient(90deg, var(--verde), var(--rosa), var(--baya)); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+    .estado { display: inline-flex; align-items: center; gap: 9px; font-size: .86rem; font-weight: 600; color: var(--suave); background: #fff; border: 1px solid var(--linea); padding: 7px 14px 7px 12px; border-radius: 999px; }
+    .estado i { width: 9px; height: 9px; border-radius: 50%; background: #c9b9b5; }
+    .estado.abierto i { background: #3aa66b; animation: latir 1.8s infinite; }
+    @keyframes latir { 0% { box-shadow: 0 0 0 0 rgba(58, 166, 107, .55); } 70%, 100% { box-shadow: 0 0 0 9px rgba(58, 166, 107, 0); } }
+
+    /* Flores (compartido) */
+    .flor { transform-box: fill-box; transform-origin: center; animation: abrir 1s cubic-bezier(.2, .9, .3, 1.15) both; animation-delay: calc(var(--i, 0) * 70ms + var(--d0, 0ms)); }
+    .follaje { transform-box: fill-box; transform-origin: bottom center; animation: crecer 1s cubic-bezier(.2, .8, .2, 1) both; animation-delay: calc(var(--i, 0) * 50ms + var(--d0, 0ms)); }
+    @keyframes abrir { from { transform: scale(0) rotate(-50deg); opacity: 0; } }
+    @keyframes crecer { from { transform: scale(.2); opacity: 0; } }
+
+    /* Hero */
+    .hero { --mx: .5; --my: .5; --sc: 0; position: relative; overflow: hidden; padding: 0; background: radial-gradient(720px 560px at 74% 50%, #f9e2e4, transparent 70%), radial-gradient(500px 400px at 10% 90%, #e6efe7, transparent 70%), var(--papel); }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .45; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .3 0 0 0 0 .32 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; min-height: calc(100svh - 110px); padding: 40px 0 70px; }
+    .captura .hero-grid { min-height: calc(100svh - 74px); }
+    .hero-grid > * { min-width: 0; }
+    .hero .hero-texto.aparece.visto { transform: translateY(calc(var(--sc) * -70px)); opacity: calc(1 - var(--sc) * 1.5); }
+    .firma { font-family: var(--mano); color: var(--baya); font-size: 1.75rem; line-height: 1; transform: rotate(-3deg); display: inline-block; }
+    .hero h1 { font-size: clamp(3rem, min(6.2vw, 9.6vh), 5.6rem); margin: 20px 0 20px; color: var(--tinta); }
+    .hero h1 em { display: block; }
+    .hero p.lead { color: var(--suave); font-size: 1.15rem; max-width: 500px; margin-bottom: 30px; }
+    .hero-botones { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-datos { display: flex; gap: 34px; margin-top: 36px; padding-top: 24px; border-top: 1px solid var(--linea); flex-wrap: wrap; }
+    .hero-datos strong { display: block; font-family: var(--serif); font-weight: 500; font-size: 2.4rem; line-height: 1; color: var(--tinta); }
+    .hero-datos strong b { color: var(--oro); font-size: .7em; }
+    .hero-datos > div > span { color: var(--suave); font-size: .86rem; }
+
+    .escena { position: relative; height: min(640px, 78vh); }
+    .ramo-mov { position: absolute; inset: 0; display: grid; place-items: center; transform: translateY(calc(var(--sc) * 70px)) scale(calc(1 - var(--sc) * .08)); }
+    .ramo-hero { position: relative; height: 100%; aspect-ratio: 600 / 720; max-width: 100%; transform: perspective(1200px) rotateY(calc((var(--mx) - .5) * 14deg)) rotateX(calc((var(--my) - .5) * -8deg)); transition: transform .4s ease-out; }
+    .ramo-hero svg { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 26px 30px rgba(58, 29, 38, .18)); }
+    .mecer { transform-box: view-box; transform-origin: 300px 620px; transform: rotate(calc((var(--mx) - .5) * 5deg + var(--sc) * -4deg)); transition: transform .5s ease-out; }
+    .objeto { position: absolute; z-index: 2; transform: translate(calc((var(--mx) - .5) * var(--prof) * 1px), calc((var(--my) - .5) * var(--prof) * 1px + var(--sc) * var(--prof) * -4px)); transition: transform .3s ease-out; pointer-events: none; }
+    .objeto svg { animation: caer var(--t, 9s) ease-in-out infinite; animation-delay: var(--dl, 0s); filter: drop-shadow(0 8px 8px rgba(58, 29, 38, .16)); }
+    @keyframes caer { 0%, 100% { transform: translate(0, 0) rotate(0deg); } 33% { transform: translate(12px, 16px) rotate(30deg); } 66% { transform: translate(-10px, 28px) rotate(-18deg); } }
+    .objeto.p1 { --prof: 50; --t: 8s; top: 6%; right: 6%; width: 46px; }
+    .objeto.p2 { --prof: -36; --t: 11s; --dl: -3s; top: 40%; left: 1%; width: 34px; }
+    .objeto.p3 { --prof: 64; --t: 10s; --dl: -6s; bottom: 16%; right: 1%; width: 40px; }
+    .objeto.p4 { --prof: -54; --t: 12s; --dl: -2s; top: 14%; left: 14%; width: 26px; }
+    .objeto.p5 { --prof: 30; --t: 9s; --dl: -5s; bottom: 6%; left: 20%; width: 30px; }
+    .ficha { position: absolute; z-index: 3; background: rgba(255, 255, 255, .93); backdrop-filter: blur(8px); border: 1px solid var(--linea); border-radius: 18px; padding: 14px 17px; font-size: .86rem; color: var(--suave); box-shadow: 0 18px 40px rgba(58, 29, 38, .12); animation: flotar-ficha 6s ease-in-out infinite; max-width: 240px; }
+    .ficha strong { display: block; color: var(--tinta); font-size: 1rem; }
+    .ficha q { display: block; font-family: var(--serif); font-style: italic; color: var(--tinta); font-size: 1.1rem; line-height: 1.3; margin-bottom: 6px; }
+    .ficha .estrellas { color: var(--oro); letter-spacing: 2px; }
+    .ficha.f1 { top: 4%; left: 0; }
+    .ficha.f2 { bottom: 6%; right: 0; animation-delay: -3s; }
+    @keyframes flotar-ficha { 50% { transform: translateY(-9px); } }
+    .scroll-abajo { position: absolute; left: 50%; bottom: 18px; z-index: 2; transform: translateX(-50%); color: var(--suave); font-size: .72rem; letter-spacing: .24em; text-transform: uppercase; display: grid; justify-items: center; gap: 4px; opacity: calc(1 - var(--sc) * 4); }
+    .scroll-abajo::after { content: ""; width: 1.5px; height: 28px; background: linear-gradient(var(--baya), transparent); animation: bajar 1.6s ease-in-out infinite; }
+    @keyframes bajar { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+    .cinta { background: var(--baya); color: #fff; overflow: hidden; padding: 14px 0; }
+    .cinta-pista { display: flex; width: max-content; animation: correr 38s linear infinite; }
+    .cinta span { font-family: var(--serif); font-style: italic; font-size: 1.32rem; padding: 0 20px; white-space: nowrap; display: inline-flex; align-items: center; gap: 40px; }
+    .cinta span::after { content: "❀"; font-style: normal; font-size: 1.05rem; color: #f6c7d1; }
+    @keyframes correr { to { transform: translateX(-50%); } }
+
+    .sobre { display: inline-flex; align-items: center; gap: 10px; color: var(--baya); font-family: var(--mano); font-weight: 700; font-size: 1.55rem; line-height: 1; margin-bottom: 12px; }
+    .titulo-seccion { max-width: 680px; margin-bottom: 46px; }
+    .titulo-seccion h2 { font-size: clamp(2.4rem, 5vw, 3.8rem); margin-bottom: 14px; color: var(--tinta); }
+    .titulo-seccion p { color: var(--suave); font-size: 1.07rem; }
+    .oscuro { background: var(--verde-osc); color: #fff; }
+    .oscuro .titulo-seccion h2 { color: #fff; }
+    .oscuro .titulo-seccion p { color: #b9cfc2; }
+    .oscuro .sobre { color: #f6c7d1; }
+    .oscuro h2 em { color: #f6c7d1; }
+
+    /* Arma tu ramo */
+    .arma-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .arma-grid > * { min-width: 0; }
+    .mesa { position: relative; border-radius: 30px; background: radial-gradient(circle at 50% 40%, #fff, #f7e8e4 70%); border: 1px solid var(--linea); padding: 16px; aspect-ratio: 600 / 640; max-width: 540px; width: 100%; margin-inline: auto; overflow: hidden; }
+    .mesa::after { content: ""; position: absolute; left: 10%; right: 10%; bottom: 5%; height: 26px; border-radius: 50%; background: radial-gradient(rgba(58, 29, 38, .16), transparent 70%); }
+    .mesa .ramo { position: relative; z-index: 1; height: 100%; display: grid; place-items: center; }
+    .mesa .ramo svg { height: 100%; width: auto; overflow: visible; }
+    .tarjeta { position: absolute; z-index: 2; right: 6%; bottom: 9%; width: 42%; max-width: 200px; background: #fffdf8; border-radius: 6px; padding: 12px 14px 14px; box-shadow: 0 12px 26px rgba(58, 29, 38, .18); transform: rotate(4deg); font-family: var(--mano); font-size: 1.25rem; line-height: 1.12; color: var(--tinta); transition: opacity .3s, transform .3s; word-wrap: break-word; }
+    .tarjeta::before { content: ""; position: absolute; top: -9px; left: 50%; width: 2px; height: 16px; background: #c9a87a; }
+    .tarjeta small { display: block; font: 700 .62rem "Outfit", sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--suave); margin-bottom: 4px; }
+    .tarjeta.vacia { opacity: 0; transform: rotate(4deg) translateY(16px); }
+    .controles { display: grid; gap: 22px; }
+    .control h3 { font: 700 1rem "Outfit", sans-serif; color: var(--tinta); margin-bottom: 10px; display: flex; justify-content: space-between; gap: 10px; }
+    .control h3 span { font-weight: 500; color: var(--suave); font-size: .88rem; }
+    .opciones { display: flex; gap: 8px; flex-wrap: wrap; }
+    .opciones button { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--linea); background: #fff; color: var(--texto); font: 600 .93rem "Outfit", sans-serif; padding: 9px 15px; border-radius: 999px; cursor: pointer; transition: border-color .2s, background .2s, opacity .2s; }
+    .opciones button:hover { border-color: var(--baya); }
+    .opciones button[aria-pressed="true"] { background: #fbe6ea; border-color: var(--baya); color: var(--tinta); }
+    .opciones button:disabled { opacity: .35; cursor: not-allowed; }
+    .opciones .mini { width: 26px; height: 26px; }
+    .muestras button { padding: 5px; width: 42px; height: 42px; justify-content: center; }
+    .muestras button i { width: 28px; height: 28px; border-radius: 50%; display: block; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); }
+    .control input[type=text] { display: block; width: 100%; background: #fff; color: var(--texto); border: 1.5px solid var(--linea); border-radius: 14px; padding: 13px 14px; font: 600 1rem "Outfit", sans-serif; }
+    .control input:focus { outline: none; border-color: var(--baya); }
+    .resumen-ramo { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px dashed var(--linea); padding-top: 20px; }
+    .resumen-ramo p { color: var(--suave); font-size: .9rem; flex: 1 1 220px; }
+    .resumen-ramo strong { display: block; font-family: var(--serif); font-weight: 500; color: var(--tinta); font-size: 1.25rem; line-height: 1.25; }
+
+    /* Ocasiones */
+    .ocasiones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .ocasion { background: #fff; border-radius: var(--radio); padding: 22px; border: 1.5px solid transparent; transition: border-color .2s, box-shadow .2s; transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); display: flex; flex-direction: column; }
+    .ocasion:hover { border-color: var(--rosa); box-shadow: 0 22px 40px rgba(58, 29, 38, .08); }
+    .ocasion .ilus { height: 240px; border-radius: 14px; background: radial-gradient(circle at 50% 45%, #fff, var(--crema) 75%); display: grid; place-items: center; margin-bottom: 16px; overflow: hidden; }
+    .ocasion .ilus svg { height: 228px; width: auto; overflow: visible; }
+    .ocasion .etq { font-family: var(--mano); color: var(--baya); font-size: 1.25rem; line-height: 1; }
+    .ocasion h3 { font-size: 1.6rem; color: var(--tinta); margin: 4px 0 6px; }
+    .ocasion p { color: var(--suave); font-size: .95rem; flex: 1; }
+    .ocasion button { margin-top: 14px; align-self: flex-start; border: 0; background: none; font: 700 .93rem "Outfit", sans-serif; color: var(--baya); cursor: pointer; display: inline-flex; gap: 6px; padding: 0; }
+    .ocasion button::after { content: "→"; transition: transform .2s; }
+    .ocasion button:hover::after { transform: translateX(4px); }
+    .nota-chica { font-size: .86rem; color: var(--suave); margin-top: 22px; text-align: center; }
+
+    /* Delivery */
+    .viaje-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+    .viaje-grid > * { min-width: 0; }
+    .viaje-visual { position: sticky; top: 100px; height: min(560px, 76vh); display: grid; place-items: center; }
+    .mapa { position: relative; width: min(460px, 100%); aspect-ratio: 1; border-radius: 30px; background: #24473a; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,.25); }
+    .mapa svg { width: 100%; height: 100%; }
+    .ruta-llena { stroke-dasharray: 100; stroke-dashoffset: calc(100 - var(--avance, 0) * 100); }
+    .mapa .etapa { position: absolute; left: 50%; top: 16px; translate: -50% 0; background: #fff; color: var(--tinta); border-radius: 999px; padding: 6px 16px; font-family: var(--mano); font-size: 1.45rem; line-height: 1.1; white-space: nowrap; box-shadow: 0 8px 20px rgba(0,0,0,.2); }
+    .casa-luz { opacity: clamp(0, calc((var(--avance, 0) - .9) * 10), 1); }
+    .viaje-pasos { list-style: none; }
+    .viaje-pasos li { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; border-left: 2px solid rgba(255,255,255,.12); padding-left: 32px; opacity: .3; transition: opacity .45s, border-color .45s; }
+    .viaje-pasos li.activo { opacity: 1; border-color: #f6c7d1; }
+    .viaje-pasos .num { font-family: var(--mano); color: #f6c7d1; font-size: 1.5rem; margin-bottom: 4px; }
+    .viaje-pasos h3 { font-size: clamp(2.1rem, 3.6vw, 2.9rem); margin-bottom: 12px; }
+    .viaje-pasos p { color: #b9cfc2; font-size: 1.07rem; max-width: 440px; }
+
+    /* Reseñas */
+    .resenas { display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; background: var(--crema); border-radius: 28px; padding: 44px; }
+    .nota { text-align: center; }
+    .nota strong { font-family: var(--serif); font-weight: 500; font-size: 5rem; line-height: 1; display: block; color: var(--tinta); }
+    .nota .estrellas { color: var(--oro); letter-spacing: 4px; font-size: 1.1rem; }
+    .nota > span { color: var(--suave); font-size: .88rem; display: block; }
+    .palabras { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 14px; max-width: 240px; }
+    .palabras span { background: #fff; border-radius: 999px; padding: 5px 12px; font-size: .8rem; font-weight: 700; color: var(--tinta); }
+    .palabras span b { color: var(--baya); }
+    .citas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .cita { background: #fff; border-radius: 18px; padding: 20px; transform: rotate(var(--r, 0deg)); }
+    .cita:nth-child(1) { --r: -1deg; } .cita:nth-child(2) { --r: .8deg; } .cita:nth-child(3) { --r: -.6deg; }
+    .cita q { font-family: var(--serif); font-size: 1.16rem; line-height: 1.38; display: block; margin-bottom: 10px; color: var(--tinta); }
+    .cita span { color: var(--suave); font-size: .84rem; }
+
+    /* Pedido */
+    .pedido-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; align-items: start; }
+    .pedido-grid > * { min-width: 0; }
+    .pedido { background: #fff; border-radius: 28px; padding: 32px; border: 1px solid var(--linea); box-shadow: 0 30px 60px rgba(58, 29, 38, .06); }
+    .pedido fieldset { border: 0; min-width: 0; margin-bottom: 22px; }
+    .pedido legend, .pedido label { display: block; font-weight: 700; font-size: .95rem; color: var(--tinta); margin-bottom: 10px; }
+    .pedido input[type=text], .pedido select { display: block; width: 100%; background: var(--papel); color: var(--texto); border: 1.5px solid var(--linea); border-radius: 14px; padding: 13px 14px; font: 600 1rem "Outfit", sans-serif; }
+    .pedido input:focus, .pedido select:focus { outline: none; border-color: var(--baya); }
+    .tu-ramo { display: flex; gap: 14px; align-items: center; background: var(--papel); border: 1.5px solid var(--linea); border-radius: 16px; padding: 12px 14px; }
+    .tu-ramo .mini-ramo { flex: none; width: 58px; height: 62px; }
+    .tu-ramo .mini-ramo svg { width: 100%; height: 100%; }
+    .tu-ramo div { min-width: 0; flex: 1; }
+    .tu-ramo strong { display: block; color: var(--tinta); font-size: .98rem; line-height: 1.3; }
+    .tu-ramo a { color: var(--baya); font-weight: 700; font-size: .86rem; }
+    .extra { display: flex; align-items: center; justify-content: space-between; gap: 8px; border: 1.5px solid var(--linea); border-radius: 14px; padding: 8px 8px 8px 14px; font-weight: 600; font-size: .94rem; margin-top: 8px; transition: border-color .2s, background .2s; }
+    .extra.con { border-color: var(--baya); background: #fdf1f3; }
+    .extra small { color: var(--suave); font-weight: 500; }
+    .contador { display: inline-flex; align-items: center; gap: 4px; flex: none; }
+    .contador button { width: 30px; height: 30px; border-radius: 50%; border: 0; background: var(--crema); color: var(--tinta); font: 800 1rem "Outfit", sans-serif; cursor: pointer; display: grid; place-items: center; }
+    .contador button:hover { background: var(--crema-2); }
+    .contador output { min-width: 18px; text-align: center; font-weight: 800; color: var(--baya); }
+    .segmento { display: flex; gap: 8px; }
+    .segmento button { flex: 1; border: 1.5px solid var(--linea); background: #fff; border-radius: 12px; padding: 12px; font: 700 .93rem "Outfit", sans-serif; color: var(--texto); cursor: pointer; }
+    .segmento button[aria-pressed="true"] { background: #fbe6ea; border-color: var(--baya); color: var(--tinta); }
+    .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+    .chips button { flex: none; border: 1.5px solid var(--linea); background: #fff; color: var(--texto); border-radius: 12px; padding: 10px 14px; font: 700 .9rem "Outfit", sans-serif; cursor: pointer; }
+    .chips button[aria-pressed="true"] { background: var(--tinta); border-color: var(--tinta); color: #fff; }
+    .dos-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ayuda-campo { font-size: .8rem; color: var(--suave); margin-top: 6px; }
+    .resumen { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 1px dashed var(--linea); padding-top: 20px; }
+    .resumen .tu-pedido { color: var(--suave); font-size: .9rem; min-width: 0; flex: 1 1 200px; }
+    .resumen .tu-pedido strong { display: block; color: var(--tinta); font-family: var(--serif); font-weight: 500; font-size: 1.2rem; line-height: 1.3; }
+    .lista-check { list-style: none; display: grid; gap: 12px; margin: 18px 0 22px; }
+    .lista-check li { display: flex; gap: 12px; color: var(--suave); }
+    .lista-check li::before { content: "✓"; flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--verde-claro); color: var(--verde); display: grid; place-items: center; font-weight: 800; font-size: .85rem; }
+    .lista-check b { color: var(--tinta); }
+
+    /* Ubicación */
+    .ubicacion-grid { display: grid; grid-template-columns: .9fr 1.1fr; border-radius: 28px; overflow: hidden; background: #fff; border: 1px solid var(--linea); }
+    .ubicacion-grid > * { min-width: 0; }
+    .ubicacion-texto { padding: 44px 40px; }
+    .ubicacion-texto h2 { font-size: clamp(2.2rem, 4.2vw, 3rem); margin-bottom: 22px; color: var(--tinta); }
+    .linea { display: flex; gap: 14px; margin-bottom: 18px; }
+    .linea .ico { flex: none; width: 42px; height: 42px; border-radius: 12px; background: #fbe6ea; display: grid; place-items: center; }
+    .linea > div { min-width: 0; flex: 1; }
+    .linea b { display: block; color: var(--tinta); }
+    .linea span, .linea a { color: var(--suave); }
+    .linea a:hover { color: var(--baya); text-decoration: underline; }
+    .horario { width: 100%; border-collapse: collapse; font-size: .93rem; margin-top: 4px; }
+    .horario td { padding: 5px 0; border-bottom: 1px solid var(--crema); color: var(--suave); }
+    .horario td:last-child { text-align: right; color: var(--tinta); font-weight: 700; white-space: nowrap; }
+    .horario tr.hoy td { color: var(--baya); font-weight: 700; }
+    .ubicacion-grid iframe { width: 100%; height: 100%; min-height: 460px; border: 0; }
+
+    .faq { max-width: 820px; margin-inline: auto; display: grid; gap: 12px; }
+    .faq details { background: #fff; border-radius: 16px; padding: 20px 24px; border: 1px solid var(--linea); }
+    .faq summary { cursor: pointer; font-weight: 700; font-size: 1.04rem; color: var(--tinta); list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font-size: 1.4rem; line-height: 1; color: var(--baya); transition: transform .2s; }
+    .faq details[open] summary::after { transform: rotate(45deg); }
+    .faq details p { margin-top: 12px; color: var(--suave); }
+
+    footer { background: var(--verde-osc); color: #b9cfc2; padding: 60px 0 30px; }
+    .footer-grid { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    footer .logo { color: #fff; }
+    footer .logo-texto small { color: #b9cfc2; }
+    footer h4 { color: #fff; margin-bottom: 10px; font-size: .95rem; }
+    footer ul { list-style: none; display: grid; gap: 6px; font-size: .92rem; }
+    footer a:hover { color: #fff; }
+    .creditos { padding-top: 22px; font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .creditos a { color: #f6c7d1; font-weight: 700; }
+
+    .wsp-flotante { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 10px 25px rgba(37, 211, 102, .45); z-index: 60; transition: transform .2s; }
+    .wsp-flotante:hover { transform: scale(1.08); }
+
+    /* Comparar */
+    .btn-comparar { position: fixed; left: 50%; translate: -50% 0; bottom: 20px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--tinta); border: 0; border-radius: 999px; padding: 12px 18px 12px 12px; font: 700 .92rem "Outfit", sans-serif; cursor: pointer; box-shadow: 0 12px 28px rgba(58, 29, 38, .25); transition: transform .2s; }
+    .btn-comparar:hover { transform: translateY(-3px); }
+    .btn-comparar .ico { width: 34px; height: 34px; border-radius: 50%; background: var(--baya); display: grid; place-items: center; }
+    .btn-comparar .pulso { position: absolute; inset: 0; border-radius: 999px; animation: pulso 2.4s infinite; pointer-events: none; }
+    @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(176, 48, 74, .5); } 70%, 100% { box-shadow: 0 0 0 14px rgba(176, 48, 74, 0); } }
+    .modal { position: fixed; inset: 0; z-index: 100; background: rgba(30, 18, 22, .86); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal.abierto { display: flex; animation: aparecer .25s ease; }
+    @keyframes aparecer { from { opacity: 0; } }
+    .modal-caja { background: #fff; border-radius: 22px; width: min(1100px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: 26px; position: relative; }
+    .modal-cabeza { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; padding-right: 44px; }
+    .modal-cabeza h2 { font-size: 2rem; color: var(--tinta); }
+    .cerrar { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--crema); cursor: pointer; display: grid; place-items: center; }
+    .pestanas { display: inline-flex; background: var(--crema); border-radius: 999px; padding: 4px; }
+    .pestanas button { border: 0; background: transparent; font: 700 .9rem "Outfit", sans-serif; color: var(--texto); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+    .pestanas button[aria-selected="true"] { background: var(--baya); color: #fff; }
+    .leyenda { display: flex; justify-content: space-between; margin: 0 auto 10px; font: 800 .78rem "Outfit", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    .leyenda span { padding: 6px 12px; border-radius: 999px; }
+    .leyenda .l-antes { background: var(--crema); color: var(--texto); }
+    .leyenda .l-ahora { background: var(--baya); color: #fff; }
+    .comparador { position: relative; margin-inline: auto; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); user-select: none; touch-action: none; background: #ddd; }
+    .comparador.escritorio { width: 100%; aspect-ratio: 1366 / 850; }
+    .comparador.movil { width: min(340px, 100%, calc((100vh - 260px) * .462)); min-width: 220px; aspect-ratio: 390 / 844; border-radius: 30px; border: 8px solid var(--tinta); }
+    .comparador img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; }
+    .comparador .antes { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+    .divisor { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,.4); pointer-events: none; }
+    .divisor span { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+    .comparador input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .comparador:focus-within .divisor span { outline: 3px solid var(--baya); }
+    .ayuda-comparar { text-align: center; color: var(--suave); font-size: .88rem; margin: 12px 0 20px; }
+    .mejoras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .mejora { border: 1px solid var(--crema); border-radius: 14px; padding: 16px; font-size: .9rem; }
+    .mejora b { display: block; font-size: .98rem; margin-bottom: 4px; color: var(--tinta); }
+    .mejora .antes-txt { color: #a5384a; display: block; font-size: .85rem; }
+    .mejora .ahora-txt { color: #1f7a52; display: block; font-size: .85rem; font-weight: 700; }
+
+    .toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 200%); opacity: 0; background: var(--tinta); color: #fff; padding: 14px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.3); font-size: .92rem; z-index: 120; transition: transform .35s ease, opacity .35s; max-width: calc(100% - 32px); text-align: center; pointer-events: none; }
+    .toast.visible { transform: translate(-50%, 0); opacity: 1; }
+
+    .aparece { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .aparece.visto { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .aparece { opacity: 1; transform: none; transition: none; }
+      .flor, .follaje, .objeto svg, .ficha, .cinta-pista, .pulso, .estado i, .scroll-abajo::after { animation: none !important; }
+      html { scroll-behavior: auto; }
+    }
+    .captura .aviso-demo, .captura .btn-comparar { display: none; }
+    .captura .flor, .captura .follaje, .captura .objeto svg, .captura .ficha, .captura .cinta-pista { animation: none; }
+
+    @media (max-width: 1000px) {
+      .hero-grid, .arma-grid, .viaje-grid, .pedido-grid, .ubicacion-grid { grid-template-columns: 1fr; }
+      .hero-grid { min-height: 0; padding: 46px 0 40px; gap: 0; }
+      .escena { height: 520px; }
+      .scroll-abajo { display: none; }
+      .ocasiones { grid-template-columns: 1fr 1fr; }
+      .viaje-grid { gap: 0; }
+      .viaje-visual { top: 74px; height: 320px; z-index: 2; background: linear-gradient(var(--verde-osc) 88%, transparent); margin-inline: -16px; }
+      .mapa { width: 290px; }
+      .viaje-pasos li { min-height: 46vh; padding-left: 22px; }
+      .resenas { grid-template-columns: 1fr; }
+      .mejoras { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 820px) {
+      .menu, .nav > .btn { display: none; }
+      .hamburguesa { display: block; }
+      .menu.abierto { display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; right: 0; background: var(--papel); padding: 20px 16px 26px; gap: 18px; border-bottom: 1px solid var(--linea); }
+      .citas { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .hero h1 { font-size: clamp(2.7rem, 13vw, 3.8rem); margin: 18px 0; }
+      .hero-botones .btn { flex: 1 1 100%; }
+      .hero-datos { gap: 14px; flex-wrap: nowrap; justify-content: space-between; }
+      .hero-datos strong { font-size: 2rem; }
+      .hero-datos > div > span { font-size: .78rem; }
+      .escena { height: 430px; margin-top: 10px; }
+      .ficha { padding: 10px 12px; font-size: .76rem; max-width: 170px; }
+      .ficha q { font-size: .92rem; }
+      .ficha strong { font-size: .9rem; }
+      .ficha.f1 { top: 0; left: 0; }
+      .ficha.f2 { bottom: 2%; right: 0; }
+      .ocasiones, .mejoras, .dos-col { grid-template-columns: 1fr; }
+      .tarjeta { font-size: 1.05rem; padding: 10px 11px 11px; }
+      .resenas { padding: 32px 18px; }
+      .pedido { padding: 22px 16px; }
+      .ubicacion-texto { padding: 32px 22px; }
+      .ubicacion-grid iframe { min-height: 300px; }
+      .btn-comparar { left: 16px; translate: none; bottom: 16px; padding-right: 14px; }
+      .btn-comparar .txt-largo { display: none; }
+      .wsp-flotante { right: 16px; bottom: 16px; }
+      .modal { padding: 0; }
+      .modal-caja { border-radius: 0; max-height: 100vh; height: 100%; padding: 20px 16px; }
+      .comparador.movil { width: min(300px, 100%); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aviso-demo">Propuesta de diseño hecha por <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a> con los datos de su ficha de Google. <button type="button" data-abrir-comparar>Comparar con lo que hay hoy</button></div>
+
+  <header>
+    <div class="contenedor nav">
+      <a href="#inicio" class="logo" aria-label="Florería Love Flowers, inicio">
+        <svg width="46" height="46" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#fdf0f2" stroke="#b0304a" stroke-width="2.5"/><path d="M32 13c8 2 12 9 9.5 16.5C39.5 35 34 36.5 32 36.5S24.5 35 22.5 29.5C20 22 24 15 32 13z" fill="#b0304a"/><path d="M32 18c4 1.5 6 5 4.5 8.5-1.2 2.6-3.4 3.2-4.5 3.2s-3.3-.6-4.5-3.2C26 23 28 19.5 32 18z" fill="#e88fa3"/><path d="M28 23c2-2 6-2 8 0" fill="none" stroke="#7d1a30" stroke-width="1.6" stroke-linecap="round"/><path d="M32 36.5V53" stroke="#2f5d46" stroke-width="3" stroke-linecap="round"/><path d="M32 46c-4-5-11-5.5-13-2.5 4 3.5 9 4.5 13 2.5zM32 42c3-4 9-4.5 11-2-3 3-7.5 3.8-11 2z" fill="#2f5d46"/></svg>
+        <span class="logo-texto">Love Flowers<small>Florería · La Reina</small></span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="#arma">Arma tu ramo</a>
+        <a href="#ocasiones">Ocasiones</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#resenas">Reseñas</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <a href="#pedido" class="btn btn-baya">Pedir</a>
+      <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="progreso" id="progreso"></div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div class="hero-texto aparece">
+          <span class="estado" id="estado"><i></i><span>Revisando horario…</span></span>
+          <h1>Flores frescas, <em>hechas ramo<br> para ti.</em></h1>
+          <p class="lead">Florería en la Plaza Carlos Ossandón, La Reina. Ramos y arreglos a precios justos, con delivery y pedidos por WhatsApp. Si buscas algo especial, también te lo armamos.</p>
+          <div class="hero-botones">
+            <a href="#arma" class="btn btn-baya">Arma tu ramo</a>
+            <a href="#ocasiones" class="btn btn-borde">Ver ocasiones</a>
+          </div>
+          <div class="hero-datos">
+            <div><strong><span data-contar="5" data-dec="1">5,0</span><b>★</b></strong><span>en Google</span></div>
+            <div><strong data-contar="163">163</strong><span>reseñas</span></div>
+            <div><strong>7/7</strong><span>días abiertos</span></div>
+          </div>
+        </div>
+        <div class="escena" aria-hidden="true">
+          <div class="objeto p1"><svg viewBox="0 0 40 40"><path d="M20 3C31 8 35 22 20 37 5 22 9 8 20 3Z" fill="#e88fa3"/><path d="M20 8c3 8 3 18 0 26" stroke="#c96a80" stroke-width="1.2" fill="none" opacity=".6"/></svg></div>
+          <div class="objeto p2"><svg viewBox="0 0 40 40"><path d="M20 3C31 8 35 22 20 37 5 22 9 8 20 3Z" fill="#fbd0dc"/></svg></div>
+          <div class="objeto p3"><svg viewBox="0 0 40 40"><path d="M20 3C31 8 35 22 20 37 5 22 9 8 20 3Z" fill="#b0304a"/><path d="M20 8c3 8 3 18 0 26" stroke="#7d1a30" stroke-width="1.2" fill="none" opacity=".5"/></svg></div>
+          <div class="objeto p4"><svg viewBox="0 0 40 40"><path d="M20 3C31 8 35 22 20 37 5 22 9 8 20 3Z" fill="#ffdcc8"/></svg></div>
+          <div class="objeto p5"><svg viewBox="0 0 40 40"><path d="M4 30C10 8 28 2 36 6 34 22 20 34 4 30Z" fill="#7fa293"/><path d="M6 29C16 20 26 12 34 7" stroke="#5c7f70" stroke-width="1.4" fill="none"/></svg></div>
+          <div class="ramo-mov"><div class="ramo-hero" id="ramo-hero"></div></div>
+          <div class="ficha f1"><q>Hermosas flores y una muy amable atención, volveré sin duda.</q>Clienta, en Google</div>
+          <div class="ficha f2"><span class="estrellas">★★★★★</span><strong>5,0 en Google</strong>163 reseñas</div>
+        </div>
+      </div>
+      <span class="scroll-abajo">Baja</span>
+    </section>
+
+    <div class="cinta" aria-hidden="true">
+      <div class="cinta-pista">
+        <span>Ramos</span><span>Arreglos</span><span>Delivery</span><span>Tarjeta con dedicatoria</span><span>Pedidos especiales</span><span>Precios justos</span><span>Globos</span>
+        <span>Ramos</span><span>Arreglos</span><span>Delivery</span><span>Tarjeta con dedicatoria</span><span>Pedidos especiales</span><span>Precios justos</span><span>Globos</span>
+      </div>
+    </div>
+
+    <section id="arma">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">A tu pinta</span>
+          <h2>Arma tu <em>ramo</em></h2>
+          <p>Elige la flor, el color, el tamaño y el papel, y míralo armarse al tiro. Escribe la dedicatoria y pídelo: llega listo por WhatsApp para confirmarlo.</p>
+        </div>
+        <div class="arma-grid">
+          <div class="mesa aparece" id="mesa">
+            <div class="ramo" id="ramo-arma" aria-live="polite"></div>
+            <div class="tarjeta vacia" id="tarjeta" aria-hidden="true"><small>Para ti</small><span id="tarjeta-texto"></span></div>
+          </div>
+          <div class="controles aparece">
+            <div class="control">
+              <h3>Flor</h3>
+              <div class="opciones" id="op-flor"></div>
+            </div>
+            <div class="control">
+              <h3>Color <span id="nombre-color"></span></h3>
+              <div class="opciones muestras" id="op-color"></div>
+            </div>
+            <div class="control">
+              <h3>Tamaño</h3>
+              <div class="opciones" id="op-cant"></div>
+            </div>
+            <div class="control">
+              <h3>Follaje <span>puedes elegir más de uno</span></h3>
+              <div class="opciones" id="op-follaje"></div>
+            </div>
+            <div class="control">
+              <h3>Papel <span id="nombre-papel"></span></h3>
+              <div class="opciones muestras" id="op-papel"></div>
+            </div>
+            <div class="control">
+              <h3><label for="dedicatoria">Tarjeta con dedicatoria</label></h3>
+              <input type="text" id="dedicatoria" maxlength="90" placeholder="Ej: Feliz cumpleaños, mamá. Te quiero mucho.">
+            </div>
+            <div class="resumen-ramo">
+              <p>Tu ramo<strong id="resumen-ramo">12 rosas rojas</strong>Valores en la versión final.</p>
+              <button type="button" class="btn btn-baya" id="pedir-ramo">Pedir este ramo</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ocasiones" style="padding-top:0">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">Para cada momento</span>
+          <h2>¿Para qué <em>ocasión</em> es?</h2>
+          <p>Ramos y arreglos para celebrar, para acompañar o simplemente porque sí. Toca una ocasión y la dejamos lista en el armador.</p>
+        </div>
+        <div class="ocasiones" id="lista-ocasiones"></div>
+        <p class="nota-chica">Fotos reales de sus ramos y valores de cada uno en la versión final.</p>
+      </div>
+    </section>
+
+    <section class="oscuro" id="delivery">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">Delivery</span>
+          <h2>De la plaza a <em>su puerta</em></h2>
+          <p>No hace falta venir: lo armamos y lo llevamos. Baja y sigue el camino.</p>
+        </div>
+        <div class="viaje-grid">
+          <div class="viaje-visual">
+            <div class="mapa" id="mapa">
+              <svg viewBox="0 0 400 400" aria-hidden="true">
+                <defs>
+                  <pattern id="manzanas" width="64" height="64" patternUnits="userSpaceOnUse"><rect x="8" y="8" width="48" height="48" rx="6" fill="#2b5143"/></pattern>
+                </defs>
+                <rect width="400" height="400" fill="url(#manzanas)"/>
+                <path d="M0 136H400M0 264H400M136 0V400M264 0V400" stroke="#34604f" stroke-width="16"/>
+                <circle cx="96" cy="300" r="34" fill="#3b7558"/>
+                <circle cx="96" cy="300" r="22" fill="#4a8a69"/>
+                <path id="ruta" d="M96 300C150 300 136 230 200 220S264 160 268 120 300 80 326 84" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="6" stroke-dasharray="2 12" stroke-linecap="round"/>
+                <path class="ruta-llena" d="M96 300C150 300 136 230 200 220S264 160 268 120 300 80 326 84" pathLength="100" fill="none" stroke="#f6c7d1" stroke-width="6" stroke-linecap="round"/>
+                <g transform="translate(96 300)">
+                  <rect x="-16" y="-14" width="32" height="24" rx="3" fill="#2f5d46" stroke="#fff" stroke-width="2"/>
+                  <path d="M-22 -14 0 -30 22 -14Z" fill="#5aa0c8" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+                  <circle cx="-6" cy="-1" r="4" fill="#e88fa3"/><circle cx="4" cy="-3" r="4" fill="#b0304a"/><circle cx="2" cy="5" r="3.5" fill="#fbd0dc"/>
+                </g>
+                <text x="96" y="356" text-anchor="middle" fill="#cfe1d6" font-family="Outfit" font-weight="700" font-size="13">Plaza Carlos Ossandón</text>
+                <g transform="translate(326 84)">
+                  <path d="M-22 4 0 -18 22 4V26H-22Z" fill="#fdf8f5" stroke="#1d3b2c" stroke-width="2" stroke-linejoin="round"/>
+                  <rect x="-6" y="10" width="12" height="16" fill="#b0304a"/>
+                  <circle class="casa-luz" r="34" fill="#f6c7d1" opacity=".3"/>
+                </g>
+                <g id="repartidor">
+                  <circle r="19" fill="#b0304a" stroke="#fff" stroke-width="3"/>
+                  <rect x="-11" y="-9" width="9" height="8" rx="1.5" fill="#f6c7d1"/>
+                  <circle cx="-8.5" cy="-11" r="2.4" fill="#fff"/><circle cx="-4.5" cy="-11.5" r="2.4" fill="#fbd0dc"/>
+                  <path d="M-8 6-3 0H5L8 6M5 0 6.5-7H10" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="-8" cy="7" r="3.6" fill="none" stroke="#fff" stroke-width="2"/><circle cx="9" cy="7" r="3.6" fill="none" stroke="#fff" stroke-width="2"/>
+                </g>
+              </svg>
+              <span class="etapa" id="etapa">Eliges</span>
+            </div>
+          </div>
+          <ol class="viaje-pasos">
+            <li class="activo">
+              <span class="num">uno</span>
+              <h3>Eliges tu ramo</h3>
+              <p>Lo armas aquí, eliges una ocasión o nos cuentas lo que buscas. Si quieres algo que no está en el catálogo, también lo hacemos.</p>
+            </li>
+            <li>
+              <span class="num">dos</span>
+              <h3>Lo armamos</h3>
+              <p>Con flores frescas, el papel que elegiste y tu tarjeta con dedicatoria escrita a mano.</p>
+            </li>
+            <li>
+              <span class="num">tres</span>
+              <h3>Va en camino</h3>
+              <p>Nuestro transportista lo lleva con cuidado. Las comunas y el valor del envío van en la versión final.</p>
+            </li>
+            <li>
+              <span class="num">cuatro</span>
+              <h3>¡Llegó!</h3>
+              <p>Llega a su puerta tal como lo armaste. O si prefieres, lo pasas a buscar a la plaza.</p>
+              <a href="#pedido" class="btn btn-baya" style="align-self:flex-start;margin-top:22px">Pedir con delivery</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="resenas">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece">
+          <span class="sobre">Reseñas</span>
+          <h2>Lo que dicen <em>sus clientes</em></h2>
+        </div>
+        <div class="resenas aparece">
+          <div class="nota">
+            <strong data-contar="5" data-dec="1">5,0</strong>
+            <span class="estrellas">★★★★★</span>
+            <span><span data-contar="163">163</span> reseñas en Google</span>
+            <div class="palabras"><span>precio <b>25</b></span><span>ramo <b>15</b></span><span>arreglos <b>3</b></span><span>nota <b>3</b></span><span>simpático <b>3</b></span><span>presentación <b>2</b></span></div>
+          </div>
+          <div class="citas">
+            <div class="cita"><q>Increíble atención, precios justos y muy agradecido por la amabilidad. ¡Sí o sí volveré!</q><span>Cliente, en Google</span></div>
+            <div class="cita"><q>Quedé muy satisfecha con la atención. Agradezco especialmente la paciencia y el compromiso del transportista.</q><span>Clienta, en Google</span></div>
+            <div class="cita"><q>Increíble lugar, muy lindo y muy simpático. Las flores, espectaculares.</q><span>Cliente, en Google</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pedido" style="padding-top:0">
+      <div class="contenedor pedido-grid">
+        <div class="aparece">
+          <span class="sobre">Pide sin vueltas</span>
+          <div class="titulo-seccion" style="margin-bottom:0">
+            <h2>Tu pedido, <em>listo por WhatsApp</em></h2>
+            <p>Elige si lo retiras o te lo llevamos, para qué día y para quién es. Te llega el mensaje armado; solo lo confirmas.</p>
+          </div>
+          <ul class="lista-check">
+            <li><span><b>Retiro en la plaza</b> o delivery con transportista.</span></li>
+            <li><span><b>Tarjeta con dedicatoria</b> incluida en tu ramo.</span></li>
+            <li><span><b>Pedidos especiales:</b> si no está en el catálogo, pídelo igual.</span></li>
+          </ul>
+        </div>
+        <form class="pedido aparece" id="form-pedido" novalidate>
+          <fieldset>
+            <legend>Tu ramo</legend>
+            <div class="tu-ramo"><div class="mini-ramo" id="mini-ramo" aria-hidden="true"></div><div><strong id="pedido-ramo">12 rosas rojas</strong><a href="#arma">Cambiar el ramo</a></div></div>
+            <div class="extra" id="extra-globo"><span>Globo <small>· modelos en la versión final</small></span><span class="contador"><button type="button" data-globo="-1" aria-label="Quitar un globo">−</button><output id="n-globos">0</output><button type="button" data-globo="1" aria-label="Agregar un globo">+</button></span></div>
+          </fieldset>
+          <fieldset>
+            <legend>¿Cómo lo recibes?</legend>
+            <div class="segmento" id="entrega"><button type="button" data-v="retiro" aria-pressed="true">Retiro en la plaza</button><button type="button" data-v="delivery" aria-pressed="false">Delivery</button></div>
+          </fieldset>
+          <fieldset id="campo-comuna" hidden>
+            <label for="comuna">Comuna</label>
+            <select id="comuna">
+              <option>La Reina</option><option>Ñuñoa</option><option>Peñalolén</option><option>Las Condes</option><option>Providencia</option><option>Otra comuna</option>
+            </select>
+            <p class="ayuda-campo">Comunas y valor del envío en la versión final.</p>
+          </fieldset>
+          <fieldset>
+            <legend>¿Para cuándo?</legend>
+            <div class="chips" id="dias"></div>
+          </fieldset>
+          <div class="dos-col">
+            <div>
+              <label for="nombre">Tu nombre</label>
+              <input type="text" id="nombre" placeholder="Ej: Camila" autocomplete="given-name">
+            </div>
+            <div>
+              <label for="para">¿Para quién es? <small style="font-weight:500;color:var(--suave)">(opcional)</small></label>
+              <input type="text" id="para" placeholder="Ej: mi mamá">
+            </div>
+          </div>
+          <div class="resumen" style="margin-top:22px">
+            <div class="tu-pedido">Tu pedido<strong id="tu-pedido">12 rosas rojas · retiro hoy</strong></div>
+            <button type="submit" class="btn btn-baya"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>Enviar pedido</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="ubicacion" style="padding-top:0">
+      <div class="contenedor">
+        <div class="ubicacion-grid aparece">
+          <div class="ubicacion-texto">
+            <span class="sobre">Visítanos</span>
+            <h2>En la plaza, <em>entre flores</em></h2>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b0304a" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><b>Dirección</b><span>Av. Echeñique 8486, La Reina · en la Plaza Carlos Ossandón</span></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="#b0304a" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></span><div><b>WhatsApp</b><a href="#pedido">+56 9 6580 4634</a></div></div>
+            <div class="linea"><span class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b0304a" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Horario</b>
+              <table class="horario" id="tabla-horario">
+                <tr data-dias="1"><td>Lunes</td><td>10:00 – 20:30</td></tr>
+                <tr data-dias="2"><td>Martes</td><td>10:30 – 20:30</td></tr>
+                <tr data-dias="3"><td>Miércoles</td><td>8:30 – 17:30</td></tr>
+                <tr data-dias="4"><td>Jueves</td><td>9:00 – 20:30</td></tr>
+                <tr data-dias="5"><td>Viernes</td><td>8:00 – 20:30</td></tr>
+                <tr data-dias="6,0"><td>Sábado y domingo</td><td>8:30 – 14:00</td></tr>
+              </table>
+            </div></div>
+            <a href="https://www.google.com/maps/search/?api=1&query=Florer%C3%ADa+Love+Flowers+Av.+Eche%C3%B1ique+8486+La+Reina" target="_blank" rel="noopener" class="btn btn-verde" style="margin-top:8px">Cómo llegar</a>
+          </div>
+          <iframe title="Mapa de Florería Love Flowers" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Florer%C3%ADa+Love+Flowers,+Av.+Eche%C3%B1ique+8486,+La+Reina&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" style="padding-top:0">
+      <div class="contenedor">
+        <div class="titulo-seccion aparece" style="text-align:center;margin-inline:auto">
+          <span class="sobre">Preguntas frecuentes</span>
+          <h2>Antes de <em>pedir</em></h2>
+        </div>
+        <div class="faq aparece">
+          <details><summary>¿Hacen delivery?</summary><p>Sí. Lo armamos y lo lleva nuestro transportista. Las comunas que cubrimos y el valor del envío van en la versión final.</p></details>
+          <details><summary>¿Puedo pedir algo que no está en el catálogo?</summary><p>Claro. Cuéntanos qué buscas por WhatsApp y lo armamos: flores, colores, tamaño o un arreglo especial.</p></details>
+          <details><summary>¿Puedo mandar una tarjeta con el ramo?</summary><p>Sí. Escribe la dedicatoria en "Arma tu ramo" y va escrita en la tarjeta.</p></details>
+          <details><summary>¿Abren los domingos?</summary><p>Sí, sábado y domingo de 8:30 a 14:00. Revisa arriba el horario de cada día.</p></details>
+          <details><summary>¿Dónde quedan?</summary><p>En la Plaza Carlos Ossandón, por Av. Echeñique 8486, La Reina.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <div class="footer-grid">
+        <div>
+          <a href="#inicio" class="logo"><svg width="40" height="40" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30" fill="#fdf0f2"/><path d="M32 13c8 2 12 9 9.5 16.5C39.5 35 34 36.5 32 36.5S24.5 35 22.5 29.5C20 22 24 15 32 13z" fill="#b0304a"/><path d="M32 36.5V53" stroke="#2f5d46" stroke-width="3" stroke-linecap="round"/><path d="M32 46c-4-5-11-5.5-13-2.5 4 3.5 9 4.5 13 2.5z" fill="#2f5d46"/></svg><span class="logo-texto">Love Flowers<small>Florería · La Reina</small></span></a>
+        </div>
+        <div><h4>Visítanos</h4><ul><li>Plaza Carlos Ossandón</li><li>Av. Echeñique 8486, La Reina</li></ul></div>
+        <div><h4>Horario</h4><ul><li>Lunes a viernes hasta las 20:30</li><li>Miércoles hasta las 17:30</li><li>Sábado y domingo 8:30 – 14:00</li></ul></div>
+        <div><h4>Contacto</h4><ul><li><a href="#pedido">WhatsApp +56 9 6580 4634</a></li></ul></div>
+      </div>
+      <div class="creditos"><span>© <span id="anio">2026</span> Florería Love Flowers</span><span>Diseño y desarrollo: <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a></span></div>
+    </div>
+  </footer>
+
+  <button type="button" class="btn-comparar" data-abrir-comparar aria-haspopup="dialog">
+    <span class="pulso"></span>
+    <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></svg></span>
+    <span>Comparar<span class="txt-largo"> con lo que hay hoy</span></span>
+  </button>
+
+  <a href="#pedido" class="wsp-flotante" aria-label="Pedir por WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+  </a>
+
+  <div class="modal" id="modal-comparar" role="dialog" aria-modal="true" aria-labelledby="titulo-comparar">
+    <div class="modal-caja">
+      <button type="button" class="cerrar" id="cerrar-comparar" aria-label="Cerrar comparación"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3a1d26" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <div class="modal-cabeza">
+        <div><span class="sobre">Antes y ahora</span><h2 id="titulo-comparar">Lo que hay hoy vs. propuesta</h2></div>
+        <div class="pestanas" role="tablist" aria-label="Dispositivo">
+          <button type="button" role="tab" aria-selected="true" data-vista="movil">Celular</button>
+          <button type="button" role="tab" aria-selected="false" data-vista="escritorio">Computador</button>
+        </div>
+      </div>
+      <div class="leyenda" id="leyenda"><span class="l-antes">◀ Hoy</span><span class="l-ahora">Propuesta ▶</span></div>
+      <div class="comparador movil" id="comparador">
+        <img class="ahora" id="img-ahora" src="comparar/ahora-movil.png" alt="Portada de la propuesta nueva">
+        <img class="antes" id="img-antes" src="comparar/antes-movil.png" alt="La ficha de Google de la florería hoy, sin sitio web">
+        <div class="divisor"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#b0304a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <input type="range" min="0" max="100" value="50" id="deslizador" aria-label="Deslizar para comparar lo que hay hoy con la propuesta">
+      </div>
+      <p class="ayuda-comparar">Arrastra la barra. A la izquierda, lo que encuentra hoy quien busca la florería en Google: una ficha sin sitio web.</p>
+      <div class="mejoras">
+        <div class="mejora"><b>Una página propia</b><span class="antes-txt">Antes: la ficha de Google dice "Agregar sitio web"</span><span class="ahora-txt">Ahora: loveflowers.cl, con todo en un lugar</span></div>
+        <div class="mejora"><b>El catálogo a la vista</b><span class="antes-txt">Antes: piden "revisa nuestro catálogo", pero no hay dónde verlo</span><span class="ahora-txt">Ahora: ocasiones y un armador de ramos</span></div>
+        <div class="mejora"><b>Pedidos completos</b><span class="antes-txt">Antes: "Pedir en línea" abre un chat en blanco</span><span class="ahora-txt">Ahora: llega el ramo, la tarjeta, el día y la comuna</span></div>
+        <div class="mejora"><b>Delivery explicado</b><span class="antes-txt">Antes: hay que preguntar si llevan y a dónde</span><span class="ahora-txt">Ahora: una sección muestra cómo funciona</span></div>
+        <div class="mejora"><b>Sus 163 reseñas</b><span class="antes-txt">Antes: el 5,0 solo se ve en Maps</span><span class="ahora-txt">Ahora: lo que dicen sus clientes está en la portada</span></div>
+        <div class="mejora"><b>Abierto ahora</b><span class="antes-txt">Antes: el horario cambia cada día y hay que revisarlo en Maps</span><span class="ahora-txt">Ahora: dice en vivo si está abierto y hasta qué hora</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const captura = new URLSearchParams(location.search).has("captura");
+    if (captura) document.documentElement.classList.add("captura");
+    document.getElementById("anio").textContent = new Date().getFullYear();
+    const sinMovimiento = captura || matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const hamb = document.getElementById("hamburguesa");
+    const menu = document.getElementById("menu");
+    hamb.addEventListener("click", () => hamb.setAttribute("aria-expanded", menu.classList.toggle("abierto")));
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("abierto"); hamb.setAttribute("aria-expanded", "false"); }));
+
+    const toast = document.getElementById("toast");
+    let tToast;
+    function mostrarToast(texto) {
+      toast.textContent = texto;
+      toast.classList.add("visible");
+      clearTimeout(tToast);
+      tToast = setTimeout(() => toast.classList.remove("visible"), 5200);
+    }
+
+    // ===== Dibujo de ramos =====
+    const r1 = n => Math.round(n * 10) / 10;
+    const PALETA = {
+      rojo: ["#5e0a19", "#b01c34", "#ec5a70"],
+      rosado: ["#a8436a", "#e37f9c", "#fbd0dc"],
+      blanco: ["#b9a693", "#ece2d6", "#fffdf9"],
+      amarillo: ["#b97c0c", "#f0b42c", "#ffe7a3"],
+      lila: ["#5d3f86", "#9b78c4", "#e3d2f5"],
+      durazno: ["#b9573a", "#ef9c78", "#ffdcc8"]
+    };
+    const PAPELES = { kraft: ["#d7ad7c", "#b7895a", "#9a6f45"], blanco: ["#fffdf8", "#ece3d6", "#d7cbbb"], rosado: ["#f9d6de", "#eab0bf", "#d38e9f"], negro: ["#4a4241", "#2e2827", "#1c1817"] };
+    const azar = semilla => { let s = semilla; return () => (s = (s * 9301 + 49297) % 233280) / 233280; };
+
+    const petalo = r => `M0 0C${r1(r * 1.05)} ${r1(-r * .22)} ${r1(r * .8)} ${r1(-r * 1.08)} 0 ${r1(-r * 1.04)}C${r1(-r * .8)} ${r1(-r * 1.08)} ${r1(-r * 1.05)} ${r1(-r * .22)} 0 0Z`;
+    function rosa(p, col, r, giro) {
+      const [o, , c] = PALETA[col];
+      let s = `<circle r="${r1(r * 1.03)}" fill="${o}" opacity=".45"/>`;
+      const capas = [[6, 1, 0, .3], [5, .74, 30, .4], [4, .5, 12, .5], [3, .3, 50, .6]];
+      for (const [n, k, desf, op] of capas) for (let i = 0; i < n; i++) s += `<path d="${petalo(r * k)}" transform="rotate(${r1(i * 360 / n + desf + giro)})" fill="url(#${p}-g-${col})" stroke="${o}" stroke-opacity="${op}" stroke-width="1.1"/>`;
+      s += `<circle r="${r1(r * .13)}" fill="${o}"/><path d="M${r1(-r * .1)} ${r1(r * .02)}a${r1(r * .11)} ${r1(r * .11)} 0 1 1 ${r1(r * .17)} ${r1(r * .06)}" fill="none" stroke="${c}" stroke-opacity=".7" stroke-width="${r1(Math.max(1, r * .035))}" stroke-linecap="round"/>`;
+      return s;
+    }
+    function tulipan(p, col, r) {
+      const [o, , c] = PALETA[col];
+      const R = k => r1(r * k);
+      return `<path d="M${R(-.42)} ${R(-.2)}C${R(-.46)} ${R(-1.02)} ${R(-.05)} ${R(-1.18)} 0 ${R(-1.12)}C${R(.05)} ${R(-1.18)} ${R(.46)} ${R(-1.02)} ${R(.42)} ${R(-.2)}Z" fill="${o}"/>`
+        + `<path d="M${R(-.62)} ${R(-.3)}C${R(-.66)} ${R(.42)} ${R(.66)} ${R(.42)} ${R(.62)} ${R(-.3)}L${R(.58)} ${R(-.95)}C${R(.38)} ${R(-.66)} ${R(.16)} ${R(-.74)} 0 ${R(-1.06)}C${R(-.16)} ${R(-.74)} ${R(-.38)} ${R(-.66)} ${R(-.58)} ${R(-.95)}Z" fill="url(#${p}-g-${col})" stroke="${o}" stroke-opacity=".35"/>`
+        + `<path d="M${R(-.62)} ${R(-.3)}C${R(-.62)} ${R(.34)} ${R(-.12)} ${R(.38)} 0 ${R(.3)}C${R(-.3)} 0 ${R(-.36)} ${R(-.55)} ${R(-.58)} ${R(-.95)}Z" fill="${o}" opacity=".28"/>`
+        + `<path d="M${R(.3)} ${R(-.72)}C${R(.4)} ${R(-.4)} ${R(.38)} ${R(-.05)} ${R(.22)} ${R(.18)}" stroke="${c}" stroke-opacity=".7" stroke-width="${R(.05)}" fill="none" stroke-linecap="round"/>`;
+    }
+    function girasol(p, r, giro, semilla) {
+      const az = azar(semilla);
+      let s = "";
+      const pet = k => `M0 ${r1(-r * .3)}C${r1(r * .17 * k)} ${r1(-r * .5)} ${r1(r * .12 * k)} ${r1(-r * .92)} 0 ${r1(-r * 1.06)}C${r1(-r * .12 * k)} ${r1(-r * .92)} ${r1(-r * .17 * k)} ${r1(-r * .5)} 0 ${r1(-r * .3)}Z`;
+      for (let i = 0; i < 20; i++) s += `<path d="${pet(1)}" transform="rotate(${r1(i * 18 + giro)})" fill="#d99413" stroke="#a96b06" stroke-opacity=".4"/>`;
+      for (let i = 0; i < 20; i++) s += `<path d="${pet(.9)}" transform="rotate(${r1(i * 18 + 9 + giro)}) scale(.9)" fill="url(#${p}-g-amarillo)" stroke="#b97c0c" stroke-opacity=".35"/>`;
+      s += `<circle r="${r1(r * .42)}" fill="#3d2410"/><circle r="${r1(r * .3)}" fill="#5a3517"/>`;
+      for (let i = 0; i < 26; i++) { const a = az() * Math.PI * 2, d = Math.sqrt(az()) * r * .38; s += `<circle cx="${r1(Math.cos(a) * d)}" cy="${r1(Math.sin(a) * d)}" r="${r1(r * .03 + az() * r * .02)}" fill="${az() > .5 ? "#2a170a" : "#7a4a1f"}"/>`; }
+      return s;
+    }
+    function gerbera(p, col, r, giro) {
+      const [o, m] = PALETA[col];
+      let s = "";
+      const pet = (k, ancho) => `M0 ${r1(-r * .24)}C${r1(r * ancho)} ${r1(-r * .4)} ${r1(r * ancho * .85)} ${r1(-r * k * .94)} 0 ${r1(-r * k)}C${r1(-r * ancho * .85)} ${r1(-r * k * .94)} ${r1(-r * ancho)} ${r1(-r * .4)} 0 ${r1(-r * .24)}Z`;
+      for (let i = 0; i < 22; i++) s += `<path d="${pet(1.04, .15)}" transform="rotate(${r1(i * 360 / 22 + giro)})" fill="url(#${p}-g-${col})" stroke="${o}" stroke-opacity=".35"/>`;
+      for (let i = 0; i < 18; i++) s += `<path d="${pet(.6, .1)}" transform="rotate(${r1(i * 20 + 10 + giro)})" fill="${m}" stroke="${o}" stroke-opacity=".4"/>`;
+      s += `<circle r="${r1(r * .26)}" fill="#e2b53c"/><circle r="${r1(r * .18)}" fill="#3a2a12"/><circle r="${r1(r * .09)}" fill="#6b5320"/>`;
+      return s;
+    }
+    function bezier(a, c, b, t) { const u = 1 - t; return [u * u * a[0] + 2 * u * t * c[0] + t * t * b[0], u * u * a[1] + 2 * u * t * c[1] + t * t * b[1]]; }
+    function eucalipto(a, b, curva) {
+      const c = [(a[0] + b[0]) / 2 + curva, (a[1] + b[1]) / 2];
+      let s = `<path d="M${r1(a[0])} ${r1(a[1])}Q${r1(c[0])} ${r1(c[1])} ${r1(b[0])} ${r1(b[1])}" stroke="#6d8f80" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+      for (let i = 3; i <= 9; i++) {
+        const t = i / 9.4, [x, y] = bezier(a, c, b, t), [x2, y2] = bezier(a, c, b, Math.min(1, t + .02));
+        const ang = Math.atan2(y2 - y, x2 - x), lado = i % 2 ? 1 : -1, d = 12;
+        const cx = x + Math.cos(ang + lado * Math.PI / 2) * d, cy = y + Math.sin(ang + lado * Math.PI / 2) * d, rr = 13 - t * 4;
+        s += `<ellipse cx="${r1(cx)}" cy="${r1(cy)}" rx="${r1(rr)}" ry="${r1(rr * .82)}" fill="${i % 3 ? "#9fbfb1" : "#86a99a"}" stroke="#6d8f80" stroke-width="1"/>`;
+      }
+      return s;
+    }
+    function hoja(a, b) {
+      const ang = Math.atan2(b[1] - a[1], b[0] - a[0]) * 180 / Math.PI + 90, L = 74, w = 22;
+      return `<path d="M${r1(a[0])} ${r1(a[1])}L${r1(b[0])} ${r1(b[1])}" stroke="#3f6f4b" stroke-width="3.5"/>`
+        + `<g transform="translate(${r1(b[0])} ${r1(b[1])}) rotate(${r1(ang)})"><path d="M0 0C${w} ${-L * .3} ${w * .6} ${-L * .8} 0 ${-L}C${-w * .6} ${-L * .8} ${-w} ${-L * .3} 0 0Z" fill="url(#hoja-g)"/><path d="M0 -4V${-L + 8}" stroke="#2b5638" stroke-width="1.5" opacity=".6"/></g>`;
+    }
+    function paniculata(a, b, az) {
+      let s = `<path d="M${r1(a[0])} ${r1(a[1])}L${r1(b[0])} ${r1(b[1])}" stroke="#8aa476" stroke-width="1.6"/>`;
+      for (let i = 0; i < 11; i++) {
+        const ang = az() * Math.PI * 2, d = 6 + az() * 22, x = b[0] + Math.cos(ang) * d, y = b[1] + Math.sin(ang) * d * .8;
+        s += `<path d="M${r1(b[0])} ${r1(b[1])}L${r1(x)} ${r1(y)}" stroke="#a6b994" stroke-width=".9"/><circle cx="${r1(x)}" cy="${r1(y)}" r="${r1(3 + az() * 2.4)}" fill="#fffdf8" stroke="#e3ddd0" stroke-width=".8"/>`;
+      }
+      return s;
+    }
+
+    const TAMANOS = { 6: { cabezas: 6, r: 50, rx: 112, ry: 80 }, 12: { cabezas: 11, r: 43, rx: 158, ry: 108 }, 24: { cabezas: 18, r: 35, rx: 186, ry: 128 } };
+    let idRamo = 0;
+    function ramoSVG(cfg, opts = {}) {
+      const p = "r" + (idRamo++);
+      const T = TAMANOS[cfg.cant];
+      const C = [300, 285], B = [300, 610];
+      const colores = cfg.flor === "girasoles" ? ["amarillo"] : (cfg.mezcla || [cfg.color]);
+      const usados = [...new Set([...colores, "amarillo"])];
+      const [pc, pm, po] = PAPELES[cfg.papel];
+      const cintaCol = cfg.papel === "negro" ? "#d9b26b" : (cfg.papel === "kraft" ? "#7d1a30" : PALETA[colores[0]][1]);
+      const d0 = opts.retraso || 0;
+      let defs = usados.map(col => { const [o, m, c] = PALETA[col]; return `<linearGradient id="${p}-g-${col}" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="${o}"/><stop offset=".5" stop-color="${m}"/><stop offset="1" stop-color="${c}"/></linearGradient>`; }).join("");
+      defs += `<linearGradient id="${p}-papel" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="${pm}"/><stop offset=".45" stop-color="${pc}"/><stop offset="1" stop-color="${pm}"/></linearGradient>`;
+      defs += `<linearGradient id="hoja-g" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#2f5d3c"/><stop offset="1" stop-color="#5f9a64"/></linearGradient>`;
+      // papel de atrás
+      const W = T.rx + 96, arriba = C[1] - T.ry - 96;
+      let s = `<path d="M${B[0]} ${B[1] + 40}L${r1(300 - W)} ${r1(C[1] - 10)}C${r1(300 - W + 26)} ${r1(arriba + 34)} ${r1(300 - W * .45)} ${r1(arriba)} 300 ${r1(arriba + 12)}C${r1(300 + W * .45)} ${r1(arriba)} ${r1(300 + W - 26)} ${r1(arriba + 34)} ${r1(300 + W)} ${r1(C[1] - 10)}Z" fill="url(#${p}-papel)"/>`;
+      s += `<path d="M${B[0]} ${B[1] + 40}L${r1(300 - W)} ${r1(C[1] - 10)}C${r1(300 - W + 26)} ${r1(arriba + 34)} ${r1(300 - W * .45)} ${r1(arriba)} 300 ${r1(arriba + 12)}Z" fill="${po}" opacity=".18"/>`;
+      // follaje
+      const az = azar(17 + cfg.cant);
+      const fol = cfg.follaje || [];
+      let k = 0;
+      const ramas = n => Array.from({ length: n }, (_, i) => -Math.PI * (.08 + .84 * (n === 1 ? .5 : i / (n - 1))));
+      if (fol.includes("hojas")) ramas(6).forEach((a, i) => { s += `<g class="follaje" style="--i:${k++};--d0:${d0}ms">${hoja([B[0], B[1] - 60], [C[0] + Math.cos(a) * (T.rx + 10), C[1] + Math.sin(a) * (T.ry + 10) + 30])}</g>`; });
+      if (fol.includes("eucalipto")) ramas(7).forEach((a, i) => { s += `<g class="follaje" style="--i:${k++};--d0:${d0}ms">${eucalipto([B[0], B[1] - 50], [C[0] + Math.cos(a) * (T.rx + 56), C[1] + Math.sin(a) * (T.ry + 62)], (i - 3) * 14)}</g>`; });
+      if (fol.includes("paniculata")) ramas(8).forEach((a, i) => { s += `<g class="follaje" style="--i:${k++};--d0:${d0}ms">${paniculata([B[0], B[1] - 50], [C[0] + Math.cos(a) * (T.rx + 18) + (az() - .5) * 20, C[1] + Math.sin(a) * (T.ry + 30)], az)}</g>`; });
+      // cabezas
+      const cab = [];
+      for (let i = 0; i < T.cabezas; i++) {
+        const rr = Math.sqrt((i + .5) / T.cabezas), a = i * 2.39996 + .6;
+        cab.push({ x: C[0] + Math.cos(a) * rr * T.rx, y: C[1] + Math.sin(a) * rr * T.ry - (1 - rr) * 26, i, col: colores[i % colores.length], giro: r1(az() * 70) });
+      }
+      cab.sort((a, b) => a.y - b.y);
+      const tallo = cfg.flor === "tulipanes";
+      for (const h of cab) s += `<path d="M${B[0] + (h.x - B[0]) * .08} ${B[1] - 40}Q${r1(h.x)} ${r1((h.y + B[1]) / 2 + 40)} ${r1(h.x)} ${r1(h.y + (tallo ? T.r * .2 : 0))}" stroke="#4c7a4a" stroke-width="${tallo ? 5 : 4}" fill="none"/>`;
+      if (tallo) for (const h of cab) if (h.i % 3 === 0) s += `<path d="M${r1(h.x)} ${r1(h.y + T.r * 1.6)}c${-T.r * .7} ${-T.r * .2} ${-T.r * .9} ${-T.r * .9} ${-T.r * .6} ${-T.r * 1.6}c${T.r * .2} ${T.r * .5} ${T.r * .5} ${T.r * 1.1} ${T.r * .6} ${T.r * 1.6}Z" fill="url(#hoja-g)"/>`;
+      for (const h of cab) {
+        let dib;
+        if (cfg.flor === "rosas") dib = rosa(p, h.col, T.r, h.giro);
+        else if (cfg.flor === "tulipanes") dib = tulipan(p, h.col, T.r);
+        else if (cfg.flor === "girasoles") dib = girasol(p, T.r, h.giro, 30 + h.i);
+        else dib = gerbera(p, h.col, T.r, h.giro);
+        s += `<g class="flor" style="--i:${h.i};--d0:${d0}ms"><g transform="translate(${r1(h.x)} ${r1(h.y)})">${dib}</g></g>`;
+      }
+      // papel de adelante y cinta
+      const Wf = T.rx * .72 + 48, yt = C[1] + T.ry * .62 + 40;
+      s += `<path d="M${r1(300 - Wf)} ${r1(yt)}Q300 ${r1(yt + 56)} ${r1(300 + Wf)} ${r1(yt)}L326 712Q300 724 274 712Z" fill="url(#${p}-papel)"/>`;
+      s += `<path d="M${r1(300 - Wf)} ${r1(yt)}Q${r1(300 - Wf * .2)} ${r1(yt + 70)} 274 712Q290 718 300 719L${r1(300 - Wf * .35)} ${r1(yt + 34)}Z" fill="${po}" opacity=".22"/>`;
+      s += `<path d="M${r1(300 + Wf * .3)} ${r1(yt + 30)}L310 716M${r1(300 - Wf * .55)} ${r1(yt + 24)}L282 712" stroke="${po}" stroke-opacity=".35" stroke-width="1.6" fill="none"/>`;
+      s += `<path d="M${r1(300 - Wf)} ${r1(yt)}Q300 ${r1(yt + 56)} ${r1(300 + Wf)} ${r1(yt)}" stroke="${pc}" stroke-width="3" fill="none" opacity=".9"/>`;
+      s += `<g transform="translate(300 616)"><path d="M-4 -2C-30 -30 -62 -18 -50 -2-40 10-16 6-4 -2ZM4 -2C30 -30 62 -18 50 -2 40 10 16 6 4 -2Z" fill="${cintaCol}"/><path d="M-4 0-22 52-10 48-1 6ZM4 0 20 54 8 49 1 6Z" fill="${cintaCol}" opacity=".9"/><rect x="-34" y="-8" width="68" height="14" rx="3" fill="${cintaCol}"/><rect x="-9" y="-11" width="18" height="20" rx="5" fill="${cintaCol}" stroke="#000" stroke-opacity=".18"/></g>`;
+      const etiqueta = opts.etiqueta ? ` role="img" aria-label="${opts.etiqueta}"` : ` aria-hidden="true"`;
+      return `<svg viewBox="0 0 600 730"${etiqueta}><defs>${defs}</defs>${opts.mecer ? `<g class="mecer">${s}</g>` : s}</svg>`;
+    }
+
+    // Ramo de la portada
+    document.getElementById("ramo-hero").innerHTML = ramoSVG({ flor: "rosas", mezcla: ["rosado", "blanco", "rosado", "durazno", "rojo"], cant: 12, follaje: ["eucalipto", "paniculata"], papel: "kraft" }, { mecer: true, retraso: 300, etiqueta: "Ramo de rosas en papel kraft" });
+
+    // ===== Arma tu ramo =====
+    const FLORES = {
+      rosas: { nombre: "Rosas", gen: "f", colores: ["rojo", "rosado", "blanco", "amarillo", "durazno"] },
+      tulipanes: { nombre: "Tulipanes", gen: "m", colores: ["rojo", "rosado", "blanco", "amarillo", "lila"] },
+      girasoles: { nombre: "Girasoles", gen: "m", colores: ["amarillo"] },
+      gerberas: { nombre: "Gerberas", gen: "f", colores: ["rojo", "rosado", "amarillo", "durazno", "lila"] }
+    };
+    const COLORES = { rojo: ["Rojo", "rojas", "rojos"], rosado: ["Rosado", "rosadas", "rosados"], blanco: ["Blanco", "blancas", "blancos"], amarillo: ["Amarillo", "amarillas", "amarillos"], lila: ["Lila", "lila", "lila"], durazno: ["Durazno", "color durazno", "color durazno"] };
+    const FOLLAJES = { eucalipto: "Eucalipto", hojas: "Hojas verdes", paniculata: "Paniculata" };
+    const NOM_PAPEL = { kraft: "Kraft", blanco: "Blanco", rosado: "Rosado", negro: "Negro" };
+    const ramo = { flor: "rosas", color: "rojo", cant: 12, follaje: ["eucalipto"], papel: "kraft", tarjeta: "" };
+    let globos = 0;
+
+    const opFlor = document.getElementById("op-flor"), opColor = document.getElementById("op-color"), opCant = document.getElementById("op-cant"), opFol = document.getElementById("op-follaje"), opPapel = document.getElementById("op-papel");
+    const iconoFlor = { rosas: "rosas", tulipanes: "tulipanes", girasoles: "girasoles", gerberas: "gerberas" };
+    function miniFlor(flor) {
+      const p = "ic" + flor;
+      const defs = `<defs><linearGradient id="${p}-g-rojo" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#5e0a19"/><stop offset=".5" stop-color="#b01c34"/><stop offset="1" stop-color="#ec5a70"/></linearGradient><linearGradient id="${p}-g-amarillo" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#b97c0c"/><stop offset=".5" stop-color="#f0b42c"/><stop offset="1" stop-color="#ffe7a3"/></linearGradient><linearGradient id="${p}-g-rosado" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#a8436a"/><stop offset=".5" stop-color="#e37f9c"/><stop offset="1" stop-color="#fbd0dc"/></linearGradient></defs>`;
+      const dib = flor === "rosas" ? rosa(p, "rojo", 40, 0) : flor === "tulipanes" ? `<g transform="translate(0 22)">${tulipan(p, "rosado", 44)}</g>` : flor === "girasoles" ? girasol(p, 42, 0, 3) : gerbera(p, "rosado", 42, 0);
+      return `<svg class="mini" viewBox="-50 -50 100 100" aria-hidden="true">${defs}${dib}</svg>`;
+    }
+    opFlor.innerHTML = Object.entries(FLORES).map(([k, f]) => `<button type="button" data-flor="${k}">${miniFlor(iconoFlor[k])}${f.nombre}</button>`).join("");
+    opColor.innerHTML = Object.keys(COLORES).map(k => `<button type="button" data-color="${k}" aria-label="${COLORES[k][0]}" title="${COLORES[k][0]}"><i style="background:radial-gradient(circle at 35% 30%, ${PALETA[k][2]}, ${PALETA[k][1]} 55%, ${PALETA[k][0]})"></i></button>`).join("");
+    opCant.innerHTML = [6, 12, 24].map(n => `<button type="button" data-cant="${n}">${n === 6 ? "Chico · 6" : n === 12 ? "Mediano · 12" : "Grande · 24"}</button>`).join("");
+    opFol.innerHTML = Object.entries(FOLLAJES).map(([k, n]) => `<button type="button" data-fol="${k}">${n}</button>`).join("");
+    opPapel.innerHTML = Object.keys(PAPELES).map(k => `<button type="button" data-papel="${k}" aria-label="Papel ${NOM_PAPEL[k].toLowerCase()}" title="${NOM_PAPEL[k]}"><i style="background:linear-gradient(135deg, ${PAPELES[k][0]}, ${PAPELES[k][2]})"></i></button>`).join("");
+
+    function textoRamo(cfg) {
+      const f = FLORES[cfg.flor];
+      let t = `${cfg.cant} ${f.nombre.toLowerCase()}`;
+      if (cfg.flor !== "girasoles") t += ` ${COLORES[cfg.color][f.gen === "f" ? 1 : 2]}`;
+      if (cfg.follaje.length) { const n = cfg.follaje.map(x => FOLLAJES[x].toLowerCase()); t += ` con ${n.length > 1 ? n.slice(0, -1).join(", ") + " y " + n[n.length - 1] : n[0]}`; }
+      return t + `, papel ${NOM_PAPEL[cfg.papel].toLowerCase()}`;
+    }
+    const ramoArma = document.getElementById("ramo-arma"), miniRamo = document.getElementById("mini-ramo");
+    const tarjeta = document.getElementById("tarjeta"), tarjetaTexto = document.getElementById("tarjeta-texto");
+    function pintarRamo() {
+      if (!FLORES[ramo.flor].colores.includes(ramo.color)) ramo.color = FLORES[ramo.flor].colores[0];
+      ramoArma.innerHTML = ramoSVG(ramo, { etiqueta: "Ramo de " + textoRamo(ramo) });
+      miniRamo.innerHTML = ramoSVG(ramo, { retraso: 0 });
+      opFlor.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.flor === ramo.flor));
+      opColor.querySelectorAll("button").forEach(b => { b.setAttribute("aria-pressed", b.dataset.color === ramo.color); b.disabled = !FLORES[ramo.flor].colores.includes(b.dataset.color); });
+      opCant.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", +b.dataset.cant === ramo.cant));
+      opFol.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", ramo.follaje.includes(b.dataset.fol)));
+      opPapel.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.papel === ramo.papel));
+      document.getElementById("nombre-color").textContent = ramo.flor === "girasoles" ? "Amarillo, como el sol" : COLORES[ramo.color][0];
+      document.getElementById("nombre-papel").textContent = NOM_PAPEL[ramo.papel];
+      document.getElementById("resumen-ramo").textContent = textoRamo(ramo);
+      document.getElementById("pedido-ramo").textContent = textoRamo(ramo) + (ramo.tarjeta ? " · con tarjeta" : "");
+      pintarPedido();
+    }
+    opFlor.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { ramo.flor = b.dataset.flor; pintarRamo(); } });
+    opColor.addEventListener("click", e => { const b = e.target.closest("button"); if (b && !b.disabled) { ramo.color = b.dataset.color; pintarRamo(); } });
+    opCant.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { ramo.cant = +b.dataset.cant; pintarRamo(); } });
+    opFol.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; const f = b.dataset.fol; ramo.follaje = ramo.follaje.includes(f) ? ramo.follaje.filter(x => x !== f) : [...ramo.follaje, f]; pintarRamo(); });
+    opPapel.addEventListener("click", e => { const b = e.target.closest("button"); if (b) { ramo.papel = b.dataset.papel; pintarRamo(); } });
+    const dedicatoria = document.getElementById("dedicatoria");
+    dedicatoria.addEventListener("input", () => {
+      ramo.tarjeta = dedicatoria.value.trim();
+      tarjetaTexto.textContent = ramo.tarjeta;
+      tarjeta.classList.toggle("vacia", !ramo.tarjeta);
+      document.getElementById("pedido-ramo").textContent = textoRamo(ramo) + (ramo.tarjeta ? " · con tarjeta" : "");
+      pintarPedido();
+    });
+    document.getElementById("pedir-ramo").addEventListener("click", () => {
+      document.getElementById("pedido").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" });
+      mostrarToast("Listo, tu ramo quedó en el pedido 💐");
+    });
+
+    // ===== Ocasiones =====
+    const OCASIONES = [
+      { e: "Para celebrar", n: "Cumpleaños", d: "Colores alegres para el día de alguien especial, con su tarjeta.", cfg: { flor: "gerberas", color: "amarillo", mezcla: ["amarillo", "durazno", "rosado", "rojo"], cant: 12, follaje: ["paniculata"], papel: "blanco" } },
+      { e: "Para el amor", n: "Aniversario", d: "Rosas rojas, el clásico que nunca falla. Elige el tamaño.", cfg: { flor: "rosas", color: "rojo", cant: 24, follaje: ["hojas"], papel: "negro" } },
+      { e: "Para acompañar", n: "Condolencias", d: "Arreglos sobrios, en blanco y verde, para despedir con cariño.", cfg: { flor: "rosas", color: "blanco", cant: 12, follaje: ["eucalipto"], papel: "blanco" } },
+      { e: "Para dar la bienvenida", n: "Nacimiento", d: "Tonos suaves para recibir a quien acaba de llegar.", cfg: { flor: "tulipanes", color: "rosado", mezcla: ["rosado", "blanco"], cant: 12, follaje: ["paniculata"], papel: "rosado" } },
+      { e: "Para alegrar", n: "Porque sí", d: "Girasoles para regalar un día cualquiera. No hace falta motivo.", cfg: { flor: "girasoles", color: "amarillo", cant: 6, follaje: ["eucalipto"], papel: "kraft" } },
+      { e: "Para sumar", n: "Globos", d: "Un globo junto al ramo hace la entrega todavía más especial.", globo: true }
+    ];
+    const globoSVG = `<svg viewBox="0 0 600 730" aria-hidden="true"><defs><radialGradient id="gl1" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#ffd0dc"/><stop offset=".5" stop-color="#e37f9c"/><stop offset="1" stop-color="#a8436a"/></radialGradient><radialGradient id="gl2" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#ffe7a3"/><stop offset=".5" stop-color="#e0ad55"/><stop offset="1" stop-color="#a8761f"/></radialGradient><radialGradient id="gl3" cx=".35" cy=".3" r=".75"><stop offset="0" stop-color="#ff9aa9"/><stop offset=".5" stop-color="#b01c34"/><stop offset="1" stop-color="#5e0a19"/></radialGradient></defs><path d="M300 690C300 560 210 470 200 330M300 690C300 560 300 450 310 280M300 690C310 560 400 480 420 360" stroke="#a89a8f" stroke-width="3" fill="none"/><g class="flor" style="--i:0"><path d="M200 330C120 330 90 250 100 200 110 120 170 90 210 92 260 96 300 150 290 220 282 280 250 330 200 330Z" fill="url(#gl2)"/><path d="M193 330l7 14 7-14Z" fill="#a8761f"/></g><g class="flor" style="--i:2"><path d="M420 360C350 360 320 290 326 240 334 170 386 140 424 144 470 150 504 196 496 258 488 316 460 360 420 360Z" fill="url(#gl1)"/><path d="M413 360l7 14 7-14Z" fill="#a8436a"/></g><g class="flor" style="--i:1"><path d="M310 280C300 250 220 200 230 140 238 96 280 84 310 116 340 84 382 96 390 140 400 200 320 250 310 280Z" fill="url(#gl3)"/><ellipse cx="270" cy="140" rx="16" ry="26" fill="#fff" opacity=".35" transform="rotate(-20 270 140)"/></g></svg>`;
+    document.getElementById("lista-ocasiones").innerHTML = OCASIONES.map((o, i) => `<article class="ocasion aparece" style="transition-delay:${i * 60}ms"><div class="ilus">${o.globo ? globoSVG : ramoSVG(o.cfg, { etiqueta: "Ramo para " + o.n.toLowerCase() })}</div><span class="etq">${o.e}</span><h3>${o.n}</h3><p>${o.d}</p><button type="button" data-ocasion="${i}">${o.globo ? "Agregar un globo al pedido" : "Armar este ramo"}</button></article>`).join("");
+    document.getElementById("lista-ocasiones").addEventListener("click", e => {
+      const b = e.target.closest("[data-ocasion]"); if (!b) return;
+      const o = OCASIONES[+b.dataset.ocasion];
+      if (o.globo) { globos++; pintarPedido(); mostrarToast("Sumamos un globo a tu pedido 🎈"); return; }
+      Object.assign(ramo, { flor: o.cfg.flor, color: o.cfg.color, cant: o.cfg.cant, follaje: [...o.cfg.follaje], papel: o.cfg.papel });
+      pintarRamo();
+      document.getElementById("arma").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" });
+      mostrarToast(`Ramo para ${o.n.toLowerCase()} listo en el armador`);
+    });
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      const lista = document.getElementById("lista-ocasiones");
+      lista.addEventListener("pointermove", e => {
+        const it = e.target.closest(".ocasion"); if (!it) return;
+        const r = it.getBoundingClientRect();
+        it.style.setProperty("--rx", ((.5 - (e.clientY - r.top) / r.height) * 8).toFixed(2) + "deg");
+        it.style.setProperty("--ry", (((e.clientX - r.left) / r.width - .5) * 8).toFixed(2) + "deg");
+      });
+      lista.addEventListener("pointerout", e => {
+        const it = e.target.closest(".ocasion");
+        if (it && !it.contains(e.relatedTarget)) { it.style.removeProperty("--rx"); it.style.removeProperty("--ry"); }
+      });
+    }
+
+    // ===== Apariciones al bajar =====
+    const elementos = document.querySelectorAll(".aparece");
+    if (captura || !("IntersectionObserver" in window)) elementos.forEach(el => el.classList.add("visto"));
+    else {
+      const obs = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visto"); obs.unobserve(e.target); } }), { threshold: 0.12 });
+      elementos.forEach(el => obs.observe(el));
+    }
+
+    // Contadores
+    const formatear = (v, dec) => dec ? v.toFixed(dec).replace(".", ",") : String(Math.round(v));
+    const contar = el => {
+      const fin = parseFloat(el.dataset.contar), dec = Number(el.dataset.dec || 0);
+      const inicio = performance.now(), dura = 1500;
+      const paso = ahora => {
+        const t = Math.min((ahora - inicio) / dura, 1);
+        el.textContent = formatear(fin * (1 - Math.pow(1 - t, 3)), dec);
+        if (t < 1) requestAnimationFrame(paso);
+      };
+      requestAnimationFrame(paso);
+    };
+    if ("IntersectionObserver" in window && !sinMovimiento) {
+      const obsNum = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { contar(e.target); obsNum.unobserve(e.target); } }), { threshold: .6 });
+      document.querySelectorAll("[data-contar]").forEach(n => { n.textContent = formatear(0, Number(n.dataset.dec || 0)); obsNum.observe(n); });
+    }
+
+    // ===== Horario y estado (hora de Chile) =====
+    const HORARIO = { 0: [510, 840], 1: [600, 1230], 2: [630, 1230], 3: [510, 1050], 4: [540, 1230], 5: [480, 1230], 6: [510, 840] };
+    const NOMBRES = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+    const CORTOS = ["dom", "lun", "mar", "mié", "jue", "vie", "sáb"];
+    const hhmm = m => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
+    function ahoraEnChile() {
+      const p = Object.fromEntries(new Intl.DateTimeFormat("en-US", { timeZone: "America/Santiago", year: "numeric", month: "numeric", day: "numeric", hour: "numeric", minute: "numeric", hour12: false }).formatToParts(new Date()).map(x => [x.type, x.value]));
+      return new Date(+p.year, +p.month - 1, +p.day, +p.hour % 24, +p.minute);
+    }
+    function pintarEstado() {
+      const ahora = ahoraEnChile(), dia = ahora.getDay(), min = ahora.getHours() * 60 + ahora.getMinutes();
+      const estado = document.getElementById("estado"), texto = estado.lastElementChild;
+      const h = HORARIO[dia];
+      const abierto = h && min >= h[0] && min < h[1];
+      estado.classList.toggle("abierto", !!abierto);
+      if (abierto) texto.textContent = `Abierto ahora · hasta las ${hhmm(h[1])}`;
+      else if (h && min < h[0]) texto.textContent = `Cerrado · abrimos hoy a las ${hhmm(h[0])}`;
+      else {
+        let d = (dia + 1) % 7, k = 1;
+        while (!HORARIO[d]) { d = (d + 1) % 7; k++; }
+        texto.textContent = `Cerrado · abrimos ${k === 1 ? "mañana" : "el " + NOMBRES[d]} a las ${hhmm(HORARIO[d][0])}`;
+      }
+      document.querySelectorAll("#tabla-horario tr").forEach(tr => tr.classList.toggle("hoy", tr.dataset.dias.split(",").includes(String(dia))));
+    }
+    pintarEstado();
+    setInterval(pintarEstado, 60000);
+
+    // ===== Pedido =====
+    let entrega = "retiro", diaSel = 0;
+    const contDias = document.getElementById("dias"), tuPedido = document.getElementById("tu-pedido");
+    function diasDisponibles() {
+      const ahora = ahoraEnChile(), min = ahora.getHours() * 60 + ahora.getMinutes();
+      const lista = [];
+      for (let i = 0; lista.length < 7 && i < 10; i++) {
+        const f = new Date(ahora); f.setDate(f.getDate() + i);
+        const h = HORARIO[f.getDay()];
+        if (!h || (i === 0 && min > h[1] - 60)) continue;
+        lista.push({ i, txt: i === 0 ? "Hoy" : i === 1 ? "Mañana" : `${CORTOS[f.getDay()]} ${f.getDate()}`, largo: i === 0 ? "hoy" : i === 1 ? "mañana" : `el ${NOMBRES[f.getDay()]} ${f.getDate()}` });
+      }
+      return lista;
+    }
+    let DIAS = [];
+    function pintarDias() {
+      DIAS = diasDisponibles();
+      if (!DIAS.some(d => d.i === diaSel)) diaSel = DIAS[0].i;
+      contDias.innerHTML = DIAS.map(d => `<button type="button" data-dia="${d.i}" aria-pressed="${d.i === diaSel}">${d.txt}</button>`).join("");
+    }
+    contDias.addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; diaSel = +b.dataset.dia; contDias.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); pintarPedido(); });
+    document.getElementById("entrega").addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      entrega = b.dataset.v;
+      document.querySelectorAll("#entrega button").forEach(x => x.setAttribute("aria-pressed", x === b));
+      document.getElementById("campo-comuna").hidden = entrega !== "delivery";
+      pintarPedido();
+    });
+    document.getElementById("comuna").addEventListener("change", pintarPedido);
+    document.querySelectorAll("[data-globo]").forEach(b => b.addEventListener("click", () => { globos = Math.max(0, globos + +b.dataset.globo); pintarPedido(); }));
+    function pintarPedido() {
+      if (!DIAS.length) return;
+      document.getElementById("n-globos").textContent = globos;
+      document.getElementById("extra-globo").classList.toggle("con", globos > 0);
+      const dia = DIAS.find(d => d.i === diaSel) || DIAS[0];
+      const cuando = entrega === "retiro" ? `retiro ${dia.largo}` : `delivery a ${document.getElementById("comuna").value} ${dia.largo}`;
+      tuPedido.textContent = `${ramo.cant} ${FLORES[ramo.flor].nombre.toLowerCase()}${globos ? ` + ${globos} globo${globos > 1 ? "s" : ""}` : ""} · ${cuando}`;
+    }
+    pintarDias();
+    pintarRamo();
+    document.getElementById("form-pedido").addEventListener("submit", e => {
+      e.preventDefault();
+      const nombre = document.getElementById("nombre").value.trim(), para = document.getElementById("para").value.trim();
+      if (!nombre) { mostrarToast("Escribe tu nombre para el pedido"); document.getElementById("nombre").focus(); return; }
+      const dia = DIAS.find(d => d.i === diaSel) || DIAS[0];
+      const cuando = entrega === "retiro" ? `Lo paso a buscar ${dia.largo}.` : `Es con delivery a ${document.getElementById("comuna").value}, para ${dia.largo}.`;
+      const mensaje = `Hola Love Flowers, soy ${nombre}. Quiero pedir un ramo de ${textoRamo(ramo)}${globos ? `, más ${globos} globo${globos > 1 ? "s" : ""}` : ""}.${para ? ` Es para ${para}.` : ""}${ramo.tarjeta ? ` Tarjeta: "${ramo.tarjeta}".` : ""} ${cuando} ¡Gracias!`;
+      // Versión final: window.open("https://wa.me/56965804634?text=" + encodeURIComponent(mensaje));
+      mostrarToast("Demo: se abriría WhatsApp con este mensaje → " + mensaje);
+    });
+
+    // ===== Movimiento con el mouse en la portada =====
+    const hero = document.getElementById("inicio");
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      hero.addEventListener("pointermove", e => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty("--mx", ((e.clientX - r.left) / r.width).toFixed(3));
+        hero.style.setProperty("--my", ((e.clientY - r.top) / r.height).toFixed(3));
+      });
+      hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", .5); hero.style.setProperty("--my", .5); });
+    }
+
+    // ===== Scroll: barra, portada y el delivery =====
+    const progreso = document.getElementById("progreso");
+    const listaPasos = document.querySelector(".viaje-pasos");
+    const pasos = listaPasos.querySelectorAll("li");
+    const mapa = document.getElementById("mapa");
+    const ruta = document.getElementById("ruta");
+    const largoRuta = ruta.getTotalLength();
+    const repartidor = document.getElementById("repartidor");
+    const etapa = document.getElementById("etapa");
+    const ETAPAS = ["Eliges", "Lo armamos", "En camino", "¡Llegó!"];
+    let pendiente = false, pasoActual = -1;
+    function alHacerScroll() {
+      pendiente = false;
+      const total = document.documentElement.scrollHeight - innerHeight;
+      progreso.style.setProperty("--p", total > 0 ? (scrollY / total).toFixed(4) : 0);
+      if (!sinMovimiento) hero.style.setProperty("--sc", Math.min(scrollY / hero.offsetHeight, 1).toFixed(3));
+      const r = listaPasos.getBoundingClientRect();
+      const avance = captura ? .62 : Math.max(0, Math.min(1, (innerHeight * .55 - r.top) / r.height));
+      mapa.style.setProperty("--avance", avance.toFixed(3));
+      const pt = ruta.getPointAtLength(largoRuta * Math.min(1, avance * 1.08));
+      repartidor.setAttribute("transform", `translate(${r1(pt.x)} ${r1(pt.y)})`);
+      const i = Math.min(pasos.length - 1, Math.floor(avance * pasos.length));
+      if (i !== pasoActual) {
+        pasoActual = i;
+        pasos.forEach((p, k) => p.classList.toggle("activo", k === i));
+        etapa.textContent = ETAPAS[i];
+      }
+    }
+    addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(alHacerScroll); } }, { passive: true });
+    addEventListener("resize", alHacerScroll);
+    alHacerScroll();
+
+    // ===== Comparador =====
+    const modal = document.getElementById("modal-comparar");
+    const comparador = document.getElementById("comparador");
+    const deslizador = document.getElementById("deslizador");
+    const imgAntes = document.getElementById("img-antes");
+    const imgAhora = document.getElementById("img-ahora");
+    const btnCerrar = document.getElementById("cerrar-comparar");
+    const leyenda = document.getElementById("leyenda");
+    let ultimoFoco = null;
+    const ajustarLeyenda = () => { leyenda.style.width = comparador.offsetWidth + "px"; };
+    window.addEventListener("resize", ajustarLeyenda);
+    const moverDivisor = valor => comparador.style.setProperty("--pos", valor + "%");
+    deslizador.addEventListener("input", () => moverDivisor(deslizador.value));
+    function abrirComparar(e) {
+      ultimoFoco = e?.currentTarget || document.activeElement;
+      modal.classList.add("abierto");
+      document.body.classList.add("modal-abierto");
+      ajustarLeyenda();
+      const pasosDiv = [50, 30, 70, 50];
+      let i = 0;
+      const animados = comparador.querySelectorAll("img, .divisor");
+      animados.forEach(el => el.style.transition = "clip-path .35s ease, left .35s ease");
+      const intervalo = setInterval(() => {
+        if (i >= pasosDiv.length) { clearInterval(intervalo); animados.forEach(el => el.style.transition = ""); return; }
+        deslizador.value = pasosDiv[i]; moverDivisor(pasosDiv[i]); i++;
+      }, 380);
+      btnCerrar.focus();
+    }
+    function cerrarComparar() {
+      modal.classList.remove("abierto");
+      document.body.classList.remove("modal-abierto");
+      if (ultimoFoco) ultimoFoco.focus();
+    }
+    document.querySelectorAll("[data-abrir-comparar]").forEach(b => b.addEventListener("click", abrirComparar));
+    btnCerrar.addEventListener("click", cerrarComparar);
+    modal.addEventListener("click", e => { if (e.target === modal) cerrarComparar(); });
+    document.addEventListener("keydown", e => {
+      if (!modal.classList.contains("abierto")) return;
+      if (e.key === "Escape") cerrarComparar();
+      if (e.key === "Tab") {
+        const focos = modal.querySelectorAll("button, input");
+        const primero = focos[0], ultimo = focos[focos.length - 1];
+        if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+        else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+      }
+    });
+    document.querySelectorAll("[data-vista]").forEach(tab => tab.addEventListener("click", () => {
+      const vista = tab.dataset.vista;
+      document.querySelectorAll("[data-vista]").forEach(t => t.setAttribute("aria-selected", t === tab));
+      comparador.className = "comparador " + vista;
+      imgAntes.src = `comparar/antes-${vista}.png`;
+      imgAhora.src = `comparar/ahora-${vista}.png`;
+      ajustarLeyenda();
+    }));
+  </script>
+</body>
+</html>
