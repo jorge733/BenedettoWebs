@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Negra Mora antes y después</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --mora: #f1c6e7;
+    --bad: #ff6b81;
+    --good: #3ddc84;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 60px 72px 52px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(241, 198, 231, .14), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 50px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 26px; font-family: 'JetBrains Mono', monospace; font-size: 25px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 8px; font-size: 66px; line-height: 1.03; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { margin-top: 14px; font-size: 28px; line-height: 1.36; color: var(--muted); }
+  .lead strong { color: var(--text); font-weight: 600; }
+
+  .compare { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .side { display: flex; flex-direction: column; align-items: center; }
+  .tag {
+    display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 700;
+  }
+  .antes .tag { color: var(--bad); background: rgba(255, 107, 129, .1); border: 1px solid rgba(255, 107, 129, .35); }
+  .ahora .tag { color: #7dffb0; background: rgba(125, 255, 176, .08); border: 1px solid rgba(125, 255, 176, .35); }
+
+  .phone {
+    margin-top: 16px; width: 290px; padding: 40px 12px 12px; border-radius: 44px; background: #05070d;
+    border: 2px solid #2a3354; box-shadow: 0 30px 60px rgba(0, 0, 0, .5); position: relative;
+  }
+  .phone::before {
+    content: ''; position: absolute; top: 13px; left: 50%; transform: translateX(-50%);
+    width: 70px; height: 16px; border-radius: 999px; background: #1b2238; z-index: 2;
+  }
+  .phone img { display: block; width: 100%; height: 482px; object-fit: cover; object-position: top; border-radius: 22px; }
+  .antes .phone img { filter: saturate(.85); }
+  .ahora .phone { border-color: rgba(241, 198, 231, .5); box-shadow: 0 30px 60px rgba(0, 0, 0, .5), 0 0 50px rgba(108, 99, 255, .3); }
+
+  .url { margin-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 19px; color: var(--muted); }
+  .ahora .url { color: var(--text); }
+
+  ul { margin-top: 14px; list-style: none; width: 100%; display: flex; flex-direction: column; gap: 8px; }
+  li { font-size: 23px; line-height: 1.25; display: flex; gap: 10px; }
+  li::before { flex: none; font-weight: 800; }
+  .antes li { color: var(--muted); }
+  .antes li::before { content: '✕'; color: var(--bad); }
+  .ahora li::before { content: '✓'; color: var(--good); }
+
+  .foot {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+  .foot .contact { display: flex; flex-direction: column; gap: 4px; }
+  .foot .mail { font-size: 21px; }
+  .foot .visit {
+    padding: 14px 28px; border-radius: 999px; background: var(--gradient);
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 25px; color: #fff;
+  }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; antes / después: negramora.cl_</p>
+  <h1>Así se veía en el celular…<br>y así se ve <span class="grad">ahora</span> 📱</h1>
+  <p class="lead"><strong>Daniela Balzo</strong> tenía una web gratis hecha en Wix. Se la rehice desde cero, con dominio propio.</p>
+
+  <div class="compare">
+    <div class="side antes">
+      <span class="tag">ANTES</span>
+      <div class="phone"><img src="negramora-antes-captura.jpg" alt="Web antigua en Wix vista en celular, cortada por el costado"></div>
+      <span class="url">danibalzog.wixsite.com/misitio</span>
+      <ul>
+        <li>Se cortaba en el celular</li>
+        <li>Aviso de Wix arriba</li>
+        <li>Sin dominio propio</li>
+      </ul>
+    </div>
+    <div class="side ahora">
+      <span class="tag">AHORA</span>
+      <div class="phone"><img src="negramora-ahora-captura.jpg" alt="Nueva web negramora.cl vista en celular"></div>
+      <span class="url">negramora.cl</span>
+      <ul>
+        <li>Hecha para el celular</li>
+        <li>WhatsApp con un clic</li>
+        <li>Dominio propio .cl</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span class="contact"><b>benedettowebs.cl</b><span class="mail">sabenedettoa@benedettowebs.cl</span></span>
+    <span class="visit">Desde $30.000 ›</span>
+  </div>
+</div>
+</body>
+</html>

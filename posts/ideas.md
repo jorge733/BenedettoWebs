@@ -14,7 +14,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] ehda.cl (`ehda`, adelanto "próximamente")
 - [x] Service Planet (serviceplanet.cl) (`serviceplanet`)
 - [x] Es de Tela (esdetela.cl) + reseña de Macarena (`esdetela`)
-- [ ] Antes / después de algún cliente
+- [x] Antes / después de Negra Mora (Wix → negramora.cl) (`negramora-antes-despues`)
 - [x] Reseña de Luciano (Pellegrini) (incluida en `pellegrini`)
 - [x] Negra Mora terminada + reseña de Daniela (`negramora-final`)
 - [ ] Reel: scroll de una web terminada en el celular
