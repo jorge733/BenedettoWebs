@@ -10,8 +10,9 @@ export const firebaseConfig = {
   appId: "1:840827016119:web:5008e7a7dcc855698bce32"
 };
 
+import "./pwa.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signInWithRedirect, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import {
   getFirestore, collection, doc, getDoc, getDocs, addDoc, setDoc, updateDoc, deleteDoc,
   query, where, writeBatch, runTransaction, serverTimestamp, Bytes
@@ -27,8 +28,18 @@ export const db = app && getFirestore(app);
 
 // Cuentas de Google que pueden entrar (las mismas que en firestore.rules)
 export const CORREOS = ["sabenedettoa@gmail.com", "sabenedettoa@benedettowebs.cl"];
-export const entrarConGoogle = () =>
-  signInWithPopup(auth, new GoogleAuthProvider().setCustomParameters({ prompt: "select_account" }));
+// Si el navegador no deja abrir la ventana de Google (pasa en algunas apps instaladas), se entra en la misma pestaña
+export async function entrarConGoogle() {
+  const proveedor = new GoogleAuthProvider().setCustomParameters({ prompt: "select_account" });
+  try {
+    return await signInWithPopup(auth, proveedor);
+  } catch (err) {
+    if (["auth/popup-blocked", "auth/operation-not-supported-in-this-environment"].includes(err.code)) {
+      return signInWithRedirect(auth, proveedor);
+    }
+    throw err;
+  }
+}
 
 // Tipos de documento: página de la plantilla y prefijo del número
 export const TIPOS = {

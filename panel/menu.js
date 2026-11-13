@@ -1,5 +1,6 @@
-// Menú lateral compartido por las páginas del panel (en el celular queda como barra arriba)
+// Menú lateral compartido por las páginas del panel (en el celular: barra arriba y pestañas abajo)
 import { auth, signOut, html } from "./firebase.js";
+import { botonInstalar } from "./pwa.js";
 
 const icono = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
 const ICONOS = {
@@ -8,6 +9,7 @@ const ICONOS = {
   resumen: icono('<path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/>'),
   demos: icono('<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M7 8h5M7 11h8"/>'),
   documentos: icono('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/>'),
+  instalar: icono('<path d="M12 3v12M7 10l5 5 5-5M5 21h14"/>'),
   salir: icono('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/>')
 };
 
@@ -33,8 +35,10 @@ export function montarMenu(activo) {
     <div class="menu-pie">
       <span class="menu-avatar" aria-hidden="true">${html((correo[0] || "S").toUpperCase())}</span>
       <span class="menu-correo" title="${html(correo)}">${html(correo)}</span>
+      <button class="menu-instalar" id="instalar" type="button" title="Instalar el panel como app" hidden>${ICONOS.instalar}<span>Instalar app</span></button>
       <button class="menu-salir" id="salir" title="Cerrar sesión" aria-label="Cerrar sesión">${ICONOS.salir}</button>
     </div>`;
+  botonInstalar(menu.querySelector("#instalar"));
   menu.querySelector("#salir").addEventListener("click", async () => {
     await signOut(auth);
     location.href = "/panel/";
