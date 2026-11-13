@@ -51,7 +51,6 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 ### Novedades de la web
 - [x] Nuevo formulario de cotización: cuéntame tu idea y te respondo al correo
 - [ ] Reel: así se ve el panel privado de clientes por dentro
-- [ ] "Cotiza en 1 minuto": paso a paso del formulario
 
 ### Educativo / tips
 - [x] Checklist: lo que necesitas tener listo antes de pedir tu web (logo, fotos, textos, redes) (`checklist`)
