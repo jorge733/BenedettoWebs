@@ -16,7 +16,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Es de Tela (esdetela.cl) + reseña de Macarena (`esdetela`)
 - [x] Taller de la Kleta (tallerdelakleta.cl) (`kleta`)
 - [x] Reseña de José (Taller de la Kleta) (`kleta-resena`)
-- [ ] Antes / después de algún cliente
+- [x] Antes / después de algún cliente
 - [x] Reseña de Luciano (Pellegrini) (incluida en `pellegrini`)
 - [x] Negra Mora terminada + reseña de Daniela (`negramora-final`)
 - [ ] Reel: scroll de una web terminada en el celular
