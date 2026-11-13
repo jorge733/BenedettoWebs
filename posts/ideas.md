@@ -69,7 +69,6 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [ ] Encuesta: "¿Qué color elegirías para esta web?" con dos versiones
 
 ### Personal / marca
-- [ ] Mis herramientas para hacer webs (editor, Figma, etc.)
 - [ ] Por qué empecé a hacer páginas web
 - [ ] Meta alcanzada: agradecimiento al llegar a X seguidores
 - [x] Preguntas frecuentes de clientes (precio, plazos, cambios, dominio) (`preguntas`)
