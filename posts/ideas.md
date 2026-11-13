@@ -25,7 +25,6 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 ## 2. Proceso / detrás de escena
 - [x] "Cómo hago una web en 4 pasos" (Conversamos → Cotizo → Diseño → Publicamos)
 - [x] Timelapse programando (grabado por Santiago)
-- [ ] Del boceto a la web
 
 ## 3. Educativo
 - [x] 5 señales de que tu negocio necesita una web (`senales`)
