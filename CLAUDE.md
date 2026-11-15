@@ -55,6 +55,10 @@ Cuando un negocio dice que sí, se sigue este orden. El panel y los documentos y
    - Al mes, mandar **9 · Pedir reseña**.
    - Sumar el sitio al portafolio (`README.md` y la sección `#portafolio` de `index.html`, con captura en `img/portafolio/`) si el cliente está de acuerdo.
 
+## Agente de WhatsApp
+
+`api/whatsapp.js` responde solo el WhatsApp del negocio con Claude y avisa a Santiago por correo y con una tarea cuando lo necesita. Lo que sabe y cómo habla está en `api/_agente-whatsapp.js`: si cambian los precios o las condiciones de la web, se actualiza ahí también. La configuración está en `proceso/WHATSAPP.md`.
+
 ## Sesiones de Claude
 
 - **Esta carpeta (BenedettoWebs):** demos nuevas, cambios a la web, al panel y a los documentos, y el paso 4 de arriba, que crea la carpeta de cada cliente.

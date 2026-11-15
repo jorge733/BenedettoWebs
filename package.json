@@ -3,6 +3,7 @@
   "private": true,
   "description": "Dependencias de las funciones de Vercel (carpeta api/)",
   "dependencies": {
+    "@anthropic-ai/sdk": "1.8.0",
     "firebase-admin": "14.5.0"
   }
 }

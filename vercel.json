@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "api/whatsapp.js": { "maxDuration": 60 }
+  },
   "crons": [
     { "path": "/api/recordatorios-dominio", "schedule": "0 13 * * *" },
     { "path": "/api/brief-diario", "schedule": "0 11 * * *" }

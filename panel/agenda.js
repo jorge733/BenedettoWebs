@@ -143,8 +143,8 @@ const GRUPOS = [
   ["despues", "Más adelante", (t, h) => t.fecha > sumar(h, 6)],
   ["sinfecha", "Sin fecha", (t) => !t.fecha]
 ];
-// Tareas que crea sola la agenda (campo "auto"): cliente.js, api/resend-webhook.js y api/brief-diario.js
-const AUTO = { cotizando: "el cliente pasó a Cotizando", clic: "el cliente hizo clic en tu correo", dominio: "falta un mes para que venza el dominio" };
+// Tareas que crea sola la agenda (campo "auto"): cliente.js, api/resend-webhook.js, api/brief-diario.js y api/whatsapp.js
+const AUTO = { cotizando: "el cliente pasó a Cotizando", clic: "el cliente hizo clic en tu correo", dominio: "falta un mes para que venza el dominio", whatsapp: "el agente de WhatsApp pidió que respondas tú" };
 const ordenar = (a, b) => (a.fecha || "9").localeCompare(b.fecha || "9") || Number(!!b.importante) - Number(!!a.importante) ||
   (a.hora || "99").localeCompare(b.hora || "99") || ms(a.creado) - ms(b.creado);
 
