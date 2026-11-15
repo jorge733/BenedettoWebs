@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Post: Cupos de diciembre</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #151c33;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #e8ecf6;
+    --muted: #9aa4bf;
+    --primary: #6c63ff;
+    --secondary: #00d4ff;
+    --ok: #3ddc97;
+    --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); }
+  .post {
+    width: 1080px; height: 1350px; padding: 80px 84px 70px;
+    font-family: 'Outfit', sans-serif; color: var(--text);
+    background:
+      radial-gradient(700px 500px at 100% 0%, rgba(108, 99, 255, .28), transparent 70%),
+      radial-gradient(600px 500px at 0% 100%, rgba(0, 212, 255, .16), transparent 70%),
+      var(--bg);
+    display: flex; flex-direction: column; overflow: hidden;
+  }
+  .logo { height: 54px; align-self: flex-start; }
+  .eyebrow {
+    margin-top: 48px; font-family: 'JetBrains Mono', monospace; font-size: 26px;
+    color: var(--secondary); letter-spacing: .5px;
+  }
+  h1 { margin-top: 14px; font-size: 78px; line-height: 1.02; font-weight: 800; letter-spacing: -2px; }
+  .grad { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { margin-top: 16px; font-size: 32px; line-height: 1.3; color: var(--muted); }
+  .sub b { color: var(--text); font-weight: 600; }
+
+  .slots { margin-top: 34px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .slot {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 24px;
+    padding: 24px 20px 22px; text-align: center; position: relative;
+  }
+  .slot::before {
+    content: ""; position: absolute; inset: 0 0 auto; height: 5px; border-radius: 24px 24px 0 0;
+    background: var(--gradient);
+  }
+  .slot .n { font-family: 'JetBrains Mono', monospace; font-size: 22px; color: var(--muted); }
+  .slot .num { margin-top: 4px; font-size: 64px; font-weight: 800; line-height: 1; }
+  .slot .st {
+    margin-top: 14px; display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace; font-size: 18px; color: var(--ok);
+  }
+  .slot .st::before {
+    content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ok);
+    box-shadow: 0 0 10px var(--ok);
+  }
+
+  .steps-t { margin-top: 38px; font-size: 34px; font-weight: 700; }
+  .steps { margin-top: 18px; display: flex; flex-direction: column; gap: 14px; }
+  .step {
+    display: flex; align-items: center; gap: 22px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 22px; padding: 15px 24px;
+  }
+  .step .k {
+    flex: none; width: 54px; height: 54px; border-radius: 16px; background: var(--gradient);
+    display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: #fff;
+  }
+  .step h2 { font-size: 29px; font-weight: 700; line-height: 1.15; }
+  .step p { margin-top: 2px; font-size: 22px; color: var(--muted); line-height: 1.3; }
+
+  .cta { margin-top: auto; padding-top: 28px; font-size: 30px; font-weight: 600; }
+  .cta span { color: var(--muted); font-weight: 400; }
+  .mail { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; }
+
+  .foot {
+    margin-top: 30px; display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 25px; color: var(--muted);
+  }
+  .foot b { color: var(--text); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="post">
+  <img class="logo" src="../img/logo/logo-fondo-oscuro.svg" alt="BenedettoWebs">
+
+  <p class="eyebrow">&gt; cupos --mes diciembre_</p>
+  <h1>Cupos de<br><span class="grad">diciembre</span></h1>
+  <p class="sub">Tomo pocos proyectos al mes para <b>dedicarle tiempo de verdad a cada web.</b></p>
+
+  <div class="slots">
+    <div class="slot"><p class="n">cupo</p><p class="num">01</p><span class="st">libre</span></div>
+    <div class="slot"><p class="n">cupo</p><p class="num">02</p><span class="st">libre</span></div>
+    <div class="slot"><p class="n">cupo</p><p class="num">03</p><span class="st">libre</span></div>
+    <div class="slot"><p class="n">cupo</p><p class="num">04</p><span class="st">libre</span></div>
+  </div>
+
+  <p class="steps-t">Cómo reservar el tuyo</p>
+  <div class="steps">
+    <div class="step">
+      <span class="k">1</span>
+      <div><h2>Pide tu cotización</h2><p>Gratis y sin compromiso, con precio y plazo estimado.</p></div>
+    </div>
+    <div class="step">
+      <span class="k">2</span>
+      <div><h2>Aceptas y abonas el 50%</h2><p>El resto lo pagas cuando apruebas la web.</p></div>
+    </div>
+    <div class="step">
+      <span class="k">3</span>
+      <div><h2>Tu cupo queda reservado</h2><p>Me mandas logo, fotos y textos, y empiezo a diseñar.</p></div>
+    </div>
+  </div>
+
+  <p class="cta">Tu web desde $30.000. <span>Pago único.</span></p>
+  <p class="mail grad">✉ sabenedettoa@benedettowebs.cl</p>
+
+  <div class="foot">
+    <span><b>benedettowebs.cl</b></span>
+    <span>@benedettowebs</span>
+  </div>
+</div>
+</body>
+</html>
