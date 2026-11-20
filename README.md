@@ -4,6 +4,7 @@ Sitio web promocional de **BenedettoWebs**, el emprendimiento de **Santiago Bene
 
 ## Portafolio
 
+- [clubdelamontaña.cl](https://www.clubdelamontaña.cl)
 - [tallerdelakleta.cl](https://www.tallerdelakleta.cl)
 - [listadecompras.website](https://listadecompras.website)
 - [ehda.cl](https://ehda.cl)

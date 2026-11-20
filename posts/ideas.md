@@ -16,6 +16,7 @@ Marcar con [x] lo que ya está hecho (HTML + PNG + texto en esta carpeta).
 - [x] Es de Tela (esdetela.cl) + reseña de Macarena (`esdetela`)
 - [x] Taller de la Kleta (tallerdelakleta.cl) (`kleta`)
 - [x] Reseña de José (Taller de la Kleta) (`kleta-resena`)
+- [x] Club de la Montaña (clubdelamontaña.cl) + reseña de Sally Wilmans (`montana-resena`)
 - [x] Antes / después de algún cliente
 - [x] Reseña de Luciano (Pellegrini) (incluida en `pellegrini`)
 - [x] Negra Mora terminada + reseña de Daniela (`negramora-final`)
