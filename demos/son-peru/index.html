@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Son Perú · Cocina peruana en La Reina (demo)</title>
+  <meta name="description" content="Propuesta de sitio web para Son Perú, restaurante peruano en Av. Salvador Izquierdo 1800, La Reina. Demo hecha por BenedettoWebs.">
+  <link rel="canonical" href="https://www.benedettowebs.cl/demos/son-peru/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BenedettoWebs">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:url" content="https://www.benedettowebs.cl/demos/son-peru/">
+  <meta property="og:title" content="Son Perú: así se vería su nueva página web">
+  <meta property="og:description" content="Propuesta de BenedettoWebs: la carta completa con precios, elige tu ceviche, reservas por WhatsApp y ubicación.">
+  <meta property="og:image" content="https://www.benedettowebs.cl/demos/son-peru/og.png">
+  <meta property="og:image:secure_url" content="https://www.benedettowebs.cl/demos/son-peru/og.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Demo de página web para Son Perú, con un ceviche servido en un bowl azul sobre una mesa de pizarra.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Son Perú: así se vería su nueva página web">
+  <meta name="twitter:description" content="Propuesta de BenedettoWebs para Son Perú, La Reina.">
+  <meta name="twitter:image" content="https://www.benedettowebs.cl/demos/son-peru/og.png">
+  <meta name="theme-color" content="#1b1e21">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237b5c40'/%3E%3Ccircle cx='32' cy='34' r='20' fill='%232c5a7c'/%3E%3Ccircle cx='32' cy='34' r='15' fill='%23f1e7d3'/%3E%3Crect x='24' y='28' width='7' height='7' rx='2' fill='%23fff'/%3E%3Crect x='33' y='33' width='7' height='7' rx='2' fill='%23fff'/%3E%3Cpath d='M25 40q7-6 14 0' stroke='%237a2458' stroke-width='2.4' fill='none'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,500&family=Outfit:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pizarra: #1b1e21;
+      --pizarra-2: #262b30;
+      --pizarra-3: #343a40;
+      --hueso: #f7f1e6;
+      --crema: #eee3cf;
+      --linea: #e0d3bb;
+      --cafe: #7b5c40;
+      --cafe-osc: #4b3725;
+      --aji: #e9a21b;
+      --rocoto: #c4402c;
+      --morado: #7a2458;
+      --limon: #7da83a;
+      --azul: #2c5a7c;
+      --texto: #221f1b;
+      --suave: #6d655a;
+      --claro: #d9d1c4;
+      --radio: 20px;
+      --mano: "Caveat", cursive;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: "Outfit", system-ui, sans-serif; color: var(--texto); background: var(--hueso); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img, svg { display: block; max-width: 100%; }
+    [hidden] { display: none !important; }
+    a { color: inherit; text-decoration: none; }
+    h1, h2, h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 400; line-height: 1.06; letter-spacing: -.01em; }
+    h1 em, h2 em { font-style: italic; color: var(--aji); }
+    .contenedor { width: min(1160px, 100% - 32px); margin-inline: auto; }
+    section { padding: 100px 0; }
+    main { overflow-x: clip; }
+    body.modal-abierto { overflow: hidden; }
+    .sobre { display: inline-block; font: 700 .78rem "Outfit", sans-serif; letter-spacing: .22em; text-transform: uppercase; color: var(--cafe); margin-bottom: 14px; }
+    .titulo { font-size: clamp(2.2rem, 4.4vw, 3.4rem); color: var(--cafe-osc); max-width: 760px; }
+    .titulo em { color: var(--rocoto); }
+    .bajada { color: var(--suave); font-size: 1.08rem; max-width: 620px; margin-top: 16px; }
+    .pendiente { font-family: var(--mano); font-size: 1.25rem; color: var(--rocoto); }
+
+    .aviso-demo { background: #111315; color: #e8e1d5; font-size: .85rem; text-align: center; padding: 8px 16px; }
+    .aviso-demo a, .aviso-demo button { color: var(--aji); font-weight: 700; text-decoration: underline; background: none; border: 0; font: inherit; cursor: pointer; }
+
+    header { position: sticky; top: 0; z-index: 50; background: rgba(27, 30, 33, .9); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,.08); color: #fff; }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 16px; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-sello { width: 44px; height: 44px; border-radius: 11px; background: var(--cafe); display: grid; place-items: center; flex: none; }
+    .logo-texto { font-family: "Playfair Display", serif; font-size: 1.45rem; line-height: 1; }
+    .logo-texto small { display: block; font: 700 .6rem "Outfit", sans-serif; letter-spacing: .28em; color: var(--claro); margin-top: 6px; text-transform: uppercase; }
+    .menu { display: flex; gap: 28px; font-weight: 600; font-size: .95rem; }
+    .menu a { color: var(--claro); transition: color .2s; }
+    .menu a:hover { color: var(--aji); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 15px 26px; border-radius: 999px; font: 700 .97rem "Outfit", sans-serif; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .2s, color .2s, border-color .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-aji { background: var(--aji); color: #1b1e21; box-shadow: 0 12px 28px rgba(233, 162, 27, .28); }
+    .btn-aji:hover { background: #f2b440; }
+    .btn-borde { border-color: rgba(255,255,255,.3); color: #fff; background: transparent; }
+    .btn-borde:hover { border-color: var(--aji); color: var(--aji); }
+    .btn-cafe { background: var(--cafe); color: #fff; box-shadow: 0 12px 28px rgba(75, 55, 37, .25); }
+    .btn-cafe:hover { background: var(--cafe-osc); }
+    .btn-sm { padding: 11px 20px; font-size: .9rem; }
+    .hamburguesa { display: none; background: none; border: 0; cursor: pointer; padding: 8px; }
+    .hamburguesa span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; margin: 6px 0; }
+    .progreso { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: linear-gradient(90deg, var(--limon), var(--aji), var(--rocoto), var(--morado)); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+    /* Portada */
+    .hero { --mx: .5; --my: .5; --sc: 0; position: relative; overflow: hidden; padding: 0; color: #fff; background: radial-gradient(760px 620px at 72% 52%, #3a4248, transparent 70%), radial-gradient(500px 400px at 10% 90%, #2a2f34, transparent 70%), var(--pizarra); }
+    .hero::before { content: ""; position: absolute; inset: 0; opacity: .55; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .85 0 0 0 0 .87 0 0 0 0 .9 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events: none; }
+    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1.05fr; gap: 20px; align-items: center; min-height: calc(100svh - 110px); padding: 50px 0 80px; }
+    .captura .hero-grid { min-height: calc(100svh - 74px); }
+    .chip-hero { display: inline-flex; align-items: center; gap: 9px; font-size: .86rem; font-weight: 600; color: var(--claro); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); padding: 7px 14px 7px 12px; border-radius: 999px; }
+    .chip-hero i { width: 9px; height: 9px; border-radius: 50%; background: var(--aji); }
+    .hero h1 { font-size: clamp(3rem, 6vw, 5.2rem); margin: 22px 0 20px; }
+    .hero-texto p { color: var(--claro); font-size: 1.12rem; max-width: 500px; }
+    .hero-botones { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .hero-datos { display: flex; gap: 34px; margin-top: 40px; flex-wrap: wrap; }
+    .hero-datos strong { display: block; font-family: "Playfair Display", serif; font-size: 2.5rem; font-weight: 400; line-height: 1; color: var(--aji); }
+    .hero-datos > div > span { font-size: .86rem; color: var(--claro); }
+    .escena { position: relative; height: min(640px, 76vh); }
+    .escena .capa { position: absolute; transition: transform .25s ease-out; }
+    .escena .bowl-hero { left: 50%; top: 50%; width: min(560px, 92%); translate: -50% -50%; transform: translate(calc((var(--mx) - .5) * -18px), calc((var(--my) - .5) * -14px)); }
+    .escena .bowl-hero svg { transform: rotate(calc(var(--sc) * 50deg)) scale(calc(1 - var(--sc) * .08)); transition: transform .1s linear; }
+    .escena .lima1 { width: 130px; left: -2%; top: 6%; transform: translate(calc((var(--mx) - .5) * 40px), calc((var(--my) - .5) * 34px + var(--sc) * -80px)) rotate(calc(var(--sc) * -90deg)); }
+    .escena .lima2 { width: 96px; right: 2%; bottom: 4%; transform: translate(calc((var(--mx) - .5) * 52px), calc((var(--my) - .5) * 40px + var(--sc) * 60px)) rotate(calc(var(--sc) * 120deg)); }
+    .escena .aji-entero { width: 150px; right: -4%; top: 2%; transform: translate(calc((var(--mx) - .5) * 30px), calc((var(--my) - .5) * 30px + var(--sc) * -50px)) rotate(calc(24deg + var(--sc) * 40deg)); }
+    .escena .sour { width: 128px; left: 0; bottom: 2%; transform: translate(calc((var(--mx) - .5) * 26px), calc((var(--my) - .5) * 22px + var(--sc) * 40px)); }
+    .escena .cancha-plato { width: 110px; left: 2%; top: 42%; transform: translate(calc((var(--mx) - .5) * 60px), calc((var(--my) - .5) * 44px)); }
+    .ficha { position: absolute; z-index: 3; background: rgba(247, 241, 230, .96); color: var(--texto); border-radius: 16px; padding: 12px 16px; box-shadow: 0 18px 40px rgba(0,0,0,.35); font-size: .84rem; max-width: 220px; animation: flotar 6s ease-in-out infinite; }
+    .ficha strong { display: block; font-family: "Playfair Display", serif; font-size: 1.05rem; font-weight: 600; color: var(--cafe-osc); }
+    .ficha span { color: var(--suave); }
+    .ficha b { color: var(--rocoto); }
+    .ficha.f1 { top: 12%; right: 4%; }
+    .ficha.f2 { bottom: 12%; left: 8%; animation-delay: -3s; }
+    @keyframes flotar { 50% { transform: translateY(-10px); } }
+    .scroll-abajo { position: absolute; left: 50%; bottom: 22px; translate: -50% 0; z-index: 2; width: 26px; height: 42px; border: 2px solid rgba(255,255,255,.35); border-radius: 14px; }
+    .scroll-abajo::after { content: ""; position: absolute; left: 50%; top: 8px; width: 4px; height: 8px; margin-left: -2px; border-radius: 2px; background: var(--aji); animation: bajar 1.8s infinite; }
+    @keyframes bajar { 0% { opacity: 0; transform: translateY(0); } 40% { opacity: 1; } 100% { opacity: 0; transform: translateY(12px); } }
+
+    /* Elige tu ceviche */
+    .elige-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; margin-top: 46px; }
+    .elige-visual { position: relative; background: radial-gradient(closest-side, #3d454c, var(--pizarra) 92%); border-radius: 32px; padding: 30px; aspect-ratio: 1; display: grid; place-items: center; overflow: hidden; }
+    .elige-visual::before { content: ""; position: absolute; inset: 0; opacity: .5; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .85 0 0 0 0 .87 0 0 0 0 .9 0 0 0 .1 0'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .elige-visual #bowl-elige { position: relative; width: 100%; }
+    .elige-visual .sirviendo { animation: servir .55s cubic-bezier(.2,.8,.3,1.2); }
+    @keyframes servir { from { transform: scale(.9) rotate(-8deg); opacity: .4; } }
+    .precio-flotante { position: absolute; z-index: 2; top: 22px; right: 22px; background: var(--aji); color: var(--pizarra); font: 800 1.15rem "Outfit", sans-serif; padding: 8px 16px; border-radius: 999px; }
+    .lista-ceviches { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .op-ceviche { text-align: left; border: 1.5px solid var(--linea); background: #fff; border-radius: 14px; padding: 12px 14px; cursor: pointer; font: inherit; color: var(--texto); transition: border-color .2s, background .2s, transform .15s; }
+    .op-ceviche:hover { border-color: var(--cafe); transform: translateY(-2px); }
+    .op-ceviche b { display: block; font-size: .92rem; line-height: 1.25; }
+    .op-ceviche span { font-size: .84rem; color: var(--suave); }
+    .op-ceviche[aria-pressed="true"] { border-color: var(--cafe-osc); background: var(--cafe-osc); color: #fff; }
+    .op-ceviche[aria-pressed="true"] span { color: var(--aji); }
+    .detalle-ceviche { margin-top: 22px; background: var(--crema); border-radius: 18px; padding: 20px 22px; }
+    .detalle-ceviche h3 { font-size: 1.5rem; color: var(--cafe-osc); }
+    .detalle-ceviche p { color: var(--suave); font-size: .95rem; margin-top: 6px; }
+    .ingredientes { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .ingredientes span { background: #fff; border-radius: 999px; padding: 4px 11px; font-size: .8rem; font-weight: 600; color: var(--cafe-osc); }
+    .detalle-acciones { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; align-items: center; }
+
+    /* Recorrido */
+    .recorrido { background: var(--pizarra); color: #fff; }
+    .recorrido .titulo { color: #fff; }
+    .recorrido .titulo em { color: var(--aji); }
+    .recorrido .bajada { color: var(--claro); }
+    .rec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 50px; }
+    .rec-visual { position: sticky; top: 110px; height: min(560px, calc(100vh - 150px)); display: grid; place-items: center; }
+    .rec-visual svg { width: min(520px, 100%); }
+    .rec-visual .capa-rec { transition: opacity .5s ease, transform .6s cubic-bezier(.2,.8,.3,1.15); transform-origin: 300px 300px; }
+    .rec-visual .capa-rec:not(.puesta) { opacity: 0; transform: translateY(-46px) scale(1.06); }
+    .rec-paso-num { position: absolute; left: 50%; bottom: 0; translate: -50% 0; font: 800 .8rem "Outfit", sans-serif; letter-spacing: .2em; text-transform: uppercase; color: var(--aji); background: rgba(255,255,255,.06); padding: 8px 16px; border-radius: 999px; white-space: nowrap; }
+    .rec-pasos { list-style: none; }
+    .rec-pasos li { min-height: 64vh; display: flex; flex-direction: column; justify-content: center; padding-left: 30px; border-left: 2px solid rgba(255,255,255,.12); opacity: .35; transition: opacity .4s, border-color .4s; }
+    .rec-pasos li.activo { opacity: 1; border-color: var(--aji); }
+    .rec-pasos .n { font: 800 .82rem "Outfit", sans-serif; letter-spacing: .2em; color: var(--aji); }
+    .rec-pasos h3 { font-size: clamp(1.8rem, 3vw, 2.5rem); margin: 8px 0 12px; }
+    .rec-pasos p { color: var(--claro); max-width: 440px; }
+
+    /* Carta */
+    .carta-barra { display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 40px; }
+    .buscar { position: relative; flex: 0 1 320px; }
+    .buscar input { width: 100%; border: 1.5px solid var(--linea); background: #fff; border-radius: 999px; padding: 13px 18px 13px 46px; font: 500 1rem "Outfit", sans-serif; color: var(--texto); }
+    .buscar input:focus { outline: none; border-color: var(--cafe); }
+    .buscar svg { position: absolute; left: 17px; top: 50%; translate: 0 -50%; }
+    .total-carta { font-size: .92rem; color: var(--suave); }
+    .cats { display: flex; gap: 8px; overflow-x: auto; padding: 18px 0 10px; scrollbar-width: thin; }
+    .cats button { flex: none; border: 1.5px solid var(--linea); background: #fff; border-radius: 999px; padding: 9px 16px; font: 600 .9rem "Outfit", sans-serif; color: var(--texto); cursor: pointer; transition: background .2s, border-color .2s; }
+    .cats button[aria-pressed="true"] { background: var(--cafe-osc); border-color: var(--cafe-osc); color: #fff; }
+    .platos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 48px; margin-top: 18px; }
+    .plato { display: grid; grid-template-columns: 1fr auto; gap: 4px 18px; padding: 18px 0; border-bottom: 1px dashed var(--linea); }
+    .plato h3 { font-family: "Outfit", sans-serif; font-weight: 700; font-size: 1.02rem; letter-spacing: 0; line-height: 1.3; }
+    .plato .precio { font-weight: 800; color: var(--rocoto); white-space: nowrap; text-align: right; }
+    .plato p { grid-column: 1 / -1; font-size: .9rem; color: var(--suave); }
+    .plato .cat-mini { grid-column: 1 / -1; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--cafe); }
+    .plato .variantes { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; }
+    .plato .variantes span { background: var(--crema); border-radius: 8px; padding: 2px 9px; font-size: .8rem; font-weight: 600; }
+    .sin-resultados { padding: 30px 0; color: var(--suave); }
+    .nota-carta { margin-top: 24px; font-size: .9rem; color: var(--suave); }
+
+    /* Sours */
+    .sours { background: var(--crema); }
+    .sours-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; }
+    .tarjeta { background: #fff; border-radius: var(--radio); padding: 26px; box-shadow: 0 10px 30px rgba(75, 55, 37, .07); }
+    .tarjeta .ilus { height: 150px; display: grid; place-items: center; margin-bottom: 14px; }
+    .tarjeta .ilus svg { height: 100%; width: auto; }
+    .tarjeta h3 { font-size: 1.5rem; color: var(--cafe-osc); }
+    .tarjeta p { color: var(--suave); font-size: .93rem; margin-top: 6px; }
+    .tamanos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 16px; }
+    .tamanos button { border: 1.5px solid var(--linea); background: var(--hueso); border-radius: 12px; padding: 8px 4px; cursor: pointer; font: 600 .78rem "Outfit", sans-serif; color: var(--suave); }
+    .tamanos button b { display: block; font-size: .98rem; color: var(--texto); }
+    .tamanos button[aria-pressed="true"] { border-color: var(--cafe-osc); background: var(--cafe-osc); color: var(--claro); }
+    .tamanos button[aria-pressed="true"] b { color: #fff; }
+    .copa-liquido { transition: transform .4s cubic-bezier(.2,.8,.3,1.2); transform-box: fill-box; transform-origin: bottom; }
+
+    /* Reserva */
+    .reserva-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: start; }
+    .reserva { background: #fff; border-radius: 26px; padding: 32px; box-shadow: 0 20px 50px rgba(75, 55, 37, .1); }
+    .reserva fieldset { border: 0; margin-bottom: 22px; }
+    .reserva legend, .reserva label.et { display: block; font-weight: 700; font-size: .92rem; margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chips button { border: 1.5px solid var(--linea); background: var(--hueso); border-radius: 12px; padding: 9px 13px; font: 600 .88rem "Outfit", sans-serif; cursor: pointer; color: var(--texto); line-height: 1.2; }
+    .chips button small { display: block; font-size: .72rem; color: var(--suave); font-weight: 500; }
+    .chips button[aria-pressed="true"] { background: var(--cafe-osc); border-color: var(--cafe-osc); color: #fff; }
+    .chips button[aria-pressed="true"] small { color: var(--aji); }
+    .contador { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .contador button { width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid var(--linea); background: var(--hueso); font-size: 1.3rem; cursor: pointer; color: var(--texto); }
+    .contador output { font: 600 1.8rem "Playfair Display", serif; min-width: 34px; text-align: center; }
+    .mesa-mini { display: flex; gap: 4px; flex-wrap: wrap; max-width: 220px; }
+    .mesa-mini i { width: 14px; height: 14px; border-radius: 50%; background: var(--cafe); animation: sentarse .3s ease; }
+    @keyframes sentarse { from { transform: scale(0); } }
+    .reserva input[type=text], .reserva input[type=time] { width: 100%; border: 1.5px solid var(--linea); border-radius: 12px; padding: 13px 14px; font: 500 1rem "Outfit", sans-serif; background: var(--hueso); color: var(--texto); }
+    .fila-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .plato-elegido { display: flex; justify-content: space-between; gap: 10px; align-items: center; background: var(--crema); border-radius: 12px; padding: 10px 14px; font-size: .92rem; font-weight: 600; }
+    .plato-elegido button { border: 0; background: none; color: var(--rocoto); font: 700 .85rem "Outfit", sans-serif; cursor: pointer; }
+    .resumen { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px dashed var(--linea); padding-top: 20px; }
+    .resumen small { display: block; font-size: .8rem; color: var(--suave); }
+    .resumen strong { font-size: 1rem; }
+    .reserva-texto .lista-check { list-style: none; margin-top: 26px; display: grid; gap: 12px; }
+    .reserva-texto .lista-check li { display: flex; gap: 12px; align-items: flex-start; color: var(--suave); }
+    .reserva-texto .lista-check li::before { content: ""; flex: none; width: 22px; height: 22px; margin-top: 2px; border-radius: 50%; background: var(--limon) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center / 14px no-repeat; }
+
+    /* Ubicación */
+    .ubicacion-grid { display: grid; grid-template-columns: 1fr 1.2fr; border-radius: 28px; overflow: hidden; background: var(--pizarra); color: #fff; }
+    .ubicacion-texto { padding: 48px 44px; }
+    .ubicacion-texto h2 { font-size: clamp(2rem, 3.4vw, 2.8rem); }
+    .ubicacion-texto .sobre { color: var(--aji); }
+    .datos-contacto { list-style: none; display: grid; gap: 16px; margin-top: 26px; }
+    .datos-contacto li { display: flex; gap: 14px; align-items: flex-start; }
+    .datos-contacto .ico { flex: none; width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.07); display: grid; place-items: center; }
+    .datos-contacto b { display: block; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; color: var(--claro); font-weight: 700; }
+    .datos-contacto a:hover { color: var(--aji); }
+    .ubicacion-grid iframe { width: 100%; height: 100%; min-height: 480px; border: 0; filter: grayscale(.25) contrast(1.05); }
+
+    footer { background: #111315; color: var(--claro); padding: 60px 0 30px; }
+    .pie-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 30px; padding-bottom: 34px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    footer h4 { color: #fff; margin-bottom: 10px; font-size: .95rem; }
+    footer ul { list-style: none; display: grid; gap: 6px; font-size: .92rem; }
+    footer a:hover { color: #fff; }
+    .creditos { padding-top: 22px; font-size: .85rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .creditos a { color: var(--aji); font-weight: 700; }
+
+    .wsp-flotante { position: fixed; right: 20px; bottom: 20px; width: 60px; height: 60px; border-radius: 50%; background: #25d366; display: grid; place-items: center; box-shadow: 0 10px 25px rgba(37, 211, 102, .45); z-index: 60; transition: transform .2s; }
+    .wsp-flotante:hover { transform: scale(1.08); }
+
+    /* Comparar */
+    .btn-comparar { position: fixed; left: 50%; translate: -50% 0; bottom: 20px; z-index: 60; display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--cafe-osc); border: 0; border-radius: 999px; padding: 12px 18px 12px 12px; font: 700 .92rem "Outfit", sans-serif; cursor: pointer; box-shadow: 0 12px 28px rgba(0, 0, 0, .3); transition: transform .2s; }
+    .btn-comparar:hover { transform: translateY(-3px); }
+    .btn-comparar .ico { width: 34px; height: 34px; border-radius: 50%; background: var(--cafe); display: grid; place-items: center; }
+    .btn-comparar .pulso { position: absolute; inset: 0; border-radius: 999px; animation: pulso 2.4s infinite; pointer-events: none; }
+    @keyframes pulso { 0% { box-shadow: 0 0 0 0 rgba(233, 162, 27, .55); } 70%, 100% { box-shadow: 0 0 0 14px rgba(233, 162, 27, 0); } }
+    .modal { position: fixed; inset: 0; z-index: 100; background: rgba(15, 17, 19, .88); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal.abierto { display: flex; animation: aparecer .25s ease; }
+    @keyframes aparecer { from { opacity: 0; } }
+    .modal-caja { background: #fff; border-radius: 22px; width: min(1100px, 100%); max-height: calc(100vh - 40px); overflow: auto; padding: 26px; position: relative; }
+    .modal-cabeza { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; padding-right: 44px; }
+    .modal-cabeza h2 { font-size: 2rem; color: var(--cafe-osc); }
+    .cerrar { position: absolute; top: 18px; right: 18px; width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--crema); cursor: pointer; display: grid; place-items: center; }
+    .pestanas { display: inline-flex; background: var(--crema); border-radius: 999px; padding: 4px; }
+    .pestanas button { border: 0; background: transparent; font: 700 .9rem "Outfit", sans-serif; color: var(--texto); padding: 9px 18px; border-radius: 999px; cursor: pointer; }
+    .pestanas button[aria-selected="true"] { background: var(--cafe-osc); color: #fff; }
+    .leyenda { display: flex; justify-content: space-between; margin: 0 auto 10px; font: 800 .78rem "Outfit", sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+    .leyenda span { padding: 6px 12px; border-radius: 999px; }
+    .leyenda .l-antes { background: var(--crema); color: var(--texto); }
+    .leyenda .l-ahora { background: var(--cafe-osc); color: #fff; }
+    .comparador { position: relative; margin-inline: auto; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); user-select: none; touch-action: none; background: #ddd; }
+    .comparador.escritorio { width: 100%; aspect-ratio: 1366 / 850; }
+    .comparador.movil { width: min(340px, 100%, calc((100vh - 260px) * .462)); min-width: 220px; aspect-ratio: 390 / 844; border-radius: 30px; border: 8px solid var(--pizarra); }
+    .comparador img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; }
+    .comparador .antes { clip-path: inset(0 calc(100% - var(--pos, 50%)) 0 0); }
+    .divisor { position: absolute; top: 0; bottom: 0; left: var(--pos, 50%); width: 3px; margin-left: -1.5px; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,.4); pointer-events: none; }
+    .divisor span { position: absolute; top: 50%; left: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; background: #fff; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+    .comparador input[type=range] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+    .comparador:focus-within .divisor span { outline: 3px solid var(--aji); }
+    .ayuda-comparar { text-align: center; color: var(--suave); font-size: .88rem; margin: 12px 0 20px; }
+    .mejoras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .mejora { border: 1px solid var(--crema); border-radius: 14px; padding: 16px; font-size: .9rem; }
+    .mejora b { display: block; font-size: .98rem; margin-bottom: 4px; color: var(--cafe-osc); }
+    .mejora .antes-txt { color: #a5384a; display: block; font-size: .85rem; }
+    .mejora .ahora-txt { color: #1f7a52; display: block; font-size: .85rem; font-weight: 700; }
+
+    .toast { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 200%); opacity: 0; background: var(--cafe-osc); color: #fff; padding: 14px 20px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.3); font-size: .92rem; z-index: 120; transition: transform .35s ease, opacity .35s; max-width: calc(100% - 32px); text-align: center; pointer-events: none; }
+    .toast.visible { transform: translate(-50%, 0); opacity: 1; }
+
+    .aparece { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .aparece.visto { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .aparece { opacity: 1; transform: none; transition: none; }
+      .ficha, .pulso, .scroll-abajo::after, .sirviendo, .mesa-mini i { animation: none !important; }
+      .escena .capa, .escena .bowl-hero svg, .rec-visual .capa-rec, .copa-liquido { transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+    .captura .aviso-demo, .captura .btn-comparar { display: none; }
+    .captura .ficha, .captura .sirviendo { animation: none; }
+    .captura .escena .capa, .captura .rec-visual .capa-rec { transition: none; }
+
+    @media (max-width: 1000px) {
+      .hero-grid, .elige-grid, .rec-grid, .reserva-grid, .ubicacion-grid { grid-template-columns: 1fr; }
+      .hero-grid { min-height: 0; padding: 46px 0 40px; gap: 0; }
+      .escena { height: 520px; }
+      .scroll-abajo { display: none; }
+      .elige-grid { gap: 30px; }
+      .elige-visual { max-width: 560px; width: 100%; margin-inline: auto; }
+      .rec-grid { gap: 0; }
+      .rec-visual { top: 74px; height: 340px; z-index: 2; background: linear-gradient(var(--pizarra) 95%, transparent); margin-inline: -16px; padding-bottom: 44px; }
+      .rec-visual svg { width: 290px; }
+      .rec-pasos li { min-height: 48vh; padding-left: 22px; }
+      .platos { grid-template-columns: 1fr; }
+      .sours-grid { grid-template-columns: 1fr 1fr; }
+      .pie-grid { grid-template-columns: 1fr 1fr; }
+      .mejoras { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 820px) {
+      .menu, .nav > .btn { display: none; }
+      .hamburguesa { display: block; }
+      .menu.abierto { display: flex; flex-direction: column; position: absolute; top: 74px; left: 0; right: 0; background: var(--pizarra); padding: 20px 16px 26px; gap: 18px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    }
+    @media (max-width: 600px) {
+      section { padding: 72px 0; }
+      .hero h1 { font-size: clamp(2.7rem, 12.6vw, 3.6rem); margin: 18px 0; }
+      .hero-botones .btn { flex: 1 1 100%; }
+      .hero-datos { gap: 12px; flex-wrap: nowrap; justify-content: space-between; }
+      .hero-datos strong { font-size: 1.95rem; }
+      .hero-datos > div > span { font-size: .78rem; }
+      .escena { height: 400px; margin-top: 10px; }
+      .escena .bowl-hero { width: 96%; }
+      .escena .lima1 { width: 90px; left: -8%; top: 0; }
+      .escena .lima2 { width: 70px; right: -2%; }
+      .escena .aji-entero { width: 104px; right: -10%; top: -2%; }
+      .escena .sour { width: 86px; left: -4%; bottom: 0; }
+      .escena .cancha-plato { display: none; }
+      .ficha { padding: 9px 12px; font-size: .76rem; max-width: 170px; }
+      .ficha strong { font-size: .92rem; }
+      .ficha.f1 { top: 2%; right: 0; }
+      .ficha.f2 { bottom: 2%; left: auto; right: 0; }
+      .elige-visual { padding: 16px; border-radius: 24px; }
+      .lista-ceviches { grid-template-columns: 1fr; }
+      .rec-visual svg { width: 250px; }
+      .rec-visual { height: 330px; }
+      .sours-grid { grid-template-columns: 1fr; }
+      .reserva { padding: 22px 16px; }
+      .fila-2 { grid-template-columns: 1fr; }
+      .ubicacion-texto { padding: 32px 22px; }
+      .ubicacion-grid iframe { min-height: 300px; }
+      .pie-grid { grid-template-columns: 1fr; }
+      .btn-comparar { left: 16px; translate: none; bottom: 16px; padding-right: 14px; }
+      .btn-comparar .txt-largo { display: none; }
+      .wsp-flotante { right: 16px; bottom: 16px; }
+      .modal { padding: 0; }
+      .modal-caja { border-radius: 0; max-height: 100vh; height: 100%; padding: 20px 16px; }
+      .comparador.movil { width: min(300px, 100%); }
+      .mejoras { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="aviso-demo">Propuesta de diseño hecha por <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a> con la carta y los datos de Son Perú. <button type="button" data-abrir-comparar>Comparar con la web actual</button></div>
+
+  <header>
+    <div class="contenedor nav">
+      <a href="#inicio" class="logo" aria-label="Son Perú, inicio">
+        <span class="logo-sello"><svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="34" r="22" fill="#2c5a7c"/><circle cx="32" cy="34" r="16.5" fill="#f1e7d3"/><rect x="23" y="27" width="8" height="8" rx="2.2" fill="#fff"/><rect x="33" y="33" width="8" height="8" rx="2.2" fill="#fff"/><rect x="27" y="37" width="6" height="6" rx="2" fill="#fbe9dc"/><path d="M23 42q9-8 18 0" stroke="#7a2458" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="40" cy="28" r="2" fill="#3f7d2a"/></svg></span>
+        <span class="logo-texto">Son Perú<small>Cocina peruana · La Reina</small></span>
+      </a>
+      <nav class="menu" id="menu" aria-label="Principal">
+        <a href="#elige">Ceviches</a>
+        <a href="#carta">Carta</a>
+        <a href="#sours">Sours</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <a href="#reserva" class="btn btn-aji btn-sm">Reservar mesa</a>
+      <button class="hamburguesa" id="hamburguesa" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    </div>
+    <div class="progreso" id="progreso"></div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="contenedor hero-grid">
+        <div class="hero-texto">
+          <span class="chip-hero"><i></i>Av. Salvador Izquierdo 1800 · La Reina</span>
+          <h1>Lo mejor del Perú, <em>a tu mesa.</em></h1>
+          <p>Ceviches y tiraditos, parrilla peruana, sours macerados en casa y una carta que viaja de Lima a Cusco. Mírala completa aquí y reserva tu mesa por WhatsApp.</p>
+          <div class="hero-botones">
+            <a href="#carta" class="btn btn-aji">Ver la carta</a>
+            <a href="#reserva" class="btn btn-borde">Reservar mesa</a>
+          </div>
+          <div class="hero-datos">
+            <div><strong data-contar id="n-platos">0</strong><span>platos en la carta</span></div>
+            <div><strong data-contar id="n-ceviches">0</strong><span>ceviches distintos</span></div>
+            <div><strong data-contar id="n-sours">0</strong><span>sours y macerados</span></div>
+          </div>
+        </div>
+        <div class="escena" id="escena" aria-hidden="true">
+          <div class="capa lima1" id="lima1"></div>
+          <div class="capa aji-entero" id="aji-entero"></div>
+          <div class="capa cancha-plato" id="cancha-plato"></div>
+          <div class="capa bowl-hero" id="bowl-hero"></div>
+          <div class="capa lima2" id="lima2"></div>
+          <div class="capa sour" id="sour-hero"></div>
+          <div class="ficha f1"><strong>Ceviche Frutos del Mar</strong><span>Salmón, atún, camarón, locos, pulpo y jaiba</span> · <b>$24.900</b></div>
+          <div class="ficha f2"><strong>Pisco Sour</strong><span>Clásico, Catedral o Vaticano</span> · <b>desde $6.500</b></div>
+        </div>
+      </div>
+      <a href="#elige" class="scroll-abajo" aria-label="Bajar"></a>
+    </section>
+
+    <section id="elige">
+      <div class="contenedor">
+        <span class="sobre">Elige tu ceviche</span>
+        <h2 class="titulo aparece">Diez ceviches, <em>uno para cada antojo.</em></h2>
+        <p class="bajada aparece">Toca uno y mira cómo llega a la mesa, con lo que lleva y su precio. Si te tienta, resérvalo de una.</p>
+        <div class="elige-grid">
+          <div class="elige-visual aparece">
+            <span class="precio-flotante" id="precio-elige">$14.900</span>
+            <div id="bowl-elige"></div>
+          </div>
+          <div class="aparece">
+            <div class="lista-ceviches" id="lista-ceviches" role="group" aria-label="Ceviches de la carta"></div>
+            <div class="detalle-ceviche" aria-live="polite">
+              <h3 id="nombre-elige">Ceviche Clásico</h3>
+              <p id="desc-elige"></p>
+              <div class="ingredientes" id="ing-elige"></div>
+              <div class="detalle-acciones">
+                <button type="button" class="btn btn-cafe btn-sm" id="reservar-ceviche">Reservar con este ceviche</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="recorrido" id="recorrido">
+      <div class="contenedor">
+        <span class="sobre" style="color:var(--aji)">Así se arma</span>
+        <h2 class="titulo">Un Ceviche Clásico, <em>paso a paso.</em></h2>
+        <p class="bajada">Baja despacio y míralo armarse. Los detalles de cómo lo hacen en la cocina de Son Perú van en la versión final.</p>
+        <div class="rec-grid">
+          <div class="rec-visual">
+            <div id="bowl-rec"></div>
+            <span class="rec-paso-num" id="rec-num">Paso 1 de 5</span>
+          </div>
+          <ol class="rec-pasos" id="rec-pasos">
+            <li><span class="n">01 · El corte</span><h3>La pesca del día, en cubos</h3><p>Todo parte con pescado fresco, cortado en cubos parejos para que se cure igual por todos lados.</p></li>
+            <li><span class="n">02 · El limón</span><h3>Fresco limón y leche de tigre</h3><p>El limón recién exprimido cura el pescado y, junto a sus jugos, nace la leche de tigre: el alma de un ceviche.</p></li>
+            <li><span class="n">03 · El ají y la cebolla</span><h3>Cebolla morada y ají</h3><p>Cebolla morada a la pluma y rodajas de ají, para el crujido y el picor justo.</p></li>
+            <li><span class="n">04 · El toque</span><h3>Cilantro y sal</h3><p>Hojas de cilantro y una pizca de sal, y se mezcla con cuidado para no romper los cubos.</p></li>
+            <li><span class="n">05 · A la mesa</span><h3>Con camote, choclo y cancha</h3><p>Así llega el Ceviche Clásico de Son Perú: con camote, choclo, lechuga y cancha, bañado en leche de tigre. <strong style="color:var(--aji)">$14.900</strong></p></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="carta">
+      <div class="contenedor">
+        <span class="sobre">La carta</span>
+        <h2 class="titulo aparece">Toda la carta, <em>con sus precios.</em></h2>
+        <p class="bajada aparece">Sin descargar nada ni pasar 24 páginas: busca un plato o filtra por tipo.</p>
+        <div class="carta-barra">
+          <label class="buscar">
+            <span hidden>Buscar en la carta</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6d655a" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" id="buscar" placeholder="Busca: pulpo, lomo, causa…" autocomplete="off" aria-label="Buscar en la carta">
+          </label>
+          <span class="total-carta" id="total-carta"></span>
+        </div>
+        <div class="cats" id="cats" role="group" aria-label="Categorías de la carta"></div>
+        <div class="platos" id="platos"></div>
+        <p class="nota-carta">Precios en pesos chilenos según la carta actual de Son Perú. Vinos, espumantes, destilados y cervezas: en la versión final.</p>
+      </div>
+    </section>
+
+    <section class="sours" id="sours">
+      <div class="contenedor">
+        <span class="sobre">Sours y macerados</span>
+        <h2 class="titulo aparece">El brindis, <em>en tres tamaños.</em></h2>
+        <p class="bajada aparece">Con Tabernero Tradición. Elige Clásico, Catedral o Vaticano y mira cómo cambia la copa.</p>
+        <div class="sours-grid" id="sours-grid"></div>
+      </div>
+    </section>
+
+    <section id="reserva">
+      <div class="contenedor reserva-grid">
+        <div class="reserva-texto aparece">
+          <span class="sobre">Reservas</span>
+          <h2 class="titulo">Tu mesa, <em>en un mensaje.</em></h2>
+          <p class="bajada">Elige el día, la hora y cuántos vienen. El mensaje le llega listo al WhatsApp de Son Perú y te confirman por ahí.</p>
+          <ul class="lista-check">
+            <li>Sin descargar apps ni crear cuentas.</li>
+            <li>Si ya elegiste tu ceviche, va incluido en el mensaje.</li>
+            <li>Para cumpleaños y celebraciones, avísalo y te preparan la mesa.</li>
+          </ul>
+        </div>
+        <form class="reserva aparece" id="form-reserva" novalidate>
+          <fieldset>
+            <legend>¿Qué día?</legend>
+            <div class="chips" id="dias"></div>
+          </fieldset>
+          <div class="fila-2">
+            <fieldset>
+              <label class="et" for="hora">¿A qué hora?</label>
+              <input type="time" id="hora" value="13:30" step="900">
+            </fieldset>
+            <fieldset>
+              <legend>¿Cuántos vienen?</legend>
+              <div class="contador">
+                <button type="button" id="menos" aria-label="Una persona menos">−</button>
+                <output id="cuantos" aria-live="polite">2</output>
+                <button type="button" id="mas" aria-label="Una persona más">+</button>
+              </div>
+            </fieldset>
+          </div>
+          <fieldset style="margin-top:-8px">
+            <div class="mesa-mini" id="mesa-mini" aria-hidden="true"></div>
+          </fieldset>
+          <fieldset>
+            <legend>¿Es por algo especial?</legend>
+            <div class="chips" id="ocasiones"></div>
+          </fieldset>
+          <fieldset id="campo-plato" hidden>
+            <legend>Quieren probar</legend>
+            <div class="plato-elegido"><span id="plato-texto"></span><button type="button" id="quitar-plato">Quitar</button></div>
+          </fieldset>
+          <fieldset>
+            <label class="et" for="nombre">¿A nombre de quién?</label>
+            <input type="text" id="nombre" placeholder="Ej: Camila" autocomplete="given-name">
+          </fieldset>
+          <div class="resumen">
+            <div><small>Tu reserva</small><strong id="resumen">Elige un día</strong></div>
+            <button type="submit" class="btn btn-cafe">Enviar por WhatsApp</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="ubicacion" style="padding-top:0">
+      <div class="contenedor">
+        <div class="ubicacion-grid aparece">
+          <div class="ubicacion-texto">
+            <span class="sobre">Dónde estamos</span>
+            <h2>En La Reina, <em>te esperamos.</em></h2>
+            <ul class="datos-contacto">
+              <li><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e9a21b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg></span><div><b>Dirección</b><a href="https://www.google.com/maps/search/?api=1&query=Av.+Salvador+Izquierdo+1800,+La+Reina" target="_blank" rel="noopener">Av. Salvador Izquierdo 1800, La Reina</a></div></li>
+              <li><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e9a21b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><div><b>Teléfonos</b><a href="tel:+56229070415">(2) 2907 0415</a> · <a href="tel:+56229070416">(2) 2907 0416</a></div></li>
+              <li><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e9a21b" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></span><div><b>WhatsApp</b><a href="#reserva">+56 9 5816 8960</a></div></li>
+              <li><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e9a21b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><b>Correo de reservas</b><a href="mailto:reservas@sonperu.cl">reservas@sonperu.cl</a></div></li>
+              <li><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e9a21b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><b>Horario</b><span class="pendiente" style="color:var(--aji)">en la versión final</span></div></li>
+              <li><span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e9a21b" stroke-width="2.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#e9a21b"/></svg></span><div><b>Redes</b><a href="https://www.instagram.com/sonperurest/" target="_blank" rel="noopener">@sonperurest</a> · <a href="https://www.facebook.com/sonperurest" target="_blank" rel="noopener">Facebook</a></div></li>
+            </ul>
+          </div>
+          <iframe title="Mapa de Son Perú en Av. Salvador Izquierdo 1800, La Reina" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.+Salvador+Izquierdo+1800,+La+Reina,+Chile&z=16&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="contenedor">
+      <div class="pie-grid">
+        <a href="#inicio" class="logo"><span class="logo-texto" style="color:#fff">Son Perú<small>Cocina peruana · La Reina</small></span></a>
+        <div><h4>Visítanos</h4><ul><li>Av. Salvador Izquierdo 1800</li><li>La Reina, Santiago</li></ul></div>
+        <div><h4>Contacto</h4><ul><li><a href="tel:+56229070415">(2) 2907 0415</a></li><li><a href="#reserva">WhatsApp +56 9 5816 8960</a></li><li><a href="mailto:reservas@sonperu.cl">reservas@sonperu.cl</a></li></ul></div>
+        <div><h4>Carta</h4><ul><li><a href="#elige">Ceviches</a></li><li><a href="#carta">Carta completa</a></li><li><a href="#sours">Sours y macerados</a></li></ul></div>
+      </div>
+      <div class="creditos">
+        <span>© <span id="anio"></span> Son Perú</span>
+        <span>Diseño y desarrollo: <a href="https://www.benedettowebs.cl" target="_blank" rel="noopener">BenedettoWebs</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="btn-comparar" data-abrir-comparar aria-haspopup="dialog">
+    <span class="pulso"></span>
+    <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></svg></span>
+    <span>Comparar<span class="txt-largo"> con la web actual</span></span>
+  </button>
+
+  <a href="#reserva" class="wsp-flotante" aria-label="Reservar por WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+  </a>
+
+  <div class="modal" id="modal-comparar" role="dialog" aria-modal="true" aria-labelledby="titulo-comparar">
+    <div class="modal-caja">
+      <button type="button" class="cerrar" id="cerrar-comparar" aria-label="Cerrar comparación"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4b3725" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <div class="modal-cabeza">
+        <div><span class="sobre">Antes y ahora</span><h2 id="titulo-comparar">La web actual vs. propuesta</h2></div>
+        <div class="pestanas" role="tablist" aria-label="Dispositivo">
+          <button type="button" role="tab" aria-selected="true" data-vista="movil">Celular</button>
+          <button type="button" role="tab" aria-selected="false" data-vista="escritorio">Computador</button>
+        </div>
+      </div>
+      <div class="leyenda" id="leyenda"><span class="l-antes">◀ Hoy</span><span class="l-ahora">Propuesta ▶</span></div>
+      <div class="comparador movil" id="comparador">
+        <img class="ahora" id="img-ahora" src="comparar/ahora-movil.png" alt="Portada de la propuesta nueva">
+        <img class="antes" id="img-antes" src="comparar/antes-movil.png" alt="La portada actual de sonperu.cl: el logo, una frase y tres botones">
+        <div class="divisor"><span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4b3725" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <input type="range" min="0" max="100" value="50" id="deslizador" aria-label="Deslizar para comparar la web actual con la propuesta">
+      </div>
+      <p class="ayuda-comparar">Arrastra la barra. A la izquierda, sonperu.cl hoy: el logo, una frase y tres botones que llevan a otras páginas.</p>
+      <div class="mejoras">
+        <div class="mejora"><b>La carta, en la página</b><span class="antes-txt">Antes: un botón, otra página y un folleto de 24 hojas</span><span class="ahora-txt">Ahora: todos los platos con precio, con buscador y filtros</span></div>
+        <div class="mejora"><b>Reservas por WhatsApp</b><span class="antes-txt">Antes: un botón que manda a una app externa</span><span class="ahora-txt">Ahora: día, hora y personas; el mensaje llega listo</span></div>
+        <div class="mejora"><b>Sus ceviches, a la vista</b><span class="antes-txt">Antes: fotos de stock, sin decir qué platos hay</span><span class="ahora-txt">Ahora: "Elige tu ceviche", con lo que lleva y su precio</span></div>
+        <div class="mejora"><b>Contacto a un toque</b><span class="antes-txt">Antes: dirección y teléfonos escondidos en "Contacto"</span><span class="ahora-txt">Ahora: mapa, teléfonos y WhatsApp siempre a mano</span></div>
+        <div class="mejora"><b>Los sours</b><span class="antes-txt">Antes: solo dentro del folleto</span><span class="ahora-txt">Ahora: Clásico, Catedral o Vaticano, con su precio</span></div>
+        <div class="mejora"><b>Diseño propio</b><span class="antes-txt">Antes: plantilla genérica de BistroSuite</span><span class="ahora-txt">Ahora: una web hecha para Son Perú, en sonperu.cl</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const captura = new URLSearchParams(location.search).has("captura");
+    if (captura) document.documentElement.classList.add("captura");
+    document.getElementById("anio").textContent = new Date().getFullYear();
+    const sinMovimiento = captura || matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const $ = id => document.getElementById(id);
+    const clp = n => "$" + n.toLocaleString("es-CL");
+
+    const hamb = $("hamburguesa"), menu = $("menu");
+    hamb.addEventListener("click", () => hamb.setAttribute("aria-expanded", menu.classList.toggle("abierto")));
+    menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => { menu.classList.remove("abierto"); hamb.setAttribute("aria-expanded", "false"); }));
+
+    const toast = $("toast");
+    let tToast;
+    function mostrarToast(texto) {
+      toast.textContent = texto;
+      toast.classList.add("visible");
+      clearTimeout(tToast);
+      tToast = setTimeout(() => toast.classList.remove("visible"), 5600);
+    }
+
+    // ===== Carta (transcrita de la carta actual de Son Perú) =====
+    // [nombre, precio o "Pescado 16.300 / Salmón 16.900", descripción]
+    const CARTA = [
+      { cat: "Sugerencias del chef", platos: [
+        ["Engreído del Chef", 29900, "Láminas de locos, pesca del día bañados en salsa de ají amarillo y pulpo bañado en salsa olivo, acompañado de chalaquita de la casa, rosa de palta y camarones al panko."],
+        ["Tiradito Tropical", 18900, "Láminas de salmón, pulpo con leche de tigre de chirimoya, acompañado de una chalaquita tropical, decorado con falso caviar de maracuyá."],
+        ["Salmón Tiki", 17900, "Láminas de salmón curado de beterraga, sobre leche de tigre de coco con hilos crocantes de primavera."],
+        ["Tiradito de Campeones", 19900, "Rosas de pesca del día con láminas de locos, en una leche de tigre al pimentón con crocante de ostiones y chalaquita clásica."],
+        ["Ceviche El Edén", 24900, "Ceviche de pescado, camarón, pulpo y carne de centolla en salsa de ají amarillo, acompañado con bastones de salmón empanizado."],
+        ["Piqueo del Chef", 28900, "Ceviche de pesca del día, arroz con mariscos, jalea mixta y leche de tigre en salsa de ají amarillo."],
+        ["Filete Son Perú", 19900, "Puré rústico con jaiba y champiñón montado en filete, bañado en salsa al ajillo con camarones y alcaparras."],
+        ["Risotto 3C", 19900, "Risotto al cilantro montado con salmón grillado con camarones y champiñones a la meunière, acompañado con camarones al panko."],
+        ["Saltado del Chef", 18900, "Tradicional saltado a base de camarón, filete y pollo, acompañado con arroz al cilantro y papas."],
+        ["Pimentón Relleno", 20900, "Mariscos y verduras al brunoise en salsa huancaína, gratinado con parmesano, montado con filete y camarones a la parrilla y pulpo en salsa anticuchera."],
+        ["Risotto Umami", 19900, "Risotto shiitake montado con salmón y atún, bañado en salsa de tamarindo con camarones y un toque de mermelada de arándanos."],
+        ["Locos por el Risotto", 24900, "Risotto de locos, coronado con camarones envueltos en filete, a la parrilla con anticuchera y chimichurri."],
+        ["Cordon Bleu de Filete", 18900, "Filete relleno de tocino y queso edam, en salsa de champiñones, acompañado de saltado de papa rústica, cebolla blanca, pimiento y perejil."],
+        ["Roquefort", 20900, "Cordero al vino aromatizado con romero, sobre ñoquis y champiñones en salsa roquefort, gratinado con parmesano."],
+        ["Tártaro", 15900, "Cortes pequeños de filete, aliñado fresco y tostadas de pan."],
+        ["Pescado Son Perú", "Pescado 17.900 / Salmón 18.900", "Pescado relleno con mixtura de mariscos en salsa de finas hierbas, con puré de papa y gratinado con parmesano."],
+        ["Ceviche Isla Negra", 19900, "Cortes de salmón, piure, pulpo, camarón y ostión, en leche de pantera."],
+        ["Pescado Bisque", "Pescado 18.900 / Salmón 19.900 / Congrio 19.900", "Pescado en salsa bisque con mariscos seleccionados, acompañado con arroz al cilantro."]
+      ]},
+      { cat: "Ceviches", platos: [
+        ["Piqueo Playa", 24900, "Entrada fría: ceviche de pescado, tiradito de salmón al ají amarillo, pulpo al olivo, cóctel de camarones y causa de pulpa de jaiba."],
+        ["Ceviche Frutos del Mar", 24900, "Cortes frescos de salmón, atún, camarón, locos, pulpo, pinzas de jaiba y ostión en leche de tigre tradicional, con choclo, camote, cancha y yuyo."],
+        ["Ceviche Son Perú", 19900, "Finos cortes de pesca del día, calamar, ostión, pulpo y camarón en leche de tigre tradicional, con yuca crocante, camarones al panko y shot de leche de tigre al rocoto."],
+        ["Ceviche Afrodisíaco", 19900, "Cortes frescos de salmón, camarón, pulpo y piure con leche de tigre al rocoto, con ostión a la parmesana, choclo, camote, cancha y yuyo."],
+        ["Ceviche Carretillero", 17900, "Cortes frescos de pesca del día en leche de tigre a la huancaína, acompañado con chicharrón de calamar."],
+        ["Ceviche al Cilantro Crunch", 17900, "Pesca del día en leche de tigre al cilantro y el toque perfecto de camarones al panko."],
+        ["Trío de Ceviches", 17900, "Cortes frescos de pescado del día en leche de tigre al cilantro, huancaína y clásico."],
+        ["Ceviche Mixto", 16900, "Pesca del día, camarón, pulpo, ostión y calamar, con fresco limón en leche de tigre, con camote, choclo y cancha."],
+        ["Ceviche Clásico", 14900, "Pesca del día con fresco limón, acompañado con camote, choclo, lechuga y cancha, bañado con leche de tigre."],
+        ["Leche de Tigre", 14500, "Contundente leche de tigre con mixtura de mariscos en brunoise, con chicharrón de calamar, choclo y cancha."],
+        ["Ceviche Camarón Pescado", "Pescado 16.300 / Salmón 16.900 / Atún 17.900", "Cortes frescos de pescado y camarón en sutil leche de tigre, con camote y choclo."]
+      ]},
+      { cat: "Tiraditos y causas", platos: [
+        ["Pulpo Dos Olivos", 18500, "Láminas de pulpo en salsa de dos aceitunas peruanas (verde y morada), flor de palta y tostaditas."],
+        ["Pulpo al Olivo", 17900, "Finos cortes de pulpo en salsa olivo, flor de palta, tostadas y brunoise de pimiento."],
+        ["Tiradito 3 Sabores", 16900, "Finos cortes de pesca del día en leche de tigre al rocoto, clásica y al cilantro."],
+        ["Tiradito Clásico", "Pescado 14.900 / Salmón 15.900 / Atún 15.900", "Láminas de pescado en leche de tigre al ají amarillo, cancha y choclo."],
+        ["Trilogía de Causas", 16900, "Causa tres sabores: pulpo en salsa olivo, pescado acevichado y carne de jaiba en salsa golf."],
+        ["Causa Acevichada", 15700, "Sutil masa de papa amarilla rellena de palta, coronada con ceviche de pesca del día."],
+        ["Causa de Jaiba", 15500, "Masa de papa amarilla peruana al ají amarillo con palta, con tartar de jaiba y toques de salsa golf."],
+        ["Causa Camarón", 14900, "Masa de papa amarilla peruana al ají amarillo con palta, camarones en salsa golf y huevo de codorniz."],
+        ["Causa de Pollo", 12900, "Masa de papa amarilla rellena de palta, coronada con pollo deshilachado en mayonesa con apio."]
+      ]},
+      { cat: "Sushi y ensaladas", platos: [
+        ["Acevichado Maki", 15900, "Arroz, relleno de palta y camarón furay, envuelto en salmón con salsa acevichada, furikake y cebollín."],
+        ["Furay Maki", 13900, "Relleno de camarón, palta y queso crema, envuelto en panko frito."],
+        ["Nikkei sin Arroz", 13900, "Nori relleno de salmón, atún, palta y queso crema, envuelto en palta con salsa tare y mix de sésamo."],
+        ["Ensalada César con Pollo", 12500, "Salsa césar, lechuga, lascas de parmesano, crutones, chicharrón de tocino y pollo a la plancha."],
+        ["Ensalada del Huerto", 11900, "Lechuga, tomate, palmito, palta, choclito baby y rabanito encurtido."],
+        ["Ensalada Mixta", 11500, "Lechuga, tomate, palta, cebolla morada y rabanito."]
+      ]},
+      { cat: "Entradas calientes", platos: [
+        ["Piqueo Bodegón", 24900, "Camarones al panko, tequeños de lomo, anticuchos de pescado, pinzas de jaiba y chicharrón de pescado."],
+        ["Pulpo a la Parrilla", 22900, "Pulpo ahumado a la parrilla con chimichurri, acompañado de panaché de verduras."],
+        ["Jalea Mixta", 18900, "Mixtura de mariscos crujientes con yuca frita, chips de plátano, tártara y criolla de la casa."],
+        ["Ostiones a la Parmesana", 18900, "Ostiones, vino blanco, mantequilla y parmesano gratinado."],
+        ["Camarones al Panko", 17500, "Camarones al panko con yuca frita y criolla de la casa."],
+        ["Camarones al Ajillo", 17900, "Camarones en salsa al ajillo con papas doradas."],
+        ["Anticucho Mixto", 16400, "De camarón, filete y corazón, con papa dorada y choclo salteado."],
+        ["Anticucho de Corazón", 14500, "Anticuchos a las brasas, con papas doradas y choclo salteado."],
+        ["Chicharrón de Pescado", 15500, "Cortes de pescado crocantes con yuca frita, chips de plátano, tártara y criolla de la casa."],
+        ["Chicharrón de Calamar", 14900, "Crujientes aros de calamar con yuca frita, chips de plátano, tártara y criolla de la casa."],
+        ["Tequeños de Lomo", 14900, "Masa wantán rellena de lomo saltado, con fideo frito en salsa de lomo con mayo."]
+      ]},
+      { cat: "Tradiciones peruanas", platos: [
+        ["Garrón de Cordero", 21900, "Risotto en salsa huancaína montado con un garrón de cordero al vino con champiñones."],
+        ["Lomo Surf", 19900, "Saltado de filete, pulpo, camarón y champiñón al wok, con risotto a la huancaína."],
+        ["Filete Mar y Tierra", 18900, "Filete a la plancha bañado con mariscos en su propia salsa, con arroz blanco."],
+        ["Seco Asado de Tira", 17900, "Asado de tira cocinado por 12 horas en salsa de cilantro, con arroz, porotos y criolla de la casa."],
+        ["Tacu Tacu con Lomo Saltado", 17900, "Porotos mezclados con arroz en aderezo clásico peruano, con lomo saltado jugoso."],
+        ["Tacu Tacu con Seco Asado de Tira", 17900, "Porotos mezclados con arroz en aderezo clásico peruano, con seco de asado de tira al cilantro."],
+        ["Lomo Saltado", 17900, "Filete salteado al wok con cebolla y tomate en salsa de soya, con arroz y papas rústicas de la casa."],
+        ["Ají de Gallina", 15900, "Manjar de los reyes: pollo deshilachado en salsa de ají amarillo, con arroz y huevo de codorniz."]
+      ]},
+      { cat: "Arroces y pastas", platos: [
+        ["Risotto del Chef", 19900, "Filete a la plancha con mariscos en salsa macho, con risotto al pesto."],
+        ["Risotto de Camarones", 17500, "Risotto en salsa macho coronado con camarones en su salsa, parmesano y especias peruanas."],
+        ["Chaufa de Lechón", 16900, "Arroz al wok con lechón confitado por 8 horas, jengibre y sésamo, con omelette de verduras y salsa tamarindo."],
+        ["Chaufa 3 Sabores", 16900, "Fusión oriental con filete, pollo y camarón, con jengibre y sésamo."],
+        ["Chaufa de Pollo y Camarón", 16500, "Pollo, camarón, diente de dragón, jengibre y sésamo."],
+        ["Arroz con Mariscos", 16500, "Arroz con mixtura de mariscos en salsa de la casa y especias peruanas, con sarsa criolla."],
+        ["Pollo Tipakay", 15900, "Pollo apanado bañado en salsa tamarindo, con piña y durazno, y arroz chaufa."],
+        ["Mian Chao", 20900, "Filete, camarón, costillar chifero, pollo, huevo de codorniz y verduras chinas en salsa oriental, sobre fideos mian."],
+        ["Fetuccini Son Perú", 18900, "Fetuccini de la casa en salsa huancaína con lomo saltado."],
+        ["Fetuccini del Chef", 18900, "Fetuccini a la huancaína con salteado anticuchero de filete y camarón, cebollín y choclo peruano."],
+        ["Fetuccini 3 Sabores", 17900, "Pollo, camarón y filete salteados con vino, cebolla y tomate en salsa de soya."],
+        ["Fetuccini Saltado con Carne", 16900, "Filete salteado con vino, cebolla y tomate en salsa de soya."],
+        ["Fetuccini Saltado con Pollo", 15500, "Pollo salteado con vino, cebolla y tomate en salsa de soya."],
+        ["Timbal de Camarones", 18900, "Fetuccini con camarones en salsa americana, gratinado con parmesano."],
+        ["Timbal de Mariscos", 18500, "Fetuccini con mariscos en salsa americana, gratinado con parmesano."],
+        ["Ñoquis a la Huancaína con Entraña", 24900, "Entraña a la parrilla con chimichurri, con ñoquis artesanales en salsa huancaína y parmesano."],
+        ["Ñoquis al Pesto con Filete y Camarones", 19900, "Ñoquis artesanales al pesto con parmesano, con filete mignon y camarones en salsa de vino."],
+        ["Ñoquis Anticucheros", 19900, "Ñoquis caseros en salsa blanca con pescado del día y saltado de camarón y pulpo en salsa anticuchera."]
+      ]},
+      { cat: "Pescados y sopas", platos: [
+        ["Gratinado 4 Quesos", "Pescado 17.900 / Salmón 18.900 / Atún 18.900", "Pescado del día y mixtura de mariscos en salsa 4 quesos gratinado, sobre risotto en salsa de camarones."],
+        ["Pesca del Día a lo Macho", "Pescado 16.900 / Salmón, atún o congrio 17.900", "Pescado a la plancha con mixtura de mariscos en salsa a lo macho, con arroz."],
+        ["Pesca del Día a la Meunière con Camarones", "Pescado 16.900 / Salmón, atún o congrio 17.900", "Pescado a la plancha, camarones en mantequilla y vino, con limón y alcaparras."],
+        ["Pescado Meunière con Mariscos", "Pescado 16.900 / Salmón, atún o congrio 17.900", "Pescado a la plancha, mariscos en mantequilla y vino, con limón y alcaparras."],
+        ["Pescado a la Meunière", "Pescado 15.900 / Salmón, atún o congrio 16.900", "Pescado a la plancha en salsa de mantequilla y vino blanco, con limón y alcaparras."],
+        ["Pescado en Salsa de Camarones", "Pescado 16.900 / Salmón, atún o congrio 17.900", "Pescado a la plancha con camarones en su propia salsa, con arroz."],
+        ["Pescado a la Plancha", "Pescado 13.900 / Salmón, atún o congrio 15.900", "Con arroz blanco."],
+        ["Pescado Frito Apanado", "Pescado 14.900 / Congrio 16.900", "Pescado apanado frito con puré."],
+        ["Sudado de Congrio", 18900, "Congrio al vapor con vino blanco, cebolla, tomate, cebollín y ají amarillo, con yuca y arroz al cilantro."],
+        ["Chupe de Camarones", 16900, "Fumet de camarones en salsa coral, habas, zanahoria, arveja, choclo, arroz y queso fresco, con huevo escalfado y huacatay."],
+        ["Parihuela de Pescado", "Pescado 17.500 / Congrio 18.500", "Pesca del día y mariscos premium en fumet de pescado y salsa de la casa, con yuca."],
+        ["Dieta de Pollo", 13900, "Sustancia de pollo con verduras y fideos cabello de ángel."]
+      ]},
+      { cat: "Niños y guarniciones", platos: [
+        ["Fetuccini a lo Alfredo", 12500, "Menú niños: fetuccini en salsa bechamel con jamón y pechuga de pollo a la plancha."],
+        ["Chicharrón de Pollo Kids", 12500, "Menú niños: pollo crocante con papas fritas y tártara."],
+        ["Milanesa con Papa Frita", 12500, "Menú niños: pechuga de pollo apanada con papas fritas."],
+        ["Pollo a la Plancha", 10900, "Menú niños: pollo a la plancha con papas fritas."],
+        ["Yuca Frita con Salsa Huancaína", 8500, ""],
+        ["Champiñones Salteados", 7900, ""],
+        ["Porción de Risotto", 7500, "Salsa a elección."],
+        ["Porción de Fetuccini", 6900, "Salsa a elección."],
+        ["Panaché de Verduras", 6500, ""],
+        ["Puré de Papa", 4900, ""],
+        ["Papas Fritas", 4900, ""],
+        ["Arroz al Cilantro", 4500, ""],
+        ["Arroz Blanco", 3900, ""]
+      ]},
+      { cat: "Postres", platos: [
+        ["Degustación de Postres", 15900, ""],
+        ["Volcán de Chocolate", 12900, ""],
+        ["Postre del Mes", 9900, ""],
+        ["Suspiro Limeño", 7900, ""],
+        ["Cheesecake de Maracuyá", 7900, ""],
+        ["Crema Volteada", 7900, ""],
+        ["4 Leches", 7900, ""],
+        ["Tiramisú", 7900, ""],
+        ["Picarones Peruanos", 7900, ""],
+        ["Copón de Helado", 6900, ""]
+      ]},
+      { cat: "Cócteles de autor", bebida: true, platos: [
+        ["Qosqo", 9900, "Pisco acholado, infusión de hoja de coca, almíbar de ají amarillo y zumo de limón sutil."],
+        ["Felix Felicis", 9900, "Whisky blend de al menos 12 años, vermouth blanco, zumo de mandarina, agua miel y pizca de sal de mar."],
+        ["Kailani", 10900, "Gin Hendrick's, ron de coco, infusión de butterfly pea flower y zumo de limón."],
+        ["Noa Noa", 9900, "Tequila reposado, cachaça, jarabe de hibisco, jugo de ananá y zumo de mandarina."],
+        ["Bosque", 9900, "Su versión de sangría: carmenere, pisco quebranta, naranja, almíbar de mora y frambuesa y licor de cassis."],
+        ["Flor de Loto", 9900, "Pisco Italia, licor de flor de saúco, licor de vainilla, jarabe de pétalos de rosa, uva y limón."],
+        ["Jamaican Painkiller", 8900, "Blend de rones, jugo de piña, zumo de naranja y crema de coco."]
+      ]},
+      { cat: "Sin alcohol y jugos", bebida: true, platos: [
+        ["Tónico de Hibisco", 6900, "Agua tónica, jarabe de hibisco, limón sutil, frambuesa y jengibre."],
+        ["Nativa", 7500, "Infusión de cebada, reducción de miel, piña y hierba luisa."],
+        ["Ba Jiao", 6900, "Té English Breakfast, jarabe de anís estrella, naranja y maracuyá."],
+        ["Tropical Totem", 7500, "Mango, maracuyá, plátano y piña."],
+        ["Chicha Morada", 4900, "Maíz morado, piña y manzana."],
+        ["Jugos de Fruta de Estación", 4900, ""],
+        ["Limonada Sabores", 4900, "Menta jengibre, jengibre o menta."],
+        ["Limonada Clásica", 3900, ""],
+        ["Inca Kola", 4500, ""]
+      ]}
+    ];
+
+    // ===== Utilidades de dibujo =====
+    const r1 = n => Math.round(n * 10) / 10;
+    const azar = s => () => (s = (s * 9301 + 49297) % 233280) / 233280;
+    function mancha(cx, cy, r, irr, n, rnd, sx = 1, sy = 1) {
+      const pts = [];
+      for (let i = 0; i < n; i++) { const a = i / n * Math.PI * 2, rr = r * (1 + (rnd() - .5) * irr); pts.push([cx + Math.cos(a) * rr * sx, cy + Math.sin(a) * rr * sy]); }
+      let d = "";
+      for (let i = 0; i < n; i++) {
+        const p = pts[i], q = pts[(i + 1) % n], m = [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+        if (i === 0) { const pm = pts[n - 1]; d += `M${r1((pm[0] + p[0]) / 2)} ${r1((pm[1] + p[1]) / 2)}`; }
+        d += `Q${r1(p[0])} ${r1(p[1])} ${r1(m[0])} ${r1(m[1])}`;
+      }
+      return d + "Z";
+    }
+    // Puntos repartidos dentro de un círculo, sin encimarse demasiado
+    function repartir(n, R, minD, rnd, cx = 300, cy = 300, evitar = []) {
+      const pts = [];
+      let intentos = 0;
+      while (pts.length < n && intentos < n * 80) {
+        intentos++;
+        const a = rnd() * Math.PI * 2, d = Math.sqrt(rnd()) * R;
+        const x = cx + Math.cos(a) * d, y = cy + Math.sin(a) * d;
+        if (pts.every(p => Math.hypot(p[0] - x, p[1] - y) > minD) && evitar.every(e => Math.hypot(e[0] - x, e[1] - y) > e[2])) pts.push([x, y]);
+      }
+      return pts;
+    }
+
+    const LECHES = {
+      tradicional: ["#fbf6ea", "#efe4cc", "#ddcfae"],
+      rocoto: ["#fbd9c4", "#f1ab88", "#de8462"],
+      huancaina: ["#fbe9a6", "#f2cf63", "#ddb03c"],
+      cilantro: ["#e4efc4", "#bcd68b", "#97b866"],
+      ajiamarillo: ["#fde6b0", "#f6c560", "#e3a53a"],
+      trio: ["#fbf6ea", "#efe4cc", "#ddcfae"]
+    };
+
+    function defs(p) {
+      const leches = Object.entries(LECHES).map(([k, c]) => `<radialGradient id="${p}-leche-${k}" cx=".45" cy=".42" r=".6"><stop offset="0" stop-color="${c[0]}" stop-opacity=".93"/><stop offset=".72" stop-color="${c[1]}" stop-opacity=".86"/><stop offset="1" stop-color="${c[2]}" stop-opacity=".62"/></radialGradient>`).join("");
+      return `<defs>
+        <radialGradient id="${p}-sombra" cx=".5" cy=".5" r=".5"><stop offset=".7" stop-color="#000" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+        <radialGradient id="${p}-borde" cx=".4" cy=".34" r=".72"><stop offset="0" stop-color="#4f84a8"/><stop offset=".55" stop-color="#2c5a7c"/><stop offset=".9" stop-color="#1a3a54"/><stop offset="1" stop-color="#12293c"/></radialGradient>
+        <radialGradient id="${p}-interior" cx=".46" cy=".44" r=".56"><stop offset="0" stop-color="#3a6d91"/><stop offset=".75" stop-color="#244c6a"/><stop offset="1" stop-color="#132c40"/></radialGradient>
+        ${leches}
+        <linearGradient id="${p}-pez" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf9"/><stop offset=".6" stop-color="#f6efe6"/><stop offset="1" stop-color="#e3d4c4"/></linearGradient>
+        <linearGradient id="${p}-salmon" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb184"/><stop offset=".6" stop-color="#f28a5c"/><stop offset="1" stop-color="#d9643c"/></linearGradient>
+        <linearGradient id="${p}-atun" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d4535a"/><stop offset=".6" stop-color="#ad2f3b"/><stop offset="1" stop-color="#7c1b27"/></linearGradient>
+        <radialGradient id="${p}-camote" cx=".42" cy=".38" r=".7"><stop offset="0" stop-color="#ffbe6a"/><stop offset=".6" stop-color="#f49237"/><stop offset="1" stop-color="#d46a1c"/></radialGradient>
+        <radialGradient id="${p}-grano" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#fffbe6"/><stop offset=".6" stop-color="#f4e5a8"/><stop offset="1" stop-color="#d8c27a"/></radialGradient>
+        <radialGradient id="${p}-cancha" cx=".38" cy=".32" r=".75"><stop offset="0" stop-color="#f0c071"/><stop offset=".6" stop-color="#cc8b3c"/><stop offset="1" stop-color="#8f5522"/></radialGradient>
+        <radialGradient id="${p}-dorado" cx=".38" cy=".32" r=".8"><stop offset="0" stop-color="#f7cf7c"/><stop offset=".6" stop-color="#dfa04a"/><stop offset="1" stop-color="#ac6a24"/></radialGradient>
+        <radialGradient id="${p}-lechuga" cx=".5" cy=".5" r=".6"><stop offset="0" stop-color="#d3eb9a"/><stop offset=".7" stop-color="#9bc95a"/><stop offset="1" stop-color="#6e9f37"/></radialGradient>
+        <radialGradient id="${p}-pulpo" cx=".45" cy=".4" r=".6"><stop offset="0" stop-color="#fff3ee"/><stop offset=".65" stop-color="#f4d9d2"/><stop offset="1" stop-color="#e2b6ad"/></radialGradient>
+        <radialGradient id="${p}-camaron" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#ffd0b8"/><stop offset=".6" stop-color="#f6996f"/><stop offset="1" stop-color="#e06d45"/></radialGradient>
+        <radialGradient id="${p}-lima-pulpa" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f4f7c9"/><stop offset=".7" stop-color="#d8e78b"/><stop offset="1" stop-color="#b9d061"/></radialGradient>
+        <radialGradient id="${p}-lima-cascara" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#9cc94c"/><stop offset=".7" stop-color="#5f9a2a"/><stop offset="1" stop-color="#3d6d19"/></radialGradient>
+        <linearGradient id="${p}-aji" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd25a"/><stop offset=".5" stop-color="#f2a51f"/><stop offset="1" stop-color="#d27d10"/></linearGradient>
+        <radialGradient id="${p}-espuma" cx=".42" cy=".38" r=".65"><stop offset="0" stop-color="#fffdf3"/><stop offset=".75" stop-color="#f5edd2"/><stop offset="1" stop-color="#e3d5ac"/></radialGradient>
+        <radialGradient id="${p}-greda" cx=".4" cy=".34" r=".72"><stop offset="0" stop-color="#b9805a"/><stop offset=".7" stop-color="#8d5636"/><stop offset="1" stop-color="#5e3620"/></radialGradient>
+      </defs>`;
+    }
+
+    function cuenco(p, rnd) {
+      let s = `<ellipse cx="312" cy="322" rx="282" ry="282" fill="url(#${p}-sombra)"/>`;
+      s += `<circle cx="300" cy="300" r="250" fill="url(#${p}-borde)"/>`;
+      // moteado de la cerámica
+      for (let i = 0; i < 110; i++) {
+        const a = rnd() * Math.PI * 2, d = 214 + rnd() * 33;
+        s += `<circle cx="${r1(300 + Math.cos(a) * d)}" cy="${r1(300 + Math.sin(a) * d)}" r="${r1(.6 + rnd() * 1.6)}" fill="${rnd() > .5 ? "#cfe2ef" : "#0d2232"}" opacity="${r1(.2 + rnd() * .35)}"/>`;
+      }
+      s += `<path d="M120 170A218 218 0 0 1 380 70" stroke="#fff" stroke-opacity=".22" stroke-width="12" fill="none" stroke-linecap="round"/>`;
+      s += `<circle cx="300" cy="300" r="250" fill="none" stroke="#0b1b28" stroke-opacity=".5" stroke-width="2"/>`;
+      s += `<circle cx="300" cy="300" r="212" fill="url(#${p}-interior)"/>`;
+      s += `<circle cx="300" cy="300" r="212" fill="none" stroke="#0b1b28" stroke-opacity=".55" stroke-width="3"/>`;
+      s += `<circle cx="300" cy="300" r="209" fill="none" stroke="#8fb8d4" stroke-opacity=".25" stroke-width="1.5"/>`;
+      return s;
+    }
+
+    function leche(p, tipo, rnd) {
+      let s = "";
+      if (tipo === "trio") {
+        // tres pozas: cilantro, huancaína, clásica
+        [["cilantro", 230, 250], ["huancaina", 370, 250], ["tradicional", 300, 375]].forEach(([k, x, y]) => {
+          s += `<path d="${mancha(x, y, 92, .12, 12, rnd)}" fill="url(#${p}-leche-${k})"/>`;
+        });
+      } else {
+        s += `<path d="${mancha(300, 302, 188, .06, 16, rnd)}" fill="url(#${p}-leche-${tipo})"/>`;
+        s += `<ellipse cx="255" cy="235" rx="70" ry="30" fill="#fff" opacity=".18" transform="rotate(-28 255 235)"/>`;
+      }
+      return s;
+    }
+
+    function cubo(x, y, t, rot, grad, tipo) {
+      const h = t * .86;
+      let s = `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rot)})">`;
+      s += `<rect x="${r1(-t / 2 + 2)}" y="${r1(-h / 2 + 4)}" width="${r1(t)}" height="${r1(h)}" rx="${r1(t * .24)}" fill="#3b2a1c" opacity=".22"/>`;
+      s += `<rect x="${r1(-t / 2)}" y="${r1(-h / 2)}" width="${r1(t)}" height="${r1(h)}" rx="${r1(t * .24)}" fill="url(#${grad})" stroke="${tipo === "atun" ? "#5c1019" : "#b79b84"}" stroke-opacity=".35" stroke-width="1"/>`;
+      if (tipo === "salmon") s += `<path d="M${r1(-t * .42)} ${r1(-h * .12)}Q0 ${r1(-h * .34)} ${r1(t * .42)} ${r1(-h * .1)}M${r1(-t * .4)} ${r1(h * .18)}Q0 ${r1(-h * .04)} ${r1(t * .4)} ${r1(h * .22)}" stroke="#fff3e8" stroke-width="1.8" fill="none" opacity=".85"/>`;
+      else if (tipo === "atun") s += `<path d="M${r1(-t * .38)} ${r1(-h * .05)}Q0 ${r1(-h * .25)} ${r1(t * .38)} 0" stroke="#e7838a" stroke-width="1.3" fill="none" opacity=".6"/>`;
+      else s += `<path d="M${r1(-t * .38)} ${r1(h * .05)}Q0 ${r1(-h * .2)} ${r1(t * .38)} ${r1(h * .08)}" stroke="#f1cfc4" stroke-width="1.2" fill="none" opacity=".7"/>`;
+      s += `<path d="M${r1(-t * .32)} ${r1(-h * .3)}Q${r1(-t * .05)} ${r1(-h * .42)} ${r1(t * .22)} ${r1(-h * .32)}" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".85"/>`;
+      return s + `</g>`;
+    }
+
+    function camaron(x, y, rot, esc, p, apanado) {
+      let s = `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rot)}) scale(${esc})">`;
+      s += `<path d="M-20 4A20 20 0 1 1 14 16" stroke="#3b2a1c" stroke-opacity=".22" stroke-width="18" fill="none" stroke-linecap="round" transform="translate(2 4)"/>`;
+      if (apanado) {
+        s += `<path d="M-20 4A20 20 0 1 1 14 16" stroke="url(#${p}-dorado)" stroke-width="19" fill="none" stroke-linecap="round"/>`;
+        for (let i = 0; i < 14; i++) { const a = -2.9 + i * .36; s += `<circle cx="${r1(Math.cos(a) * 20 + Math.sin(i * 3) * 5)}" cy="${r1(Math.sin(a) * 20 + Math.cos(i * 2) * 5)}" r="${r1(1.4 + (i % 3) * .5)}" fill="${i % 2 ? "#f9dc9a" : "#9c5d1f"}" opacity=".85"/>`; }
+        s += `<path d="M14 16l12 6-4-12z" fill="#e0703f"/>`;
+      } else {
+        s += `<path d="M-20 4A20 20 0 1 1 14 16" stroke="url(#${p}-camaron)" stroke-width="16" fill="none" stroke-linecap="round"/>`;
+        for (let i = 0; i < 6; i++) { const a = -2.6 + i * .62; s += `<path d="M${r1(Math.cos(a) * 13)} ${r1(Math.sin(a) * 13)}L${r1(Math.cos(a) * 27)} ${r1(Math.sin(a) * 27)}" stroke="#d0532d" stroke-width="1.4" opacity=".7"/>`; }
+        s += `<path d="M-18 -6A18 18 0 0 1 10 -16" stroke="#fff" stroke-opacity=".55" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+        s += `<path d="M14 16l13 4-3-12z" fill="#e66a3c"/><path d="M14 16l7 12 4-8z" fill="#cf5530"/>`;
+      }
+      return s + `</g>`;
+    }
+
+    function pulpo(x, y, rot, p) {
+      let s = `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rot)})">`;
+      s += `<ellipse cx="2" cy="4" rx="19" ry="15" fill="#3b2a1c" opacity=".2"/>`;
+      s += `<ellipse rx="19" ry="15" fill="url(#${p}-pulpo)"/>`;
+      s += `<path d="M-19 0A19 15 0 0 1 19 0" stroke="#7d2f50" stroke-width="5" fill="none"/>`;
+      s += `<path d="M-17 -2A17 13 0 0 1 17 -2" stroke="#b5577d" stroke-width="1.5" fill="none" opacity=".8"/>`;
+      [[-8, 7], [1, 9], [10, 6]].forEach(([a, b]) => { s += `<circle cx="${a}" cy="${b}" r="3.2" fill="#f7e4e0" stroke="#c98d95" stroke-width="1.2"/>`; });
+      return s + `</g>`;
+    }
+    const calamar = (x, y, rot) => `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rot)})"><ellipse cx="2" cy="3" rx="15" ry="12" fill="none" stroke="#3b2a1c" stroke-opacity=".2" stroke-width="7"/><ellipse rx="15" ry="12" fill="none" stroke="#fbf6ee" stroke-width="7"/><ellipse rx="15" ry="12" fill="none" stroke="#d8c8b3" stroke-width="1" opacity=".8"/><ellipse rx="18.5" ry="15.5" fill="none" stroke="#e1d2bd" stroke-width=".8" opacity=".7"/></g>`;
+    const ostion = (x, y) => `<g transform="translate(${r1(x)} ${r1(y)})"><circle cx="2" cy="3" r="12" fill="#3b2a1c" opacity=".2"/><circle r="12" fill="#f5ead4" stroke="#d9c6a2" stroke-width="1"/><path d="M-6 9A11 11 0 0 1 -10 -4A9 9 0 0 0 -2 8z" fill="#f2914f"/><circle cx="3" cy="-3" r="4" fill="#fff" opacity=".6"/></g>`;
+    const loco = (x, y, rot) => `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rot)})"><ellipse cx="2" cy="3" rx="20" ry="11" fill="#3b2a1c" opacity=".2"/><ellipse rx="20" ry="11" fill="#eddcbc" stroke="#c7ab80" stroke-width="1.2"/><path d="M-12 -4Q0 -9 12 -4M-14 2Q0 -3 14 2" stroke="#cdb48a" stroke-width="1" fill="none"/></g>`;
+    const piure = (x, y, rnd) => `<path d="${mancha(x, y, 12, .5, 8, rnd)}" fill="#8f1e2c"/><path d="${mancha(x - 3, y - 3, 4, .4, 6, rnd)}" fill="#d25b62" opacity=".7"/>`;
+    const jaiba = (x, y, rot) => `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rot)})"><path d="M-18 4C-10 -10 12 -12 20 -2C12 0 6 6 -2 10C-8 12 -14 10 -18 4z" fill="#3b2a1c" opacity=".2" transform="translate(2 3)"/><path d="M-18 4C-10 -10 12 -12 20 -2C12 0 6 6 -2 10C-8 12 -14 10 -18 4z" fill="#fbf3ea"/><path d="M8 -8C14 -9 20 -6 22 -1C18 -2 12 -1 8 1z" fill="#d84a2a"/><path d="M-10 0Q0 -5 10 -3" stroke="#e4c8b4" stroke-width="1.2" fill="none"/></g>`;
+
+    function cebolla(x, y, rot, rr, largo) {
+      const a0 = -largo / 2, a1 = largo / 2;
+      const p = (a, r) => `${r1(Math.cos(a) * r)} ${r1(Math.sin(a) * r)}`;
+      const d = `M${p(a0, rr)}A${rr} ${rr} 0 0 1 ${p(a1, rr)}`;
+      return `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rot)})"><path d="${d}" stroke="#3b1428" stroke-opacity=".25" stroke-width="7" fill="none" stroke-linecap="round" transform="translate(1.5 3)"/><path d="${d}" stroke="#7a2458" stroke-width="6" fill="none" stroke-linecap="round"/><path d="${d}" stroke="#f2d9e7" stroke-width="2.2" fill="none" stroke-linecap="round" transform="translate(0 -1)"/></g>`;
+    }
+    function cilantro(x, y, rot, esc) {
+      const lob = (a) => `<path transform="rotate(${a})" d="M0 0C-5 -6 -6 -14 0 -18C6 -14 5 -6 0 0z" fill="#3f7d2a"/><path transform="rotate(${a})" d="M0 -2L0 -14" stroke="#7fb055" stroke-width=".9"/>`;
+      return `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rot)}) scale(${esc})"><g opacity=".25" transform="translate(1.5 2.5)"><circle r="12" fill="#1c2b12"/></g>${lob(-50)}${lob(0)}${lob(50)}<path d="M0 0L0 10" stroke="#5c8f36" stroke-width="1.6" stroke-linecap="round"/><path d="M-3 -10C-2 -13 2 -13 3 -10" stroke="#a5d07a" stroke-width="1" fill="none" opacity=".7"/></g>`;
+    }
+    const ajiRodaja = (x, y, color) => `<g transform="translate(${r1(x)} ${r1(y)})"><circle r="6" fill="${color === "rojo" ? "#f7c3a8" : "#fbe7a5"}" stroke="${color === "rojo" ? "#cf2f22" : "#e39a12"}" stroke-width="2.6"/><circle cx="-1.5" cy="-1" r="1.1" fill="#fff7d8"/><circle cx="1.6" cy="1.2" r="1.1" fill="#fff7d8"/></g>`;
+
+    function camote(x, y, rot, p) {
+      return `<g transform="translate(${x} ${y}) rotate(${rot})"><ellipse cx="4" cy="7" rx="60" ry="38" fill="#2a1a0e" opacity=".3"/><ellipse rx="60" ry="38" fill="url(#${p}-camote)" stroke="#9a4515" stroke-width="3.4"/><ellipse rx="46" ry="27" fill="none" stroke="#ffcf8f" stroke-width="1.4" opacity=".6"/><ellipse rx="28" ry="15" fill="none" stroke="#ffcf8f" stroke-width="1.1" opacity=".45"/><ellipse cx="-18" cy="-14" rx="18" ry="7" fill="#fff" opacity=".22"/></g>`;
+    }
+    function choclo(x, y, rot, p) {
+      let s = `<g transform="translate(${x} ${y}) rotate(${rot})"><rect x="-50" y="-24" width="100" height="52" rx="24" fill="#2a1a0e" opacity=".28" transform="translate(4 6)"/><rect x="-50" y="-26" width="100" height="52" rx="24" fill="#e6d595"/>`;
+      for (let f = 0; f < 4; f++) for (let c = 0; c < 8; c++) {
+        const cx = -40 + c * 11.5 + (f % 2) * 4, cy = -18 + f * 12;
+        if (Math.abs(cx) > 44 - (f === 0 || f === 3 ? 6 : 0)) continue;
+        s += `<ellipse cx="${r1(cx)}" cy="${r1(cy)}" rx="5.6" ry="5.4" fill="url(#${p}-grano)" stroke="#c4ab62" stroke-width=".8"/>`;
+      }
+      return s + `<path d="M-40 -20Q0 -30 40 -20" stroke="#fff" stroke-opacity=".4" stroke-width="3" fill="none" stroke-linecap="round"/></g>`;
+    }
+    function canchas(n, cx, cy, R, p, rnd) {
+      return repartir(n, R, 15, rnd, cx, cy).map(([x, y]) => `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rnd() * 360)})"><ellipse cx="1.5" cy="2.5" rx="8" ry="6" fill="#2a1a0e" opacity=".3"/><path d="M-8 1C-8 -5 -2 -7 3 -6C8 -5 9 0 7 3C5 7 -6 7 -8 1z" fill="url(#${p}-cancha)"/><path d="M5 -4C8 -2 8 2 6 3" stroke="#5e3612" stroke-width="1.6" fill="none"/><ellipse cx="-3" cy="-3" rx="3" ry="1.4" fill="#fff" opacity=".35"/></g>`).join("");
+    }
+    function lechuga(x, y, rot, p, rnd) {
+      return `<g transform="translate(${x} ${y}) rotate(${rot})"><path d="${mancha(0, 0, 58, .3, 14, rnd, 1.2, .8)}" fill="#2a1a0e" opacity=".25" transform="translate(3 5)"/><path d="${mancha(0, 0, 58, .3, 14, rnd, 1.2, .8)}" fill="url(#${p}-lechuga)"/><path d="M-60 6Q-10 -4 56 -2M-20 2Q-12 -18 -2 -36M10 0Q20 -14 26 -34M-30 4Q-30 20 -22 36M16 0Q22 18 30 32" stroke="#e9f6c9" stroke-width="2" fill="none" opacity=".7"/></g>`;
+    }
+    function yuyo(x, y, rnd) {
+      let s = "";
+      for (let i = 0; i < 9; i++) {
+        const a = rnd() * 6.28, l = 18 + rnd() * 16;
+        s += `<path d="M${r1(x)} ${r1(y)}q${r1(Math.cos(a) * l * .5 + 6)} ${r1(Math.sin(a) * l * .5 - 6)} ${r1(Math.cos(a) * l)} ${r1(Math.sin(a) * l)}" stroke="${i % 2 ? "#2f5a1f" : "#476f25"}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+      }
+      return s;
+    }
+    function frito(x, y, r, p, rnd) {
+      return `<path d="${mancha(x + 2, y + 4, r, .45, 9, rnd)}" fill="#2a1a0e" opacity=".28"/><path d="${mancha(x, y, r, .45, 9, rnd)}" fill="url(#${p}-dorado)"/>` + Array.from({ length: 6 }, () => `<circle cx="${r1(x + (rnd() - .5) * r * 1.3)}" cy="${r1(y + (rnd() - .5) * r * 1.3)}" r="${r1(1 + rnd() * 1.4)}" fill="${rnd() > .5 ? "#fbe2a6" : "#9a5a1d"}"/>`).join("");
+    }
+    const yucaPalito = (x, y, rot, p) => `<g transform="translate(${r1(x)} ${r1(y)}) rotate(${r1(rot)})"><rect x="-26" y="-7" width="52" height="15" rx="6" fill="#2a1a0e" opacity=".28" transform="translate(2 4)"/><rect x="-26" y="-7" width="52" height="15" rx="6" fill="url(#${p}-dorado)"/><path d="M-20 -3H18" stroke="#fbe2a6" stroke-width="2" stroke-linecap="round" opacity=".8"/></g>`;
+    const ostionGratinado = (x, y, p) => `<g transform="translate(${x} ${y})"><path d="M-30 6C-30 -20 30 -20 30 6C24 22 -24 22 -30 6z" fill="#2a1a0e" opacity=".3" transform="translate(3 5)"/><path d="M-30 6C-30 -20 30 -20 30 6C24 22 -24 22 -30 6z" fill="#e8dfd2" stroke="#b9ab97" stroke-width="1.4"/><path d="M-22 4C-20 -12 20 -12 22 4C16 14 -16 14 -22 4z" fill="url(#${p}-dorado)"/><circle cx="-6" cy="0" r="3" fill="#fbe8b2"/><circle cx="7" cy="3" r="2.4" fill="#9a5a1d"/></g>`;
+    const shotRocoto = (x, y) => `<g transform="translate(${x} ${y})"><circle r="30" fill="#000" opacity=".35" transform="translate(4 6)"/><circle r="30" fill="#e8eef0" opacity=".55" stroke="#fff" stroke-width="2.4"/><circle r="24" fill="#ec9c79"/><ellipse cx="-8" cy="-9" rx="9" ry="4" fill="#fff" opacity=".45"/></g>`;
+
+    // Cada ceviche de la carta: qué lleva y en qué leche
+    const CEVICHES = [
+      { n: "Ceviche Clásico", precio: 14900, leche: "tradicional", prot: { pez: 18 }, guar: ["camote", "choclo", "lechuga", "cancha"], ing: ["Pesca del día", "Fresco limón", "Leche de tigre", "Camote", "Choclo", "Lechuga", "Cancha"] },
+      { n: "Ceviche Mixto", precio: 16900, leche: "tradicional", prot: { pez: 10, camaron: 3, pulpo: 3, ostion: 2, calamar: 3 }, guar: ["camote", "choclo", "cancha"], ing: ["Pesca del día", "Camarón", "Pulpo", "Ostión", "Calamar", "Camote", "Choclo", "Cancha"] },
+      { n: "Ceviche Camarón Pescado", precio: 16300, desde: true, leche: "tradicional", prot: { pez: 12, camaron: 5 }, guar: ["camote", "choclo"], ing: ["Pescado, salmón o atún", "Camarón", "Leche de tigre", "Camote", "Choclo"] },
+      { n: "Ceviche al Cilantro Crunch", precio: 17900, leche: "cilantro", prot: { pez: 16 }, guar: ["panko"], ing: ["Pesca del día", "Leche de tigre al cilantro", "Camarones al panko"] },
+      { n: "Ceviche Carretillero", precio: 17900, leche: "huancaina", prot: { pez: 16 }, guar: ["chicharron"], ing: ["Pesca del día", "Leche de tigre a la huancaína", "Chicharrón de calamar"] },
+      { n: "Trío de Ceviches", precio: 17900, leche: "trio", prot: { pez: 18 }, guar: [], ing: ["Pesca del día", "Leche al cilantro", "Leche a la huancaína", "Leche clásica"] },
+      { n: "Ceviche Son Perú", precio: 19900, leche: "tradicional", prot: { pez: 8, calamar: 3, ostion: 2, pulpo: 3, camaron: 3 }, guar: ["yuca", "panko", "shot"], ing: ["Pesca del día", "Calamar", "Ostión", "Pulpo", "Camarón", "Yuca crocante", "Camarones al panko", "Shot de leche al rocoto"] },
+      { n: "Ceviche Afrodisíaco", precio: 19900, leche: "rocoto", prot: { salmon: 9, camaron: 3, pulpo: 3, piure: 4 }, guar: ["gratinado", "camote", "choclo", "cancha", "yuyo"], ing: ["Salmón", "Camarón", "Pulpo", "Piure", "Leche de tigre al rocoto", "Ostión a la parmesana", "Choclo", "Camote", "Cancha", "Yuyo"] },
+      { n: "Ceviche Isla Negra", precio: 19900, leche: "tradicional", prot: { salmon: 9, piure: 4, pulpo: 3, camaron: 3, ostion: 2 }, guar: [], ing: ["Salmón", "Piure", "Pulpo", "Camarón", "Ostión", "Leche de pantera"] },
+      { n: "Ceviche Frutos del Mar", precio: 24900, leche: "tradicional", prot: { salmon: 5, atun: 5, camaron: 3, loco: 2, pulpo: 2, jaiba: 2, ostion: 2 }, guar: ["camote", "choclo", "cancha", "yuyo"], ing: ["Salmón", "Atún", "Camarón", "Locos", "Pulpo", "Pinzas de jaiba", "Ostión", "Choclo", "Camote", "Cancha", "Yuyo"] }
+    ];
+
+    // Dibuja un ceviche completo. capas=true agrupa por etapa para el recorrido.
+    function ceviche(p, c, semilla = 7, capas = false) {
+      const rnd = azar(semilla);
+      const g = (k, x) => capas ? `<g class="capa-rec" data-capa="${k}">${x}</g>` : x;
+      let s = defs(p) + cuenco(p, rnd);
+      s += g(1, leche(p, c.leche, rnd));
+      // lugares reservados para guarniciones
+      const lugares = { camote: [196, 384, 70], choclo: [410, 380, 62], lechuga: [196, 384, 80], yuca: [400, 390, 60], panko: [205, 380, 50], chicharron: [400, 385, 60], gratinado: [300, 430, 40], shot: [0, 0, 0], cancha: [0, 0, 0], yuyo: [0, 0, 0] };
+      const evitar = c.guar.filter(k => lugares[k][2]).map(k => lugares[k]);
+      const total = Object.values(c.prot).reduce((a, b) => a + b, 0);
+      const pts = repartir(total, 150, 34, rnd, 300, 280, evitar);
+      let i = 0, prot = "";
+      const orden = Object.entries(c.prot).flatMap(([k, n]) => Array(n).fill(k));
+      // mezclar orden para que no queden agrupados
+      for (let k = orden.length - 1; k > 0; k--) { const j = Math.floor(rnd() * (k + 1)); [orden[k], orden[j]] = [orden[j], orden[k]]; }
+      const pieza = [];
+      orden.forEach(k => {
+        const pt = pts[i++]; if (!pt) return;
+        const [x, y] = pt, rot = rnd() * 90 - 45;
+        let d = "";
+        if (k === "pez") d = cubo(x, y, 30 + rnd() * 6, rot, `${p}-pez`, "pez");
+        else if (k === "salmon") d = cubo(x, y, 30 + rnd() * 6, rot, `${p}-salmon`, "salmon");
+        else if (k === "atun") d = cubo(x, y, 29 + rnd() * 6, rot, `${p}-atun`, "atun");
+        else if (k === "camaron") d = camaron(x, y, rnd() * 360, .8, p);
+        else if (k === "pulpo") d = pulpo(x, y, rnd() * 360, p);
+        else if (k === "calamar") d = calamar(x, y, rnd() * 360);
+        else if (k === "ostion") d = ostion(x, y);
+        else if (k === "loco") d = loco(x, y, rnd() * 360);
+        else if (k === "jaiba") d = jaiba(x, y, rnd() * 360);
+        else if (k === "piure") d = piure(x, y, rnd);
+        pieza.push([y, d]);
+      });
+      pieza.sort((a, b) => a[0] - b[0]).forEach(([, d]) => prot += d);
+      // guarniciones de abajo (lechuga va bajo el camote)
+      let guarAbajo = "", guarArriba = "";
+      if (c.guar.includes("lechuga")) guarAbajo += lechuga(190, 392, -18, p, rnd);
+      if (c.guar.includes("camote")) guarAbajo += camote(c.guar.includes("lechuga") ? 200 : 196, 388, -22, p);
+      if (c.guar.includes("choclo")) guarAbajo += choclo(410, 384, 28, p);
+      if (c.guar.includes("yuca")) guarArriba += yucaPalito(392, 380, 30, p) + yucaPalito(412, 404, 20, p) + yucaPalito(380, 412, 44, p);
+      if (c.guar.includes("panko")) guarArriba += camaron(196, 376, 20, 1.15, p, true) + camaron(226, 410, 200, 1.05, p, true);
+      if (c.guar.includes("chicharron")) { for (let k = 0; k < 6; k++) guarArriba += frito(380 + (k % 3) * 22, 370 + Math.floor(k / 3) * 26, 14, p, rnd); }
+      if (c.guar.includes("gratinado")) guarArriba += ostionGratinado(300, 436, p);
+      if (c.guar.includes("yuyo")) guarArriba += yuyo(300, 270, rnd);
+      if (c.guar.includes("cancha")) guarArriba += canchas(9, 300, 418, 34, p, rnd);
+      if (c.guar.includes("shot")) guarArriba += shotRocoto(470, 140);
+      // cebolla y ají
+      let ceb = "";
+      repartir(13, 150, 30, rnd, 300, 285, evitar).forEach(([x, y]) => { ceb += cebolla(x, y, rnd() * 360, 22 + rnd() * 16, 1.4 + rnd() * .9); });
+      repartir(8, 150, 26, rnd, 300, 285, evitar).forEach(([x, y], k) => { ceb += ajiRodaja(x, y, k % 3 === 0 ? "rojo" : "amarillo"); });
+      let cil = "";
+      repartir(12, 155, 24, rnd, 300, 285).forEach(([x, y]) => { cil += cilantro(x, y, rnd() * 360, .7 + rnd() * .35); });
+      for (let k = 0; k < 40; k++) { const [x, y] = [300 + (rnd() - .5) * 300, 290 + (rnd() - .5) * 300]; if (Math.hypot(x - 300, y - 300) < 180) cil += `<circle cx="${r1(x)}" cy="${r1(y)}" r="1" fill="#fff" opacity=".8"/>`; }
+      s += g(0, prot);
+      s += g(2, ceb);
+      s += g(3, cil);
+      s += g(4, guarAbajo + guarArriba);
+      return `<svg viewBox="0 0 600 600" role="img" aria-label="${c.n}">${s}</svg>`;
+    }
+
+    // Objetos de la escena
+    const limaSVG = (p, girar) => `<svg viewBox="0 0 120 120">${defs(p)}<circle cx="64" cy="66" r="52" fill="#000" opacity=".4"/><circle cx="60" cy="60" r="52" fill="url(#${p}-lima-cascara)"/><circle cx="60" cy="60" r="46" fill="#eef3cf"/><circle cx="60" cy="60" r="42" fill="url(#${p}-lima-pulpa)"/>${Array.from({ length: 10 }, (_, i) => { const a = i / 10 * 6.283 + (girar || 0); return `<path d="M60 60L${r1(60 + Math.cos(a) * 42)} ${r1(60 + Math.sin(a) * 42)}" stroke="#f6f9de" stroke-width="2.4"/>`; }).join("")}<circle cx="60" cy="60" r="5" fill="#f6f9de"/>${Array.from({ length: 10 }, (_, i) => { const a = (i + .5) / 10 * 6.283; return `<ellipse cx="${r1(60 + Math.cos(a) * 28)}" cy="${r1(60 + Math.sin(a) * 28)}" rx="3" ry="1.6" fill="#fff" opacity=".5" transform="rotate(${r1(a * 57.3)} ${r1(60 + Math.cos(a) * 28)} ${r1(60 + Math.sin(a) * 28)})"/>`; }).join("")}<path d="M22 40A46 46 0 0 1 60 14" stroke="#fff" stroke-opacity=".3" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`;
+    const ajiSVG = p => `<svg viewBox="0 0 200 70">${defs(p)}<path d="M30 40C50 18 120 14 170 30C182 34 186 40 176 44C130 56 60 62 30 40z" fill="#000" opacity=".35" transform="translate(4 7)"/><path d="M30 36C50 14 120 10 170 26C182 30 186 36 176 40C130 52 60 58 30 36z" fill="url(#${p}-aji)"/><path d="M50 26C90 14 140 16 168 26" stroke="#fff3c4" stroke-width="4" fill="none" stroke-linecap="round" opacity=".6"/><path d="M32 36C22 34 14 30 8 22C4 16 10 12 14 18C18 24 24 28 34 30z" fill="#4d7a22"/><path d="M30 30C26 34 26 40 32 42" stroke="#36581a" stroke-width="5" fill="none" stroke-linecap="round"/></svg>`;
+    const sourSVG = p => `<svg viewBox="0 0 140 140">${defs(p)}<circle cx="74" cy="76" r="60" fill="#000" opacity=".4"/><circle cx="70" cy="70" r="60" fill="#dfe8ec" opacity=".35" stroke="#fff" stroke-opacity=".75" stroke-width="3"/><circle cx="70" cy="70" r="52" fill="url(#${p}-espuma)"/><circle cx="58" cy="62" r="3.4" fill="#7a3a17"/><circle cx="78" cy="58" r="2.8" fill="#7a3a17"/><circle cx="72" cy="80" r="3.2" fill="#7a3a17"/><circle cx="58" cy="62" r="5.4" fill="#b4682f" opacity=".25"/><circle cx="72" cy="80" r="5.4" fill="#b4682f" opacity=".25"/><path d="M26 54A48 48 0 0 1 62 20" stroke="#fff" stroke-opacity=".7" stroke-width="4" fill="none" stroke-linecap="round"/></svg>`;
+    function canchaPlatoSVG(p) { const rnd = azar(11); return `<svg viewBox="0 0 140 140">${defs(p)}<circle cx="74" cy="76" r="60" fill="#000" opacity=".4"/><circle cx="70" cy="70" r="60" fill="url(#${p}-greda)"/><circle cx="70" cy="70" r="48" fill="#6b3f25"/><circle cx="70" cy="70" r="48" fill="none" stroke="#3e2213" stroke-width="2"/>${canchas(18, 70, 70, 38, p, rnd)}</svg>`; }
+
+    $("bowl-hero").innerHTML = ceviche("h", CEVICHES[1], 21);
+    $("lima1").innerHTML = limaSVG("l1", 0);
+    $("lima2").innerHTML = limaSVG("l2", .3);
+    $("aji-entero").innerHTML = ajiSVG("aj");
+    $("sour-hero").innerHTML = sourSVG("so");
+    $("cancha-plato").innerHTML = canchaPlatoSVG("cp");
+
+    // ===== Contadores de la portada (salen de la carta real) =====
+    const totalPlatos = CARTA.filter(c => !c.bebida).reduce((a, c) => a + c.platos.length, 0);
+    const SOURS = [
+      { n: "Pisco Sour", d: "Tabernero Tradición, jarabe simple, jugo de limón, clara de huevo y amargo de angostura.", precios: [6500, 9900, 16900], color: "#f5edd2" },
+      { n: "Sour Maracuyá", d: "Tabernero Tradición, zumo de maracuyá, limón y jarabe simple.", precios: [7500, 11500, 17500], color: "#f6cf5a" },
+      { n: "Sour Jengibre", d: "Tabernero Tradición, limón y jarabe simple.", precios: [7500, 11500, 17500], color: "#f1e2a6" }
+    ];
+    const MACERADOS = ["hoja de coca", "canela", "hierba luisa", "eucalipto y frutilla", "piña, mandarina y romero", "huesillo"];
+    $("n-platos").dataset.meta = totalPlatos;
+    $("n-ceviches").dataset.meta = CEVICHES.length;
+    $("n-sours").dataset.meta = SOURS.length + MACERADOS.length;
+    function contar(el) {
+      const meta = +el.dataset.meta, t0 = performance.now(), dur = 1400;
+      const paso = t => { const k = Math.min(1, (t - t0) / dur); el.textContent = Math.round(meta * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(paso); };
+      requestAnimationFrame(paso);
+    }
+    const nums = document.querySelectorAll("[data-contar]");
+    if ("IntersectionObserver" in window && !sinMovimiento) {
+      const obsNum = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { contar(e.target); obsNum.unobserve(e.target); } }), { threshold: .6 });
+      nums.forEach(n => obsNum.observe(n));
+    } else nums.forEach(n => n.textContent = n.dataset.meta);
+
+    // ===== Elige tu ceviche =====
+    let cevicheElegido = null;
+    const lista = $("lista-ceviches");
+    lista.innerHTML = CEVICHES.map((c, i) => `<button type="button" class="op-ceviche" data-i="${i}" aria-pressed="${i === 0}"><b>${c.n}</b><span>${c.desde ? "desde " : ""}${clp(c.precio)}</span></button>`).join("");
+    const descDe = n => CARTA.flatMap(c => c.platos).find(pl => pl[0] === n)?.[2] || "";
+    function elegir(i, animar) {
+      const c = CEVICHES[i];
+      cevicheElegido = c;
+      lista.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", b.dataset.i == i));
+      const caja = $("bowl-elige");
+      caja.innerHTML = ceviche("e" + i, c, 31 + i * 7);
+      if (animar && !sinMovimiento) { caja.classList.remove("sirviendo"); void caja.offsetWidth; caja.classList.add("sirviendo"); }
+      $("precio-elige").textContent = (c.desde ? "desde " : "") + clp(c.precio);
+      $("nombre-elige").textContent = c.n;
+      $("desc-elige").textContent = descDe(c.n);
+      $("ing-elige").innerHTML = c.ing.map(t => `<span>${t}</span>`).join("");
+    }
+    lista.addEventListener("click", e => { const b = e.target.closest("button"); if (b) elegir(+b.dataset.i, true); });
+    elegir(0, false);
+    $("reservar-ceviche").addEventListener("click", () => {
+      ponerPlato(cevicheElegido.n);
+      $("reserva").scrollIntoView({ behavior: sinMovimiento ? "auto" : "smooth" });
+    });
+
+    // ===== Recorrido =====
+    $("bowl-rec").innerHTML = ceviche("r", CEVICHES[0], 5, true);
+    const capasRec = document.querySelectorAll("#bowl-rec .capa-rec");
+    const pasosRec = document.querySelectorAll("#rec-pasos li");
+    const listaRec = $("rec-pasos");
+    let pasoRec = -1;
+    function pintarRecorrido(i) {
+      if (i === pasoRec) return;
+      pasoRec = i;
+      capasRec.forEach(c => c.classList.toggle("puesta", +c.dataset.capa <= i));
+      pasosRec.forEach((p, k) => p.classList.toggle("activo", k === i));
+      $("rec-num").textContent = `Paso ${i + 1} de 5`;
+    }
+
+    // ===== Carta =====
+    const cats = $("cats"), platosEl = $("platos"), buscar = $("buscar");
+    let catActual = "Ceviches";
+    cats.innerHTML = ["Todo", ...CARTA.map(c => c.cat)].map(n => `<button type="button" aria-pressed="${n === catActual}" data-cat="${n}">${n}</button>`).join("");
+    const normalizar = t => t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+    function pintarCarta() {
+      const q = normalizar(buscar.value.trim());
+      const mostrarCat = q || catActual === "Todo";
+      let html = "", n = 0;
+      CARTA.forEach(c => {
+        if (!q && catActual !== "Todo" && c.cat !== catActual) return;
+        c.platos.forEach(([nombre, precio, desc]) => {
+          if (q && !normalizar(nombre + " " + desc).includes(q)) return;
+          n++;
+          const variantes = typeof precio === "string";
+          html += `<article class="plato">${mostrarCat ? `<span class="cat-mini">${c.cat}</span>` : ""}<h3>${nombre}</h3><span class="precio">${variantes ? "" : clp(precio)}</span>${variantes ? `<div class="variantes">${precio.split(" / ").map(v => `<span>${v.replace(/(\d+\.\d{3})/, "$$$1")}</span>`).join("")}</div>` : ""}${desc ? `<p>${desc}</p>` : ""}</article>`;
+        });
+      });
+      platosEl.innerHTML = html || `<p class="sin-resultados">No encontramos "${buscar.value.replace(/[<>&"]/g, "")}" en la carta. Prueba con otra palabra.</p>`;
+      $("total-carta").textContent = `${n} ${n === 1 ? "plato" : "platos"}`;
+    }
+    cats.addEventListener("click", e => {
+      const b = e.target.closest("button"); if (!b) return;
+      catActual = b.dataset.cat; buscar.value = "";
+      cats.querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b));
+      pintarCarta();
+    });
+    buscar.addEventListener("input", pintarCarta);
+    pintarCarta();
+
+    // ===== Sours =====
+    const TAM = ["Clásico", "Catedral", "Vaticano"];
+    function copaSVG(color, t, id) {
+      // t: 0 clásico (copa alta), 1 catedral (vaso bajo ancho), 2 vaticano (copón)
+      const f = [
+        { cuerpo: "M44 14H96L88 92C86 102 54 102 52 92Z", liq: "M47 36H93L88 90C86 98 54 98 52 90Z", pie: "M66 100V128M50 132H90" },
+        { cuerpo: "M30 40H110L104 120C103 128 37 128 36 120Z", liq: "M33 60H107L103 118C102 124 38 124 37 118Z", pie: "" },
+        { cuerpo: "M18 14H122C122 70 100 96 70 96C40 96 18 70 18 14Z", liq: "M22 32H118C116 72 98 90 70 90C42 90 24 72 22 32Z", pie: "M70 96V126M46 132H94" }
+      ][t];
+      const espumaY = [36, 60, 32][t], ancho = [[47, 93], [33, 107], [22, 118]][t];
+      return `<svg viewBox="0 0 140 140" aria-hidden="true"><path d="${f.cuerpo}" fill="#eef3f5" opacity=".55" stroke="#9fb2bb" stroke-width="2.2"/><g class="copa-liquido" id="${id}"><path d="${f.liq}" fill="${color}"/><path d="M${ancho[0]} ${espumaY}H${ancho[1]}" stroke="#fffdf2" stroke-width="11" stroke-linecap="round"/><circle cx="${(ancho[0] + ancho[1]) / 2 - 8}" cy="${espumaY - 1}" r="2.2" fill="#7a3a17"/><circle cx="${(ancho[0] + ancho[1]) / 2 + 9}" cy="${espumaY + 1}" r="1.8" fill="#7a3a17"/></g>${f.pie ? `<path d="${f.pie}" stroke="#9fb2bb" stroke-width="3.2" stroke-linecap="round" fill="none"/>` : ""}<path d="${f.cuerpo.split("L")[0]}" fill="none"/><path d="M${ancho[0] + 4} ${espumaY + 10}L${ancho[0] + 8} ${espumaY + 40}" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/></svg>`;
+    }
+    const soursGrid = $("sours-grid");
+    const tarjetasSour = SOURS.map((s, i) => `<article class="tarjeta aparece" style="transition-delay:${i * 80}ms" data-s="${i}"><div class="ilus" id="ilus-s${i}">${copaSVG(s.color, 0, "liq-s" + i)}</div><h3>${s.n}</h3><p>${s.d}</p><div class="tamanos" role="group" aria-label="Tamaño de ${s.n}">${TAM.map((t, k) => `<button type="button" data-t="${k}" aria-pressed="${k === 0}">${t}<b>${clp(s.precios[k])}</b></button>`).join("")}</div></article>`).join("");
+    const tarjetaMacerados = `<article class="tarjeta aparece" style="transition-delay:240ms;grid-column:1/-1"><h3>Los macerados de la casa</h3><p>Tabernero Tradición con ingredientes sumergidos para sacarles su sabor y aroma: ${MACERADOS.join(", ")}.</p><div class="tamanos" style="max-width:420px"><button type="button" aria-pressed="true" disabled>Clásico<b>$7.900</b></button><button type="button" aria-pressed="false" disabled>Catedral<b>$11.900</b></button><button type="button" aria-pressed="false" disabled>Vaticano<b>$17.900</b></button></div></article>`;
+    soursGrid.innerHTML = tarjetasSour + tarjetaMacerados;
+    soursGrid.addEventListener("click", e => {
+      const b = e.target.closest("[data-t]"); if (!b) return;
+      const card = b.closest("[data-s]"), i = +card.dataset.s, t = +b.dataset.t;
+      card.querySelectorAll("[data-t]").forEach(x => x.setAttribute("aria-pressed", x === b));
+      $("ilus-s" + i).innerHTML = copaSVG(SOURS[i].color, t, "liq-s" + i);
+      if (!sinMovimiento) { const l = $("liq-s" + i); l.style.transform = "scaleY(.2)"; requestAnimationFrame(() => requestAnimationFrame(() => l.style.transform = "")); }
+    });
+
+    // ===== Reserva =====
+    const DIAS = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+    const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+    const hoy = new Date();
+    const fechas = Array.from({ length: 7 }, (_, i) => { const d = new Date(hoy); d.setDate(hoy.getDate() + i); return d; });
+    $("dias").innerHTML = fechas.map((d, i) => `<button type="button" data-d="${i}" aria-pressed="false">${i === 0 ? "Hoy" : i === 1 ? "Mañana" : DIAS[d.getDay()]}<small>${d.getDate()} ${MESES[d.getMonth()]}</small></button>`).join("");
+    const OCASIONES = ["Almuerzo o cena", "Cumpleaños", "Aniversario", "Trabajo"];
+    $("ocasiones").innerHTML = OCASIONES.map((o, i) => `<button type="button" data-o="${i}" aria-pressed="${i === 0}">${o}</button>`).join("");
+    let dia = null, ocasion = 0, personas = 2, platoReserva = null;
+    function pintarMesa() {
+      $("cuantos").textContent = personas;
+      $("mesa-mini").innerHTML = Array.from({ length: personas }, () => "<i></i>").join("");
+      resumen();
+    }
+    function resumen() {
+      const d = dia === null ? null : fechas[dia];
+      $("resumen").textContent = d ? `${dia === 0 ? "Hoy" : dia === 1 ? "Mañana" : DIAS[d.getDay()] + " " + d.getDate()} · ${$("hora").value || "--:--"} · ${personas} ${personas === 1 ? "persona" : "personas"}` : "Elige un día";
+    }
+    function ponerPlato(n) {
+      platoReserva = n;
+      $("campo-plato").hidden = !n;
+      $("plato-texto").textContent = n || "";
+    }
+    $("dias").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; dia = +b.dataset.d; $("dias").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); resumen(); });
+    $("ocasiones").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; ocasion = +b.dataset.o; $("ocasiones").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b)); });
+    $("menos").addEventListener("click", () => { if (personas > 1) { personas--; pintarMesa(); } });
+    $("mas").addEventListener("click", () => { if (personas < 20) { personas++; pintarMesa(); } });
+    $("hora").addEventListener("input", resumen);
+    $("quitar-plato").addEventListener("click", () => ponerPlato(null));
+    pintarMesa();
+    $("form-reserva").addEventListener("submit", e => {
+      e.preventDefault();
+      if (dia === null) { mostrarToast("Elige primero qué día quieren venir."); return; }
+      const d = fechas[dia], nombre = $("nombre").value.trim();
+      const mensaje = `Hola Son Perú, quiero reservar una mesa:\n` +
+        `• Día: ${DIAS[d.getDay()]} ${d.getDate()} de ${MESES[d.getMonth()]}\n` +
+        `• Hora: ${$("hora").value}\n` +
+        `• Personas: ${personas}\n` +
+        (ocasion ? `• Ocasión: ${OCASIONES[ocasion]}\n` : "") +
+        (platoReserva ? `• Queremos probar: ${platoReserva}\n` : "") +
+        (nombre ? `• A nombre de: ${nombre}` : "");
+      mostrarToast("Esto es una demo: en la versión final el mensaje llega listo al WhatsApp de Son Perú.");
+      console.info(mensaje);
+      // Versión final: window.open("https://wa.me/56958168960?text=" + encodeURIComponent(mensaje));
+    });
+
+    // ===== Apariciones al bajar =====
+    const elementos = document.querySelectorAll(".aparece");
+    if (captura || !("IntersectionObserver" in window)) elementos.forEach(el => el.classList.add("visto"));
+    else {
+      const obs = new IntersectionObserver(entradas => entradas.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visto"); obs.unobserve(e.target); } }), { threshold: 0.12 });
+      elementos.forEach(el => obs.observe(el));
+    }
+
+    // ===== Mouse en la portada =====
+    const hero = $("inicio");
+    if (!sinMovimiento && matchMedia("(pointer: fine)").matches) {
+      hero.addEventListener("pointermove", e => {
+        const r = hero.getBoundingClientRect();
+        hero.style.setProperty("--mx", ((e.clientX - r.left) / r.width).toFixed(3));
+        hero.style.setProperty("--my", ((e.clientY - r.top) / r.height).toFixed(3));
+      });
+      hero.addEventListener("pointerleave", () => { hero.style.setProperty("--mx", .5); hero.style.setProperty("--my", .5); });
+    }
+
+    // ===== Scroll: barra, portada y recorrido =====
+    const progreso = $("progreso");
+    let pendiente = false;
+    function alHacerScroll() {
+      pendiente = false;
+      const total = document.documentElement.scrollHeight - innerHeight;
+      progreso.style.setProperty("--p", total > 0 ? (scrollY / total).toFixed(4) : 0);
+      if (!sinMovimiento) hero.style.setProperty("--sc", Math.min(scrollY / hero.offsetHeight, 1).toFixed(3));
+      const r = listaRec.getBoundingClientRect();
+      const avance = captura ? 1 : Math.max(0, Math.min(.999, (innerHeight * .55 - r.top) / (r.height - innerHeight * .3)));
+      pintarRecorrido(Math.min(4, Math.floor(avance * 5)));
+    }
+    addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(alHacerScroll); } }, { passive: true });
+    addEventListener("resize", alHacerScroll);
+    alHacerScroll();
+
+    // ===== Comparador =====
+    const modal = $("modal-comparar"), comparador = $("comparador"), deslizador = $("deslizador");
+    const imgAntes = $("img-antes"), imgAhora = $("img-ahora"), btnCerrar = $("cerrar-comparar"), leyenda = $("leyenda");
+    let ultimoFoco = null;
+    const ajustarLeyenda = () => { leyenda.style.width = comparador.offsetWidth + "px"; };
+    addEventListener("resize", ajustarLeyenda);
+    const moverDivisor = valor => comparador.style.setProperty("--pos", valor + "%");
+    deslizador.addEventListener("input", () => moverDivisor(deslizador.value));
+    function abrirComparar(e) {
+      ultimoFoco = e?.currentTarget || document.activeElement;
+      modal.classList.add("abierto");
+      document.body.classList.add("modal-abierto");
+      ajustarLeyenda();
+      const pasosDiv = [50, 30, 70, 50];
+      let i = 0;
+      const animados = comparador.querySelectorAll("img, .divisor");
+      animados.forEach(el => el.style.transition = "clip-path .35s ease, left .35s ease");
+      const intervalo = setInterval(() => {
+        if (i >= pasosDiv.length) { clearInterval(intervalo); animados.forEach(el => el.style.transition = ""); return; }
+        deslizador.value = pasosDiv[i]; moverDivisor(pasosDiv[i]); i++;
+      }, 380);
+      btnCerrar.focus();
+    }
+    function cerrarComparar() {
+      modal.classList.remove("abierto");
+      document.body.classList.remove("modal-abierto");
+      if (ultimoFoco) ultimoFoco.focus();
+    }
+    document.querySelectorAll("[data-abrir-comparar]").forEach(b => b.addEventListener("click", abrirComparar));
+    btnCerrar.addEventListener("click", cerrarComparar);
+    modal.addEventListener("click", e => { if (e.target === modal) cerrarComparar(); });
+    document.addEventListener("keydown", e => {
+      if (!modal.classList.contains("abierto")) return;
+      if (e.key === "Escape") cerrarComparar();
+      if (e.key === "Tab") {
+        const focos = modal.querySelectorAll("button, input");
+        const primero = focos[0], ultimo = focos[focos.length - 1];
+        if (e.shiftKey && document.activeElement === primero) { e.preventDefault(); ultimo.focus(); }
+        else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primero.focus(); }
+      }
+    });
+    document.querySelectorAll("[data-vista]").forEach(tab => tab.addEventListener("click", () => {
+      const vista = tab.dataset.vista;
+      document.querySelectorAll("[data-vista]").forEach(t => t.setAttribute("aria-selected", t === tab));
+      comparador.className = "comparador " + vista;
+      imgAntes.src = `comparar/antes-${vista}.png`;
+      imgAhora.src = `comparar/ahora-${vista}.png`;
+      ajustarLeyenda();
+    }));
+  </script>
+</body>
+</html>

@@ -9,6 +9,25 @@ const SITIO = "https://www.benedettowebs.cl";
 // whatsapp: número sin "+" ni espacios (vacío si no lo tenemos todavía)
 const DEMOS = [
   {
+    id: "son-peru",
+    negocio: "Son Perú",
+    rubro: "Restaurante peruano",
+    direccion: "Av. Salvador Izquierdo 1800, La Reina",
+    caso: "Web anticuada (plantilla BistroSuite, carta en folleto externo)",
+    whatsapp: "56958168960",
+    creada: "2026-11-21",
+    mensaje: `Hola, ¿cómo están? Soy Santiago Benedetto, vecino de La Reina, y hago páginas web para negocios del barrio con BenedettoWebs.
+
+Les escribo porque revisé sonperu.cl: la portada tiene el logo, una frase y tres botones. Para ver la carta hay que pasar por otra página y después hojear un folleto de 24 páginas, las reservas mandan a una app externa y el WhatsApp no aparece en la web.
+
+Así que les armé una propuesta con su carta real: los más de 100 platos con sus precios, con buscador y filtros; un "Elige tu ceviche" donde se ven sus 10 ceviches armados con lo que lleva cada uno; los sours en Clásico, Catedral y Vaticano; y la reserva de mesa eligiendo día, hora y cuántos vienen, con el mensaje listo para su WhatsApp. También está la ubicación con mapa, los teléfonos y el correo de reservas.
+
+https://www.benedettowebs.cl/demos/son-peru/
+
+En la demo hay un botón abajo que dice "Comparar". Ahí pueden ver la web actual y la nueva lado a lado, en celular y en computador.`,
+    seguimiento: "Hola de nuevo. ¿Alcanzaron a ver la propuesta? Si quieren, paso por el restaurante y se la muestro en 5 minutos. Las páginas parten en $30.000, pago único, y queda funcionando en sonperu.cl, el dominio que ya tienen."
+  },
+  {
     id: "cafe-isla-verde",
     negocio: "Café Isla Verde",
     rubro: "Cafetería y almuerzos",
